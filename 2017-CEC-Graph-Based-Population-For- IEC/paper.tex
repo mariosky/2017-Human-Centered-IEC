@@ -395,20 +395,29 @@ platform.
 
 
 \section{Introduction}
-Interactive Evolutionary Algorithms (IEAs): are standard EAs whose
-fitness evaluations are performed by persons with in an interactive 
+% Maybe an introduction on why and where to use these types of
+% algorithms? - jj
+Interactive Evolutionary Algorithms (IEAs) are standard EAs whose
+fitness evaluations are performed by persons within an interactive 
 system.  Thus, the main loop of the EA needs the intervention of a
 human for the quality assessment of each proposed solution. These
-systems have an inherent drawback araising from the very nature of 
-the algorithm, namely, the human fatigue caused by the interaction. 
-Some authors have already tried to address this basic problem \cite{Frade:2010:EvoGAMES}.
-nevertheless, IEAs have demonstrated their ability for effectively
+systems have an inherent drawback arising from the very nature of 
+the algorithm, namely, the human fatigue caused by the interaction. % Can it be quantified? Maybe a reference to NodIO? - JJ
+Some authors have already tried to address this basic problem
+\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
+                            %going to do here? - jj
+
+
+% Maybe this claim should go to the beginning. THIS is why we want to
+% use them - JJ
+Nevertheless, IEAs have demonstrated their ability for effectively
 producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
 as well as other products in many other domains \cite{ie1}. 
-Several IEC have been developed as web based systems \cite{picbreeder},
+Several IECs have been developed as web based systems \cite{picbreeder},
 who depend on volunteers who visit the system to interactively help
 with the search, using both anonymous and registered users. In particular
-the EvoSpace-Interactive (ES-I) platform employs a collaborative technique,
+the EvoSpace-Interactive (ES-I) %citation
+platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
 individual and then an aggregated fitness value is calculated. The fitness
 assigned to each individual depends on the taste of each particular user, 
@@ -416,7 +425,9 @@ resulting in a many-to-many relationship between users and individuals.
 Many systems query this user-individual relation to extract relevant
 knowledge about the process and the population, for instance showing the
 most popular individual, or the the user with more participation \cite{picbreeder}.
-In order to do this, individuals about individuals must be stored, even
+In order to do this, individuals about individuals %what? Maybe data
+                                %about individuals? - JJ
+must be stored, even
 if they are no longer in the active population. In this work a graph database
 is proposed to model the interaction between users and individuals, with
 the following advantages:
@@ -441,7 +452,7 @@ the following advantages:
 In this work..
 
 
-The remainder of this paper proceeds as follows.
+The remainder of this paper is organized  as follows.
 Section \ref{sec:interactive} presents related work on the topic 
 of Interactive Evolution data models.
 Then, Section \ref{sec:evospace-i} presents the computational platform on which the main proposal of this work is developed. The proposed graph model is presented in Section \ref{sec:graph}.
@@ -458,8 +469,8 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \section{IEC Graph based model}
 \label{sec:graph}
 
-Users are a central part of an IEC system, because not only their
-explicit evaluation is involved, the overall context of interaction
+Users are a central part of an IEC system,  not only because their
+explicit evaluation is essential, but also because the overall context of interaction
 affects the system as a whole as users interact not only with the graphical
 interface, and each individual\'s phenotype, there is also the interaction
 with other users, their previous evaluations and their own history of activities
@@ -473,12 +484,12 @@ enhance the system to capture the attention of users and possibly
 increase their participation and mitigate the fatige.
 
 The current model is tailored to the EvoSpace-I functionality and capabilities
-but it can be modified to handle other platforms.
+but it can be modified to handle other platforms. %A hint on how
 
 
 \subsection{Users} 
 
-Currently there exist some basic actions that
+Currently there are some basic actions that
 users can perform in the system, in order to interact with EvoSpace-I platform
 users must login to the system through their facebook account. 
 Once a user has logged-in to the system, he or she can do several actions.
@@ -501,7 +512,10 @@ Example of actions are the following:
 \end{enumerate}
 
 
-Another example is the sharing action, that can occur when In this sense the action of posting is when
+Another example is the sharing action, that can occur when %Something
+% missing here - JJ
+
+In this sense the action of posting is when
 users want to put something on their wall who want others to know through
 their social networks. Likewise the storing action occurs when users want to
 retain permanently information that are of their interest. Finally the
@@ -650,7 +664,7 @@ of vertices, which means that there will not be duplicate vertices. The property
 defines the name of the vertex u. The property “element\_type” defines the
 element type that will be the vertex $u$.
 
-In figure \ref{fig:User_node} the vertex $u$ properties are shown.
+In figure \ref{fig:User_node} the properties of vertex $u$  are shown.
 
 \begin{figure*}
 \captionsetup{justification=centering,margin=2cm}
@@ -677,7 +691,8 @@ of vertices, which means that there will not be duplicate vertices. The
 vertex $i$. which as defined above in this section. The  property “views” defines
 the amount that users have seen this vertex $i$ The property “element\_type”
 defines the element type that will be the vertex $i$. The property “created”
-defines the creation date of the vertex $i$.
+defines the creation date of the vertex $i$. % Is there a point in
+                                % describing these properties? - JJ
 
 
 In figure \ref{fig:Individual_node} the vertex $i$ properties are shown.
@@ -821,10 +836,11 @@ E&= \{[l_1,l_2,l_3,..,l_n],[p_1,p_2,p_3,...,p_n],[h_1,h_2,h_3,...,h_n],[k_1,k_2,
 \end{split} 
 \end{equation*} 
 
-Already defined the vertices and edges a graph-based user-individual model is
-proposed where vertices users are related to the vertices individuals, likewise
+Once  the vertices and edges have been defined a graph-based user-individual model is
+proposed where  user vertices are related to the individual vertices, likewise
 the vertices individuals are related to themselves when evolution exist between
-them. In that sense the vertices users and individuals are related to the
+them. % Grammar has to be improved - JJ
+In that sense the vertices users and individuals are related to the
 vertices collections as a vertex user can be related to a vertex collections and
 a vertex collections collections is related to $n$ individuals vertex. In Figure
 \ref{fig:user_moder} shows an example of the graph-based user-individual model.
