@@ -393,9 +393,35 @@ Some authors have already tried to address this basic problem \cite{Frade:2010:E
 nevertheless, IEAs have demonstrated their ability for effectively
 producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
 as well as other products in many other domains \cite{ie1}. 
-Several IEC have been developed as web based systems \cite{picbreeder,Musart},
-depending on volunteers who visit the system to interactibly help
-with the seach.    
+Several IEC have been developed as web based systems \cite{picbreeder},
+who depend on volunteers who visit the system to interactively help
+with the search, using both anonymous and registered users. In particular
+the EvoSpace-Interactive (ES-I) platform employs a collaborative technique,
+where several registered users assign a quality assessment to a single
+individual and then an aggregated fitness value is calculated. The fitness
+assigned to each individual depends on the taste of each particular user, 
+resulting in a many-to-many relationship between users and individuals. 
+Many systems query this user-individual relation to extract relevant
+knowledge about the process and the population, for instance showing the
+most popular individual, or the the user with more participation \cite{picbreeder}.
+In order to do this, individuals about individuals must be stored, even
+if they are no longer in the active population. In this work a graph database
+is proposed to model the interaction between users and individuals, with
+the following considerations:
+
+\begin{enumerate}
+  \item  The relationship between individuals is naturally expressed as a
+  tree, or a graph when both ancestors and descendancy is considered. 
+
+  \item Relationship between users can also be modeled as a social network,
+  with well stablished algorithms and metrics (cite).
+
+  \item Fitness evaluation can also be extracted from different kind of relationships
+  between a user and an individual, using common actions? found in social networks,
+  for instance share, like, or add to collection.  
+
+\end{enumerate}
+
 
 
 \subsection{Subsection Heading Here}
