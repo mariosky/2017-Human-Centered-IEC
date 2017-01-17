@@ -446,28 +446,50 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \section{IEC Graph based model}
 \label{sec:graph}
 
+Users are a central part of an IEC system, because not only their
+explicit evaluation is involved, the overall context of interaction
+affects the system as a whole as users interact not only with the graphical
+interface, and each individual\'s phenotype, there is also the interaction
+with other users, their previous evaluations and their own history of activities
+and past experiences. Thus users in this proposal are dinamic entities 
+interacting with an evolutionary computation and
+have the fundamental purpose of evaluating individuals according to their preferences,
+both explicitly or implicitly. Their degree of participation is affected by 
+the context of use. With the porpouse of modeling the system, the contextual
+factors are abstracted using a graph. This graph can then be used to 
+enhance the system to capture the attention of users and possibly
+increase their participation and mitigate the fatige.
 
-% Begins Christian´s writings
-% Needs TLC
+The current model is tailored to the EvoSpace-I functionality and capabilities
+but it can be modified to handle other platforms.
+
 
 \subsection{Users} 
 
-Users are a central part of this proposed framework as it aims to study their
-behavior when interacting with individuals within interactive evolutionary
-algorithms and other tasks that may exist within IEC systems. Thus users in
-this proposal are entities interacting with an evolutionary computation that
-has the fundamental purpose of evaluating individuals of a population
-replacing the fitness function according to their preferences and mood, among
-others []. This form of evaluate individual is given a subjectively way.
+Currently there exist some basic actions that
+users can perform in the system, in order to interact with EvoSpace-I platform
+users must login to the system through their facebook account. 
+Once a user has logged-in to the system, he or she can do several actions.
+Example of actions are the following:
 
-On the other hand in order to capture the attention of users and possibly
-increase their participation, currently there exist some basic actions that
-users can perform in a given system, going from to be able to access a system
-through login mechanism, once the user has logged-in in to the system the
-users can interact with different actions, for example the inviting action is
-when users can be invited through social networks or maybe of person to
-person. Another example is the sharing action, that can occur when users want
-to share something of their interest through their social networks. In this sense the action of posting is when
+\begin{enumerate}
+  \item  Users can invite their friends to participate through social networks . 
+
+  \item Relationship between users can also be modeled as a social network,
+  with well stablished algorithms and metrics (cite).
+
+  \item Many kinds of relationships between users and individuals,
+  can be expressed using common actions found in social networks;
+  for instance share, like, or add to collection. [ cite Activity Streams 2.0
+  syntax (https://www.w3.org/TR/activitystreams-vocabulary)]   
+
+  \item The same graph can be used to immplement a user model, or it can
+  be extracted from a user\'s public profile.
+
+\end{enumerate}
+
+
+Another example is the sharing action, that can occur when In this sense the action of posting is when
 users want to put something on their wall who want others to know through
 their social networks. Likewise the storing action occurs when users want to
 retain permanently information that are of their interest. Finally the
