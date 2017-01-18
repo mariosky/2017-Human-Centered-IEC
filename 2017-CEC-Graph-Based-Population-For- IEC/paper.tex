@@ -409,26 +409,51 @@ Several IECs have been developed as web based systems \cite{picbreeder},
 who depend on volunteers who visit the system to interactively help
 with the search, using both anonymous and registered users.
 These systems have several inherent drawbacks arising from the very nature of 
-the algorithm, namely, the human fatigue caused by the interaction,
-boredom or lack of interest when evaluating a large number of individuals,
+the algorithms, namely, the human fatigue caused by the interaction, and
+the boredom arising when users evaluate a large number of individuals 
 many of which are not interesting or are very similar to each other.
-IEAs share some of the issues commonly found in volunteer based systems
-\cite{sarmenta2001volunteer,web:BOINC} such as volunteer\'s lack of accountability,
-the need to build trust between participants and application providers. 
+IEAs also share some of the issues commonly found in volunteer based systems
+\cite{sarmenta2001volunteer,web:BOINC} such as the volunteer\'s lack of accountability,
+and the need to build trust between participants and application providers. 
 There is also the difficulty of establishing the amount of time and resources
 a volunteer is willing to spend on the system, and how they decide if they
-participate or not \cite{JJ:2016}.
+participate or not \cite{JJ:2016}. In order to increase participation and 
+engagement, and to tackle the issues mentioned above,  
+IEAs must follow a user centered design, giving extensive attention 
+to volunteer users, not only because their
+explicit evaluation is essential, but also because the context of the 
+interaction affects the system as a whole. Users interact not only with the graphical
+interface, and each individual\'s phenotype, there is also the interaction
+with other users, their previous evaluations and their own stream of activities
+and past experiences. Thus users in this proposal are defined as dynamic entities 
+interacting with an evolutionary computation having the fundamental purpose 
+of evaluating individuals according to their preferences,
+both explicitly or implicitly. In this work we propose giving the same
+importance to users and their interactions as the population of 
+individuals have in a traditional EA, even to the extend as using this
+knowledge as an integral part of the algorithm it self. We argue also
+that a graph model is a viable representation for this purpose.  
+
+
+% Moving to related work - Mario
+%\cite{Performance for the masses and Christian's previous work}, 
+
 
 
  % Can it be quantified? Maybe a reference to NodIO? - JJ
-Some authors have already tried to address this basic problem
-\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
+%Some authors have already tried to address this basic problem
+%\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
                             %going to do here? - jj
-
+%% Moving this to Related Work Section -Mario
 
 % Maybe this claim should go to the beginning. THIS is why we want to
 % use them - JJ
- In particular
+% Done - Mario
+ 
+As a proof of concept, a case study is presented providing both 
+conceptual and implementation details using the EvoSpace-Interactive
+platform.  
+
 the EvoSpace-Interactive (ES-I) %citation
 platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
