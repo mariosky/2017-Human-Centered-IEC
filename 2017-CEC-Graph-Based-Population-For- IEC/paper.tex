@@ -354,7 +354,7 @@ Fax: (888) 555--1212}}
 % in the abstract
 \begin{abstract}
 This paper presents an alternative data model for the development of
-Interactive Evolutionay Computation (IEC) algorithms. A graph %specify
+Interactive Evolutionary Computation (IEC) algorithms. A graph %specify
                                 %the elements of the graph - JJ
 stored for efficiency in a graph database, is
 proposed to model the overall system which consists of: a social network of
@@ -397,12 +397,30 @@ platform.
 \section{Introduction}
 % Maybe an introduction on why and where to use these types of
 % algorithms? - jj
+% Done -Mario
 Interactive Evolutionary Algorithms (IEAs) are standard EAs whose
 fitness evaluations are performed by persons within an interactive 
 system.  Thus, the main loop of the EA needs the intervention of a
-human for the quality assessment of each proposed solution. These
-systems have an inherent drawback arising from the very nature of 
-the algorithm, namely, the human fatigue caused by the interaction. % Can it be quantified? Maybe a reference to NodIO? - JJ
+human for the quality assessment of each proposed solution.
+IEAs have demonstrated their ability for effectively
+producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
+as well as other products in many other domains \cite{ie1}. 
+Several IECs have been developed as web based systems \cite{picbreeder},
+who depend on volunteers who visit the system to interactively help
+with the search, using both anonymous and registered users.
+These systems have several inherent drawbacks arising from the very nature of 
+the algorithm, namely, the human fatigue caused by the interaction,
+boredom or lack of interest when evaluating a large number of individuals,
+many of which are not interesting or are very similar to each other.
+IEAs share some of the issues commonly found in volunteer based systems
+\cite{sarmenta2001volunteer,web:BOINC} such as volunteer\'s lack of accountability,
+the need to build trust between participants and application providers. 
+There is also the difficulty of establishing the amount of time and resources
+a volunteer is willing to spend on the system, and how they decide if they
+participate or not \cite{JJ:2016}.
+
+
+ % Can it be quantified? Maybe a reference to NodIO? - JJ
 Some authors have already tried to address this basic problem
 \cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
                             %going to do here? - jj
@@ -410,12 +428,7 @@ Some authors have already tried to address this basic problem
 
 % Maybe this claim should go to the beginning. THIS is why we want to
 % use them - JJ
-Nevertheless, IEAs have demonstrated their ability for effectively
-producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
-as well as other products in many other domains \cite{ie1}. 
-Several IECs have been developed as web based systems \cite{picbreeder},
-who depend on volunteers who visit the system to interactively help
-with the search, using both anonymous and registered users. In particular
+ In particular
 the EvoSpace-Interactive (ES-I) %citation
 platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
@@ -455,7 +468,9 @@ In this work..
 The remainder of this paper is organized  as follows.
 Section \ref{sec:interactive} presents related work on the topic 
 of Interactive Evolution data models.
-Then, Section \ref{sec:evospace-i} presents the computational platform on which the main proposal of this work is developed. The proposed graph model is presented in Section \ref{sec:graph}.
+Then, Section \ref{sec:evospace-i} presents the computational platform on which 
+the main proposal of this work is developed. The proposed graph model is 
+presented in Section \ref{sec:graph}.
 The experimental work and results are presented in Section \ref{sec:experiments}.
 Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
@@ -474,14 +489,14 @@ explicit evaluation is essential, but also because the overall context of intera
 affects the system as a whole as users interact not only with the graphical
 interface, and each individual\'s phenotype, there is also the interaction
 with other users, their previous evaluations and their own history of activities
-and past experiences. Thus users in this proposal are dinamic entities 
+and past experiences. Thus users in this proposal are dynamic entities 
 interacting with an evolutionary computation and
 have the fundamental purpose of evaluating individuals according to their preferences,
 both explicitly or implicitly. Their degree of participation is affected by 
-the context of use. With the porpouse of modeling the system, the contextual
+the context of use. With the purpose of modeling the system, the contextual
 factors are abstracted using a graph. This graph can then be used to 
 enhance the system to capture the attention of users and possibly
-increase their participation and mitigate the fatige.
+increase their participation and mitigate the fatigue.
 
 The current model is tailored to the EvoSpace-I functionality and capabilities
 but it can be modified to handle other platforms. %A hint on how
@@ -491,7 +506,7 @@ but it can be modified to handle other platforms. %A hint on how
 
 Currently there are some basic actions that
 users can perform in the system, in order to interact with EvoSpace-I platform
-users must login to the system through their facebook account. 
+users must login to the system through their Facebook account. 
 Once a user has logged-in to the system, he or she can do several actions.
 Example of actions are the following:
 
