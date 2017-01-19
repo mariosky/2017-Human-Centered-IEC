@@ -575,15 +575,28 @@ When a user browses over an individual a detail pane shows how many users have
 liked the individual. The pane also includes a link to the individual's 
 details, the parents, genetic operators that created it, and genealogy information.
  
-\section{IEC Graph based model}
+\section{IEC Human-centered framework}
 \label{sec:graph}
-The fundamental goal of this research is to develop a user-centered framework
-for interactive evolutionary computation (IEC) in order to increase users’
+The general goal of this research is to develop a human-centered [cite] framework
+for interactive evolutionary computation (IEC) in order to increase
 participation and also to minimize the amount of evaluations needed for the
-evolutionary process in given Web-based IEC application.  This framework is 
-presented in figure \ref{fig:uc_framework}. The current model is tailored 
-to the EvoSpace-I functionality and capabilities but it can be modified to 
-handle other platforms, just by adding new clases of nodes. 
+evolutionary process in given IEC application. We deliberately use the more general
+term Human instead of User, because humans are not always playing the role of
+users in software engineering sense, they could just be interacting 
+naturaly with their environment and with out knowing they are implicitly
+evaluating a possible solution. In other cases the evaluation could be done
+by the natural interactions of a group of humans in a collaborative fashion
+or not. For instance the IEC algorithm could by trying to optimize 
+the design of an exit sign in an airport, then the quality of this sign could be
+determined by the average the time it takes a sample of people to 
+find the exit. In this example there could be certain collaboration
+between users if they are not traveling alone, of course this is only one of
+the considerations designers could make. 
+ 
+%I will keep it general for this section -Mario
+%The current model is tailored 
+%to the EvoSpace-I functionality and capabilities but it can be modified to 
+%handle other platforms, just by adding new clases of nodes. 
 
 
 \begin{figure*}
@@ -596,14 +609,21 @@ handle other platforms, just by adding new clases of nodes.
   \label{fig:uc_framework}       
 \end{figure*}
 
-The user centered framework consists of three high level components:
+The human centered framework consists of three high level components depicted
+in figure \ref{fig:uc_framework}:
 
 \begin{itemize}
   \item { \tt Interactive Evolutionary Computational system.}  
   This is the real world system that we are going to model, it consist of
-  human users and their interaction with one or more individuals from
-  the population, this could be through a device, user interface or
-  by directly interacting with real world objects generated as part of the algorithm.  
+  human users and their interactions with one or more individuals from
+  the population. There are many ways in which humans could interact 
+  with indivuals, this could be through a mobile device, a user interface 
+  or by interacting with real world objects generated as part of the algorithm.
+  There is also the posibility that fitness is or part of the search is done
+  in devices lended by the human. The information gathered through the 
+  interaction will guide the search. 
+
+% We could reference Nod
 
   \item {\tt IEC Graph}
   This is the model proposed in this work: A graph database modeling
