@@ -448,12 +448,12 @@ presenting a natural way of maping the relationships found in the system.
 Most IEAs have the following many-to-many relations:
 
 \begin{itemize}
-  \item { \tt Individual-Individual} The relationships between individuals in the
+  \item Individual-Individual. The relationships between individuals in the
   population are naturally expressed as a tree, or a graph when both ancestors 
   and descendants are considered. Other semantic relations can also be of interest
   for instance similarity or composition.
 
-  \item {\tt User-Individual}
+  \item User-Individual.
   Many kind of relationships between users and individuals,
   can be expressed using common actions found in social networks;
   for instance: share, like, rate or add to collection [cite Activity Streams 2.0
@@ -461,7 +461,7 @@ Most IEAs have the following many-to-many relations:
   relationships are used to assign a single or a collection of
   fitness values to individuals [cite ES-I].   
 
-  \item {\tt User-User}
+  \item User-User.
   Relationship between users can also be modeled 
   as a social network, with well stablished semantics, algorithms and metrics (cite).
   A graph model could eneable researchers to find other ways of identifyng leaders of 
@@ -525,14 +525,14 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \label{fig:web}       
 \end{figure*}
 
-\section{EvoSpace-Interactive}
+\subsection{EvoSpace-Interactive}
 \label{sec:evospace-i} 
 As a case study, a IEA was implented using the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
 A brief description of the aplication is presented next, focusing
 on the data elements that where ported to the graph model.
 
-\subsection{Fitness Assignment}
+\subsubsection{Fitness Assignment}
 \label{sec:col}
 The ES-I platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
@@ -547,14 +547,13 @@ In order to do this, data about individuals %what? Maybe data
 must be permanently stored, even
 if they are no longer in the active population. 
 
-\subsection{Collaboration}
+\subsubsection{Collaboration}
 \label{sec:col}
 After entering the web application by using their Facebook account,
 users can collaborate with their Facebook friends, 
 sharing those individuals they like, or by taking individuals
 from their friend\'s collections by using the web interface depicted 
 in Figure \ref{fig:web}
-
 
 At the top left corner list of Facebook friends is presented, 
 to encourage users to interact with the system. In the central 
@@ -574,8 +573,8 @@ there share images through the social network.
 When a user browses over an individual a detail pane shows how many users have
 liked the individual. The pane also includes a link to the individual's 
 details, the parents, genetic operators that created it, and genealogy information.
- 
-\section{IEC Human-centered framework}
+
+ \section{IEC Human-centered framework}
 \label{sec:graph}
 The general goal of this research is to develop a human-centered [cite] framework
 for interactive evolutionary computation (IEC) in order to increase
@@ -598,22 +597,19 @@ the considerations designers could make.
 %to the EvoSpace-I functionality and capabilities but it can be modified to 
 %handle other platforms, just by adding new clases of nodes. 
 
-
-\begin{figure*}
-  \captionsetup{justification=centering,margin=2cm}
+\begin{figure}[ht]
   \centering
-  \setlength\fboxsep{0pt}
-  \setlength\fboxrule{0.7pt}
-  \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/framework.png}}
-  \caption{User-Centerd Framework.}
+  \includegraphics[width=\textwidth,height=8cm,keepaspectratio]{img/framework.png}
+  
+  \caption{Human-Centerd Framework.}
   \label{fig:uc_framework}       
-\end{figure*}
+\end{figure}
 
 The human centered framework consists of three high level components depicted
 in figure \ref{fig:uc_framework}:
 
 \begin{itemize}
-  \item { \tt Interactive Evolutionary Computational system.}  
+  \item Interactive Evolutionary Computational system. 
   This is the real world system that we are going to represent in the model, 
   it consist of human users and their interactions with one or more individuals from
   the population. There are many ways in which humans could interact 
@@ -625,7 +621,7 @@ in figure \ref{fig:uc_framework}:
   The information gathered through the interaction is the primary concern
   as it will guide the search. 
 
-  \item {\tt IEC Data Model}
+  \item IEC Data Model.
   A data model is used to describe the IEC system prior to a physical 
   implementation. 
   %% This block is maybe not needed but in our ES-I implementation
@@ -640,7 +636,7 @@ in figure \ref{fig:uc_framework}:
   of users and their interaction with the population. This database 
   is the back-end of the system, is used by the EA and the user interface. 
 
-  \item {\tt Evolutionary Algorithm} 
+  \item Evolutionary Algorithm. 
   The EA algorithm queries the graph model, and then updates those nodes that 
   are part of the population. The EA could also be done with the help of
   humans, for instance in the XY project [cite] artists physicaly created
@@ -655,14 +651,73 @@ in figure \ref{fig:uc_framework}:
 
 \section{IEC Graph Conceptual Model} 
 
-In this section the Graph Model is presented, 
+A graph is composed of two fundamental entities: nodes and relationships,
+both having attributes. Nodes are abstractions of the objects in the real 
+world system, and relationships describe their interactions. Types describe
+the attributes describing an entity, First we describe the types of nodes and  relationships in the system. 
+
+\subsection{Node Types}
+\begin{itemize}
+
+\item Users. This nodes represent the human users of the system and have 
+the attributes: {\tt id} a unique identifier, {\tt name}  and {\tt created}
+specifing the  creation date (time stamp) of the node. 
+
+\item Individual. This type of node has the following attributes: 
+{\tt id}, {\tt chromosome}  and {\tt views} this is 
+the amount that users have seen or interacted with this individual and
+ {\tt created}.
+\item Collection. This type of nodes represent the collections belonging
+to users, their attributes are {\tt id}, 
+{\tt name}, {\tt created} and {\tt is_private} indicating if this collection
+contents are shared with others. 
+\end{itemize}
+
+\subsection{Relationships Type}
+%%
+%% Explain relations
+
+The {\tt likes} relation describes the interaction between a User and
+an Individual in which a rating value is assigned. In the current application
+a user is allowed to rate an Individual multiple times, so the date of the 
+interactions is also of interest.
+
+\begin{itemize} 
+\item id. 
+\item created. 
+\item rate.
+\end{itemize}
+
+The relation {\tt knows} connects two users that know each other. This relation
+is "unique" meaning that it can not be repeted between a pair of nodes.  
+
+The relation {\tt parent} describes what Individual is the parent of a new
+Individual and is also unique.  
 
 
+The relation {\tt has} describes an ownership relation between users and
+those collections they own. Also a collection {\tt has}  individuals stored
+in them. 
 
-\section{Experiments}
+In figure \ref{fig:Has_edge} the edge {\tt has} attributes and the relationship between certain nodes $user$, $individual$ and $collection$ are shown.
+
+\begin{figure*}
+\captionsetup{justification=centering,margin=2cm}
+\centering
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.7pt}
+\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_has.png}}
+\caption{HAS edge Properties.}
+\label{fig:Has_edge}       
+\end{figure*}
+
+\section{Case Study}
 \label{sec:experiments}
 
-\subsection{Conclusion}
+
+
+
+\section{Conclusion}
 \label{sec:conclusions}
 
 
