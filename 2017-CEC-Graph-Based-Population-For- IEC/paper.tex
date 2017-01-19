@@ -402,20 +402,14 @@ presenting a natural way of maping the relationships found in the system.
 Most IEAs have the following many-to-many relations:
 
 \begin{itemize}
-<<<<<<< HEAD
-  \item Individual-Individual. The relationships between individuals in the
-=======
+
   \item {\bf Individual-Individual} The relationships between individuals in the
->>>>>>> origin/master
   population are naturally expressed as a tree, or a graph when both ancestors 
   and descendants are considered. Other semantic relations can also be of interest
   for instance similarity or composition.
 
-<<<<<<< HEAD
-  \item User-Individual.
-=======
+
   \item {\bf User-Individual}
->>>>>>> origin/master
   Many kind of relationships between users and individuals,
   can be expressed using common actions found in social networks;
   for instance: share, like, rate or add to collection [cite Activity Streams 2.0
@@ -423,11 +417,8 @@ Most IEAs have the following many-to-many relations:
   relationships are used to assign a single or a collection of
   fitness values to individuals [cite ES-I].   
 
-<<<<<<< HEAD
-  \item User-User.
-=======
   \item {\bf User-User}
->>>>>>> origin/master
+
   Relationship between users can also be modeled 
   as a social network, with well stablished semantics, algorithms and metrics (cite).
   A graph model could eneable researchers to find other ways of identifyng leaders of 
@@ -496,13 +487,8 @@ EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
 A brief description of the aplication is presented next, focusing
 on the data elements that where ported to the graph model.
 
-<<<<<<< HEAD
-\subsubsection{Fitness Assignment}
-\label{sec:col}
-=======
 \subsection{Fitness Assignment}
 \label{sec:assignment}
->>>>>>> origin/master
 The ES-I platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
 individual and then an aggregated fitness value is calculated. The fitness
@@ -510,7 +496,8 @@ assigned to each individual depends on the taste of each particular user,
 resulting in a many-to-many relationship between users and individuals. 
 Many systems query this user-individual relation to extract relevant
 knowledge about the process and the population, for instance showing the
-most popular individual, or the the user with more participation \cite{picbreeder}.
+most popular individual, or the the user with more participation 
+\cite{picbreeder}.
 In order to do this, data about individuals %what? Maybe data
                                 %about individuals? - JJ
 must be permanently stored, even
@@ -524,12 +511,9 @@ sharing those individuals they like, or by taking individuals
 from their friend\'s collections by using the web interface depicted 
 in Figure \ref{fig:web}
 
-<<<<<<< HEAD
-At the top left corner list of Facebook friends is presented, 
-=======
+
 
 At the top left corner a list of Facebook friends is presented
->>>>>>> origin/master
 to encourage users to interact with the system. In the central 
 \emph{ Wall } area, an individual sampled from the population that is
 being evolved via the evolutionary algorithm 
@@ -554,7 +538,8 @@ details, the parents, genetic operators that created it, and genealogy informati
 The general goal of this research is to develop a human-centered [cite] framework
 for interactive evolutionary computation (IEC) in order to increase
 participation and also to minimize the amount of evaluations needed for the
-evolutionary process in given IEC application. We deliberately use the more general
+evolutionary process in given IEC application. We deliberately use the 
+more general
 term Human instead of User, because humans are not always playing the role of
 users in software engineering sense, they could just be interacting 
 naturaly with their environment and with out knowing they are implicitly
@@ -572,7 +557,6 @@ the considerations designers could make.
 %to the EvoSpace-I functionality and capabilities but it can be modified to 
 %handle other platforms, just by adding new clases of nodes. 
 
-<<<<<<< HEAD
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth,height=8cm,keepaspectratio]{img/framework.png}
@@ -581,28 +565,14 @@ the considerations designers could make.
   \label{fig:uc_framework}       
 \end{figure}
 
-=======
-
-\begin{figure*}[h!tbp]
-  \captionsetup{justification=centering,margin=2cm}
-  \centering
-  \setlength\fboxsep{0pt}
-  \setlength\fboxrule{0.7pt}
-  \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/framework.png}}
-  \caption{User-Centered Framework.} %Maybe a bit of more explanation,
-                                %showing the relationships and what
-                                %they mean.
-  \label{fig:uc_framework}       
-\end{figure*}
-%
->>>>>>> origin/master
 The human centered framework consists of three high level components depicted
 in figure \ref{fig:uc_framework}:
 
 \begin{itemize}
   \item Interactive Evolutionary Computational system. 
   This is the real world system that we are going to represent in the model, 
-  it consist of human users and their interactions with one or more individuals from
+  it consist of human users and their interactions with one or more individuals
+  from
   the population. There are many ways in which humans could interact 
   with indivuals, this could be through a mobile device, a user interface 
   or by interacting with real world objects generated as part of the algorithm 
@@ -690,13 +660,15 @@ The relation {\tt has} describes an ownership relation between users and
 those collections they own. Also a collection {\tt has}  individuals stored
 in them. 
 
-In figure \ref{fig:Has_edge} the edge {\tt has} attributes and the relationship between certain nodes $user$, $individual$ and $collection$ are shown.
+In figure \ref{fig:Has_edge} the edge {\tt has} attributes and the relationship 
+between certain nodes $user$, $individual$ and $collection$ are shown.
 
 \begin{figure*}
 \captionsetup{justification=centering,margin=2cm}
 \centering
 \setlength\fboxsep{0pt}
 \setlength\fboxrule{0.7pt}
+
 \fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_has.png}}
 \caption{HAS edge Properties.}
 \label{fig:Has_edge}       
