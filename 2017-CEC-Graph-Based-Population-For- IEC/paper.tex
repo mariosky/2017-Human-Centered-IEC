@@ -402,12 +402,12 @@ presenting a natural way of maping the relationships found in the system.
 Most IEAs have the following many-to-many relations:
 
 \begin{itemize}
-  \item { \tt Individual-Individual} The relationships between individuals in the
+  \item {\bf Individual-Individual} The relationships between individuals in the
   population are naturally expressed as a tree, or a graph when both ancestors 
   and descendants are considered. Other semantic relations can also be of interest
   for instance similarity or composition.
 
-  \item {\tt User-Individual}
+  \item {\bf User-Individual}
   Many kind of relationships between users and individuals,
   can be expressed using common actions found in social networks;
   for instance: share, like, rate or add to collection [cite Activity Streams 2.0
@@ -415,7 +415,7 @@ Most IEAs have the following many-to-many relations:
   relationships are used to assign a single or a collection of
   fitness values to individuals [cite ES-I].   
 
-  \item {\tt User-User}
+  \item {\bf User-User}
   Relationship between users can also be modeled 
   as a social network, with well stablished semantics, algorithms and metrics (cite).
   A graph model could eneable researchers to find other ways of identifyng leaders of 
@@ -443,10 +443,8 @@ native graph database systems [cite Christian].
 %\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
                             %going to do here? - jj
 %% Moving this to Related Work Section -Mario
+% That section is not there yet. Forgot to paste? - JJ
 
-% Maybe this claim should go to the beginning. THIS is why we want to
-% use them - JJ
-% Done - Mario
  
 A case study is presented as a proof of concept, providing both
 conceptual and implementation details of a graph data model applied in the 
@@ -469,7 +467,7 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \label{sec:interactive}
 
 
-\begin{figure*}
+\begin{figure*}[h!tbp]
 \captionsetup{justification=centering,margin=2cm}
 \centering
 \setlength\fboxsep{0pt}
@@ -487,7 +485,7 @@ A brief description of the aplication is presented next, focusing
 on the data elements that where ported to the graph model.
 
 \subsection{Fitness Assignment}
-\label{sec:col}
+\label{sec:assignment}
 The ES-I platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
 individual and then an aggregated fitness value is calculated. The fitness
@@ -510,9 +508,10 @@ from their friend\'s collections by using the web interface depicted
 in Figure \ref{fig:web}
 
 
-At the top left corner list of Facebook friends is presented, 
+At the top left corner a list of Facebook friends is presented
 to encourage users to interact with the system. In the central 
-\emph{ Wall } area, an individual sampled from the population 
+\emph{ Wall } area, an individual sampled from the population that is
+being evolved via the evolutionary algorithm 
 is shown to the user.
 Here, the user can interact with the system in two ways.
 He can assign a quality assessment to the individual using
@@ -553,16 +552,18 @@ the considerations designers could make.
 %handle other platforms, just by adding new clases of nodes. 
 
 
-\begin{figure*}
+\begin{figure*}[h!tbp]
   \captionsetup{justification=centering,margin=2cm}
   \centering
   \setlength\fboxsep{0pt}
   \setlength\fboxrule{0.7pt}
   \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/framework.png}}
-  \caption{User-Centerd Framework.}
+  \caption{User-Centered Framework.} %Maybe a bit of more explanation,
+                                %showing the relationships and what
+                                %they mean.
   \label{fig:uc_framework}       
 \end{figure*}
-
+%
 The human centered framework consists of three high level components depicted
 in figure \ref{fig:uc_framework}:
 
