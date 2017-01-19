@@ -353,27 +353,37 @@ Fax: (888) 555--1212}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-This paper presents an alternative data model for the development of
-Interactive Evolutionay Computation (IEC) algorithms. A graph %specify
-                                %the elements of the graph - JJ
-stored for efficiency in a graph database, is
-proposed to model the overall system which consists of: a social network of
-volunteers participating in the interactive evolutionary experiment, a
-population of individuals in the evolutionary algorithm, 
-the system\'s functionality and their interactions. This graph model can then be used
-to tackle some of the issues associated with IEC such as, 
-user fatigue, lack of volunteer participation, fitness estimation % what is this issue?
+Interactive evolution is the leading technique employed by 
+Evolutionary Art researchers, where users' preferences guide the search. A common
+practice is to develop Interactive Evolutionary Computation (IEC) algorithms
+as web applications in order to give users easy access the application as they
+often depend on volunteers who visit the system to interactively help with the search. 
+There are several drawbacks that limit user participation 
+such as human fatigue and boredom resulting from evaluating 
+a large number of individuals. 
+To tackle this issues, we propose the design of IEC systems using a user-centered 
+approach, with a framework consisting of a social network of 
+volunteers, interacting with a population consisting again of a network 
+of individuals. In this work we propose a graph model as a viable 
+and efficient tool for mapping in a natural way the relationships 
+found in the system. A case study is presented as a proof of concept, 
+providing both conceptual and implementation details of a graph based model as it is 
+applied in the implementation of an IEA using the EvoSpace-Interactive platform. 
+As a result, the graph model was then succesfully applied to measure the degree
+of relationship between users with the porpuse of quantifing 
+their participation.
+
+% what is this issue?
 %Maybe the abstract should start with the issues we want to tackle as
 %motivation. Motivation always goes first - JJ
-and novelty. % These two last issues are not too clear, maybe they
+%and novelty. % These two last issues are not too clear, maybe they
              % could be explained in that motivation. 
-The proposed graph database could be used to model IEC systems that 
-follow a user-centered approach. % Graph is the model, graph database
+%The proposed graph database could be used to model IEC systems that 
+%follow a user-centered approach. % Graph is the model, graph database
                                 % the implementation. Two different
                                 % things. 
-A case study is presented providing both 
-conceptual and implementation details using the EvoSpace-Interactive
-platform.
+
+
 % It must prove that the issues have been addressed - JJ
 \end{abstract}
 
@@ -397,65 +407,106 @@ platform.
 \section{Introduction}
 % Maybe an introduction on why and where to use these types of
 % algorithms? - jj
+% Done -Mario
 Interactive Evolutionary Algorithms (IEAs) are standard EAs whose
 fitness evaluations are performed by persons within an interactive 
 system.  Thus, the main loop of the EA needs the intervention of a
-human for the quality assessment of each proposed solution. These
-systems have an inherent drawback arising from the very nature of 
-the algorithm, namely, the human fatigue caused by the interaction. % Can it be quantified? Maybe a reference to NodIO? - JJ
-Some authors have already tried to address this basic problem
-\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
-                            %going to do here? - jj
-
-
-% Maybe this claim should go to the beginning. THIS is why we want to
-% use them - JJ
-Nevertheless, IEAs have demonstrated their ability for effectively
+human for the quality assessment of each proposed solution.
+IEAs have demonstrated their ability for effectively
 producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
 as well as other products in many other domains \cite{ie1}. 
 Several IECs have been developed as web based systems \cite{picbreeder},
 who depend on volunteers who visit the system to interactively help
-with the search, using both anonymous and registered users. In particular
-the EvoSpace-Interactive (ES-I) %citation
-platform employs a collaborative technique,
-where several registered users assign a quality assessment to a single
-individual and then an aggregated fitness value is calculated. The fitness
-assigned to each individual depends on the taste of each particular user, 
-resulting in a many-to-many relationship between users and individuals. 
-Many systems query this user-individual relation to extract relevant
-knowledge about the process and the population, for instance showing the
-most popular individual, or the the user with more participation \cite{picbreeder}.
-In order to do this, individuals about individuals %what? Maybe data
-                                %about individuals? - JJ
-must be stored, even
-if they are no longer in the active population. In this work a graph database
-is proposed to model the interaction between users and individuals, with
-the following advantages:
+with the search, using both anonymous and registered users.
+These systems have several inherent drawbacks arising from the very nature of 
+the algorithms, namely, the human fatigue caused by the interaction, and
+the boredom arising when users evaluate a large number of individuals 
+many of which are not interesting or are very similar to each other.
+IEAs also share some of the issues commonly found in volunteer based systems
+\cite{sarmenta2001volunteer,web:BOINC} such as the volunteer\'s lack of accountability,
+and the need to build trust between participants and application providers. 
+For the provider there is also the difficulty of establishing 
+the amount of time and resources
+a volunteer is willing to spend on the system, and how they decide if they
+participate or not \cite{JJ:2016}. In order to increase participation and 
+engagement, and to tackle the issues mentioned above,  
+IEAs must follow a user centered design, giving extensive attention 
+to volunteer users, not only because their
+explicit evaluation is essential, but also because the context of the 
+interaction affects the system as a whole. Users interact not only with the graphical
+interface, and each individual\'s phenotype, there is also the interaction
+with other users, their previous evaluations and their own stream of activities
+and past experiences. Thus users in this proposal are defined as dynamic entities 
+interacting with an evolutionary computation having the fundamental purpose 
+of evaluating individuals according to their preferences,
+both explicitly or implicitly. In this work we propose giving the same
+importance to users and their interactions as the population of 
+individuals have in a traditional EA, even to the extend as using this
+knowledge as an integral part of the evolutionary algorithm. We argue also
+that a graph model is a viable representation for this purpose,  
+presenting a natural way of maping the relationships found in the system. 
+Most IEAs have the following many-to-many relations:
 
-\begin{enumerate}
-  \item  The relationship between individuals is naturally expressed as a
-  tree, or a graph when both ancestors and descendancy is considered. 
+\begin{itemize}
+  \item { \tt Individual-Individual} The relationships between individuals in the
+  population are naturally expressed as a tree, or a graph when both ancestors 
+  and descendants are considered. Other semantic relations can also be of interest
+  for instance similarity or composition.
 
-  \item Relationship between users can also be modeled as a social network,
-  with well stablished algorithms and metrics (cite).
-
-  \item Many kinds of relationships between users and individuals,
+  \item {\tt User-Individual}
+  Many kind of relationships between users and individuals,
   can be expressed using common actions found in social networks;
-  for instance share, like, or add to collection. [ cite Activity Streams 2.0
-  syntax (https://www.w3.org/TR/activitystreams-vocabulary)]   
+  for instance: share, like, rate or add to collection [cite Activity Streams 2.0
+  syntax (https://www.w3.org/TR/activitystreams-vocabulary)]. In IEAs these
+  relationships are used to assign a single or a collection of
+  fitness values to individuals [cite ES-I].   
 
-  \item The same graph can be used to immplement a user model, or it can
-  be extracted from a user\'s public profile.
+  \item {\tt User-User}
+  Relationship between users can also be modeled 
+  as a social network, with well stablished semantics, algorithms and metrics (cite).
+  A graph model could eneable researchers to find other ways of identifyng leaders of 
+  opinion or measuring the similarity between user\'s preferences. 
+  These measures can then be used by recommender algorithms selecting 
+  individuals according users\' preferences. 
 
-\end{enumerate}
+\end{itemize}
 
-In this work..
+These relations are naturaly maped to graphs, while other actions and 
+properties can also be modeled as a semantic network using
+basic subject–-predicate-–object expressions [cite Semantic triples].
+Another reason for using a graph model is the tools available for
+implementing and query the model, and the increased performance of
+native graph database systems [cite Christian].
 
 
-The remainder of this paper is organized  as follows.
+% Moving to related work - Mario
+%\cite{Performance for the masses and Christian's previous work}, 
+
+
+
+ % Can it be quantified? Maybe a reference to NodIO? - JJ
+%Some authors have already tried to address this basic problem
+%\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
+                            %going to do here? - jj
+%% Moving this to Related Work Section -Mario
+
+% Maybe this claim should go to the beginning. THIS is why we want to
+% use them - JJ
+% Done - Mario
+ 
+A case study is presented as a proof of concept, providing both
+conceptual and implementation details of a graph data model applied in the 
+implementation of an IEA. The experiment was implmented using
+the EvoSpace-Interactive framework, and consisted of a web application
+for evolving artistic drawings. The graph database is then used to
+measure the degree of relationship between users and their participation.  
+
+The remainder of this paper is organized as follows.
 Section \ref{sec:interactive} presents related work on the topic 
 of Interactive Evolution data models.
-Then, Section \ref{sec:evospace-i} presents the computational platform on which the main proposal of this work is developed. The proposed graph model is presented in Section \ref{sec:graph}.
+Then, Section \ref{sec:evospace-i} presents the computational platform on which 
+the main proposal of this work is developed. The proposed graph model is 
+presented in Section \ref{sec:graph}.
 The experimental work and results are presented in Section \ref{sec:experiments}.
 Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
@@ -463,402 +514,155 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \section{Related Work}
 \label{sec:interactive}
 
+
+\begin{figure*}
+\captionsetup{justification=centering,margin=2cm}
+\centering
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.7pt}
+\fbox{\includegraphics[width=12cm,height=10cm,keepaspectratio]{img/UI_ed01.png}}
+\caption{User interface of an EvoSpace-Interactive application.}
+\label{fig:web}       
+\end{figure*}
+
 \section{EvoSpace-Interactive}
 \label{sec:evospace-i} 
+As a case study, a IEA was implented using the 
+EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
+A brief description of the aplication is presented next, focusing
+on the data elements that where ported to the graph model.
 
-\section{IEC Graph based model}
+\subsection{Fitness Assignment}
+\label{sec:col}
+The ES-I platform employs a collaborative technique,
+where several registered users assign a quality assessment to a single
+individual and then an aggregated fitness value is calculated. The fitness
+assigned to each individual depends on the taste of each particular user, 
+resulting in a many-to-many relationship between users and individuals. 
+Many systems query this user-individual relation to extract relevant
+knowledge about the process and the population, for instance showing the
+most popular individual, or the the user with more participation \cite{picbreeder}.
+In order to do this, data about individuals %what? Maybe data
+                                %about individuals? - JJ
+must be permanently stored, even
+if they are no longer in the active population. 
+
+\subsection{Collaboration}
+\label{sec:col}
+After entering the web application by using their Facebook account,
+users can collaborate with their Facebook friends, 
+sharing those individuals they like, or by taking individuals
+from their friend\'s collections by using the web interface depicted 
+in Figure \ref{fig:web}
+
+
+At the top left corner list of Facebook friends is presented, 
+to encourage users to interact with the system. In the central 
+\emph{ Wall } area, an individual sampled from the population 
+is shown to the user.
+Here, the user can interact with the system in two ways.
+He can assign a quality assessment to the individual using
+a five star rating measure.
+Additionally, a user can choose to add an image to one of their \emph{Collections}.
+A collection is a special directory to store individuals a user prefers and wishes
+to save. After the user finishes interacting the individual
+on the Wall, he can choose to retrieve a new one from population.
+At the left side, is the \emph{Collections} section.
+The user can create several collections, to group and organize his favorite 
+artifacts. Moreover, a user can browse the content of each collection and from
+there share images through the social network.
+When a user browses over an individual a detail pane shows how many users have
+liked the individual. The pane also includes a link to the individual's 
+details, the parents, genetic operators that created it, and genealogy information.
+ 
+\section{IEC Human-centered framework}
 \label{sec:graph}
+The general goal of this research is to develop a human-centered [cite] framework
+for interactive evolutionary computation (IEC) in order to increase
+participation and also to minimize the amount of evaluations needed for the
+evolutionary process in given IEC application. We deliberately use the more general
+term Human instead of User, because humans are not always playing the role of
+users in software engineering sense, they could just be interacting 
+naturaly with their environment and with out knowing they are implicitly
+evaluating a possible solution. In other cases the evaluation could be done
+by the natural interactions of a group of humans in a collaborative fashion
+or not. For instance the IEC algorithm could by trying to optimize 
+the design of an exit sign in an airport, then the quality of this sign could be
+determined by the average the time it takes a sample of people to 
+find the exit. In this example there could be certain collaboration
+between users if they are not traveling alone, of course this is only one of
+the considerations designers could make. 
+ 
+%I will keep it general for this section -Mario
+%The current model is tailored 
+%to the EvoSpace-I functionality and capabilities but it can be modified to 
+%handle other platforms, just by adding new clases of nodes. 
 
-Users are a central part of an IEC system,  not only because their
-explicit evaluation is essential, but also because the overall context of interaction
-affects the system as a whole as users interact not only with the graphical
-interface, and each individual\'s phenotype, there is also the interaction
-with other users, their previous evaluations and their own history of activities
-and past experiences. Thus users in this proposal are dinamic entities 
-interacting with an evolutionary computation and
-have the fundamental purpose of evaluating individuals according to their preferences,
-both explicitly or implicitly. Their degree of participation is affected by 
-the context of use. With the porpouse of modeling the system, the contextual
-factors are abstracted using a graph. This graph can then be used to 
-enhance the system to capture the attention of users and possibly
-increase their participation and mitigate the fatige.
-
-The current model is tailored to the EvoSpace-I functionality and capabilities
-but it can be modified to handle other platforms. %A hint on how
-
-
-\subsection{Users} 
-
-Currently there are some basic actions that
-users can perform in the system, in order to interact with EvoSpace-I platform
-users must login to the system through their facebook account. 
-Once a user has logged-in to the system, he or she can do several actions.
-Example of actions are the following:
-
-\begin{enumerate}
-  \item  Users can invite their friends to participate through social networks . 
-
-  \item Relationship between users can also be modeled as a social network,
-  with well stablished algorithms and metrics (cite).
-
-  \item Many kinds of relationships between users and individuals,
-  can be expressed using common actions found in social networks;
-  for instance share, like, or add to collection. [ cite Activity Streams 2.0
-  syntax (https://www.w3.org/TR/activitystreams-vocabulary)]   
-
-  \item The same graph can be used to immplement a user model, or it can
-  be extracted from a user\'s public profile.
-
-\end{enumerate}
-
-
-Another example is the sharing action, that can occur when %Something
-% missing here - JJ
-
-In this sense the action of posting is when
-users want to put something on their wall who want others to know through
-their social networks. Likewise the storing action occurs when users want to
-retain permanently information that are of their interest. Finally the
-browsing action occurs when users are exploring content for their needs. All
-these actions go beyond only evaluating individuals.
 
 \begin{figure*}
   \captionsetup{justification=centering,margin=2cm}
   \centering
   \setlength\fboxsep{0pt}
   \setlength\fboxrule{0.7pt}
-  \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/users.png}}
-  \caption{Users actions on interactive evolutionary systems.}
-  \label{fig:users}       
+  \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/framework.png}}
+  \caption{User-Centerd Framework.}
+  \label{fig:uc_framework}       
 \end{figure*}
 
-In order to start the task of evaluating individuals is necessary that users
-access the system through a login mechanism. This mechanism consists of
-providing a username and a password in order to grant access to the system. All
-users accessing in this way they are considered active users within an IEC
-system.
+The human centered framework consists of three high level components depicted
+in figure \ref{fig:uc_framework}:
 
-For the evaluating action is proposed  that users evaluate individuals
-indirectly, this means users can evaluate accepting indirect recommendations of
-friends that are currently active in the system. These recommendations can be
-store individuals in the system of users who know each other.
+\begin{itemize}
+  \item { \tt Interactive Evolutionary Computational system.}  
+  This is the real world system that we are going to represent in the model, 
+  it consist of human users and their interactions with one or more individuals from
+  the population. There are many ways in which humans could interact 
+  with indivuals, this could be through a mobile device, a user interface 
+  or by interacting with real world objects generated as part of the algorithm 
+  [cite evodraw o unplugged].
+  There is also the posibility that fitness or even part of the search 
+  to be done by devices lended by the human [cite nodio].
+  The information gathered through the interaction is the primary concern
+  as it will guide the search. 
 
-Also the  browsing action is proposed within IEC systems,  this means that users
-can explore information that other active users in the system are generating.
+  \item {\tt IEC Data Model}
+  A data model is used to describe the IEC system prior to a physical 
+  implementation. 
+  %% This block is maybe not needed but in our ES-I implementation
+  %% we use Relational (PosgreSQL), Objects (JSON-Redis) and Graphs (Neo4J)
+  Depending on the domain several techniques can be used.
+  Parts of the system could be better described by an Entity relationship 
+  modeling to be used in a relational database or a Class Digram for a 
+  key-value store. 
+  %%
+  %%
+  A graph is proposed for modelling the social network
+  of users and their interaction with the population. This database 
+  is the back-end of the system, is used by the EA and the user interface. 
 
-Finally activity participation is proposed. This can be divided into four
-different actions as fallows:
-
-\begin{itemize} 
-\item The Inviting action occurs when a user invites another to the system through social networks or from person to person.  
-\item The sharing action occurs when users share their individual creations with others active user in the system.
-\item The posting action occurs when published what they are doing within the system.
-\item The storing action occurs when users keep individuals in a collection, the collections concept will be discussed later in this chapter.
+  \item {\tt Evolutionary Algorithm} 
+  The EA algorithm queries the graph model, and then updates those nodes that 
+  are part of the population. The EA could also be done with the help of
+  humans, for instance in the XY project [cite] artists physicaly created
+  the new population.  
 \end{itemize}
 
-All the mention above is shown in figure \ref{fig:users}
-
-\subsection{Individual}  
-
-Individuals are entities that form the population for the evolutionary
-algorithm. In particular for  this work individuals are animated digital
-paintings, every individual in the population is defined by a chromosome [].
-This chromosome defines the behavior of the individual, so that it consists of a
-vector of real numbers of fifteen genes, where each gen define a particular
-behavior in painting. This individuals combined each other to generated new
-individual in the population following the genetic operators such as selection,
-crossover and mutation[]. An example of a individual in this case it is
-illustrated in figure \ref{fig:individual}
+  
 
 
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/individual.png}}
-\caption{Individual representation.}
-\label{fig:graph}       
-\end{figure*}
+%A hint on how
+% done -Mario
+
+\section{IEC Graph Conceptual Model} 
+
+In this section the Graph Model is presented, 
 
 
-\subsection{User Model} Now that both users an individuals have been defined we can
-model the users behavior have with respect to individuals in a graph-based user
-model.
 
-The reason for using a graph to model the user-individual is because it could
-can express in a simple way the behavior of this two entities having the
-necessary information  to represent the knowledge,  for example a vertex user
-and individual vertex connected through a edge that  represents the
-relationship. this relationship can be the semantic  between these two entities
-as figure \ref{fig:User-Individual} show. Each of these vertices contain properties as well as the
-edges, these properties will be explained as fallows.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/user_individual.png}}
-\caption{User-Individual.}
-\label{fig:User-Individual}       
-\end{figure*}
-
-In this proposed graph-based user-individual model the vertices are represented
-by set of nodes of USERS, INDIVIDUALS and COLLECTIONS. The edges are define by a
-set of relationships as LIKES, KNOWS, PARENT, HAS that represents the
-relationships between the vertices as seen in figure \ref{fig:User-Individual}.
-
-Already explained that represent USERS and INDIVIDUALS, now an explanation is
-given of what concerns for the concept of COLLECTIONS.
-
-In this proposal a collection is defined as a  container where users can store
-selected individuals laid within the collection. A collection is created when
-the user wants to store permanently individuals within the IEC system.
-
-Now for the edges in this proposal are explained as follows:
-
-\begin{itemize} 
-\item The  LIKES edge represents a preference relationship that a user has with respect to an individual.  
-\item Now the  PARENT edge represents an ancestor of the individual, in other words where the individual comes from.
-\item Likewise the  HAS edge represents that users have a collection where can contain individuals.
-\item Finally the KNOWS edge represents a relationship of friendship between users.
-\end{itemize}
-
-In figure \ref{fig:Nodes_Edges} illustrated the above mentioned, about nodes and edges.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/user_individual_collections.png}}
-\caption{Nodes And Edges Representation.}
-\label{fig:Nodes_Edges}       
-\end{figure*}
-
-
-In each vertex is necessary to store knowledge about the users, individuals and
-also for the collections, this is what is known as property.
-
-It is worth to mention that all vertices have a property called “element\_type”
-among others. This property is used to identify which type of vertex is, for
-example if vertex corresponds to a user then this property label the vertex as a
-“person”. Likewise if the vertex corresponds to an individual this property
-label it as an “individual” and is the same for any vertex we want to add to the
-model. This property also has the purpose of being able to do operations on the
-graph according to the vertex type.
-
-The properties for the vertex “u” are the following:
-
-\begin{itemize} 
-\item id.  
-\item created.
-\item name.
-\item element\_type.
-\end{itemize}
-
-The “id” property defines that the vertex u has a unique identifier in the set
-of vertices, which means that there will not be duplicate vertices. The property
-“created” defines the creation date of the vertex $u$. The property “name”
-defines the name of the vertex u. The property “element\_type” defines the
-element type that will be the vertex $u$.
-
-In figure \ref{fig:User_node} the properties of vertex $u$  are shown.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/user_node.png}}
-\caption{User Properties.}
-\label{fig:User_node}       
-\end{figure*}
-
-The properties for the vertex $i$ are the following:
-\begin{itemize} 
-\item id. 
-\item created. 
-\item element\_type.
-\item chromosome.
-\item views.
-\end{itemize}
-
-The “id” property defines that the vertex $i$ has a unique identifier in the set
-of vertices, which means that there will not be duplicate vertices. The
-“chromosome” property defines the chromosome of the individual representing the
-vertex $i$. which as defined above in this section. The  property “views” defines
-the amount that users have seen this vertex $i$ The property “element\_type”
-defines the element type that will be the vertex $i$. The property “created”
-defines the creation date of the vertex $i$. % Is there a point in
-                                % describing these properties? - JJ
-
-
-In figure \ref{fig:Individual_node} the vertex $i$ properties are shown.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/individual_node.png}}
-\caption{Individual Properties.}
-\label{fig:Individual_node}       
-\end{figure*}
-
-The properties for the vertex “c” are the following:
-
-\begin{itemize} 
-\item id. 
-\item element\_type.
-\item created. 
-\item name.
-\end{itemize}
-
-The “id” property defines that the vertex $c$ has a unique identifier in the set
-of vertices, which means that there will not be duplicate vertices. The property
-“element\_type” defines the element type that will be the vertex $c$. The
-property “name” defines the name of the vertex $c$. The property “created”
-defines the creation date of the vertex $c$.
-
-In figure \ref{fig:Collection_node} the vertex $c$ properties are shown.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/collection_node.png}}
-\caption{Collection Properties.}
-\label{fig:Collection_node}       
-\end{figure*}
-
-In the same way that the vertices have properties also the edges, these
-properties are defined as follows.
-
-The “LIKES” edge has the following properties:
-
-\begin{itemize} 
-\item id. 
-\item created. 
-\item rate.
-\end{itemize}
-
-The “id” property defines that the “LIKES” edge  has a unique identifier in the
-set of edges, which means that there will not be duplicate edges. The property
-“created” defines the date of creation of the this edge. The property “rate”
-defines the rate that the users give to the individual store in this edge.
-
-In figure \ref{fig:Likes_edge} the edge “LIKES” properties and the relationships with the vertices $u$ and $i$ are shown.
-
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_likes.png}}
-\caption{LIKES edge Properties.}
-\label{fig:Likes_edge}       
-\end{figure*}
-
-The “KNOWS” edge has the following properties.
-\begin{itemize} 
-\item id. 
-\item created. 
-\end{itemize}
-
-The “id” property defines that the edge “KNOWS” has a unique identifier in the
-set of edges, which means that there will not be duplicate edges. The property
-“created” defines the date of creation of the edge.
-
-In figure \ref{fig:Knows_edge} the edge “KNOWS” properties and the relationships between vertex “u”
-are shown.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_knows.png}}
-\caption{KNOWS edge Properties.}
-\label{fig:Knows_edge}       
-\end{figure*}
-
-The “PARENT” edge has the following properties, and represent the parents of a new individual.
-\begin{itemize} 
-\item id. 
-\item created. 
-\end{itemize}
-
-The “id” property defines that the edge “PARENT” has a unique identifier in the set of edges, which means that there will not be duplicate edges.
-The property “created” defines the date of creation of the edge.
-
-In figure \ref{fig:Parent_edge} the edge “PARENT” properties and the relationship between vertex $i$ are shown.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_parent.png}}
-\caption{PARENT edge Properties.}
-\label{fig:Parent_edge}       
-\end{figure*}
-
-The edge “HAS” has the following properties, and represent the parents of a new individual.
-\begin{itemize} 
-\item id. 
-\item created. 
-\end{itemize}
-
-The “id” property defines that the edge “HAS” has a unique identifier in the set of edges, which means that there will not be duplicate edges.
-The property “created” defines the date of creation of the edge.
-
-In figure \ref{fig:Has_edge} the edge “HAS” properties and the relationship between vertices $u$, $i$ and $c$ are shown.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_has.png}}
-\caption{HAS edge Properties.}
-\label{fig:Has_edge}       
-\end{figure*}
-
-\begin{equation*}\label{eq:graphRelDef} 
-\displaystyle 
-\begin{split} 
-V &= \{[u_1,u_2,u_3,...,u_n],[i_1,i_2,i_3,...,i_n],[c_1,c_2,c_3,...,c_n]\},\\ 
-E&= \{[l_1,l_2,l_3,..,l_n],[p_1,p_2,p_3,...,p_n],[h_1,h_2,h_3,...,h_n],[k_1,k_2,k_3,...,k_n]\}\\ 
-\end{split} 
-\end{equation*} 
-
-Once  the vertices and edges have been defined a graph-based user-individual model is
-proposed where  user vertices are related to the individual vertices, likewise
-the vertices individuals are related to themselves when evolution exist between
-them. % Grammar has to be improved - JJ
-In that sense the vertices users and individuals are related to the
-vertices collections as a vertex user can be related to a vertex collections and
-a vertex collections collections is related to $n$ individuals vertex. In Figure
-\ref{fig:user_moder} shows an example of the graph-based user-individual model.
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=8cm,height=8cm,keepaspectratio]{img/model_representation.png}}
-\caption{Graph-based user-individual model.}
-\label{fig:user_moder}       
-\end{figure*}
-
-\subsection{Experiments}
+\section{Experiments}
 \label{sec:experiments}
 
-\subsection{Conclusions}
+\subsection{Conclusion}
 \label{sec:conclusions}
 
 
@@ -958,10 +762,6 @@ a vertex collections collections is related to $n$ individuals vertex. In Figure
 % \fnbelowfloat command of the stfloats package.
 
 
-
-
-\section{Conclusion}
-The conclusion goes here.
 
 
 
