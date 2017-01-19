@@ -467,7 +467,165 @@ Most IEAs have the following many-to-many relations:
   A graph model could eneable researchers to find other ways of identifyng leaders of 
   opinion or measuring the similarity between user\'s preferences. 
   These measures can then be used by recommender algorithms selecting 
-  individuals according to users
+  individuals according users\' preferences. 
+
+\end{itemize}
+
+These relations are naturaly maped to graphs, while other actions and 
+properties can also be modeled as a semantic network using
+basic subject–-predicate-–object expressions [cite Semantic triples].
+Another reason for using a graph model is the tools available for
+implementing and query the model, and the increased performance of
+native graph database systems [cite Christian].
+
+
+% Moving to related work - Mario
+%\cite{Performance for the masses and Christian's previous work}, 
+
+
+
+ % Can it be quantified? Maybe a reference to NodIO? - JJ
+%Some authors have already tried to address this basic problem
+%\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
+                            %going to do here? - jj
+%% Moving this to Related Work Section -Mario
+
+% Maybe this claim should go to the beginning. THIS is why we want to
+% use them - JJ
+% Done - Mario
+ 
+A case study is presented as a proof of concept, providing both
+conceptual and implementation details of a graph data model applied in the 
+implementation of an IEA. The experiment was implmented using
+the EvoSpace-Interactive framework, and consisted of a web application
+for evolving artistic drawings. The graph database is then used to
+measure the degree of relationship between users and their participation.  
+
+The remainder of this paper is organized as follows.
+Section \ref{sec:interactive} presents related work on the topic 
+of Interactive Evolution data models.
+Then, Section \ref{sec:evospace-i} presents the computational platform on which 
+the main proposal of this work is developed. The proposed graph model is 
+presented in Section \ref{sec:graph}.
+The experimental work and results are presented in Section \ref{sec:experiments}.
+Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
+
+
+\section{Related Work}
+\label{sec:interactive}
+
+
+\begin{figure*}
+\captionsetup{justification=centering,margin=2cm}
+\centering
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.7pt}
+\fbox{\includegraphics[width=12cm,height=10cm,keepaspectratio]{img/UI_ed01.png}}
+\caption{User interface of an EvoSpace-Interactive application.}
+\label{fig:web}       
+\end{figure*}
+
+\section{EvoSpace-Interactive}
+\label{sec:evospace-i} 
+As a case study, a IEA was implented using the 
+EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
+A brief description of the aplication is presented next, focusing
+on the data elements that where ported to the graph model.
+
+\subsection{Fitness Assignment}
+\label{sec:col}
+The ES-I platform employs a collaborative technique,
+where several registered users assign a quality assessment to a single
+individual and then an aggregated fitness value is calculated. The fitness
+assigned to each individual depends on the taste of each particular user, 
+resulting in a many-to-many relationship between users and individuals. 
+Many systems query this user-individual relation to extract relevant
+knowledge about the process and the population, for instance showing the
+most popular individual, or the the user with more participation \cite{picbreeder}.
+In order to do this, data about individuals %what? Maybe data
+                                %about individuals? - JJ
+must be permanently stored, even
+if they are no longer in the active population. 
+
+\subsection{Collaboration}
+\label{sec:col}
+After entering the web application by using their Facebook account,
+users can collaborate with their Facebook friends, 
+sharing those individuals they like, or by taking individuals
+from their friend\'s collections by using the web interface depicted 
+in Figure \ref{fig:web}
+
+
+At the top left corner list of Facebook friends is presented, 
+to encourage users to interact with the system. In the central 
+\emph{ Wall } area, an individual sampled from the population 
+is shown to the user.
+Here, the user can interact with the system in two ways.
+He can assign a quality assessment to the individual using
+a five star rating measure.
+Additionally, a user can choose to add an image to one of their \emph{Collections}.
+A collection is a special directory to store individuals a user prefers and wishes
+to save. After the user finishes interacting the individual
+on the Wall, he can choose to retrieve a new one from population.
+At the left side, is the \emph{Collections} section.
+The user can create several collections, to group and organize his favorite 
+artifacts. Moreover, a user can browse the content of each collection and from
+there share images through the social network.
+When a user browses over an individual a detail pane shows how many users have
+liked the individual. The pane also includes a link to the individual's 
+details, the parents, genetic operators that created it, and genealogy information.
+ 
+\section{IEC Graph based model}
+\label{sec:graph}
+The fundamental goal of this research is to develop a user-centered framework
+for interactive evolutionary computation (IEC) in order to increase users’
+participation and also to minimize the amount of evaluations needed for the
+evolutionary process in given Web-based IEC application.  This framework is 
+presented in figure \ref{fig:uc_framework}. The current model is tailored 
+to the EvoSpace-I functionality and capabilities but it can be modified to 
+handle other platforms, just by adding new clases of nodes. 
+
+
+\begin{figure*}
+  \captionsetup{justification=centering,margin=2cm}
+  \centering
+  \setlength\fboxsep{0pt}
+  \setlength\fboxrule{0.7pt}
+  \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/framework.png}}
+  \caption{User-Centerd Framework.}
+  \label{fig:uc_framework}       
+\end{figure*}
+
+The user centered framework consists of three high level components:
+
+\begin{itemize}
+  \item { \tt Interactive Evolutionary Computational system.}  
+  This is the real world system that we are going to model, it consist of
+  human users and their interaction with one or more individuals from
+  the population, this could be through a device, user interface or
+  by directly interacting with real world objects generated as part of the algorithm.  
+
+  \item {\tt IEC Graph}
+  This is the model proposed in this work: A graph database modeling
+  the IEC system. The  main components are the social network of users and the population. This database is the back-end of the system, is used by the EA and
+  the user interface. 
+
+  \item {\tt Evolutionary Algorithm} 
+  This algorithm queries the graph model, and then updates those nodes that 
+  are part of the population. 
+\end{itemize}
+
+  
+
+
+%A hint on how
+% done -Mario
+
+\subsection{IEC Graph Model} 
+
+In this section the Graph Model is presented, 
+
+
 In this sense the action of posting is when
 users want to put something on their wall who want others to know through
 their social networks. Likewise the storing action occurs when users want to
@@ -789,164 +947,6 @@ a vertex collections collections is related to $n$ individuals vertex. In Figure
 \caption{Graph-based user-individual model.}
 \label{fig:user_moder}       
 \end{figure*}
-'  preferences. 
-
-\end{itemize}
-
-These relations are naturaly maped to graphs, while other actions and 
-properties can also be modeled as a semantic network using
-basic subject–-predicate-–object expressions [cite Semantic triples].
-Another reason for using a graph model is the tools available for
-implementing and query the model, and the increased performance of
-native graph database systems [cite Christian].
-
-
-% Moving to related work - Mario
-%\cite{Performance for the masses and Christian's previous work}, 
-
-
-
- % Can it be quantified? Maybe a reference to NodIO? - JJ
-%Some authors have already tried to address this basic problem
-%\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
-                            %going to do here? - jj
-%% Moving this to Related Work Section -Mario
-
-% Maybe this claim should go to the beginning. THIS is why we want to
-% use them - JJ
-% Done - Mario
- 
-A case study is presented as a proof of concept, providing both
-conceptual and implementation details of a graph data model applied in the 
-implementation of an IEA. The experiment was implmented using
-the EvoSpace-Interactive framework, and consisted of a web application
-for evolving artistic drawings. The graph database is then used to
-measure the degree of relationship between users and their participation.  
-
-The remainder of this paper is organized as follows.
-Section \ref{sec:interactive} presents related work on the topic 
-of Interactive Evolution data models.
-Then, Section \ref{sec:evospace-i} presents the computational platform on which 
-the main proposal of this work is developed. The proposed graph model is 
-presented in Section \ref{sec:graph}.
-The experimental work and results are presented in Section \ref{sec:experiments}.
-Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
-
-
-\section{Related Work}
-\label{sec:interactive}
-
-
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=12cm,height=10cm,keepaspectratio]{img/UI_ed01.png}}
-\caption{User interface of an EvoSpace-Interactive application.}
-\label{fig:web}       
-\end{figure*}
-
-\section{EvoSpace-Interactive}
-\label{sec:evospace-i} 
-As a case study, a IEA was implented using the 
-EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
-A brief description of the aplication is presented next, focusing
-on the data elements that where ported to the graph model.
-
-\subsection{Fitness Assignment}
-\label{sec:col}
-The ES-I platform employs a collaborative technique,
-where several registered users assign a quality assessment to a single
-individual and then an aggregated fitness value is calculated. The fitness
-assigned to each individual depends on the taste of each particular user, 
-resulting in a many-to-many relationship between users and individuals. 
-Many systems query this user-individual relation to extract relevant
-knowledge about the process and the population, for instance showing the
-most popular individual, or the the user with more participation \cite{picbreeder}.
-In order to do this, data about individuals %what? Maybe data
-                                %about individuals? - JJ
-must be permanently stored, even
-if they are no longer in the active population. 
-
-\subsection{Collaboration}
-\label{sec:col}
-After entering the web application by using their Facebook account,
-users can collaborate with their Facebook friends, 
-sharing those individuals they like, or by taking individuals
-from their friend\'s collections by using the web interface depicted 
-in Figure \ref{fig:web}
-
-
-At the top left corner list of Facebook friends is presented, 
-to encourage users to interact with the system. In the central 
-\emph{ Wall } area, an individual sampled from the population 
-is shown to the user.
-Here, the user can interact with the system in two ways.
-He can assign a quality assessment to the individual using
-a five star rating measure.
-Additionally, a user can choose to add an image to one of their \emph{Collections}.
-A collection is a special directory to store individuals a user prefers and wishes
-to save. After the user finishes interacting the individual
-on the Wall, he can choose to retrieve a new one from population.
-At the left side, is the \emph{Collections} section.
-The user can create several collections, to group and organize his favorite 
-artifacts. Moreover, a user can browse the content of each collection and from
-there share images through the social network.
-When a user browses over an individual a detail pane shows how many users have
-liked the individual. The pane also includes a link to the individual's 
-details, the parents, genetic operators that created it, and genealogy information.
- 
-\section{IEC Graph based model}
-\label{sec:graph}
-The fundamental goal of this research is to develop a user-centered framework
-for interactive evolutionary computation (IEC) in order to increase users’
-participation and also to minimize the amount of evaluations needed for the
-evolutionary process in given Web-based IEC application.  This framework is 
-presented in figure \ref{fig:uc_framework}. The current model is tailored 
-to the EvoSpace-I functionality and capabilities but it can be modified to 
-handle other platforms, just by adding new clases of nodes. 
-
-
-\begin{figure*}
-  \captionsetup{justification=centering,margin=2cm}
-  \centering
-  \setlength\fboxsep{0pt}
-  \setlength\fboxrule{0.7pt}
-  \fbox{\includegraphics[width=10cm,height=10cm,keepaspectratio]{img/framework.png}}
-  \caption{User-Centerd Framework.}
-  \label{fig:uc_framework}       
-\end{figure*}
-
-The user centered framework consists of three high level components:
-
-\begin{itemize}
-  \item Interactive Evolutionary Computational system.  
-  This is the real world system that we are going to model, it consist of
-  human users and their interaction with one or more individuals from
-  the population, this could be through a device, user interface or
-  by directly interacting with real world objects generated as part of the algorithm.  
-
-  \item IEC Graph.
-  This is the model proposed in this work: A graph database modeling
-  the IEC system. The  main components are the social network of users and the population. This database is the back-end of the system, is used by the EA and
-  the user interface. 
-
-  \item Evolutionary Algorithm. 
-  This algorithm queries the graph model, and then updates those nodes that 
-  are part of the population. 
-\end{itemize}
-
-  
-
-
-%A hint on how
-% done -Mario
-
-\subsection{IEC Graph Model} 
-
-In this section the Graph Model is presented, 
-
 
 \subsection{Experiments}
 \label{sec:experiments}
