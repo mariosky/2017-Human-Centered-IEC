@@ -353,27 +353,37 @@ Fax: (888) 555--1212}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-This paper presents an alternative data model for the development of
-Interactive Evolutionary Computation (IEC) algorithms. A graph %specify
-                                %the elements of the graph - JJ
-stored for efficiency in a graph database, is
-proposed to model the overall system which consists of: a social network of
-volunteers participating in the interactive evolutionary experiment, a
-population of individuals in the evolutionary algorithm, 
-the system\'s functionality and their interactions. This graph model can then be used
-to tackle some of the issues associated with IEC such as, 
-user fatigue, lack of volunteer participation, fitness estimation % what is this issue?
+Interactive evolution is the leading technique employed by 
+Evolutionary Art researchers, where users' preferences guide the search. A common
+practice is to develop Interactive Evolutionary Computation (IEC) algorithms
+as web applications in order to give users easy access the application as they
+often depend on volunteers who visit the system to interactively help with the search. 
+There are several drawbacks that limit user participation 
+such as human fatigue and boredom resulting from evaluating 
+a large number of individuals. 
+To tackle this issues, we propose the design of IEC systems using a user-centered 
+approach, with a framework consisting of a social network of 
+volunteers, interacting with a population consisting again of a network 
+of individuals. In this work we propose a graph model as a viable 
+and efficient tool for mapping in a natural way the relationships 
+found in the system. A case study is presented as a proof of concept, 
+providing both conceptual and implementation details of a graph based model as it is 
+applied in the implementation of an IEA using the EvoSpace-Interactive platform. 
+As a result, the graph model was then succesfully applied to measure the degree
+of relationship between users with the porpuse of quantifing 
+their participation.
+
+% what is this issue?
 %Maybe the abstract should start with the issues we want to tackle as
 %motivation. Motivation always goes first - JJ
-and novelty. % These two last issues are not too clear, maybe they
+%and novelty. % These two last issues are not too clear, maybe they
              % could be explained in that motivation. 
-The proposed graph database could be used to model IEC systems that 
-follow a user-centered approach. % Graph is the model, graph database
+%The proposed graph database could be used to model IEC systems that 
+%follow a user-centered approach. % Graph is the model, graph database
                                 % the implementation. Two different
                                 % things. 
-A case study is presented providing both 
-conceptual and implementation details using the EvoSpace-Interactive
-platform.
+
+
 % It must prove that the issues have been addressed - JJ
 \end{abstract}
 
@@ -432,31 +442,32 @@ of evaluating individuals according to their preferences,
 both explicitly or implicitly. In this work we propose giving the same
 importance to users and their interactions as the population of 
 individuals have in a traditional EA, even to the extend as using this
-knowledge as an integral part of the algorithm it self. We argue also
+knowledge as an integral part of the evolutionary algorithm. We argue also
 that a graph model is a viable representation for this purpose,  
 presenting a natural way of maping the relationships found in the system. 
-Most IEAs can have the following many-to-many relations:
+Most IEAs have the following many-to-many relations:
 
 \begin{itemize}
-  \item { \tt Individual-Individual} The relationship between individuals 
-  is naturally expressed as a tree, or a graph when both ancestors 
-  and descendants is considered. Other semantic relations can also be considered
-  for instance: similarity or composition.
+  \item { \tt Individual-Individual} The relationships between individuals in the
+  population are naturally expressed as a tree, or a graph when both ancestors 
+  and descendants are considered. Other semantic relations can also be of interest
+  for instance similarity or composition.
 
   \item {\tt User-Individual}
-  Many kinds of relationships between users and individuals,
+  Many kind of relationships between users and individuals,
   can be expressed using common actions found in social networks;
-  for instance share, like, rate or add to collection [cite Activity Streams 2.0
+  for instance: share, like, rate or add to collection [cite Activity Streams 2.0
   syntax (https://www.w3.org/TR/activitystreams-vocabulary)]. In IEAs these
-  relationships are used to assigned a single or a collection of
+  relationships are used to assign a single or a collection of
   fitness values to individuals [cite ES-I].   
 
   \item {\tt User-User}
   Relationship between users can also be modeled 
-  as a social network, with well stablished algorithms and metrics (cite).
-  Identifyng leaders of opinion and the similarity between user\'s 
-  preferences is of special importance for IEAs, as they could be used
-  to recommend to users only those individuals they will probably like more. 
+  as a social network, with well stablished semantics, algorithms and metrics (cite).
+  A graph model could eneable researchers to find other ways of identifyng leaders of 
+  opinion or measuring the similarity between user\'s preferences. 
+  These measures can then be used by recommender algorithms selecting 
+  individuals according users\' preferences. 
 
 \end{itemize}
 
@@ -483,13 +494,14 @@ native graph database systems [cite Christian].
 % use them - JJ
 % Done - Mario
  
-A case study is presented as a proof of concept, providing both 
-conceptual and implementation details of a graph data model for
-the implementation of an IEA in the EvoSpace-Interactive platform. 
-The graph database is then used to measure the degree of relationship
-between users and their participation.  
+A case study is presented as a proof of concept, providing both
+conceptual and implementation details of a graph data model applied in the 
+implementation of an IEA. The experiment was implmented using
+the EvoSpace-Interactive framework, and consisted of a web application
+for evolving artistic drawings. The graph database is then used to
+measure the degree of relationship between users and their participation.  
 
-The remainder of this paper is organized  as follows.
+The remainder of this paper is organized as follows.
 Section \ref{sec:interactive} presents related work on the topic 
 of Interactive Evolution data models.
 Then, Section \ref{sec:evospace-i} presents the computational platform on which 
@@ -501,6 +513,17 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
 \section{Related Work}
 \label{sec:interactive}
+
+
+\begin{figure*}
+\captionsetup{justification=centering,margin=2cm}
+\centering
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.7pt}
+\fbox{\includegraphics[width=12cm,height=10cm,keepaspectratio]{img/UI_ed01.png}}
+\caption{User interface of an EvoSpace-Interactive application.}
+\label{fig:web}       
+\end{figure*}
 
 \section{EvoSpace-Interactive}
 \label{sec:evospace-i} 
@@ -532,15 +555,6 @@ sharing those individuals they like, or by taking individuals
 from their friend\'s collections by using the web interface depicted 
 in Figure \ref{fig:web}
 
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=12cm,height=10cm,keepaspectratio]{img/UI_ed01.png}}
-\caption{User interface ED01.}
-\label{fig:web}       
-\end{figure*}
 
 At the top left corner list of Facebook friends is presented, 
 to encourage users to interact with the system. In the central 
@@ -566,18 +580,10 @@ details, the parents, genetic operators that created it, and genealogy informati
 The fundamental goal of this research is to develop a user-centered framework
 for interactive evolutionary computation (IEC) in order to increase users’
 participation and also to minimize the amount of evaluations needed for the
-evolutionary process in given Web-based IEC application.
-
-In this chapter an explanation of the proposed framework is described. The
-different techniques used, such as user modeling, fuzzy logic, and human-
-interaction.
-
-This framework is presented in figure \ref{fig:uc_framework}. Each of the
-entities of this framework will be explained in detail in following sections.
-
-The current model is tailored to the EvoSpace-I functionality and capabilities
-but it can be modified to handle other platforms, just by adding new clases 
-of nodes.
+evolutionary process in given Web-based IEC application.  This framework is 
+presented in figure \ref{fig:uc_framework}. The current model is tailored 
+to the EvoSpace-I functionality and capabilities but it can be modified to 
+handle other platforms, just by adding new clases of nodes. 
 
 
 \begin{figure*}
@@ -590,10 +596,35 @@ of nodes.
   \label{fig:uc_framework}       
 \end{figure*}
 
+The user centered framework consists of three high level components:
+
+\begin{itemize}
+  \item { \tt Interactive Evolutionary Computational system.}  
+  This is the real world system that we are going to model, it consist of
+  human users and their interaction with one or more individuals from
+  the population, this could be through a device, user interface or
+  by directly interacting with real world objects generated as part of the algorithm.  
+
+  \item {\tt IEC Graph}
+  This is the model proposed in this work: A graph database modeling
+  the IEC system. The  main components are the social network of users and the population. This database is the back-end of the system, is used by the EA and
+  the user interface. 
+
+  \item {\tt Evolutionary Algorithm} 
+  This algorithm queries the graph model, and then updates those nodes that 
+  are part of the population. 
+\end{itemize}
+
+  
+
+
 %A hint on how
 % done -Mario
 
-\subsection{Users} 
+\subsection{IEC Graph Model} 
+
+In this section the Graph Model is presented, 
+
 
 In this sense the action of posting is when
 users want to put something on their wall who want others to know through
@@ -612,11 +643,6 @@ these actions go beyond only evaluating individuals.
   \label{fig:users}       
 \end{figure*}
 
-In order to start the task of evaluating individuals is necessary that users
-access the system through a login mechanism. This mechanism consists of
-providing a username and a password in order to grant access to the system. All
-users accessing in this way they are considered active users within an IEC
-system.
 
 For the evaluating action is proposed  that users evaluate individuals
 indirectly, this means users can evaluate accepting indirect recommendations of
