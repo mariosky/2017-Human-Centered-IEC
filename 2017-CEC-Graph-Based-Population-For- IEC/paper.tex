@@ -614,25 +614,37 @@ in figure \ref{fig:uc_framework}:
 
 \begin{itemize}
   \item { \tt Interactive Evolutionary Computational system.}  
-  This is the real world system that we are going to model, it consist of
-  human users and their interactions with one or more individuals from
+  This is the real world system that we are going to represent in the model, 
+  it consist of human users and their interactions with one or more individuals from
   the population. There are many ways in which humans could interact 
   with indivuals, this could be through a mobile device, a user interface 
-  or by interacting with real world objects generated as part of the algorithm.
-  There is also the posibility that fitness is or part of the search is done
-  in devices lended by the human. The information gathered through the 
-  interaction will guide the search. 
+  or by interacting with real world objects generated as part of the algorithm 
+  [cite evodraw o unplugged].
+  There is also the posibility that fitness or even part of the search 
+  to be done by devices lended by the human [cite nodio].
+  The information gathered through the interaction is the primary concern
+  as it will guide the search. 
 
-% We could reference Nod
-
-  \item {\tt IEC Graph}
-  This is the model proposed in this work: A graph database modeling
-  the IEC system. The  main components are the social network of users and the population. This database is the back-end of the system, is used by the EA and
-  the user interface. 
+  \item {\tt IEC Data Model}
+  A data model is used to describe the IEC system prior to a physical 
+  implementation. 
+  %% This block is maybe not needed but in our ES-I implementation
+  %% we use Relational (PosgreSQL), Objects (JSON-Redis) and Graphs (Neo4J)
+  Depending on the domain several techniques can be used.
+  Parts of the system could be better described by an Entity relationship 
+  modeling to be used in a relational database or a Class Digram for a 
+  key-value store. 
+  %%
+  %%
+  A graph is proposed for modelling the social network
+  of users and their interaction with the population. This database 
+  is the back-end of the system, is used by the EA and the user interface. 
 
   \item {\tt Evolutionary Algorithm} 
-  This algorithm queries the graph model, and then updates those nodes that 
-  are part of the population. 
+  The EA algorithm queries the graph model, and then updates those nodes that 
+  are part of the population. The EA could also be done with the help of
+  humans, for instance in the XY project [cite] artists physicaly created
+  the new population.  
 \end{itemize}
 
   
@@ -641,7 +653,7 @@ in figure \ref{fig:uc_framework}:
 %A hint on how
 % done -Mario
 
-\subsection{IEC Graph Model} 
+\subsection{IEC Graph Conceptual Model} 
 
 In this section the Graph Model is presented, 
 
