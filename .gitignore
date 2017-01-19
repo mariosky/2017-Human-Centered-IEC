@@ -204,3 +204,5 @@ TSWLatexianTemp*
 /auto/*
 
 .DS_Store
+
+auto/
