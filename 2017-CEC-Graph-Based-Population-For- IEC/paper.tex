@@ -365,7 +365,7 @@ developed to increase user engagement.
 Interactive Evolutionary Algorithms (IEAs) are standard EAs whose
 fitness evaluations are performed by persons within an interactive 
 system.  Thus, the main loop of the EA needs the intervention of a
-human for the quality assessment of each proposed solution.
+human to perform the quality assessment of each proposed solution.
 IEAs have demonstrated their ability for effectively
 producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
 as well as other products in many other domains \cite{ie1}. 
@@ -384,7 +384,7 @@ the amount of time and resources
 a volunteer is willing to spend on the system, and how they decide if they
 participate or not \cite{JJ:2016}. In order to increase participation and 
 engagement, and to tackle the issues mentioned above,  
-IEAs must follow a user centered design, giving extensive attention 
+IEAs must follow a human centered design, giving extensive attention 
 to volunteer users, not only because their
 explicit evaluation is essential, but also because the context of the 
 interaction affects the system as a whole. Users interact not only with the graphical
@@ -398,7 +398,7 @@ importance to users and their interactions as the population of
 individuals have in a traditional EA, even to the extend as using this
 knowledge as an integral part of the evolutionary algorithm. We argue also
 that a graph model is a viable representation for this purpose,  
-presenting a natural way of maping the relationships found in the system. 
+presenting a natural way of mapping the relationships found in the system. 
 Most IEAs have the following many-to-many relations:
 
 
@@ -421,15 +421,15 @@ Most IEAs have the following many-to-many relations:
 
   \item {\bf User-User}
   Relationship between users can also be modeled 
-  as a social network, with well stablished semantics, algorithms and metrics (cite).
-  A graph model could eneable researchers to find other ways of identifyng leaders of 
+  as a social network, with well established semantics, algorithms and metrics (cite).
+  A graph model could enable researchers to find other ways of identifying leaders of 
   opinion or measuring the similarity between user's preferences. 
   These measures can then be used by recommender algorithms selecting 
   individuals according users' preferences. 
 
 \end{itemize}
 
-These relations are naturaly maped to graphs, while other actions and 
+These relations are naturally mapped to graphs, while other actions and 
 properties can also be modeled as a semantic network using
 basic subject–-predicate-–object expressions [cite Semantic triples].
 Another reason for using a graph model is the tools available for
@@ -452,7 +452,7 @@ native graph database systems [cite Christian].
  
 A case study is presented as a proof of concept, providing both
 conceptual and implementation details of a graph data model applied in the 
-implementation of an IEA. The experiment was implmented using
+implementation of an IEA. The experiment was implemented using
 the EvoSpace-Interactive framework, and consisted of a web application
 for evolving artistic drawings. The graph database is then used to
 measure the degree of relationship between users and their participation.  
@@ -480,9 +480,9 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
 \section{EvoSpace-Interactive}
 \label{sec:evospace-i} 
-As a case study, a IEA was implented using the 
+As a case study, a IEA was developed using the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
-A brief description of the aplication is presented next, focusing
+A brief description of the application is presented next, focusing
 on the data elements that where ported to the graph model.
 
 \subsection{Fitness Assignment}
@@ -545,7 +545,7 @@ evolutionary process in given IEC application. We deliberately use the
 more general
 term Human instead of User, because humans are not always playing the role of
 users in software engineering sense, they could just be interacting 
-naturaly with their environment and with out knowing they are implicitly
+naturally with their environment and with out knowing they are implicitly
 evaluating a possible solution. In other cases the evaluation could be done
 by the natural interactions of a group of humans in a collaborative fashion
 or not. For instance the IEC algorithm could by trying to optimize 
@@ -569,11 +569,11 @@ in figure \ref{fig:uc_framework}:
   it consist of human users and their interactions with one or more individuals
   from
   the population. There are many ways in which humans could interact 
-  with indivuals, this could be through a mobile device, a user interface 
+  with individuals, this could be through a mobile device, a user interface 
   or by interacting with real world objects generated as part of the algorithm 
   [cite evodraw o unplugged].
-  There is also the posibility that fitness or even part of the search 
-  to be done by devices lended by the human [cite nodio].
+  There is also the possibility that fitness or even part of the search 
+  to be done by devices lent by the human [cite nodio].
   The information gathered through the interaction is the primary concern
   as it will guide the search. 
 
@@ -588,14 +588,14 @@ in figure \ref{fig:uc_framework}:
   key-value store. 
   %%
   %%
-  A graph is proposed for modelling the social network
+  A graph is proposed for modeling the social network
   of users and their interaction with the population. This database 
   is the back-end of the system, is used by the EA and the user interface. 
 
   \item {\bf Evolutionary Algorithm} 
   The EA algorithm queries the graph model, and then updates those nodes that 
   are part of the population. The EA could also be done with the help of
-  humans, for instance in the XY project [cite] artists physicaly created
+  humans, for instance in the XY project [cite] artists physically created
   the new population.  
 \end{itemize}
 
@@ -614,7 +614,7 @@ the attributes describing an entity, First we describe the types of nodes and  r
 
 \item {\bf Users} This nodes represent the human users of the system and have 
 the attributes: {\tt id} a unique identifier, {\tt name}  and {\tt created}
-specifing the  creation date (time stamp) of the node. 
+specifying the  creation date (time stamp) of the node. 
 
 \item {\bf Individual} This type of node has the following attributes: 
 {\tt id}, {\tt chromosome}  and {\tt views} this is 
@@ -638,7 +638,7 @@ an individual multiple times, so the date of the interactions is also of
 interest. 
 
 \item {\bf Knows} The relation connects two users that know each
-other. This relation is "unique" meaning that it can not be repeted between a pair of nodes. 
+other. This relation is "unique" meaning that it can not be repeated between a pair of nodes. 
 
 \item {\bf Parent} Describes what individual is the parent of a new individual and is also unique.
 
@@ -665,21 +665,21 @@ Is important to notice that this model is still partial view of the IEC system,
 and other models can could be used in practice when implementing the system. 
 For instance a relational database can be used for the implementation of a
 user profile and authentication module. Also a copy or cache of the population 
-could be kept in a key-value store in memmory for performance reasons. 
-Nevertheless, the model can give important insights of the behaviour of the 
+could be kept in a key-value store in memory for performance reasons. 
+Nevertheless, the model can give important insights of the behavior of the 
 system.  
 
 \section{Case Study}
 \label{sec:experiments}
 
-We present in this section the results of a comparassion between two versions
+We present in this section the results of a comparison between two versions
 of the same IEC application. The goal of the experiment is to compare two 
-gamification techiniques to increase volunteer participation. 
+gamification techniques to increase volunteer participation. 
 The main difference between both versions is how the fitness of individuals
 is calculated and the information presented to users. 
 \subsection{Gamification technique}
 \label{sec:gamification}
-The gammification technique
+The gamification technique
 consists in giving more importance to the preference of users with more
 participations. A feature found in video games is the concept of a 
 score and experience levels. Levels depend on the score and certain features
@@ -713,11 +713,11 @@ perhaps some of the users where invited to the system by him.
 
 The comparation consisted on three versions:
 \begin{itemize}
-\item Non Gammification. All users have the same weight.
-\item Non Graph Gammification. Only experience is considered
-\item Graph Gammification. Both experience and participation where considered.
+\item Non Gamification. All users have the same weight.
+\item Non Graph Gamification. Only experience is considered
+\item Graph Gamification. Both experience and participation where considered.
 \end{itemize}
-When gammification was employed, all score values known where presented to users
+When gamification was employed, all score values known where presented to users
 and a ranking of users by weight was shown in a window, a screen capture of
 this interface is shown in figure \ref{fig:top-users}. 
 
