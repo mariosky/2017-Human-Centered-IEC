@@ -324,7 +324,8 @@ volunteers, interacting with a population consisting again of a network
 of individuals. In this work we propose a graph model as a viable 
 and efficient tool for mapping in a natural way the relationships 
 found in the system. A case study is presented as a proof of concept, 
-providing both conceptual and implementation details of a graph based model as it is 
+providing both conceptual and implementation details of a graph based model 
+as it is 
 applied in the implementation of an IEA using the EvoSpace-Interactive platform. 
 As a result, the graph model was then succesfully applied to measure the degree
 of relationship between users with the porpuse of quantifing 
@@ -401,6 +402,8 @@ that a graph model is a viable representation for this purpose,
 presenting a natural way of maping the relationships found in the system. 
 Most IEAs have the following many-to-many relations:
 
+
+
 \begin{itemize}
 
   \item {\bf Individual-Individual} The relationships between individuals in the
@@ -418,13 +421,12 @@ Most IEAs have the following many-to-many relations:
   fitness values to individuals [cite ES-I].   
 
   \item {\bf User-User}
-
   Relationship between users can also be modeled 
   as a social network, with well stablished semantics, algorithms and metrics (cite).
   A graph model could eneable researchers to find other ways of identifyng leaders of 
-  opinion or measuring the similarity between user\'s preferences. 
+  opinion or measuring the similarity between user's preferences. 
   These measures can then be used by recommender algorithms selecting 
-  individuals according users\' preferences. 
+  individuals according users' preferences. 
 
 \end{itemize}
 
@@ -470,17 +472,14 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \label{sec:interactive}
 
 
-\begin{figure*}[h!tbp]
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
-\fbox{\includegraphics[width=12cm,height=10cm,keepaspectratio]{img/UI_ed01.png}}
-\caption{User interface of an EvoSpace-Interactive application.}
-\label{fig:web}       
-\end{figure*}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/UI_ed01.png}
+    \caption{User interface of an EvoSpace-Interactive application.}
+    \label{fig:web}
+\end{figure}
 
-\subsection{EvoSpace-Interactive}
+\section{EvoSpace-Interactive}
 \label{sec:evospace-i} 
 As a case study, a IEA was implented using the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
@@ -503,16 +502,13 @@ In order to do this, data about individuals %what? Maybe data
 must be permanently stored, even
 if they are no longer in the active population. 
 
-\subsubsection{Collaboration}
+\subsection{Collaboration}
 \label{sec:col}
 After entering the web application by using their Facebook account,
 users can collaborate with their Facebook friends, 
 sharing those individuals they like, or by taking individuals
 from their friend\'s collections by using the web interface depicted 
-in Figure \ref{fig:web}
-
-
-
+in Figure \ref{fig:web}.
 At the top left corner a list of Facebook friends is presented
 to encourage users to interact with the system. In the central 
 \emph{ Wall } area, an individual sampled from the population that is
@@ -532,6 +528,14 @@ there share images through the social network.
 When a user browses over an individual a detail pane shows how many users have
 liked the individual. The pane also includes a link to the individual's 
 details, the parents, genetic operators that created it, and genealogy information.
+
+\begin{figure*}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/framework.png}
+    \caption{IEC Human-centered framework.}
+    \label{fig:web}
+\end{figure*}
+
 
  \section{IEC Human-centered framework}
 \label{sec:graph}
@@ -557,19 +561,11 @@ the considerations designers could make.
 %to the EvoSpace-I functionality and capabilities but it can be modified to 
 %handle other platforms, just by adding new clases of nodes. 
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth,height=8cm,keepaspectratio]{img/framework.png}
-  
-  \caption{Human-Centerd Framework.}
-  \label{fig:uc_framework}       
-\end{figure}
-
 The human centered framework consists of three high level components depicted
 in figure \ref{fig:uc_framework}:
 
 \begin{itemize}
-  \item Interactive Evolutionary Computational system. 
+  \item {\bf Interactive Evolutionary Computational system} 
   This is the real world system that we are going to represent in the model, 
   it consist of human users and their interactions with one or more individuals
   from
@@ -582,7 +578,7 @@ in figure \ref{fig:uc_framework}:
   The information gathered through the interaction is the primary concern
   as it will guide the search. 
 
-  \item IEC Data Model.
+  \item {\bf IEC Data Model}
   A data model is used to describe the IEC system prior to a physical 
   implementation. 
   %% This block is maybe not needed but in our ES-I implementation
@@ -597,7 +593,7 @@ in figure \ref{fig:uc_framework}:
   of users and their interaction with the population. This database 
   is the back-end of the system, is used by the EA and the user interface. 
 
-  \item Evolutionary Algorithm. 
+  \item {\bf Evolutionary Algorithm} 
   The EA algorithm queries the graph model, and then updates those nodes that 
   are part of the population. The EA could also be done with the help of
   humans, for instance in the XY project [cite] artists physicaly created
@@ -634,7 +630,7 @@ to users, their attributes are {\tt id},
 contents are shared with others. 
 \end{itemize}
 
-\subsection{Relationships Type}
+\subsection{Relationship Types}
 %%
 %% Explain relations
 
@@ -651,28 +647,23 @@ interactions is also of interest.
 
 The relation {\tt knows} connects two users that know each other. This relation
 is "unique" meaning that it can not be repeted between a pair of nodes.  
-
 The relation {\tt parent} describes what Individual is the parent of a new
 Individual and is also unique.  
-
-
 The relation {\tt has} describes an ownership relation between users and
 those collections they own. Also a collection {\tt has}  individuals stored
 in them. 
 
-In figure \ref{fig:Has_edge} the edge {\tt has} attributes and the relationship 
-between certain nodes $user$, $individual$ and $collection$ are shown.
+In figure \ref{fig:Has_edge} the {\tt has} relationship 
+between certain nodes $user$, $individual$ and $collection$ is shown.
 
-\begin{figure*}
-\captionsetup{justification=centering,margin=2cm}
-\centering
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.7pt}
 
-\fbox{\includegraphics[width=5cm,height=5cm,keepaspectratio]{img/edge_properties_has.png}}
-\caption{HAS edge Properties.}
-\label{fig:Has_edge}       
-\end{figure*}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=2.5in]{img/edge_properties_has.png}
+    \caption{ The {\tt has} relationship type example and attributes.}
+    \label{fig:evo}
+\end{figure}
+
 
 \section{Case Study}
 \label{sec:experiments}
