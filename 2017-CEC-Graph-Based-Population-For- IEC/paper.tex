@@ -600,13 +600,10 @@ in figure \ref{fig:uc_framework}:
   the new population.  
 \end{itemize}
 
-  
-
-
 %A hint on how
 % done -Mario
 
-\section{IEC Graph Conceptual Model} 
+\section{IEC Graph Data Model} 
 
 A graph is composed of two fundamental entities: nodes and relationships,
 both having attributes. Nodes are abstractions of the objects in the real 
@@ -616,59 +613,147 @@ the attributes describing an entity, First we describe the types of nodes and  r
 \subsection{Node Types}
 \begin{itemize}
 
-\item Users. This nodes represent the human users of the system and have 
+\item {\bf Users} This nodes represent the human users of the system and have 
 the attributes: {\tt id} a unique identifier, {\tt name}  and {\tt created}
 specifing the  creation date (time stamp) of the node. 
 
-\item Individual. This type of node has the following attributes: 
+\item {\bf Individual} This type of node has the following attributes: 
 {\tt id}, {\tt chromosome}  and {\tt views} this is 
 the amount that users have seen or interacted with this individual and
  {\tt created}.
-\item Collection. This type of nodes represent the collections belonging
+
+\item {\bf Collection} This type of nodes represent the collections belonging
 to users, their attributes are {\tt id}, 
-{\tt name}, {\tt created} and {\tt is_private} indicating if this collection
-contents are shared with others. 
+{\tt name}, {\tt created} and {\tt is\_private} indicating if this collection
+contents can be are shared with others. 
 \end{itemize}
 
 \subsection{Relationship Types}
 %%
 %% Explain relations
+\begin{itemize}
+\item {\bf Likes} This relation describes the interaction between a user and
+an individual in which a rating value is assigned this is represented by 
+the {\tt rate} attribute. In the current application a user is allowed to rate
+an individual multiple times, so the date of the interactions is also of
+interest. 
 
-The {\tt likes} relation describes the interaction between a User and
-an Individual in which a rating value is assigned. In the current application
-a user is allowed to rate an Individual multiple times, so the date of the 
-interactions is also of interest.
+\item {\bf Knows} The relation connects two users that know each
+other. This relation is "unique" meaning that it can not be repeted between a pair of nodes. 
 
-\begin{itemize} 
-\item id. 
-\item created. 
-\item rate.
-\end{itemize}
+\item {\bf Parent} Describes what individual is the parent of a new individual and is also unique.
 
-The relation {\tt knows} connects two users that know each other. This relation
-is "unique" meaning that it can not be repeted between a pair of nodes.  
-The relation {\tt parent} describes what Individual is the parent of a new
-Individual and is also unique.  
-The relation {\tt has} describes an ownership relation between users and
+\item {\bf Has} The relation describes an ownership relation between users and
 those collections they own. Also a collection {\tt has}  individuals stored
-in them. 
-
-In figure \ref{fig:Has_edge} the {\tt has} relationship 
+in them.  In figure \ref{fig:has} the {\tt has} relationship 
 between certain nodes $user$, $individual$ and $collection$ is shown.
 
+\item {\bf Shared} When a user takes an individual from a friends collection, this interactions is described by a {\tt share} relationship, between the user and the individual. 
 
+\item {\bf Saved} When a user takes an individual from the wall interface, this 
+interactions is described by a {\tt save} relationship. 
+\end{itemize}
+
+  
 \begin{figure}[!t]
     \centering
         \includegraphics[width=2.5in]{img/edge_properties_has.png}
     \caption{ The {\tt has} relationship type example and attributes.}
-    \label{fig:evo}
+    \label{fig:has}
 \end{figure}
 
+Is important to notice that this model is still partial view of the IEC system,
+and other models can could be used in practice when implementing the system. 
+For instance a relational database can be used for the implementation of a
+user profile and authentication module. Also a copy or cache of the population 
+could be kept in a key-value store in memmory for performance reasons. 
+Nevertheless, the model can give important insights of the behaviour of the 
+system.  
 
 \section{Case Study}
 \label{sec:experiments}
 
+We present in this section the results of a comparassion between two versions
+of the same IEC application. The goal of the experiment is to compare two 
+gamification techiniques to increase volunteer participation. 
+The main difference between both versions is how the fitness of individuals
+is calculated and the information presented to users. 
+\subsection{Gamification technique}
+\label{sec:gamification}
+The gammification technique
+consists in giving more importance to the preference of users with more
+participations. A feature found in video games is the concept of a 
+score and experience levels. Levels depend on the score and certain features
+of the game are only available to gamers when they reach a giving level.  
 
+The score achieved by users depends on the actions he does in the system as
+each time a user does one of these actions their score is incremented by one.
+The actions considered in this application are: 
+\begin{itemize}
+\item Start a session.
+\item Rate an individual.
+\item Create a collection.
+\item Save an individual of the wall to a collection.
+\item Save an individual from a friend's collection.
+\item Explore collections of other friends.
+\end{itemize}
+Only the "Start a session" and "Explore collections of other friends". 
+Are not found in the graph model, 
+%% Note: I must ask Christian where they are stored 
+%%
+
+The weight of the preference of a users can depend on two scores:
+\begin{itemize}
+\item Experience. This value depends on the score and is a value 
+between 0 and 100.
+
+\item Participation. This value is simply the degree of the user node 
+in the graph. This measure also considers the number of users he knows,
+perhaps some of the users where invited to the system by him.   
+\end{itemize}
+
+The comparation consisted on three versions:
+\begin{itemize}
+\item Non Gammification. All users have the same weight.
+\item Non Graph Gammification. Only experience is considered
+\item Graph Gammification. Both experience and participation where considered.
+\end{itemize}
+When gammification was employed, all score values known where presented to users
+and a ranking of users by weight was shown in a window, a screen capture of
+this interface is shown in figure \ref{fig:top-users}. 
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/user_known_2.png}
+    \caption{Sample of users, showing the {\tt knows} relationship.}
+    \label{fig:top-users}
+\end{figure}
+
+
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/leaderBoard.png}
+    \caption{User interface showing top users.}
+    \label{fig:top-users}
+\end{figure}
+
+
+
+\subsection{Set-up}
+\label{sec:setup}
+
+
+\subsection{Results}
+\label{sec:results}
+
+\begin{figure*}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/comparison.png}
+    \caption{Top ranked number individuals rated by user using a
+     logarithmic scale.}
+    \label{fig:top-ranked-participation}
+\end{figure*}
 
 
 \section{Conclusion}
