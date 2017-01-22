@@ -685,9 +685,9 @@ perhaps some of the users where invited to the system by him.
 
 Three versions were compared:
 \begin{itemize}
-\item Non Gamification. All users have the same weight.
-\item Non Graph Gamification. Only experience is considered
-\item Graph Gamification. Both experience and participation where considered.
+\item Base (B). All users have the same weight.
+\item Non Graph Gamification (G). Only experience is considered
+\item Graph Gamification (GG) . Both experience and participation are considered.
 \end{itemize}
 When gamification was employed, all score values known where presented to users
 and a ranking of users by weight was shown in a window, a screen capture of
@@ -713,9 +713,35 @@ this interface is shown in figure \ref{fig:top-users}.
 
 \subsection{Set-up}
 \label{sec:setup}
+
+The three versions of the EvoDrawing web application were deployed to the
+Heroku cloud service, using the same deployment configuration, using the
+Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB plug-in for the GG experiment.
+Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
+
+\begin{table}
+  \small
+  \caption{ Parameters for experiments.  }
+  \label{tab:params} 
+  \centering
+  \small
+  \begin{tabular}{l  c   }
+    \hline\noalign{\smallskip}
+     Parameter & Value \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Initial Population Size   & 80 \\ \hline
+    Sample Size & 1 \\ \hline
+    Step Size & 8 Samples \\ \hline
+    Mutation &  \\ \hline
+    Selection & Tournament \\ \hline
+    Tournament Size &  6 \\ \hline
+  \end{tabular}
+\end{table}
+
 % Anuncements
 % Table of GA Parameters
 % Time
+
 
 \subsection{Results}
 \label{sec:results}
@@ -765,7 +791,7 @@ The authors would like to thank...
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
 \bibliographystyle{IEEEtran}
-\bibliography{evospace-i,volunteer,}
+\bibliography{evospace-i,volunteer,biblio}
 
 \end{document}
 
