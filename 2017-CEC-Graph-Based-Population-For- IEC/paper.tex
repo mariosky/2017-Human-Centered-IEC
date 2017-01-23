@@ -434,8 +434,6 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
 \section{Related Work}
 \label{sec:interactive}
-
-
 % IEC 
 % Collaborative
 % Users - Volunteers - Engagement
@@ -446,8 +444,35 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 % Are they any good? 
 % Titan, Neo4J
 
+The IEC the approach has been used in a wide variety of applications and problem domains
+and remains an active area of research. However, in this work, emphasis is given to IEAs 
+implemented as volunteer based collaborative systems; where volunteers interact and evaluate 
+an evolving population, thus guiding the search based on an aggregate their subjective 
+preferences. What follows is not intended as a comprehensive survey, only a review of 
+the most relevant contributions to the present work, with special attention put in
+data structures and data management requirements.
 
-There is information regarding users and their collaborations, the interaction and subjective evaluation of individuals of the population. There is also information about the actual evolutionary process: relationships between individuals and evolutionary operators, used. 
+From the earlier works in the IEC field the notion of user collaboration in a natural way
+has been proposed. A notable application was the Galapagos Project \cite{sims1997interactivity},
+an exhibit in the Tokyo Multimedia Museum (1997--2000) were visitors interacted with images presented in 
+twelve displays by selecting those they find most aesthetically interesting by standing on
+step sensors in front of each. An early example of web based collaboration is the work by 
+Langdon \cite{langdon:2004}, evolving fractal representations of virtual creatures. It proposed a distributed 
+EA using a global population stored on a central web server sending 
+portions of the population to remote clients using JavaScript. Users evaluated individuals locally 
+and returned to the server those they liked more, to be distributed over the web.
+Similarly, Secretan et al. \cite{picbreeder} and Clune and Lipson \cite{forms} use web-based IEAs 
+to evolve artistic artifacts using a generative encoding, compositional pattern producing networks.
+
+In all these systems, the evolutionary interactive process is captured by the system. The genetic lineage of each
+individual is presented where users can visualize the relationships between them and evolutionary operators used in
+their creation. Also there is information regarding users and their collaborations.  Common offerings show 
+interesting individuals order by categories, number of votes, best of the week among others.
+
+These features have the goal of encouraging participation but require the use of a database system 
+for their implementation. Picbreeder \cite{picbreeder} is implemented with a service oriented
+architecture using a relational database and the file system for genotypes and images.   
+
 
 
 
@@ -738,6 +763,10 @@ Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
   \end{tabular}
 \end{table}
 % Anuncements
+
+http://goo.gl/jLis4Q
+
+
 % Time
 \subsection{Results}
 \label{sec:results}
