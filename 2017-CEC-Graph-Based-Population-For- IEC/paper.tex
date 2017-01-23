@@ -468,13 +468,19 @@ In all these systems, the evolutionary interactive process is captured by the sy
 individual is presented where users can visualize the relationships between them and evolutionary operators used in
 their creation. Also there is information regarding users and their collaborations.  Common offerings show 
 interesting individuals order by categories, number of votes, best of the week among others.
-
 These features have the goal of encouraging participation but require the use of a database system 
 for their implementation. Picbreeder \cite{picbreeder} is implemented with a service oriented
-architecture using a relational database and the file system for genotypes and images.   
+architecture using a relational database and the file system for genotypes and images. 
 
+Collaborative IEC systems need to store highly connected data, as it is common in current applications
+like social networks, and the world wide web. In order to deal with large datasets of connected data,
+graph databases \cite{angles2012comparison} have been proposed as an alternative to relational databases 
+which have performance limitations when dealing with highly connected data \cite{holzschuher2013performance}.
 
-
+The present work builds on a previous proposals and extends the C-IEA approach.
+First, it proposes a graph data model for representing the interactive process of C-IEC systems.
+Second, it incorporates the graph model to the evolutionary algorithm.
+Finally, uses the same model to increase the collaboration of volunteers.
 
 
 \section{EvoSpace-Interactive}
