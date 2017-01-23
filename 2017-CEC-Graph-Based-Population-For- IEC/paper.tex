@@ -679,22 +679,32 @@ system.
 \section{Case Study}
 \label{sec:experiments}
 
-We present in this section the results of a comparison between two versions
+We present in this section the results of a comparison between three versions
 of the same IEC application. The goal of the experiment is to compare two 
-gamification techniques to increase volunteer participation. 
-The main difference between both versions is how the fitness of individuals
+gamification techniques to increase volunteer participation against a third 
+without any thechnique applied.
+
+The main difference between both versions employing gamification is how the fitness of individuals
 is calculated and the information presented to users. 
-\subsection{Gamification technique}
+
+\subsection{Gamification techniques}
 \label{sec:gamification}
-The gamification technique
-consists in giving more importance to the preference of users with more
-participations. A feature found in video games is the concept of a 
-score and experience levels. Levels depend on the score and certain features
-of the game are only available to gamers when they reach a giving level.  
+
+Gamification is defined by Deterding et al. as
+``the use of game design elements in non-game contexts'' \cite{deterding2011game}.
+The gamification element employed in this work is rewarding mechanism 
+\cite{dubois2013understanding}, in general they consisting of a reputation systems with score points, 
+levels and leader boards. Points are awarded to users in response of
+the accomplishment of certain activities that need to be encouraged. Levels depend
+on the score and certain features of the game are only available to gamers when 
+they reach a giving level.
+
+The rewarding mechanism as it is applied in these versions 
+consists in giving more importance to the preference of those users having a higher reputation
+as given by the score points and experience levels.  
 
 The score achieved by users depends on the actions he does in the system as
-each time a user does one of these actions their score is incremented by one.
-The actions considered in this application are: 
+each time a user does one of these actions their score is incremented by one:
 \begin{itemize}
 \item Start a session.
 \item Rate an individual.
@@ -703,14 +713,17 @@ The actions considered in this application are:
 \item Save an individual from a friend's collection.
 \item Explore collections of other friends.
 \end{itemize}
+
 Only the "Start a session" and "Explore collections of other friends". 
 Are not found in the graph model, these are stored in the PostgreSQL relational
-database system.
+database system. 
 
 Two scores are used to determine the weight of a user's preference:
 \begin{itemize}
 \item Experience. This value depends on the score and is a value 
-between 0 and 100.
+between 0 and 100. 
+% More details needed? Is done by a Fuzzy Inference System but I think
+% the description would take to much space. 
 
 \item Participation. This value is simply the degree of the user node 
 in the graph. This measure also considers the number of users he knows,
@@ -749,9 +762,10 @@ this interface is shown in figure \ref{fig:top-users}.
 \label{sec:setup}
 
 The three versions of the EvoDrawing web application were deployed to the
-Heroku cloud service, using the same deployment configuration, using the
+Heroku cloud service with the same configuration: using the
 Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB plug-in for the GG experiment.
-Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
+Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. The graph database 
+system used in the implementation was Neo4J, and it was allready available as a plug-in in Heroku.  
 
 \begin{table}
   \small
@@ -773,11 +787,12 @@ Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
 \end{table}
 
 % Anuncements
-In order to start each one of the experiments was promoted through social networks particularly on the Facebook
-and Twitter platforms. The link used in the call for participation  was shortened URL, in order to obtain additional
-analytic data of the visitors.  In table \ref{tab:urls} the URL for each deployment in the Heroku platform is shown,
-along with the short URL and the analytics link. In the same table a link to the GitHub application repository
-used to deploy to Heroku is also listed.    
+In order to start each of the experiments was promoted through social networks
+particularly on the Facebook and Twitter platforms. The link used in the call for participation
+was shortened URL, in order to obtain additional analytic data of the visitors.
+In table \ref{tab:urls} the URL for each deployment in the Heroku platform is shown,
+along with the short URL and the analytics link. In the same table a link to the GitHub 
+application repository used to deploy to Heroku is also listed.    
 
 \begin{table*}
   \small
@@ -796,14 +811,30 @@ used to deploy to Heroku is also listed.
 \end{table*}
 
 Only data for the first week of deployment was considered for the experiments, and they where conducted 
-between January and May of 2016. Each deployment was tested first with a few beta testers, before launch
-in order to test design decisions.  
-
-
+between January and May of 2016. 
 
 % Time
 \subsection{Results}
 \label{sec:results}
+Before launch, each deployment was first tried with a few beta testers. When applying the gammification
+technique for the first time a problem was found in this beta stage. Some users were chating by 
+giving a rating to an animation even before it was returned from the server, this was done by just
+constantly pressing the mouse button. This is a common problem found in systmes appling leader boards.
+By making the rewards for tasks achievements visible to other players or providing leader boards are ways of 
+encouraging players to compete \cite{hickman2010total}. Because the  problematic consequences of competition, 
+which can result in negative conduct, low cooperation and collaboration, or disadvantaging certain player
+demographics such as women \cite{kumar2013gamification}, best-practice gamification designs try to
+refrain from using this element. In order to measure the effect of the leader board in the system, the 
+problem of cheating was mitigated by disabling the buttons for a certain amount of time. But the problem 
+persists, competitive users will try to get in to the leader board by other means. 
+% 
+% Future work could compare the use of gamification with out leaderboards
+%
+
+Using a graph database provided certain advantages when monitoring the experiments, for instance 
+using the query language  
+
+
 
 \begin{figure*}[!t]
     \centering
