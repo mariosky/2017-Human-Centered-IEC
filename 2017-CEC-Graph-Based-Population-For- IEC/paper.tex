@@ -546,6 +546,9 @@ details, the parents, genetic operators that created it, and genealogy informati
     \label{fig:uc_framework}
 \end{figure*}
 
+%%
+%% TO DO: Talk about the Model (in the MVC sense) of this system: PostgreSQL, Redis, 
+%%
 
  \section{IEC Human-centered framework}
 \label{sec:graph}
@@ -701,9 +704,9 @@ The actions considered in this application are:
 \item Explore collections of other friends.
 \end{itemize}
 Only the "Start a session" and "Explore collections of other friends". 
-Are not found in the graph model, 
-%% Note: I must ask Christian where they're stored 
-%%
+Are not found in the graph model, these are stored in the PostgreSQL relational
+database system.
+
 Two scores are used to determine the weight of a user's preference:
 \begin{itemize}
 \item Experience. This value depends on the score and is a value 
@@ -768,9 +771,34 @@ Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
     Tournament Size &  6 \\ \hline
   \end{tabular}
 \end{table}
-% Anuncements
 
-http://goo.gl/jLis4Q
+% Anuncements
+In order to start each one of the experiments was promoted through social networks particularly on the Facebook
+and Twitter platforms. The link used in the call for participation  was shortened URL, in order to obtain additional
+analytic data of the visitors.  In table \ref{tab:urls} the URL for each deployment in the Heroku platform is shown,
+along with the short URL and the analytics link. In the same table a link to the GitHub application repository
+used to deploy to Heroku is also listed.    
+
+\begin{table*}
+  \small
+  \caption{ URLs used for each deployment.}
+  \label{tab:urls} 
+  \centering
+  \small
+  \begin{tabular}{l l  l l l}
+    \hline\noalign{\smallskip}
+     Deployment & Heroku URL & Shortened URL & Analytics & Github Repository \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    B   & evodrawings01.herokuapp.com & goo.gl/jLis4Q & goo.gl/jLis4Q.info &  \\ \hline
+    G   & evodrawings02.herokuapp.com & goo.gl/jqjNy5 & goo.gl/jqjNy5.info &  \\ \hline
+    GG  & evodrawings03.herokuapp.com & goo.gl/J8TCe1 & goo.gl/J8TCe1.info &  \\ \hline
+    \end{tabular}
+\end{table*}
+
+Only data for the first week of deployment was considered for the experiments, and they where conducted 
+between January and May of 2016. Each deployment was tested first with a few beta testers, before launch
+in order to test design decisions.  
+
 
 
 % Time
@@ -791,9 +819,10 @@ http://goo.gl/jLis4Q
 
 
 \section*{Acknowledgment}
-
-
-The authors would like to thank...
+Space reserved for Acknowledgment text, Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 
 
 
