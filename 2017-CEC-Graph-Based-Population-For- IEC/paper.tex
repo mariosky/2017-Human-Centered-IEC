@@ -742,8 +742,8 @@ this interface is shown in figure \ref{fig:top-users}.
 
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.5in]{img/user_known_2.png}
-    \caption{Sample of users, showing the {\tt knows} relationship.}
+        \includegraphics[width=3.5in]{img/users_known_1.png}
+    \caption{Comparasion of two users showing the {\tt knows} relationship.}
     \label{fig:users-graph}
 \end{figure}
 
@@ -831,9 +831,10 @@ persists, competitive users will try to get in to the leader board by other mean
 % Future work could compare the use of gamification with out leaderboards
 %
 
-Using a graph database provided certain advantages when monitoring the experiments, for instance 
-using the query language  
-
+Using the Noe4J graph database and the Cypher query language when monitoring the experiments provided 
+views on the connected data difficult to replicate in a relational database. An example view is presented 
+in figure \ref{fig:users-graph} showing comparasion between two users on the degree of the 
+{\tt has} relationship.  
 
 
 \begin{figure*}[!t]
