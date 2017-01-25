@@ -774,9 +774,10 @@ this interface is shown in figure \ref{fig:top-users}.
 
 The three versions of the EvoDrawing web application were deployed to the
 Heroku cloud service with the same configuration: using the
-Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB plug-in for the GG experiment.
+Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB and RedisTOGO plug-ins.
 Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. The graph database 
-system used in the implementation was Neo4J, and it was allready available as a plug-in in Heroku.  
+system used in the implementation was Neo4J as it was allready available as a plug-in in Heroku, is well documented
+and a scalable solution \cite{miller2013graph,holzschuher2013performance}.  
 
 \begin{table}
   \small
@@ -798,14 +799,14 @@ system used in the implementation was Neo4J, and it was allready available as a 
 \end{table}
 
 % Anuncements
-In order to start each of the experiments was promoted through social networks
-particularly on the Facebook and Twitter platforms.
+At the start of each of the experiments, a call to participation was promoted through social networks
+particularly on Facebook and Twitter social networks.
 Is important to note that participants needed to log-in to facebook and give permissions to the application
-in order to participate, there where no anonymous volunteers. This permited the automatic access to
-each participant's social network permiting the construction a local network of friends participating.
+in order to participate, there were no anonymous volunteers. This permited the automatic access to
+each participant's social network and to store a local copy of those friends also participating.
 
 The link used in the call for participation
-was shortened URL, in order to obtain additional analytic data of the visitors.
+was shortened URL, in order to obtain additional data and analytic of the visitors.
 In table \ref{tab:urls} the URL for each deployment in the Heroku platform is shown,
 along with the short URL and the analytics link. In the same table a link to the GitHub 
 application repository used to deploy to Heroku is also listed.    
