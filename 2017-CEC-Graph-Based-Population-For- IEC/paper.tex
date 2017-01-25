@@ -766,11 +766,9 @@ in negative conduct, low cooperation and collaboration, or disadvantaging certai
 demographics such as women. In order to still measure the effect of the leader board on the system, the 
 problem of cheating was mitigated by disabling the rate button for a certain amount of time giving the animation
 enough time to finish. But the problem persists, competitive users will try to get in to the leader board by other means.
- 
-% Chating in an IEA is a serious but common risk in volunteer based systems.  
+
 % Future work could compare the use of gamification with out leaderboards
 %
-
 The results of each of the three experiments in terms of participation are detailed next.
 
 \subsubsection{ Base deployment}
@@ -800,8 +798,6 @@ came with users with medium level of participation, in this case participants wh
 G. When comparing all the experiments the deployment GG had the higher number of participation in users
 of all levels.    
 
-When comparing the networks of users, there is also a difference shown between experiments. 
-
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/user_known_2.png}
@@ -822,10 +818,13 @@ When comparing the networks of users, there is also a difference shown between e
     \label{fig:top-ranked-participation}
 \end{figure*}
 
-Using the Neo4J graph database and the Cypher query language when monitoring the experiments provided 
-views on the connected data difficult to replicate in a relational database. As an example, when comparing the
-deployments B and GG based on their network of users (shown in figures \ref{fig:B-network} and \ref{fig:GG-network}
-respectivly) additionaly to the differences in the number of nodes, certain patterns can also be observed.
+When monitoring the experiments, using the graph database and the Cypher query language 
+provided interesting views on the connected data difficult to replicate with a relational database. 
+As an example we can consider comparing the difference between the number of volunteers in deployments
+B and GG,(shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectivly) additional
+metrics and patterns are available when they are treated as a network. The same can be applied to 
+the population, or the interaction as a whole. For instance when creating a new individual 
+parents could be selected if there is a minimum distance between them in the graph.
 
 \section{Conclusion}
 \label{sec:conclusions}
