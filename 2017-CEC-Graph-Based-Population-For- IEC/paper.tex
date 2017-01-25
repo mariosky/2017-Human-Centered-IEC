@@ -249,34 +249,46 @@ explicit evaluation is essential, but also because the context of the
 interaction affects the system as a whole. Users interact not only with the graphical
 interface, and each individual\'s phenotype, there is also the interaction
 with other users, their previous evaluations and their own stream of activities
-and past experiences. Thus users in this proposal are defined as dynamic entities 
+and past experiences. Thus users in the method presented in this paper are defined as dynamic entities 
 interacting with an evolutionary computation having the fundamental purpose 
 of evaluating individuals according to their preferences,
 both explicitly or implicitly. In this work we propose giving the same
 importance to users and their interactions as the population of 
-individuals have in a traditional EA, even to the extend as using this
-knowledge as an integral part of the evolutionary algorithm. We argue also
-that a graph model is a viable representation for this purpose,  
+individuals have in a traditional EA, even to the extent of using this
+knowledge as an integral part of the evolutionary algorithm. % how?
+                                % Explain a bit more
+We argue also
+that a graph model is a viable representation for this purpose,  % define better the purpose. Not clear. "giving the same importance to users and their interactions"? - JJ
 presenting a natural way of mapping the relationships found in the system. 
-Most IEAs have the following many-to-many relations:
+Most IEAs have % have is not very precise and I'm a bit lost
+               % here. What do you mean? is this constrained to IEAs
+               % or EAs? At least the first is not exclusive, right? - JJ
+the following many-to-many relations:
 
 \begin{itemize}
 
   \item {\bf Individual-Individual} The relationships between individuals in the
   population are naturally expressed as a tree, or a graph when both ancestors 
-  and descendants are considered. Other semantic relations can also be of interest
-  for instance similarity or composition.
+  and descendants are considered. Other semantic relations can also be
+  of interest, 
+  for instance similarity or composition. %This is interesting for
+                                %what reason? What do you mean by
+                                %composition? "to be composed of"? - JJ
 
 
-  \item {\bf User-Individual}
-  Many kind of relationships between users and individuals,
+  \item {\bf User-Individual} There are many kind of relationships
+    between users and individuals, and these can be
   can be expressed using common actions found in social networks;
   for instance: share, like, rate or add to collection \cite{Prodromou:16:AS}. In IEAs these
   relationships are used to assign a single or a collection of
-  fitness values to individuals \cite{garcia2013evospace}.   
+  fitness values to individuals \cite{garcia2013evospace}.   % I am
+                                % afraid that individual is too
+                                % similar to user, and you might get
+                                % lost here. Maybe talk about
+                                % "genotypes" or "phenotypes"? - JJ
 
   \item {\bf User-User}
-  Relationship between users can also be modeled 
+  Relationship between users in an interactive evolutionary algorithm can also be modeled 
   as a social network, with well established semantics, algorithms and metrics \cite{ahuja1993network}.
   A graph model could enable researchers to find other ways of identifying leaders of 
   opinion or measuring the similarity between user's preferences. 
@@ -285,10 +297,16 @@ Most IEAs have the following many-to-many relations:
 
 \end{itemize}
 
-These relations are naturally mapped to graphs, while other actions and 
+These relations are naturally mapped to graphs, %They are bipartite
+                                %graphs, but I don't see your point...
+while other actions and 
 properties can also be modeled as a semantic network using
-basic subject–-predicate-–object expressions \cite{Prud'hommeaux:14:RT}.
-Another reason for using a graph model is the tools available for
+basic subject–-predicate-–object expressions
+\cite{Prud'hommeaux:14:RT}. % that's a graph, too.. - JJ
+Another reason for using a graph model % But for what exactly? A
+                                % bipartite graph to express which
+                                % relations? - JJ
+is the wealth of tools available for
 implementing and query the model, and the increased performance of
 native graph database systems \cite{holzschuher2013performance,holzschuher2016querying}.
 
@@ -335,7 +353,7 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 % Are they any good? 
 % Titan, Neo4J
 
-The IEC the approach has been used in a wide variety of applications and problem domains
+Up until now, IEC  has been used in a wide variety of applications and problem domains
 and remains an active area of research. However, in this work, emphasis is given to IEAs 
 implemented as volunteer based collaborative systems; where volunteers interact and evaluate 
 an evolving population, thus guiding the search based on an aggregate of their subjective 
@@ -346,27 +364,31 @@ data structures and data management requirements.
 From the earlier works in the IEC field the notion of user collaboration in a natural way
 has been proposed. A notable application was the Galapagos Project \cite{sims1997interactivity},
 an exhibit in the Tokyo Multimedia Museum (1997--2000) were visitors interacted with images presented in 
-twelve displays by selecting those they find most aesthetically interesting by standing on
+twelve displays by selecting those they found most aesthetically interesting by standing on
 step sensors in front of them. An early example of web based collaboration is the work by 
-Langdon \cite{langdon:2004}, evolving fractal representations of virtual creatures. It proposed a 
+Langdon \cite{langdon:2004}, which evolved fractal representations of virtual creatures. It used a 
 distributed EA using a global population stored on a central web server sending 
 portions of the population to remote clients using JavaScript. Users evaluated individuals locally 
 and returned to the server those they liked more, to be distributed over the web.
 Similarly, Secretan et al. \cite{picbreeder} and Clune and Lipson \cite{forms} use web-based IEAs 
 to evolve artistic artifacts using a generative encoding, compositional pattern producing networks.
 
-In all these systems, the interactive process is captured by the system. The genetic lineage of each
+In all these systems, the interactive process is captured by the
+system and no special attention is lent to the process of capturing
+and engaging users themselves. In some cases, the genetic lineage of each
 individual is presented in a graphical interface 
 where users can visualize the relationships between them, and evolutionary operators used in
-their creation; they also display information regarding users and their collaborations.  Common offerings show 
-interesting individuals ordered by categories, number of votes, and best of the week among others. In a recent work by
+their creation; they also display information regarding users and
+their collaborations.  Common control panels  show, for instance,  
+interesting individuals ordered by categories, number of votes, and
+best of the week among others. In a recent work by 
 Wagy \& Bongard \cite{wagy2014collective} user interaction is needed for evaluating the fitness and developing
 new designs of robot locomotiom. Collaboration is encoureged by gamifying the system 
 using the maximum distance indicator to inspire the user to try and “beat” previous designs. 
 
 Implementing recommendation algorithms or adding gamification techniques have the goal of encouraging participation 
 but require the use of a database system for managing the additional data required. 
-For example Picbreeder \cite{picbreeder} is implemented with a service oriented
+For example, Picbreeder \cite{picbreeder} is implemented with a service oriented
 architecture using a relational database and the file system for genotypes and images. Other works employ the 
 use of No SQL databases like the work of Seyama and Munetomo \cite{seyama2016development} where they
 employ a Platform as-a Service (PaaS) and NoSQL database to facilitate the collaboration 
@@ -396,7 +418,7 @@ Moreover, an proof-of-concept implemantation of an IEA incorporating the graph m
 As a case study, a IEA was developed using the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
 A brief description of the application is presented next, focusing
-on the data elements that were ported to the graph model.
+on the data elements that where ported to the graph model.
 
 \subsection{Fitness Assignment}
 \label{sec:assignment}
@@ -407,7 +429,7 @@ assigned to each individual depends on the taste of each particular user,
 resulting in a many-to-many relationship between users and individuals. 
 Many systems query this user-individual relation to extract relevant
 knowledge about the process and the population, for instance showing the
-most popular individual, or the the user with more participation.  
+most popular individual, or the the user with more participation 
 \cite{picbreeder}.
 In order to do this, data about individuals 
 must be permanently stored, even
@@ -446,16 +468,6 @@ details, the parents, genetic operators that created it, and genealogy informati
     \caption{IEC Human-centered framework.}
     \label{fig:uc_framework}
 \end{figure*}
-
-\subsection{EvoDrawings}
-\label{sec:evo_drawings}
-The particular application implemented for this work is called
-EvoDrawings. In this IEA individuals are drawing created by an animation of three types of 
-shapes: equilateral triangles, squares and cirlcles, varying in size and color. The movement of
-each shape is defined by a behaviour rule, for instance  ``move straight'', 
-``change direction in case of colission'',  etc., this animations are inspired in 
-the Process Compendium by Reas \cite{reas2004}, where visual forms 
-emerge by the relations of multiple forms and their behavior. 
 
 %%
 %% TO DO: Talk about the Model (in the MVC sense) of this system: PostgreSQL, Redis, 
@@ -639,19 +651,18 @@ between 0 and 100.
 
 \item Participation. This value is simply the degree of the user node 
 in the graph. This measure also considers the number of users he knows,
-perhaps some of the users were invited to the system by him.   
+perhaps some of the users where invited to the system by him.   
 \end{itemize}
 
 Three versions were compared:
 \begin{itemize}
-\item Base (B). All users have the same weight. Still the graph is used internally to explore
-the social network and the evolution of the population.
-\item Non Graph Gamification (G). Only experience is considered for the reputation of users. 
-\item Graph Gamification (GG). Both experience and participation are considered.
+\item Base (B). All users have the same weight.
+\item Non Graph Gamification (G). Only experience is considered
+\item Graph Gamification (GG) . Both experience and participation are considered.
 \end{itemize}
-When gamification was employed, all score values known were presented to users
-along with a ranking of users by their weight was shown in a window, as an example
-a screen capture of this interface is shown in figure \ref{fig:top-users}. 
+When gamification was employed, all score values known where presented to users
+and a ranking of users by weight was shown in a window, a screen capture of
+this interface is shown in figure \ref{fig:top-users}. 
 
 \begin{figure}[!t]
     \centering
@@ -756,7 +767,7 @@ The results of each of the three experiments in terms of participation are detai
 \subsubsection{ Base deployment}
 After a week of the anouncement the total number of volunteers for this experiment was 53 registered users. 
 The total number of nodes generated in the graph was 595, with a total of 2220 relationships. In this
-experiment a total of 500 new individuals were generated. The total number of evaluated
+experiment a total of 500 new individuals where generated. The total number of evaluated
 individuals for each volunteer is presented in figure \ref{fig:top-ranked-participation} with a blue line. 
 
 
@@ -770,13 +781,13 @@ individuals for each volunteer is presented in figure \ref{fig:top-ranked-partic
 
 \subsubsection{ Graph Gamification deployment}
 This experiment had the higher number of volunteers for for a total of 68 registered users. 
-In this experiment a total of 3594 new individuals were generated in the experiment. 
+In this experiment a total of 3594 new individuals where generated in the experiment. 
 The total number of evaluated individuals for each volunteer is presented in figure 
 \ref{fig:top-ranked-participation} in green. 
 
 The results presented in figure \ref{fig:top-ranked-participation}, show that those users with
 higher level of participation in deployments B and G, had about the same behavior, but the difference
-came with users with medium level of participation, in this case participants were more engaged in deployment
+came with users with medium level of participation, in this case participants where more engaged in deployment
 G. When comparing all the experiments the deployment GG had the higher number of participation in users
 of all levels.    
 
