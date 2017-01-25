@@ -212,17 +212,23 @@ delivered by the set of users.
 
 
 \section{Introduction}
-Interactive Evolutionary Algorithms (IEAs) are standard EAs whose
+Interactive Evolutionary Algorithms (IEAs) are, in general, standard EAs whose
 fitness evaluations are performed by persons within an interactive 
-system.  Thus, the main loop of the EA needs the intervention of a
+system \cite{eiben2015interactive}.  Thus, the main evolutionary loop needs the intervention of a
 human to perform the quality assessment of each proposed solution.
-IEAs have demonstrated their ability for effectively
+These kind of IEAs have demonstrated their ability for effectively
 producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992},
-as well as other products in many other domains \cite{ie1}. 
-Several IECs have been developed as web based systems \cite{picbreeder},
+as well as other products in many other domains \cite{ie1}, and this
+success has led to the development of web based systems such as \cite{picbreeder},
 who depend on volunteers who visit the system to interactively help
-with the search, using both anonymous and registered users.
-These systems have several inherent drawbacks arising from the very nature of 
+with the search, using both anonymous and registered users. This
+volunteeer system lowers the requirements of anyone participating in
+the experiment thus increasing the {\em performance}, in terms of {\em
+  human brain cycles}, of the whole system.
+
+
+However, the necessary intervention of humans in these systems leads
+to them having several inherent drawbacks arising from the very nature of 
 the algorithms, namely, the human fatigue caused by the interaction, and
 the boredom arising when users evaluate a large number of individuals 
 many of which are not interesting or are very similar to each other.
@@ -234,7 +240,10 @@ the amount of time and resources
 a volunteer is willing to spend on the system, and how they decide if they
 participate or not \cite{JJ:2016}. In order to increase participation and 
 engagement, and to tackle the issues mentioned above,  
-IEAs must follow a human centered design, giving extensive attention 
+IEAs must follow a human centered design, % reference and explain what
+                                % you mean by that. It's an EC
+                                % conference - JJ
+giving extensive attention 
 to volunteer users, not only because their
 explicit evaluation is essential, but also because the context of the 
 interaction affects the system as a whole. Users interact not only with the graphical
