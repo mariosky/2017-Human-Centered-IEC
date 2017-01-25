@@ -393,10 +393,17 @@ architecture using a relational database and the file system for genotypes and i
 use of No SQL databases like the work of Seyama and Munetomo \cite{seyama2016development} where they
 employ a Platform as-a Service (PaaS) and NoSQL database to facilitate the collaboration 
 among a large number of users for the interactive modelling of 3D glasess.  This system reduces the user fatigue
-by using a collaborative filtering algorithm to show only the information utilized by similar users.
+by using a collaborative filtering algorithm to show only the
+information utilized by similar users. In any case, using gamification
+techniques imply that we must deal with interactive evolutionary
+system as sociotechnical constructs, where the social aspects are
+essential to understand its dynamics. In this sense, conclusions
+reached with other systems such as NodEO
+\cite{DBLP:conf/gecco/MereloCGCRV1} can also be applied to this
+system; and applying social network techniques such as graph analysis
+to their study will allow us to understand them more thoroughly. 
 
-
-Collaborative IEC (C-IEC) systems need to store highly connected data, as it is common in current applications
+Collaborative IEC (C-IEC) systems also need to store highly connected data, as it is common in current applications
 like social networks. In order to deal with large datasets of connected data found in these systems,
 graph databases \cite{angles2012comparison} have been proposed as an alternative to relational databases 
 which have performance limitations when dealing with highly connected data \cite{holzschuher2013performance}.
@@ -406,7 +413,7 @@ Moreover, an proof-of-concept implemantation of an IEA incorporating the graph m
 %Finally, a comparasion of between three deployments of the system, with different increase the collaboration of volunteers. 
 
 
-\section{EvoSpace-Interactive}
+\section{Experimental setup: the EvoSpace-Interactive framework}
 \label{sec:evospace-i}
 \begin{figure}[!t]
     \centering
