@@ -248,7 +248,7 @@
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-%\usepackage{url}
+\usepackage{url}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
 % systems. The latest version and documentation can be obtained at:
@@ -516,7 +516,7 @@ assigned to each individual depends on the taste of each particular user,
 resulting in a many-to-many relationship between users and individuals. 
 Many systems query this user-individual relation to extract relevant
 knowledge about the process and the population, for instance showing the
-most popular individual, or the the user with more participation 
+most popular individual, or the the user with more participation.  
 \cite{picbreeder}.
 In order to do this, data about individuals 
 must be permanently stored, even
@@ -555,6 +555,16 @@ details, the parents, genetic operators that created it, and genealogy informati
     \caption{IEC Human-centered framework.}
     \label{fig:uc_framework}
 \end{figure*}
+
+\subsection{EvoDrawings}
+\label{sec:evo_drawings}
+The particular application implemented for this work is called
+EvoDrawings. In this IEA individuals are drawing created by an animation of three types of 
+shapes: equilateral triangles, squares and cirlcles, varying in size and color. The movement of
+each shape is defined by a behaviour rule, for instance  ``move straight'', 
+``change direction in case of colission'',  etc., this animations are inspired in 
+the Process Compendium by Reas \cite{reas2004}, where visual forms 
+emerge by the relations of multiple forms and their behavior. 
 
 %%
 %% TO DO: Talk about the Model (in the MVC sense) of this system: PostgreSQL, Redis, 
@@ -743,9 +753,10 @@ perhaps some of the users were invited to the system by him.
 
 Three versions were compared:
 \begin{itemize}
-\item Base (B). All users have the same weight.
-\item Non Graph Gamification (G). Only experience is considered
-\item Graph Gamification (GG) . Both experience and participation are considered.
+\item Base (B). All users have the same weight. Still the graph is used internally to explore
+the social network and the evolution of the population.
+\item Non Graph Gamification (G). Only experience is considered for the reputation of users. 
+\item Graph Gamification (GG). Both experience and participation are considered.
 \end{itemize}
 When gamification was employed, all score values known were presented to users
 along with a ranking of users by their weight was shown in a window, as an example
