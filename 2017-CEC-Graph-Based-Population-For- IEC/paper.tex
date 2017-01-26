@@ -538,25 +538,30 @@ These components will be described in detail next.
 A graph is composed of two fundamental entities: nodes and relationships,
 both having attributes. Nodes are abstractions of the objects in the real 
 world system, and relationships describe their interactions. Types describe
-the attributes describing an entity, First we describe the types of nodes and
-relationships in the system. 
+the attributes describing an entity.
+
+Next we describe the types of nodes and
+relationships in the system. % I think a bit of more explanation would
+                             % help why you have these types and
+                             % whether they are simple implementation
+                             % details or part of the method - JJ
 
 \subsection{Node Types}
 \begin{itemize}
 
-\item {\bf Users} This nodes represent the human users of the system and have 
-the attributes: {\tt id} a unique identifier, {\tt name}  and {\tt created}
+\item {\bf Users} This type of node represent the human users of the system and have 
+the following attributes: {\tt id} a unique identifier, {\tt name}  and {\tt created}
 specifying the  creation date (time stamp) of the node. 
 
 \item {\bf Individual} This type of node has the following attributes: 
-{\tt id}, {\tt chromosome}  and {\tt views} this is 
-the amount that users have seen or interacted with this individual and
- {\tt created}.
+{\tt id}, {\tt chromosome}  and {\tt views}, which is the number of
+times users have seen or interacted with this individual and, finally, 
+ {\tt created}, the time and date of creation as above..
 
-\item {\bf Collection} This type of nodes represent the collections belonging
+\item {\bf Collection} This type of node represents the collections belonging
 to users, their attributes are {\tt id}, 
-{\tt name}, {\tt created} and {\tt is\_private} indicating if this collection
-contents can be are shared with others. 
+{\tt name}, {\tt created} and {\tt is\_private} indicating if contents
+belonging to this collection can be are shared with others. 
 \end{itemize}
 
 \subsection{Relationship Types}
