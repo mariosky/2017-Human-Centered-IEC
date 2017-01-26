@@ -282,7 +282,6 @@ Other example is the W3C Activity Streams 2.0 specification used for representin
 common in social web applications \cite{json:streams}..  
 
 
-
 %presenting a natural way of mapping the relationships found in the system. 
 Most IEAs have % have is not very precise and I'm a bit lost
                % here. What do you mean? is this constrained to IEAs
@@ -292,7 +291,9 @@ the following many-to-many relations:
 \begin{itemize}
 
   \item {\bf Individual-Individual} The relationships between individuals in the
-  population are naturally expressed as a tree, or a graph when both ancestors 
+  population % do you mean different generations? Would be better to
+             % make this more precise - JJ
+are naturally expressed as a tree, or a graph when both ancestors 
   and descendants are considered. Other semantic relations can also be
   of interest, 
   for instance similarity or composition. %This is interesting for
@@ -323,6 +324,7 @@ the following many-to-many relations:
 
 These relations are naturally mapped to graphs, %They are bipartite
                                 %graphs, but I don't see your point...
+% Besides, _any_ relation can be mapped to a graph - JJ
 while other actions and 
 properties can also be modeled as a semantic network using
 basic subject–-predicate-–object expressions
@@ -333,20 +335,6 @@ Another reason for using a graph model % But for what exactly? A
 is the wealth of tools available for
 implementing and query the model, and the increased performance of
 native graph database systems \cite{holzschuher2013performance,holzschuher2016querying}.
-
-
-% Moving to related work - Mario
-%\cite{Performance for the masses and Christian's previous work}, 
-
-
-
- % Can it be quantified? Maybe a reference to NodIO? - JJ
-%Some authors have already tried to address this basic problem
-%\cite{Frade:2010:EvoGAMES}. %Non sequitur. Is it something we are
-                            %going to do here? - jj
-%% Moving this to Related Work Section -Mario
-% That section is not there yet. Forgot to paste? - JJ
-
  
 A case study is presented as a proof of concept, providing both
 conceptual and implementation details of a graph data model applied in the 
