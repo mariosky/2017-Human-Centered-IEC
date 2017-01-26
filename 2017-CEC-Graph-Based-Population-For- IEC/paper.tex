@@ -564,19 +564,27 @@ to users, their attributes are {\tt id},
 belonging to this collection can be are shared with others. 
 \end{itemize}
 
+% Add something at the end linking with the next paragraph
+
 \subsection{Relationship Types}
+
+These relationships are expressed as edges in the graph. We use
+several of them.
 
 \begin{itemize}
 \item {\bf Likes} This relation describes the interaction between a user and
 an individual in which a rating value is assigned this is represented by 
 the {\tt rate} attribute. In the current application a user is allowed to rate
 an individual multiple times, so the date of the interactions is also of
-interest. 
+interest.
+%this is a bipartite graph them. - JJ
 
 \item {\bf Knows} The relation connects two users that know each
-other. This relation is "unique" meaning that it can not be repeated between a pair of nodes. 
+other. This relation is "unique" meaning that it cannot be repeated
+between a pair of nodes.  % Not too clear what you mean by that - JJ
 
-\item {\bf Parent} Describes what individual is the parent of a new individual and is also unique.
+\item {\bf Parent} Describes what individual is the parent of a new
+  individual and is also unique. 
 
 \item {\bf Has} The relation describes an ownership relation between users and
 those collections they own. Also a collection {\tt has}  individuals stored
@@ -584,7 +592,8 @@ in them.  In figure \ref{fig:has} the {\tt has} relationship
 between certain nodes $user$, $individual$ and $collection$ is shown.
 
 \item {\bf Shared} When a user takes an individual from a friend's collection, this interactions 
-is described by a {\tt share} relationship, between the user and the individual. 
+is described by a {\tt share} relationship between the user and the
+individual.  % Still think that user and individual is confusing - JJ
 
 \item {\bf Saved} When a user takes an individual from the wall interface, this 
 interactions is described by a {\tt save} relationship. 
@@ -598,13 +607,17 @@ interactions is described by a {\tt save} relationship.
     \label{fig:has}
 \end{figure}
 
-Is important to notice that this model is still partial view of the IEC system,
-and other models can could be used in practice when implementing the system. 
+Is important to notice that this model is still a partial view of the IEC system,
+and other models can could be used in practice when implementing the
+system. % It is also a bipartite graph, which could be converted to a
+% single-party graph with only one type of node.
+% I don't think "collections" should be nodes too. They are simply
+% attributes for an individual - JJ
 For instance a relational database can be used for the implementation of a
 user profile and authentication module. Also a copy or cache of the population 
 could be kept in a key-value store in memory for performance reasons. 
 Nevertheless, the model can give important insights of the behavior of the 
-system.  
+system.   % So what we have done here is this and that because... - JJ
 
 \section{Case Study}
 \label{sec:experiments}
@@ -612,7 +625,7 @@ system.
 We present in this section the results of a comparison between three versions
 of the same IEC application. The goal of the experiment is to compare two 
 gamification techniques to increase volunteer participation against a third 
-without any thechnique applied.
+without any technique applied.
 
 The main difference between both versions employing gamification is how the fitness of individuals
 is calculated and the information presented to users. 
