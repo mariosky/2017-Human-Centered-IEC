@@ -660,15 +660,17 @@ each time a user does one of these actions their score is incremented by one:
 \end{itemize}
 
 Only the ``Start a session'' and ``Explore collections of other friends'' actions 
-are not found in the graph model as these are stored in the PostgreSQL relational
-database system. 
+are not reflected in the graph model since they are stored instead in the PostgreSQL relational
+database system. % because... - JJ
 
 Two scores are used to determine the weight of a user's preference:
 \begin{itemize}
 \item Experience. This value depends on the score and is a value 
 between 0 and 100. 
 % More details needed? Is done by a Fuzzy Inference System but I think
-% the description would take to much space. 
+% the description would take to much space.
+% Better a small description than nothing. If you need space, some
+% sections above are maybe a bit too verbose - JJ
 
 \item Participation. This value is simply the degree of the user node 
 in the graph. This measure also considers the number of users he knows,
@@ -682,7 +684,7 @@ Three versions were compared:
 \item Graph Gamification (GG) . Both experience and participation are considered.
 \end{itemize}
 When gamification was employed, all score values known where presented to users
-and a ranking of users by weight was shown in a window, a screen capture of
+and a ranking of users by weight was shown in a window. A screen capture of
 this interface is shown in figure \ref{fig:top-users}. 
 
 \begin{figure}[!t]
@@ -710,7 +712,7 @@ The three versions of the EvoDrawing web application were deployed to the
 Heroku cloud service with the same configuration: using the
 Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB and RedisTOGO plug-ins.
 Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. The graph database 
-system used in the implementation was Neo4J as it was allready available as a plug-in in Heroku, is well documented
+system used in the implementation was Neo4J as it was already available as a plug-in in Heroku, is well documented
 and a scalable solution \cite{miller2013graph,holzschuher2013performance}.  
 
 \begin{table}
@@ -733,12 +735,15 @@ and a scalable solution \cite{miller2013graph,holzschuher2013performance}.
 \end{table}
 
 % Anuncements
-At the start of each of the experiments, a call to participation was promoted through social networks
-particularly on Facebook and Twitter social networks.
-It is important to note that volunteers needed to log-in in to facebook and give permissions to the 
-web application in order to participate, in thi case there were no anonymous volunteers. This permited the automatic access to
+At the start of every experiment, a call to participation was issued
+through social networks, 
+particularly on Facebook and Twitter.
+It is important to note that volunteers needed to log-in to Facebook and give permissions to the 
+web application in order to participate, in this case there were no anonymous volunteers. This enabled the automatic access to
 each participant's social network and enabled the system to store a local copy of those friends participating.
-Another experiment is needed to see the effect this requirement has on participation. 
+However, another experiment would be needed to see the effect this
+requirement has on participation, since we are not dealing with it in
+this paper. 
 
 The link used in the call for participation
 was shortened Google URL, that provides metadata and analytics for the
