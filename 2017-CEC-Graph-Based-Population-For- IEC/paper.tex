@@ -447,7 +447,7 @@ if they are no longer in the active population.
 After entering the web application by using their Facebook account,
 users can collaborate with their Facebook friends, 
 sharing those individuals they like, or by taking individuals
-from their friend\'s collections by using the web interface depicted 
+from their friend's collections by using the web interface depicted 
 in Figure \ref{fig:web}.
 At the top left corner a list of Facebook friends is presented
 to encourage users to interact with the system. In the central 
@@ -584,7 +584,7 @@ those collections they own. Also a collection {\tt has}  individuals stored
 in them.  In figure \ref{fig:has} the {\tt has} relationship 
 between certain nodes $user$, $individual$ and $collection$ is shown.
 
-\item {\bf Shared} When a user takes an individual from a friends collection, this interactions 
+\item {\bf Shared} When a user takes an individual from a friend's collection, this interactions 
 is described by a {\tt share} relationship, between the user and the individual. 
 
 \item {\bf Saved} When a user takes an individual from the wall interface, this 
@@ -621,6 +621,8 @@ is calculated and the information presented to users.
 \subsection{Gamification techniques}
 \label{sec:gamification}
 
+%This section on gamification should go to the intro and state of the
+%art, since it is one of the main points of the paper - JJ
 Gamification is defined by Deterding et al. as
 ``the use of game design elements in non-game contexts'' \cite{deterding2011game}.
 The gamification element employed in this work is rewarding mechanism 
@@ -727,10 +729,12 @@ each participant's social network and enabled the system to store a local copy o
 Another experiment is needed to see the effect this requirement has on participation. 
 
 The link used in the call for participation
-was shortened URL, in order to obtain additional data and analytic of the visitors.
+was shortened Google URL, that provides metadata and analytics for the
+users that click on it. 
 In table \ref{tab:urls} the URL for each deployment in the Heroku platform is shown,
 along with the short URL and the analytics link. In the same table a link to the GitHub 
 application repository used to deploy to Heroku is also listed.    
+%Isn't this anonymous? - JJ
 
 \begin{table*}
   \small
@@ -813,8 +817,10 @@ of all levels.
 \begin{figure*}[!t]
     \centering
         \includegraphics[width=5.5in]{img/comparison.png}
-    \caption{Top ranked number individuals rated by user using a
-     logarithmic scale.}
+    \caption{Top ranked number individuals rated by each user using a
+     logarithmic scale.} % Explain a little more and label axes. The
+                         % three lines have the same label,
+                         % "participation". Not too clear - JJ
     \label{fig:top-ranked-participation}
 \end{figure*}
 
