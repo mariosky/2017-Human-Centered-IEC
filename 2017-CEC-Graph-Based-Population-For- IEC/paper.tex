@@ -104,39 +104,12 @@
 % http://www.ctan.org/pkg/algorithmicx
 
 
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
-
-
 % *** SUBFIGURE PACKAGES ***
 \ifCLASSOPTIONcompsoc
   \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
 \else
   \usepackage[caption=false,font=footnotesize]{subfig}
 \fi
-
-
-
-
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
@@ -196,10 +169,6 @@ As the results show, the data model was successfully applied in a gamification t
 developed to increase user engagement, which means that this technique can successfully be used to
 decrease user fatigue and thus increase {\em computer power}
 delivered by the set of users.
-
-
-
-
 
 %and novelty. % These two last issues are not too clear, maybe they
              % could be explained in that motivation. 
@@ -472,18 +441,22 @@ being evolved via the evolutionary algorithm
 is shown to the user.
 Here, the user can interact with the system in two ways.
 First, he can assign a quality assessment to the individual using
-a five star rating measure or
+a five star rating system or,
 additionally, a user can choose to add an image to one of their \emph{Collections}.
-A collection is a special folder to store those individuals a user prefers and wishes
+A collection is a special folder that stores those individuals a user likes and wishes
 to save. After the user finishes interacting with the individual
 on the Wall, he can choose to retrieve a new one from the population.
-At the left side, is the \emph{Collections} section.
+At the left hand side, the web page shows the \emph{Collections} section.
 The user can create several collections, to group and organize his favorite 
-artifacts. Moreover, a user can browse the content of each collection and from
-there share images through the social network.
-When a user browses over an individual a detail pane shows how many users have
+artifacts. Moreover, users can browse the content of each collection and from
+there share images through their social network.
+When a user hovers the cursor over an individual a pop-up pane shows how many users have
 liked the individual. The pane also includes a link to the individual's 
-details, the parents, genetic operators that created it, and genealogy information.
+details, the parents, genetic operators that created it, and genealogy
+information. This makes the assignment of fitness through the rating
+system a {\em social} activity, pursuing the objective of this work,
+which is to increase engagement of the users. % Adding this connecting
+                                % to paper's objetives - JJ
 
 \begin{figure*}[!t]
     \centering
