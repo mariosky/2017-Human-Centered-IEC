@@ -124,7 +124,7 @@
 
 \title{Exploiting the Social Graph: Increasing Engagement in Collaborative Interactive Evolution}
 % Changed it to "Social". What do you think? - JJ
-
+% Great! - M
 
 \author{\IEEEauthorblockN{Michael Shell}
 \IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
@@ -145,8 +145,7 @@ Fax: (888) 555--1212}}
 
 \maketitle
 
-% As a general rule, do not put math, special symbols or citations
-% in the abstract
+
 \begin{abstract}
 Interactive evolution is the leading technique employed by 
 Evolutionary Art researchers, where users' preferences guide the search. A common
@@ -156,11 +155,11 @@ application as the algorithms
 often depend on volunteers who visit the system to interactively help with fitness assignement. 
 However, there are several drawbacks that limit user participation 
 such as human fatigue and boredom resulting from evaluating 
-a large number of individuals. 
+a large number of phenotypes. 
 To tackle these issues, in this paper we propose the design of IEC systems using a human-centered 
 approach, with a framework consisting of a social network of 
 volunteers, interacting with a population consisting also of a network 
-of individuals. In this work we suggest the use of a graph model as a practical 
+of phenotypes. In this work we suggest the use of a graph model as a practical 
 and efficient tool for mapping the relationships 
 found in the system. A case study is presented as proof-of-concept, 
 providing both conceptual and implementation details of a graph based model 
@@ -169,10 +168,6 @@ As the results show, the data model was successfully applied in a gamification t
 developed to increase user engagement, which means that this technique can successfully be used to
 decrease user fatigue and thus increase {\em computer power}
 delivered by the set of users.
-
-%and novelty. % These two last issues are not too clear, maybe they
-             % could be explained in that motivation. 
-
 \end{abstract}
 
 % no keywords
@@ -199,7 +194,7 @@ the experiment thus increasing the {\em performance}, in terms of {\em
 However, the necessary intervention of humans in these systems leads
 to them having several inherent drawbacks arising from the very nature of 
 the algorithms, namely, the human fatigue caused by the interaction, and
-the boredom arising when users evaluate a large number of individuals 
+the boredom arising when users evaluate a large number of phenotypes 
 many of which are not interesting or are very similar to each other.
 
 
@@ -221,16 +216,16 @@ giving extensive attention
 to volunteer users, not only because their
 explicit evaluation is essential, but also because the context of the 
 interaction affects the system as a whole. Users interact not only with the graphical
-interface, and each individual\'s phenotype, there is also the interaction
+interface, and each phenotype, there is also the interaction
 with other users, their previous evaluations and their own stream of activities
 and past experiences. Thus users in the method presented in this paper are defined as dynamic entities 
 interacting with an evolutionary computation having the fundamental purpose 
-of evaluating individuals according to their preferences,
+of evaluating phenotypes according to their preferences,
 both explicitly or implicitly. 
 
 In this work we propose giving the same
 importance to users and their interactions as the population of 
-individuals have in a traditional EA, even to the extent of using this
+phenotypes have in a traditional EA, even to the extent of using this
 knowledge as an integral part of the evolutionary algorithm. % how?
                                 % Explain a bit more
                                 % This is the idea:
@@ -263,7 +258,7 @@ the following many-to-many relations:
 
 \begin{itemize}
 
-  \item {\bf Individual-Individual} The relationships between individuals in the
+  \item {\bf Phenotype-Phenotype} The relationships between phenotypes in the
   population % do you mean different generations? Would be better to
              % make this more precise - JJ
 are naturally expressed as a tree, or a graph when both ancestors 
@@ -274,16 +269,18 @@ are naturally expressed as a tree, or a graph when both ancestors
                                 %composition? "to be composed of"? - JJ
 
 
-  \item {\bf User-Individual} There are many kind of relationships
-    between users and individuals, and these can be
+  \item {\bf User-Phenotype} There are many kind of relationships
+    between users and phenotypes, and these can be
   can be expressed using common actions found in social networks;
   for instance: share, like, rate or add to collection \cite{Prodromou:16:AS}. In IEAs these
   relationships are used to assign a single or a collection of
-  fitness values to individuals \cite{garcia2013evospace}.   % I am
+  fitness values to phenotypes \cite{garcia2013evospace}.   % I am
                                 % afraid that individual is too
                                 % similar to user, and you might get
                                 % lost here. Maybe talk about
                                 % "genotypes" or "phenotypes"? - JJ
+                                % changed to phenotypes 
+                                % do you think an aditional explanation is needed?
 
   \item {\bf User-User}
   Relationship between users in an interactive evolutionary algorithm can also be modeled 
@@ -291,7 +288,7 @@ are naturally expressed as a tree, or a graph when both ancestors
   A graph model could enable researchers to find other ways of identifying leaders of 
   opinion or measuring the similarity between user's preferences. 
   These measures can then be used by recommender algorithms selecting 
-  individuals according users' preferences. 
+  phenotypes according users' preferences. 
 
 \end{itemize}
 
@@ -353,7 +350,7 @@ twelve displays by selecting those they found most aesthetically interesting by 
 step sensors in front of them. An early example of web based collaboration is the work by 
 Langdon \cite{langdon:2004}, which evolved fractal representations of virtual creatures. It used a 
 distributed EA using a global population stored on a central web server sending 
-portions of the population to remote clients using JavaScript. Users evaluated individuals locally 
+portions of the population to remote clients using JavaScript. Users evaluated phenotypes locally 
 and returned to the server those they liked more, to be distributed over the web.
 Similarly, Secretan et al. \cite{picbreeder} and Clune and Lipson \cite{forms} use web-based IEAs 
 to evolve artistic artifacts using a generative encoding, compositional pattern producing networks.
@@ -361,11 +358,11 @@ to evolve artistic artifacts using a generative encoding, compositional pattern 
 In all these systems, the interactive process is captured by the
 system and no special attention is lent to the process of capturing
 and engaging users themselves. In some cases, the genetic lineage of each
-individual is presented in a graphical interface 
+phenotypes is presented in a graphical interface 
 where users can visualize the relationships between them, and evolutionary operators used in
 their creation; they also display information regarding users and
 their collaborations.  Common control panels  show, for instance,  
-interesting individuals ordered by categories, number of votes, and
+interesting phenotypes ordered by categories, number of votes, and
 best of the week among others. In a recent work by 
 Wagy \& Bongard \cite{wagy2014collective} user interaction is needed for evaluating the fitness and developing
 new designs of robot locomotiom. Collaboration is encoureged by gamifying the system 
@@ -416,14 +413,14 @@ on the data elements that where ported to the graph model.
 \label{sec:assignment}
 The ES-I platform employs a collaborative technique,
 where several registered users assign a quality assessment to a single
-individual and then an aggregated fitness value is calculated. The fitness
-assigned to each individual depends on the taste of each particular user, 
-resulting in a many-to-many relationship between users and individuals. 
-Many systems query this user-individual relation to extract relevant
+phenotypes and then an aggregated fitness value is calculated. The fitness
+assigned to each phenotypes depends on the taste of each particular user, 
+resulting in a many-to-many relationship between users and phenotypes. 
+Many systems query this user-phenotype relation to extract relevant
 knowledge about the process and the population, for instance showing the
-most popular individual, or the the user with more participation 
+most popular phenotype, or the the user with more participation 
 \cite{picbreeder}.
-In order to do this, data about individuals 
+In order to do this, data about phenotypes 
 must be permanently stored, even
 if they are no longer in the active population. 
 
@@ -431,27 +428,27 @@ if they are no longer in the active population.
 \label{sec:col}
 After entering the web application by using their Facebook account,
 users can collaborate with their Facebook friends, 
-sharing those individuals they like, or by taking individuals
+sharing those phenotypes they like, or by taking phenotypes
 from their friend's collections by using the web interface depicted 
 in Figure \ref{fig:web}.
 At the top left corner a list of Facebook friends is presented
 to encourage users to interact with the system. In the central 
-\emph{ Wall } area, an individual sampled from the population that is
+\emph{ Wall } area, a phenotype sampled from the population that is
 being evolved via the evolutionary algorithm 
 is shown to the user.
 Here, the user can interact with the system in two ways.
-First, he can assign a quality assessment to the individual using
+First, he can assign a quality assessment to the phenotype using
 a five star rating system or,
 additionally, a user can choose to add an image to one of their \emph{Collections}.
-A collection is a special folder that stores those individuals a user likes and wishes
-to save. After the user finishes interacting with the individual
+A collection is a special folder that stores those phenotypes a user likes and wishes
+to save. After the user finishes interacting with the phenotype
 on the Wall, he can choose to retrieve a new one from the population.
 At the left hand side, the web page shows the \emph{Collections} section.
 The user can create several collections, to group and organize his favorite 
 artifacts. Moreover, users can browse the content of each collection and from
 there share images through their social network.
-When a user hovers the cursor over an individual a pop-up pane shows how many users have
-liked the individual. The pane also includes a link to the individual's 
+When a user hovers the cursor over a phenotypes a pop-up pane shows how many users have
+liked the phenotype. The pane also includes a link to the phenotype's 
 details, the parents, genetic operators that created it, and genealogy
 information. This makes the assignment of fitness through the rating
 system a {\em social} activity, pursuing the objective of this work,
@@ -495,10 +492,10 @@ in figure \ref{fig:uc_framework}:
 \begin{itemize}
   \item {\bf Interactive Evolutionary Computational system} 
   This is the real world system that we are going to represent in the model, 
-  it consist of human users and their interactions with one or more individuals
+  it consist of human users and their interactions with one or more phenotypes
   from
   the population. There are many ways in which humans could interact 
-  with individuals, this could be through a mobile device, a user interface 
+  with phenotypes, this could be through a mobile device, a user interface 
   or by interacting with real world objects generated as part of the algorithm 
   \cite{de2014artists,de2013unplugging}. 
   There is also the possibility that fitness or even part of the search 
@@ -553,9 +550,9 @@ relationships in the system. % I think a bit of more explanation would
 the following attributes: {\tt id} a unique identifier, {\tt name}  and {\tt created}
 specifying the  creation date (time stamp) of the node. 
 
-\item {\bf Individual} This type of node has the following attributes: 
+\item {\bf Phenotype} This type of node has the following attributes: 
 {\tt id}, {\tt chromosome}  and {\tt views}, which is the number of
-times users have seen or interacted with this individual and, finally, 
+times users have seen or interacted with this phenotype and, finally, 
  {\tt created}, the time and date of creation as above..
 
 \item {\bf Collection} This type of node represents the collections belonging
@@ -573,9 +570,9 @@ several of them.
 
 \begin{itemize}
 \item {\bf Likes} This relation describes the interaction between a user and
-an individual in which a rating value is assigned this is represented by 
+a phenotype in which a rating value is assigned this is represented by 
 the {\tt rate} attribute. In the current application a user is allowed to rate
-an individual multiple times, so the date of the interactions is also of
+a phenotype multiple times, so the date of the interactions is also of
 interest.
 %this is a bipartite graph them. - JJ
 
@@ -583,19 +580,20 @@ interest.
 other. This relation is "unique" meaning that it cannot be repeated
 between a pair of nodes.  % Not too clear what you mean by that - JJ
 
-\item {\bf Parent} Describes what individual is the parent of a new
-  individual and is also unique. 
+\item {\bf Parent} Describes what phenotype is the parent of a new
+  phenotype and is also unique. 
 
 \item {\bf Has} The relation describes an ownership relation between users and
-those collections they own. Also a collection {\tt has}  individuals stored
+those collections they own. Also a collection {\tt has}  phenotypes stored
 in them.  In figure \ref{fig:has} the {\tt has} relationship 
-between certain nodes $user$, $individual$ and $collection$ is shown.
+between certain nodes $user$, $phenotype$ and $collection$ is shown.
 
-\item {\bf Shared} When a user takes an individual from a friend's collection, this interactions 
+\item {\bf Shared} When a user takes an phenotype from a friend's collection, this interactions 
 is described by a {\tt share} relationship between the user and the
-individual.  % Still think that user and individual is confusing - JJ
+phenotype.  % Still think that user and individual is confusing - JJ
+            % Agreed
 
-\item {\bf Saved} When a user takes an individual from the wall interface, this 
+\item {\bf Saved} When a user takes an phenotype from the wall interface, this 
 interactions is described by a {\tt save} relationship. 
 \end{itemize}
 
@@ -627,7 +625,7 @@ of the same IEC application. The goal of the experiment is to compare two
 gamification techniques to increase volunteer participation against a third 
 without any technique applied.
 
-The main difference between both versions employing gamification is how the fitness of individuals
+The main difference between both versions employing gamification is how the fitness of phenotypes
 is calculated and the information presented to users. 
 
 \subsection{Gamification techniques}
@@ -652,10 +650,10 @@ The score achieved by users depends on the actions he does in the system as
 each time a user does one of these actions their score is incremented by one:
 \begin{itemize}
 \item Start a session.
-\item Rate an individual.
+\item Rate a phenotype.
 \item Create a collection.
-\item Save an individual of the wall to a collection.
-\item Save an individual from a friend's collection.
+\item Save a phenotype of the wall to a collection.
+\item Save a phenotypes from a friend's collection.
 \item Explore collections of other friends.
 \end{itemize}
 
@@ -795,8 +793,8 @@ The results of each of the three experiments in terms of participation are detai
 \subsubsection{ Base deployment}
 After a week of the anouncement the total number of volunteers for this experiment was 53 registered users. 
 The total number of nodes generated in the graph was 595, with a total of 2220 relationships. In this
-experiment a total of 500 new individuals where generated. The total number of evaluated
-individuals for each volunteer is presented in figure
+experiment a total of 500 new phenotypes where generated. The total number of evaluated
+phenotypes for each volunteer is presented in figure
 \ref{fig:top-ranked-participation} with a blue line. % Ranked by... - JJ
 
 
@@ -805,13 +803,13 @@ The total number of volunteers for this experiment was very close to those obtai
 experiment: 54 registered users. The total number of nodes generated in the graph was 648, 
 with a total of 2596 relationships. These numbers are close to those obtained in the base experiment,
 with a marginal increase in participation. The increased participation also helped in the creation of
-more individuals for a total of 648. The total number of evaluated
-individuals for each volunteer is presented in figure \ref{fig:top-ranked-participation} with a red line. 
+more phenotypes for a total of 648. The total number of evaluated
+phenotypes for each volunteer is presented in figure \ref{fig:top-ranked-participation} with a red line. 
 
 \subsubsection{ Graph Gamification deployment}
 This experiment had the higher number of volunteers for for a total of 68 registered users. 
-In this experiment a total of 3594 new individuals where generated in the experiment. 
-The total number of evaluated individuals for each volunteer is presented in figure 
+In this experiment a total of 3594 new phenotypes where generated in the experiment. 
+The total number of evaluated phenotypes for each volunteer is presented in figure 
 \ref{fig:top-ranked-participation} in green. 
 
 The results presented in figure \ref{fig:top-ranked-participation}, show that those users with
@@ -835,7 +833,7 @@ of all levels.
 \begin{figure*}[!t]
     \centering
         \includegraphics[width=5.5in]{img/comparison.png}
-    \caption{Top ranked number individuals rated by each user using a
+    \caption{Top ranked number phenotypes rated by each user using a
      logarithmic scale.} % Explain a little more and label axes. The
                          % three lines have the same label,
                          % "participation". Not too clear - JJ
@@ -850,7 +848,7 @@ metrics and patterns are available when they are treated as a
 network. %Please read the whole sentence and maybe rewrite - JJ
 The same can be applied to 
 the population, or the interaction as a whole. The graph could be used also by the evolutionary
-algorithm, for instance when creating a new individual 
+algorithm, for instance when creating a new phenotype 
 parents could be selected only if there is a minimum distance between them in the graph.
 
 \section{Conclusion}
