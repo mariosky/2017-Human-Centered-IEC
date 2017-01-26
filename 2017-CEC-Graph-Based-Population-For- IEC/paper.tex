@@ -254,7 +254,7 @@ interface, and each individual\'s phenotype, there is also the interaction
 with other users, their previous evaluations and their own stream of activities
 and past experiences. Thus users in the method presented in this paper are defined as dynamic entities 
 interacting with an evolutionary computation having the fundamental purpose 
-of evaluating individuals according to their preferences,
+of evaluating individuals accordi ng to their preferences,
 both explicitly or implicitly. In this work we propose giving the same
 importance to users and their interactions as the population of 
 individuals have in a traditional EA, even to the extent of using this
@@ -263,22 +263,23 @@ knowledge as an integral part of the evolutionary algorithm. % how?
                                 % This is the idea:
 Fitness assignement could depend on the actions of a group of users, and depend on how
 they tag, share, rate, or even delete the phenotype. The selection of parents could
-also depend on the previous activites: they have the same tag?, they were shared by
-similar users? a leader of opinion liked both? they are stored in the same collection?.
-That knowledge could also be applied in choosing which phenotypes present to a
+also depend on the previous actions, leveraging information such as the fac that  they have the same tag, or shared by
+similar users, or whether a leader of opinion liked both or if they are stored in the same collection.
+That knowledge could also be applied in choosing which phenotypes whould be presented to a
 user, in order to give them those they will find more interesting or useful. 
-
 
 We argue also
 %that a graph model is a viable representation for this purpose,  % define better the purpose. Not clear. "giving the same importance to users and their interactions"? - JJ
 % I was thinking to record all the activities and relationships
 that a graph model is a viable representation for the above relationships and
-interactions. Graph based models are currently used in social networks to keep track
+interactions and can then be used to model and use, within the
+evolutionary algorithm, actions performed by every user. Graph based
+models are currently used in social networks to keep track  
 of user interactions with media objects, places, and other users. Users of
 social networks (for instance the Facebook Graph) are accustomed to express these 
-complex relationships for instance: ``Jhon and Ann eating breakfast at Tony's''. 
+complex relationships in sentences such as: ``John and Ann eating breakfast at Tony's''. 
 Other example is the W3C Activity Streams 2.0 specification used for representing activities 
-common in social web applications.  
+common in social web applications \cite{json:streams}..  
 
 
 
