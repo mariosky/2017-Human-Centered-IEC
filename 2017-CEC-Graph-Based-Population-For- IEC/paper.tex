@@ -211,7 +211,9 @@ IEAs must follow a human centered design, % reference and explain what
                                 % conference - JJ
                                 % I explain more later in other section, with references, maybe move that to here? -Mario
                                 % If not I will add a few words later, such a large topic -Mario
-                                % even with a Journal: http://hcis-journal.springeropen.com/about
+                                % even with a Journal:
+                                % http://hcis-journal.springeropen.com/about
+% a reference here would do no harm - JJ
 giving extensive attention 
 to volunteer users, not only because their
 explicit evaluation is essential, but also because the context of the 
@@ -226,10 +228,10 @@ both explicitly or implicitly.
 In this work we propose giving the same
 importance to users and their interactions as the population of 
 phenotypes have in a traditional EA, even to the extent of using this
-knowledge as an integral part of the evolutionary algorithm. % how?
-                                % Explain a bit more
-                                % This is the idea: -M
-Fitness assignment could depend on the actions of a group of users, and depend on how
+knowledge as an integral part of the evolutionary algorithm.
+Instead of letting the user assign fitness directly via a rating
+or selection system, fitness assignment could depend on the actions of
+a group of users, possibly connected in a social network, and depend on how 
 they tag, share, rate, or even delete the phenotype. The selection of parents could
 also depend on the previous actions, leveraging information such as the fac that  they have the same tag, or shared by
 similar users, or whether a leader of opinion liked both or if they are stored in the same collection.
@@ -237,25 +239,18 @@ That knowledge could also be applied in choosing which phenotypes whould be pres
 user, in order to give them those they will find more interesting or useful. 
 
 We argue also
-%that a graph model is a viable representation for this purpose,  
-% define better the purpose. Not clear. "giving the same importance to users and their interactions"? - JJ
-% I was thinking to record all the activities and relationships
 that a graph model is a viable representation for the above relationships and
 interactions and can then be used to model and use, within the
-evolutionary algorithm, actions performed by every user. Graph based
+evolutionary algorithm, actions performed by every user, which, as
+mentioned above, will be used to assign fitness to solutions. Graph based
 models are currently used in social networks to keep track  
 of user interactions with media objects, places, and other users. Users of
 social networks (for instance the Facebook Graph) are accustomed to express these 
 complex relationships in sentences such as: ``John and Ann eating breakfast at Tony's''. 
 Other example is the W3C Activity Streams 2.0 specification used for representing activities 
-common in social web applications \cite{json:streams}..  
+common in social web applications \cite{json:streams}.
 
 
-%presenting a natural way of mapping the relationships found in the system. 
-%Most IEAs have % have is not very precise and I'm a bit lost
-               % here. What do you mean? is this constrained to IEAs
-               % or EAs? At least the first is not exclusive, right? - JJ
-%the following many-to-many relations:
 When considering the type of relationships found in a genetic algorithm 
 we can think of the Parent-Child relationship between a pair of parent solutions and
 the child solution they produce. In IEAs there could be more entities involved, with 
@@ -296,7 +291,10 @@ even more types of interaction:
                                 % lost here. Maybe talk about
                                 % "genotypes" or "phenotypes"? - JJ
                                 % changed to phenotypes 
-                                % do you think an additional explanation is needed? -Mario
+                                % do you think an additional
+                                % explanation is needed? -Mario
+  % Maybe explain that phenotypes are the expression of solutions
+  % stored in the population, but do that above - JJ
 
   \item {\bf User-User}
   Relationship between users in an interactive evolutionary algorithm can also be modeled 
@@ -328,7 +326,7 @@ even more types of interaction:
 A case study is presented as a proof of concept, providing both
 conceptual and implementation details of a graph data model applied in the 
 implementation of an IEA. The experiment was implemented using
-the EvoSpace-Interactive framework, and consisted of a web application
+the EvoSpace-Interactive framework \cite{garcia2013evospace}, and consisted of a web application
 for evolving artistic drawings. The graph database is then used to
 measure the degree of relationship between users and their participation.  
 
