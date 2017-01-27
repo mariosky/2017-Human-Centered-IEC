@@ -541,17 +541,20 @@ in figure \ref{fig:uc_framework}:
 Besides, the methodology presented in this paper for interactive
 evolutionary computation is a proposal to frame it as human centered computing \cite{sebe2010human},
 in which the context, environment, interfaces, preferences, accesibility, human relations, cognitive
-limitations, culture, creativity and other human beings aspects are an integral part of the system. 
-This view requires a multidisciplinary approach, as well as multiple knowledge representation formalisms.
-As a first step toward, the traditional data model is extended with a graph, in order to have 
-yet another view to exploit. Following a description of the data model is presented.
+limitations, culture, creativity and other human aspects are an integral part of the system. 
+This view requires a multidisciplinary approach, as well as multiple
+knowledge representation formalisms. 
+As a first step forward, the traditional data model is extended with a graph, in order to have 
+yet another view to exploit. In the following section a description of
+the data model is presented. 
 
 \section{IEC Graph Data Model} 
 
-A graph is composed of two fundamental entities: nodes and relationships,
+A graph is composed of two fundamental entities: nodes and edges,
 both having attributes. Nodes are abstractions of the objects in the real 
 world system, and relationships describe their interactions. Types describe
-the attributes describing an entity.
+the attributes describing an entity, and edges express relationships
+between nodes. 
 
 As it was mentioned before, an IEA must be modeled considering the 
 entities involved in the interaction, if we consider the EvoSpace-Interactive framework
@@ -588,7 +591,10 @@ collections. % This is why they are not attributes - Mario
 % it belongs to - JJ
 % Right, but:
 %  1) The relationship could have additional atributes, (when it was stored, order, etc.)
-%  2) Then it could be difficult to query with Cypher (I think) - Mario
+%  2) Then it could be difficult to query with Cypher (I think) -
+%  Mario
+% Then it's more of an implementation detail, but anyway, point taken
+% - JJ
 \end{itemize}
 
 The interaction between these entities and how they are represented by relationships 
@@ -605,23 +611,9 @@ a phenotype in which a rating value is assigned this is represented by
 the {\tt rate} attribute. In the current application a user is allowed to rate
 a phenotype multiple times, so the date of the interactions is also of
 interest.
-%this is a bipartite graph them. - JJ
-% Do you mean like a figure?  - Mario
-% No, it's a kind of graph - JJ
-% I read graph them :)  but is:  graph then , now I get it. 
 
 \item {\bf Knows} The relation connects two users that know each
 other. 
-% This relation is "unique" meaning that it cannot be repeated
-% between a pair of nodes.  % Not too clear what you mean by that - JJ
-% I mean is not a multigraph or you can not have two equal relationships between nodes. - Mario
- % Watching the graph structure of Neo4J, I can now see that is actually a directed graph,
- % There is even cases where knows relationship only goes in one direction, this could be because
- % a user does not publishes their friends or one only follows another but are not friends of each other.  
-% Deleting the restriction, I think is not important and can be seen
-% as a graph.
-% It's a directed, bipartite graph then - JJ
-% Ok, I will mention the types of graphs. -Mario
 
 \item {\bf Parent} Describes what phenotype is the parent of a new
   phenotype. 
@@ -657,7 +649,11 @@ system. % It is also a bipartite graph, which could be converted to a
 % single-party graph with only one type of node. 
 % I don't get this comment, yes some relations are bipartite, but If we see the whole
 % graph I think is a multi-graph.   - Mario 
-% I will check the  single-party graph conversion you suggest, I don't know the concept. - Mario
+% I will check the  single-party graph conversion you suggest, I don't
+% know the concept. - Mario
+% Does not matter much... it converts a bipartite graph to another
+% graph with a single kind of nodes, phenotypes or users, for instance
+% - JJ
 
 % I don't think "collections" should be nodes too. They are simply
 % attributes for an individual - JJ
@@ -668,9 +664,7 @@ was kept in a key-value store in memory for performance reasons.
 Nevertheless, having a multi-model implementation can give important 
 insights of the behavior of the system. This architecture was validated
 by a case study, requiring the interaction of all of the components.        
- % So what we have done here is this and that because... - JJ
- % Changed the paragraph. - Mario 
-% refinement
+
 \section{Case Study}
 \label{sec:experiments}
 
@@ -714,22 +708,15 @@ each time a user does one of these actions their score is incremented by one:
 Only the ``Start a session'' and ``Explore collections of other friends'' actions 
 are not reflected in the graph model since they are stored instead in the PostgreSQL relational
 database system. This is because user sessions and authentication, as well as basic
-web requests, are handled directly by the django web framework \cite{garcia2013evospace}.  
-     % because... - JJ
-     % done - Mario
+web requests, are handled directly by the Django web framework \cite{garcia2013evospace}.  
 
 Two scores are used to determine the weight of a user's preference:
 \begin{itemize}
-\item Experience. This value depends on the score and is a value 
+\item {\em Experience}: This value depends on the score and is a value 
 between 0 and 100. It is assumed for this case, that once a user
 reaches a 100 actions, it has enough experience on using the application.   
-% More details needed? Is done by a Fuzzy Inference System but I think
-% the description would take to much space.
-% Better a small description than nothing. If you need space, some
-% sections above are maybe a bit too verbose - JJ
-% I checked and this is not a fuzzy value. Explained any way. - Mario
 
-\item Participation. This value is simply the degree of the user node 
+\item {\em Participation}: This value is simply the degree of the user node 
 in the graph. This measure considers the number of users he knows,
 collections and phenotypes rated.    
 \end{itemize}
@@ -858,7 +845,8 @@ the number of phenotypes evaluated using a logarithmic scale.   % Ranked by... -
 
 
 \subsubsection{ Non Graph Gamification deployment}
-The total number of volunteers for this experiment was very close to those obtained in the previous
+The total number of volunteers for this experiment was very close to
+the one obtained in the previous
 experiment: 54 registered users. The total number of nodes generated in the graph was 648, 
 with a total of 2596 relationships. These numbers are close to those obtained in the base experiment,
 with a marginal increase in participation. The increased participation also helped in the creation of
@@ -902,12 +890,11 @@ of all levels.
 \end{figure*}
 
 When monitoring the experiments by querying the graph database,  the Cypher query language 
-provided interesting views on the data that it would have been difficult to replicate with a relational database.
+provided interesting views on the data that it would have been
+difficult to replicate with a relational database. 
 For instance, to compare the number of volunteers in deployments
 B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively)  a simple query
 provided a view of the social network of volunteers. 
-%Please read the whole sentence and maybe rewrite - JJ
-% Done - Mario
 
 The same can be applied to 
 the population, or the interaction as a whole. The graph could be used also by the evolutionary
@@ -920,6 +907,16 @@ parents could be selected only if there is a minimum distance between them in th
 % Using graphs improves engagement and also provides for a model for
 % visualizing different experiments better. It has to tie with the
 % initial objectives.
+
+One of the interesting future lines of work would be to look a bit
+more closely at the behavior of users rating the system. These initial
+experiments hint at a possible power law, which might indicate that
+the IEC system could be self-organizing, a process that would allow it
+to reach a critical state, as has been found in software repositories,
+for instance \cite{Merelo2016:repomining}. The dynamics of this kind
+of system are fundamentally different, and our future research will
+include exploring these aspects of the system.
+
 
 
 \section*{Acknowledgment}
