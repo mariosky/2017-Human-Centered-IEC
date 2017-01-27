@@ -228,8 +228,8 @@ importance to users and their interactions as the population of
 phenotypes have in a traditional EA, even to the extent of using this
 knowledge as an integral part of the evolutionary algorithm. % how?
                                 % Explain a bit more
-                                % This is the idea:
-Fitness assignement could depend on the actions of a group of users, and depend on how
+                                % This is the idea: -M
+Fitness assignment could depend on the actions of a group of users, and depend on how
 they tag, share, rate, or even delete the phenotype. The selection of parents could
 also depend on the previous actions, leveraging information such as the fac that  they have the same tag, or shared by
 similar users, or whether a leader of opinion liked both or if they are stored in the same collection.
@@ -251,28 +251,43 @@ common in social web applications \cite{json:streams}..
 
 
 %presenting a natural way of mapping the relationships found in the system. 
-Most IEAs have % have is not very precise and I'm a bit lost
+%Most IEAs have % have is not very precise and I'm a bit lost
                % here. What do you mean? is this constrained to IEAs
                % or EAs? At least the first is not exclusive, right? - JJ
-the following many-to-many relations:
+%the following many-to-many relations:
+When considering the type of relationships found in a genetic algorithm 
+we can think of the Parent-Child relationship between a pair of parent solutions and
+the child solution they produce. In IEAs there could be more entities involved, with 
+even more types of interaction:
 
 \begin{itemize}
 
-  \item {\bf Phenotype-Phenotype} The relationships between phenotypes in the
-  population % do you mean different generations? Would be better to
+  \item {\bf Phenotype-Phenotype} The parent-child relationship between phenotypes in the
+  population, as mentioned before.  
+             % do you mean different generations? Would be better to
              % make this more precise - JJ
-are naturally expressed as a tree, or a graph when both ancestors 
-  and descendants are considered. Other semantic relations can also be
+  This relationships are naturally expressed as a tree.
+  %, or a graph when both ancestors 
+  %and descendants are considered. 
+  Other semantic relations can also be
   of interest, 
-  for instance similarity or composition. %This is interesting for
+  for instance the similarity relation between two phenotypes, could be used to measure
+  the population's diversity.   %This is interesting for
                                 %what reason? What do you mean by
                                 %composition? "to be composed of"? - JJ
+                                % Yes, I was thinking about collections as candidate solutions,
+                                % but maybe not yet.
+                                
 
 
   \item {\bf User-Phenotype} There are many kind of relationships
     between users and phenotypes, and these can be
-  can be expressed using common actions found in social networks;
-  for instance: share, like, rate or add to collection \cite{Prodromou:16:AS}. In IEAs these
+  expressed using common actions found in social networks;
+  as mentioned before.
+  %for instance: share, like, rate or add to collection 
+  %\cite{Prodromou:16:AS}. This was the Activity Stream referenced before. - Mario
+    
+  In IEAs these
   relationships are used to assign a single or a collection of
   fitness values to phenotypes \cite{garcia2013evospace}.   % I am
                                 % afraid that individual is too
@@ -280,7 +295,7 @@ are naturally expressed as a tree, or a graph when both ancestors
                                 % lost here. Maybe talk about
                                 % "genotypes" or "phenotypes"? - JJ
                                 % changed to phenotypes 
-                                % do you think an aditional explanation is needed?
+                                % do you think an additional explanation is needed? -Mario
 
   \item {\bf User-User}
   Relationship between users in an interactive evolutionary algorithm can also be modeled 
@@ -291,20 +306,23 @@ are naturally expressed as a tree, or a graph when both ancestors
   phenotypes according users' preferences. 
 
 \end{itemize}
-
-These relations are naturally mapped to graphs, %They are bipartite
+% Maybe this paragraph is somewhat redundant, 
+% I think your point in the comments below is:
+% so what if they are easily expressed as a network, thats not the main reason.
+% if this is so, agreed. I will remove it- 
+%These relations are naturally mapped to graphs, %They are bipartite
                                 %graphs, but I don't see your point...
 % Besides, _any_ relation can be mapped to a graph - JJ
-while other actions and 
-properties can also be modeled as a semantic network using
-basic subject‚Äì-predicate-‚Äìobject expressions
-\cite{Prud'hommeaux:14:RT}. % that's a graph, too.. - JJ
-Another reason for using a graph model % But for what exactly? A
+%while other actions and 
+%properties can also be modeled as a semantic network using
+%basic subject‚Äì-predicate-‚Äìobject expressions
+%\%cite{Prud'hommeaux:14:RT}. % that's a graph, too.. - JJ
+%Another reason for using a graph model % But for what exactly? A
                                 % bipartite graph to express which
                                 % relations? - JJ
-is the wealth of tools available for
-implementing and query the model, and the increased performance of
-native graph database systems \cite{holzschuher2013performance,holzschuher2016querying}.
+%is the wealth of tools available for
+%implementing and query the model, and the increased performance of
+%native graph database systems \cite{holzschuher2013performance,holzschuher2016querying}.
  
 A case study is presented as a proof of concept, providing both
 conceptual and implementation details of a graph data model applied in the 
@@ -365,8 +383,8 @@ their collaborations.  Common control panels  show, for instance,
 interesting phenotypes ordered by categories, number of votes, and
 best of the week among others. In a recent work by 
 Wagy \& Bongard \cite{wagy2014collective} user interaction is needed for evaluating the fitness and developing
-new designs of robot locomotiom. Collaboration is encoureged by gamifying the system 
-using the maximum distance indicator to inspire the user to try and ‚Äúbeat‚Äù previous designs. 
+new designs of robot locomotion. Collaboration is encouraged by gamifying the system 
+using the maximum distance indicator to inspire the user to try and Ä'úbeat'Äù previous designs. 
 
 Implementing recommendation algorithms or adding gamification techniques have the goal of encouraging participation 
 but require the use of a database system for managing the additional data required. 
@@ -374,11 +392,11 @@ For example, Picbreeder \cite{picbreeder} is implemented with a service oriented
 architecture using a relational database and the file system for genotypes and images. Other works employ the 
 use of No SQL databases like the work of Seyama and Munetomo \cite{seyama2016development} where they
 employ a Platform as-a Service (PaaS) and NoSQL database to facilitate the collaboration 
-among a large number of users for the interactive modelling of 3D glasess.  This system reduces the user fatigue
+among a large number of users for the interactive modeling of 3D glasses.  This system reduces the user fatigue
 by using a collaborative filtering algorithm to show only the
 information utilized by similar users. In any case, using gamification
 techniques imply that we must deal with interactive evolutionary
-system as sociotechnical constructs, where the social aspects are
+system as socio-technical constructs, where the social aspects are
 essential to understand its dynamics. In this sense, conclusions
 reached with other systems such as NodEO
 \cite{DBLP:conf/gecco/MereloCGCRV16} can also be applied to this
@@ -392,9 +410,6 @@ which have performance limitations when dealing with highly connected data \cite
 In this work the use of a graph data model for representing the interactive process of C-IEC systems is proposed.
 Moreover, an proof-of-concept implemantation of an IEA incorporating the graph model is presented.
 
-%Finally, a comparasion of between three deployments of the system, with different increase the collaboration of volunteers. 
-
-
 \section{Experimental setup: the EvoSpace-Interactive framework}
 \label{sec:evospace-i}
 \begin{figure}[!t]
@@ -405,7 +420,7 @@ Moreover, an proof-of-concept implemantation of an IEA incorporating the graph m
 \end{figure}
 
 As a case study, a IEA was developed using the 
-EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}. %citation
+EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}
 A brief description of the application is presented next, focusing
 on the data elements that where ported to the graph model.
 
@@ -454,6 +469,7 @@ information. This makes the assignment of fitness through the rating
 system a {\em social} activity, pursuing the objective of this work,
 which is to increase engagement of the users. % Adding this connecting
                                 % to paper's objetives - JJ
+                                % Thanks yes -Mario
 
 \begin{figure*}[!t]
     \centering
@@ -462,16 +478,12 @@ which is to increase engagement of the users. % Adding this connecting
     \label{fig:uc_framework}
 \end{figure*}
 
-%%
-%% TO DO: Talk about the Model (in the MVC sense) of this system: PostgreSQL, Redis, 
-%%
-
  \section{IEC Human-centered framework}
-\label{sec:graph}
+\label{sec:HCF}
 The general goal of this research is to develop a human-centered \cite{gasson2003human} framework
 for interactive evolutionary computation (IEC) in order to increase
 participation and also to minimize the amount of evaluations needed for the
-evolutionary process in given IEC application. We deliberately use the 
+evolutionary process in a given IEC application. We deliberately use the 
 more general
 term Human instead of User, because humans are not always playing the role of
 users in software engineering sense, they could just be interacting 
@@ -505,18 +517,15 @@ in figure \ref{fig:uc_framework}:
 
   \item {\bf IEC Data Model}
   A data model is used to describe the IEC system prior to a physical 
-  implementation. 
-  %% This block is maybe not needed but in our ES-I implementation
-  %% we use Relational (PosgreSQL), Objects (JSON-Redis) and Graphs (Neo4J)
-  Depending on the domain several techniques can be used.
+  implementation.  Depending on the domain several techniques can be used.
   Parts of the system could be better described by an Entity relationship 
-  modeling to be used in a relational database or a Class Digram for a 
+  modeling to be used in a relational database or a class digram for a 
   key-value store. 
-  %%
-  %%
-  A graph is proposed for modeling the social network
-  of users and their interaction with the population. This database 
-  is the back-end of the system, is used by the EA and the user interface. 
+
+  A graph is proposed for modeling the social network of users 
+  and their interaction with the population. When implemented a graph database 
+  will be the back-end of the system. This  backend will then be
+  used by the EA and the user interface, in a Model-View-Controller architecture. 
 
   \item {\bf Evolutionary Algorithm} 
   The EA algorithm queries the graph model, and then updates those nodes that 
@@ -525,10 +534,20 @@ in figure \ref{fig:uc_framework}:
   the new population.  
 \end{itemize}
 
-These components will be described in detail next.
+
+%These components will be described in detail next.
 % Besides, add something about the innovation in this paper, for
 % instance, explaining that the data model is extended to a graph here
 % - JJ
+
+%Ok, I hope is not to much. Please edit at will - Mario
+
+Besides, this framework is a proposal to view IEC as human centered computing [cite],
+in which the context, environment, interfaces, preferences, accesibility, human relations, cognitive
+limitations, culture, creativity and other human beings aspects are an integral part of the system. 
+This view requires a multidisciplinary approach, as well as multiple knowledge representation formalisms.
+As a first step toward, the traditional data model is extended with a graph, in order to have 
+yet another view to exploit. Following a description of the data model is presented.
 
 \section{IEC Graph Data Model} 
 
@@ -537,11 +556,18 @@ both having attributes. Nodes are abstractions of the objects in the real
 world system, and relationships describe their interactions. Types describe
 the attributes describing an entity.
 
-Next we describe the types of nodes and
-relationships in the system. % I think a bit of more explanation would
+As it was mentioned before, an IEA must be modeled considering the 
+entities involved in the interaction, if we consider the EvoSpace-Interactive framework
+described in section  \ref{sec:evospace-i} we could find the following types of
+nodes and relationships:
+
+%Next we describe the types of nodes and
+%relationships in the system. % I think a bit of more explanation would
                              % help why you have these types and
                              % whether they are simple implementation
                              % details or part of the method - JJ
+                             % Explaining above, the graph will depend on the elements of the interaction - Mario
+
 
 \subsection{Node Types}
 \begin{itemize}
@@ -558,10 +584,14 @@ times users have seen or interacted with this phenotype and, finally,
 \item {\bf Collection} This type of node represents the collections belonging
 to users, their attributes are {\tt id}, 
 {\tt name}, {\tt created} and {\tt is\_private} indicating if contents
-belonging to this collection can be are shared with others. 
+belonging to this collection can be shared with others. Collections can contain
+phenotypes and a single phenotype could be shared by many collections. % This is why they are not attributes - Mario 
 \end{itemize}
 
 % Add something at the end linking with the next paragraph
+% Done - Mario
+The interaction between these entities are represented by the following relationships 
+between nodes:
 
 \subsection{Relationship Types}
 
@@ -575,13 +605,20 @@ the {\tt rate} attribute. In the current application a user is allowed to rate
 a phenotype multiple times, so the date of the interactions is also of
 interest.
 %this is a bipartite graph them. - JJ
+% Do you mean like a figure?  - Mario
 
 \item {\bf Knows} The relation connects two users that know each
-other. This relation is "unique" meaning that it cannot be repeated
-between a pair of nodes.  % Not too clear what you mean by that - JJ
+other. 
+% This relation is "unique" meaning that it cannot be repeated
+% between a pair of nodes.  % Not too clear what you mean by that - JJ
+% I mean is not a multigraph or you can not have two equal relationships between nodes. - Mario
+ % Watching the graph structure of Neo4J, I can now see that is actually a directed graph,
+ % There is even cases where knows relationship only goes in one direction, this could be because
+ % a user does not publishes their friends or one only follows another but are not friends of each other.  
+% Deleting the restriction, I think is not important and can be seen as a graph.
 
 \item {\bf Parent} Describes what phenotype is the parent of a new
-  phenotype and is also unique. 
+  phenotype. 
 
 \item {\bf Has} The relation describes an ownership relation between users and
 those collections they own. Also a collection {\tt has}  phenotypes stored
@@ -591,7 +628,8 @@ between certain nodes $user$, $phenotype$ and $collection$ is shown.
 \item {\bf Shared} When a user takes an phenotype from a friend's collection, this interactions 
 is described by a {\tt share} relationship between the user and the
 phenotype.  % Still think that user and individual is confusing - JJ
-            % Agreed
+            % Agreed corrected -Mario
+            % I was thinking about calling them Solutions or Candidate Solutions,
 
 \item {\bf Saved} When a user takes an phenotype from the wall interface, this 
 interactions is described by a {\tt save} relationship. 
@@ -608,9 +646,14 @@ interactions is described by a {\tt save} relationship.
 Is important to notice that this model is still a partial view of the IEC system,
 and other models can could be used in practice when implementing the
 system. % It is also a bipartite graph, which could be converted to a
-% single-party graph with only one type of node.
+% single-party graph with only one type of node. 
+% I don't get this comment, yes some relations are bipartite, but If we see the whole
+% graph I think is a multi-graph.   - Mario 
+% I will check the  single-party graph conversion you suggest, I don't know the concept. - Mario
+
 % I don't think "collections" should be nodes too. They are simply
 % attributes for an individual - JJ
+% They are nodes, I added the reason above. - Mario
 For instance a relational database can be used for the implementation of a
 user profile and authentication module. Also a copy or cache of the population 
 could be kept in a key-value store in memory for performance reasons. 
