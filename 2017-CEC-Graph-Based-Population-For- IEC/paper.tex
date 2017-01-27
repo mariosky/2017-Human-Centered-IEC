@@ -848,7 +848,9 @@ After a week of the announcement the total number of volunteers for this experim
 The total number of nodes generated in the graph was 595, with a total of 2220 relationships. In this
 experiment a total of 500 new phenotypes where generated. The total number of evaluated
 phenotypes for each volunteer is presented in figure
-\ref{fig:top-ranked-participation} with a blue line. % Ranked by... - JJ
+\ref{fig:top-ranked-participation} in blue. Users are ranked by
+the number of phenotypes they rated, in the \emph{x} axis is the rank, and in the \emph{y} axis 
+the number of phenotypes evaluated using a logarithmic scale.   % Ranked by... - JJ
 
 
 \subsubsection{ Non Graph Gamification deployment}
@@ -857,7 +859,7 @@ experiment: 54 registered users. The total number of nodes generated in the grap
 with a total of 2596 relationships. These numbers are close to those obtained in the base experiment,
 with a marginal increase in participation. The increased participation also helped in the creation of
 more phenotypes for a total of 648. The total number of evaluated
-phenotypes for each volunteer is presented in figure \ref{fig:top-ranked-participation} with a red line. 
+phenotypes for each volunteer is presented in figure \ref{fig:top-ranked-participation} in red. 
 
 \subsubsection{ Graph Gamification deployment}
 This experiment had the higher number of volunteers for for a total of 68 registered users. 
@@ -886,19 +888,23 @@ of all levels.
 \begin{figure*}[!t]
     \centering
         \includegraphics[width=5.5in]{img/comparison.png}
-    \caption{Top ranked number phenotypes rated by each user using a
-     logarithmic scale.} % Explain a little more and label axes. The
+    \caption{Users are ranked by
+		the number of phenotypes they rated, in the \emph{x} axis is the rank, and in the \emph{y} axis 
+		the number of phenotypes evaluated using a logarithmic scale. } % Explain a little more and label axes. The
                          % three lines have the same label,
                          % "participation". Not too clear - JJ
+                         % TO DO -Mario
     \label{fig:top-ranked-participation}
 \end{figure*}
 
-When monitoring the experiments, using the graph database and the Cypher query language 
-provided interesting views on the connected data difficult to replicate with a relational database. 
-As an example we can consider comparing the difference between the number of volunteers in deployments
-B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively) additional
-metrics and patterns are available when they are treated as a
-network. %Please read the whole sentence and maybe rewrite - JJ
+When monitoring the experiments by querying the graph database,  the Cypher query language 
+provided interesting views on the data that it would have been difficult to replicate with a relational database.
+For instance, to compare the number of volunteers in deployments
+B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively)  a simple query
+provided a view of the social network of volunteers. 
+%Please read the whole sentence and maybe rewrite - JJ
+% Done - Mario
+
 The same can be applied to 
 the population, or the interaction as a whole. The graph could be used also by the evolutionary
 algorithm, for instance when creating a new phenotype 
