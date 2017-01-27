@@ -237,7 +237,8 @@ That knowledge could also be applied in choosing which phenotypes whould be pres
 user, in order to give them those they will find more interesting or useful. 
 
 We argue also
-%that a graph model is a viable representation for this purpose,  % define better the purpose. Not clear. "giving the same importance to users and their interactions"? - JJ
+%that a graph model is a viable representation for this purpose,  
+% define better the purpose. Not clear. "giving the same importance to users and their interactions"? - JJ
 % I was thinking to record all the activities and relationships
 that a graph model is a viable representation for the above relationships and
 interactions and can then be used to model and use, within the
@@ -587,6 +588,9 @@ phenotypes and a single phenotype could be shared by many
 collections. % This is why they are not attributes - Mario
 % You can simply have an attribute that is a list of the collections
 % it belongs to - JJ
+% Right, but:
+%  1) The relationship could have additional atributes, (when it was stored, order, etc.)
+%  2) Then it could be difficult to query with Cypher (I think) - Mario
 \end{itemize}
 
 The interaction between these entities and how they are represented by relationships 
@@ -606,6 +610,7 @@ interest.
 %this is a bipartite graph them. - JJ
 % Do you mean like a figure?  - Mario
 % No, it's a kind of graph - JJ
+% I read graph them :)  but is:  graph then , now I get it. 
 
 \item {\bf Knows} The relation connects two users that know each
 other. 
@@ -618,6 +623,7 @@ other.
 % Deleting the restriction, I think is not important and can be seen
 % as a graph.
 % It's a directed, bipartite graph then - JJ
+% Ok, I will mention the types of graphs. -Mario
 
 \item {\bf Parent} Describes what phenotype is the parent of a new
   phenotype. 
