@@ -62,9 +62,7 @@
 
 \author{\IEEEauthorblockN{Michael Shell}
 \IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
-Email: http://www.michaelshell.org/contact.html}
+Georgia Institute of Technology}
 \and
 \IEEEauthorblockN{Homer Simpson}
 \IEEEauthorblockA{Twentieth Century Fox\\
@@ -73,35 +71,32 @@ Email: homer@thesimpsons.com}
 \and
 \IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
 \IEEEauthorblockA{Starfleet Academy\\
-San Francisco, California 96678--2391\\
-Telephone: (800) 555--1212\\
-Fax: (888) 555--1212}}
+San Francisco, California 96678--2391}}
 
 \maketitle
 
 
 \begin{abstract}
-Interactive evolution is the leading technique employed by 
-Evolutionary Art researchers, where users' preferences guide the search. A common
-practice is to develop Interactive Evolutionary Computation (IEC) algorithms
-as web applications in order to give users easy access to the
-application as the algorithms 
-often depend on volunteers who visit the system to interactively help with fitness assignement. 
-However, there are several drawbacks that limit user participation 
-such as human fatigue and boredom resulting from evaluating 
-a large number of phenotypes. 
-To tackle these issues, in this paper we propose the design of IEC systems using a human-centered 
-approach, with a framework consisting of a social network of 
-volunteers, interacting with a population consisting also of a network 
-of phenotypes. In this work we suggest the use of a graph model as a practical 
-and efficient tool for mapping the relationships 
-found in the system. A case study is presented as proof-of-concept, 
+Interactive evolution, where users' preferences guide the search, is
+one of the leading techniques employed by Evolutionary Art
+researchers. It is normally implemented as a web application to lower
+the access threshold since it often depends on volunteers who visit
+the system for fitness assignement. However,  several drawbacks limit
+user participation: human fatigue and boredom result from evaluating 
+a large number of phenotypes. To tackle these issues, in this paper we
+propose an IEC system designed using a human-centered approach, with a
+framework consisting of a social network of  
+volunteers interacting with a population consisting also of a network 
+of phenotypes, which also uses a graph model as a practical 
+and efficient tool for mapping the relationships between actors and
+objects in the system. A case study is presented as proof-of-concept, 
 providing both conceptual and implementation details of a graph based model 
-as it is  applied in the implementation of an IEC system. 
-As the results show, the data model was successfully applied in a gamification technique 
-developed to increase user engagement, which means that this technique can successfully be used to
-decrease user fatigue and thus increase {\em computer power}
-delivered by the set of users.
+as it is  applied in the implementation of an IEC system. Our
+experiments show that the data model can be successfully applied in a
+gamification technique developed to increase user engagement, which
+implies that this technique can successfully be used to 
+decrease user fatigue and thus increase {\em performance} of the
+interactive system.
 \end{abstract}
 
 % no keywords
@@ -555,8 +550,9 @@ other.
 
 \item {\bf Has} The relation describes an ownership relation between users and
 those collections they own. Also a collection {\tt has}  phenotypes stored
-in them.  In figure \ref{fig:has} the {\tt has} relationship 
-between certain nodes $user$, $phenotype$ and $collection$ is shown.
+in them.
+% In figure \ref{fig:has} the {\tt has} relationship 
+% between certain nodes $user$, $phenotype$ and $collection$ is shown.
 
 \item {\bf Shared} When a user takes an phenotype from a friend's collection, this interactions 
 is described by a {\tt share} relationship between the user and the
@@ -571,12 +567,12 @@ interactions is described by a {\tt save} relationship.
 \end{itemize}
 
   
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=2.5in]{img/edge_properties_has.png}
-    \caption{ The {\tt has} relationship type example and attributes.}
-    \label{fig:has}
-\end{figure}
+% \begin{figure}[!t]
+%     \centering
+%         \includegraphics[width=2.5in]{img/edge_properties_has.png}
+%     \caption{ The {\tt has} relationship type example and attributes.}
+%     \label{fig:has}
+% \end{figure}
 
 Is important to notice that this model is still a partial view of the IEC system,
 and other models can could be used in practice when implementing the
@@ -733,21 +729,23 @@ application repository used to deploy to Heroku is also listed.
 %Isn't this anonymous? - JJ
 % like in double blind? I think so, that is why no link is given in the table. - Mario 
 
-\begin{table*}
+\begin{table}
   \small
-  \caption{ URLs used for each deployment.}
+  \caption{ Deployment data. URLs were {\tt
+      evodrawings0(1,2,3).herokuapp.com}. For analytics URLs, add {\tt
+    .info}.}
   \label{tab:urls} 
   \centering
   \small
-  \begin{tabular}{l l  l l l}
+  \begin{tabular}{l l l }
     \hline\noalign{\smallskip}
-     Deployment & Heroku URL & Shortened URL & Analytics & Github Repository \\
+     Deployment &  Shortened URL &  Github Repository \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
-    B   & evodrawings01.herokuapp.com & goo.gl/jLis4Q & goo.gl/jLis4Q.info &  \\ \hline
-    G   & evodrawings02.herokuapp.com & goo.gl/jqjNy5 & goo.gl/jqjNy5.info &  \\ \hline
-    GG  & evodrawings03.herokuapp.com & goo.gl/J8TCe1 & goo.gl/J8TCe1.info &  \\ \hline
+    B   & goo.gl/jLis4Q &   \\ \hline
+    G   & goo.gl/jqjNy5 &  \\ \hline
+    GG  & goo.gl/J8TCe1 &   \\ \hline
     \end{tabular}
-\end{table*}
+\end{table}
 
 Only data for the first week of deployment was considered for the experiments, and they where conducted 
 between January and May of 2016. 
@@ -816,9 +814,7 @@ of all levels.
 \begin{figure*}[!t]
     \centering
         \includegraphics[width=5.5in]{img/comparison.png}
-    \caption{Users are ranked by
-		the number of phenotypes they rated, in the \emph{x} axis is the rank, and in the \emph{y} axis 
-		the number of phenotypes evaluated using a logarithmic scale. } % Explain a little more and label axes. The
+    \caption{Users ranked by the number of phenotypes they rated vs. the number of phenotypes evaluated using a logarithmic scale. } % Explain a little more and label axes. The
                          % three lines have the same label,
                          % "participation". Not too clear - JJ
                          % Done - Mario
