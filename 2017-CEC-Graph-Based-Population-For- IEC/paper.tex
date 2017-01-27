@@ -654,12 +654,15 @@ system. % It is also a bipartite graph, which could be converted to a
 % I don't think "collections" should be nodes too. They are simply
 % attributes for an individual - JJ
 % They are nodes, I added the reason above. - Mario
-For instance a relational database can be used for the implementation of a
-user profile and authentication module. Also a copy or cache of the population 
-could be kept in a key-value store in memory for performance reasons. 
-Nevertheless, the model can give important insights of the behavior of the 
-system.   % So what we have done here is this and that because... - JJ
-
+For instance a relational database was used for the implementation of a 
+basic user profile and authentication module. Also the active population 
+was kept in a key-value store in memory for performance reasons.  
+Nevertheless, having a multi-model implementation can give important 
+insights of the behavior of the system. This architecture was validated
+by a case study, requiring the interaction of all of the components.        
+ % So what we have done here is this and that because... - JJ
+ % Changed the paragraph. - Mario 
+% refinement
 \section{Case Study}
 \label{sec:experiments}
 
@@ -702,20 +705,25 @@ each time a user does one of these actions their score is incremented by one:
 
 Only the ``Start a session'' and ``Explore collections of other friends'' actions 
 are not reflected in the graph model since they are stored instead in the PostgreSQL relational
-database system. % because... - JJ
+database system. This is because user sessions and authentication, as well as basic
+web requests, are handled directly by the django web framework \cite{garcia2013evospace}.  
+     % because... - JJ
+     % done - Mario
 
 Two scores are used to determine the weight of a user's preference:
 \begin{itemize}
 \item Experience. This value depends on the score and is a value 
-between 0 and 100. 
+between 0 and 100. It is assumed for this case, that once a user
+reaches a 100 actions, it has enough experience on using the application.   
 % More details needed? Is done by a Fuzzy Inference System but I think
 % the description would take to much space.
 % Better a small description than nothing. If you need space, some
 % sections above are maybe a bit too verbose - JJ
+% I checked and this is not a fuzzy value. Explained any way. - Mario
 
 \item Participation. This value is simply the degree of the user node 
-in the graph. This measure also considers the number of users he knows,
-perhaps some of the users where invited to the system by him.   
+in the graph. This measure considers the number of users he knows,
+collections and phenotypes rated.    
 \end{itemize}
 
 Three versions were compared:
@@ -793,6 +801,7 @@ In table \ref{tab:urls} the URL for each deployment in the Heroku platform is sh
 along with the short URL and the analytics link. In the same table a link to the GitHub 
 application repository used to deploy to Heroku is also listed.    
 %Isn't this anonymous? - JJ
+% like in double blind? I think so, that is why no link is given in the table. - Mario 
 
 \begin{table*}
   \small
@@ -813,7 +822,6 @@ application repository used to deploy to Heroku is also listed.
 Only data for the first week of deployment was considered for the experiments, and they where conducted 
 between January and May of 2016. 
 
-% Time
 \subsection{Results}
 \label{sec:results}
 
