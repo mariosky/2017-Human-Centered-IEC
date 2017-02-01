@@ -1,17 +1,24 @@
 \section{Introduction}
+% Main Ideas:
+
+% IEAs
 % Human Based Computation
 % C-IEAs
-% Volunteers 
 % Problems
+% Volunteers 
 % Human Centered
+% C-IEA Complex Interactions
   % User -> Human
   % Social Network
   % Devices IoT
   % Activities
   % Engagement
-% C-IEA Complex Interactions
+
 % Why an HC Framework (Objectives)  
 % Presentation 
+
+
+% IEAs
 Interactive evolutionary computation (IEC) systems are, in general, methods
 of evolutionary computation whose fitness evaluations are performed by humans 
 within an interactive system \cite{eiben2015interactive}.  Human evaluation 
@@ -20,12 +27,15 @@ of optimization should fit certain human need. Usually human preference is
 needed to evaluate subjective characteristics like visual appeal or 
 attractiveness \cite{biomorphs}, but in other cases human behavior is 
 considered, for instance to optimize teamwork \cite{kosorukoff2002evolutionary}
-or creativity cite[cook]. When human interaction is responsible of other 
+or creativity cite[cook].
+% Human Based Computation
+When human interaction is responsible of other 
 operations of the evolutionary process some authors classify these IEC methods 
 as human-based evolutionary computation cite[kosorukoff] or as human-based computation cite[].
 IEC systems have demonstrated their ability for effectively
 producing art and design \cite{Bentley:1999:intro,Sims:1991,todd:1992,evoeco},
 as well as other artifacts in many other domains \cite{ie1}. 
+% C-IEAs
 In order to reach more human users, Interactive Evolutionary Algorithms (IEAs) are
 some times developed as web applications,
 who depend on volunteers who visit the system to interactively help
@@ -33,6 +43,7 @@ with the search, using both anonymous and registered users. Some systems
 employ a collaborative technique, where several users assign a quality assessment 
 to a single solution and then an aggregated fitness value is calculated 
 \cite{picbreeder,seyama2016development,wagy2014collective}.
+% Problems
 However, the necessary intervention of humans in these systems leads
 to them having several inherent problems arising from the very nature of 
 the algorithms, namely, human evaluations are slow and expensive, there is a
@@ -43,7 +54,9 @@ The number of evaluations that IEC can receive is limited by the number of users
 collaborating and the amount of interaction of each. Having a volunteer system 
 can lower the requirements of anyone participating in
 the experiment thus increasing the {\em performance}, in terms of {\em
-human brain cycles}, of the whole system. Using a volunteer based system  
+human brain cycles}, of the whole system.
+% Volunteers 
+Using a volunteer based system  
 brings other issues \cite{sarmenta2001volunteer,web:BOINC}, 
 such as the volunteer\'s lack of accountability,
 and the need to build trust between participants and application providers. 
@@ -51,34 +64,55 @@ For the provider there is also the difficulty of establishing
 the amount of time and resources
 a volunteer is willing to spend on the system, and how they decide if they
 participate or not \cite{JJ:2016}. 
-
+% Human Centered
 In order to increase volunteer participation and to tackle some of the issues mentioned above,  
-IEAs must developed following a human centered design \cite{greenhouse2012human},
+we proposed a framework following a human centered design \cite{greenhouse2012human},
 giving extensive attention to volunteers, not only because their
 explicit evaluation is essential, but also because the context of the 
 interaction affects the system as a whole. In collaborative systems, users interact 
-with each other, and are aware of the actions. Users also consider their previous evaluations
-and past experiences.
+with each other, and are aware of the actions ref[]. Users also consider their previous evaluations
+and past experiences ref[].
+%Please help with this paragraph, is evidence needed? 
+In evolutionary computation algorithms are data driven, as it is important to keep data about the 
+population of each generation, in order to generate the next or even change certain parameters
+or analyze the evolutionary process. 
+% Human Centered Importance
+The framework models the context of interaction along with the population and
+this knowledge is available to be an integral part of the evolutionary computation.
+%This could be generalized?
+For example, in a C-IEC application, fitness assignment depend on the actions of a social network of users. 
+A stream of actions is triggered when they tag, share, rate, store or even delete a phenotype. The selection of parents could
+also depend also on the previous actions, leveraging information such as the fact that they have the same tag, or are shared by
+similar users. That knowledge could also be applied in choosing which phenotypes present to a certain
+users, in order to give them those they will find more interesting or useful. 
+% IoT
+The context of interaction, can also include data retrieved from sensors and other IoT devices.
+% Engagement
+Data available from the interaction is also used to increase the performance of the system by applying 
+gamification techniques. Gamification is defined by Deterding et al. as
+``the use of game design elements in non-game contexts'' \cite{deterding2011game}.
+The gamification element employed in a case study is a rewarding mechanism  
+\cite{dubois2013understanding}, in general they consist of a reputation system with score points, 
+levels and leader boards. Points are awarded to users in response of 
+the accomplishment of certain activities that need to be encouraged. Levels depend
+on the score and certain features of the game are only available to gamers when 
+they reach a giving level.
 
-%Please help with this section, 
-Evolutionary computations algorithms are 
+Three case studies are presented as a proof of concept, providing both
+conceptual and implementation details of the framework. 
+The experiments were implemented using the EvoSpace-Interactive framework \cite{garcia2013evospace}, 
+and where employed in different contexts of interaction. 
+Additional details of each case study application is presented elsewhere refs[][][]. 
+Giving this paper the objective of presenting the underlying conceptual framework.     
 
-
-In this work we propose giving the same
-importance to users and their interactions as the population of 
-individuals have in a traditional EA, even to the extent of using this
-knowledge as an integral part of the evolutionary algorithm.
-Instead of letting the user assign fitness directly via a rating
-or selection system, fitness assignment could depend on the actions of
-a group of users, possibly connected in a social network, and depend on how 
-they tag, share, rate, or even delete the phenotype. The selection of parents could
-also depend on the previous actions, leveraging information such as the fact that  they have the same tag, or shared by
-similar users, or whether a leader of opinion liked both or if they are stored in the same collection.
-That knowledge could also be applied in choosing which phenotypes would be presented to a
-user, in order to give them those they will find more interesting or useful. 
-
-
-
+The remainder of this paper is organized as follows.
+Section \ref{sec:interactive} presents related work on the topic 
+of Interactive Evolution.
+Then, Section \ref{sec:e} presents the Model of Human Interactions in Collaborative Interactive 
+ Evolutionary Computation which 
+the main proposal of this work. An implementation using the EvoSpace-Interactive  framework is detailed in Section \ref{sec:HCF}.
+The case studies  and results are presented in Section \ref{sec:experiments}.
+Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
 \section{Related Work}
 % C-IEAS
@@ -105,7 +139,7 @@ user, in order to give them those they will find more interesting or useful.
 \subsection{EvoDraw-Kinect}
 \subsection{XYZ-Unplugged}
 
-\section{Discussion}
+
 \section{Conclusions}
 
 \begin{acks}
