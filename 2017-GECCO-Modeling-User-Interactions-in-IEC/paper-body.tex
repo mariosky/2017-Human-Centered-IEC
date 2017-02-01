@@ -233,10 +233,73 @@ in figure \ref{fig:uc_framework}:
   the new population.  
 \end{itemize}
 
-  \subsection{Evolutionary Algorithm}
-
-
 \section{EvoSpace-Interactive}
+\label{sec:evospace-i}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/UI_ed01.png}
+    \caption{User interface of an EvoSpace-Interactive application.}
+    \label{fig:web}
+\end{figure}
+
+As a case study, a IEA was developed using the 
+EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}
+A brief description of the application is presented next, focusing
+on the data elements that where ported to the graph model.
+
+\subsection{Fitness Assignment}
+\label{sec:assignment}
+The ES-I platform employs a collaborative technique,
+where several registered users assign a quality assessment to a single
+phenotypes and then an aggregated fitness value is calculated. The fitness
+assigned to each phenotypes depends on the taste of each particular user, 
+resulting in a many-to-many relationship between users and phenotypes. 
+Many systems query this user-phenotype relation to extract relevant
+knowledge about the process and the population, for instance showing the
+most popular phenotype, or the the user with more participation 
+\cite{picbreeder}.
+In order to do this, data about phenotypes 
+must be permanently stored, even
+if they are no longer in the active population. 
+
+\subsection{Collaboration}
+\label{sec:col}
+After entering the web application by using their Facebook account,
+users can collaborate with their Facebook friends, 
+sharing those phenotypes they like, or by taking phenotypes
+from their friend's collections by using the web interface depicted 
+in Figure \ref{fig:web}.
+At the top left corner a list of Facebook friends is presented
+to encourage users to interact with the system. In the central 
+\emph{ Wall } area, a phenotype sampled from the population that is
+being evolved via the evolutionary algorithm 
+is shown to the user.
+Here, the user can interact with the system in two ways.
+First, he can assign a quality assessment to the phenotype using
+a five star rating system or,
+additionally, a user can choose to add an image to one of their \emph{Collections}.
+A collection is a special folder that stores those phenotypes a user likes and wishes
+to save. After the user finishes interacting with the phenotype
+on the Wall, he can choose to retrieve a new one from the population.
+At the left hand side, the web page shows the \emph{Collections} section.
+The user can create several collections, to group and organize his favorite 
+artifacts. Moreover, users can browse the content of each collection and from
+there share images through their social network.
+When a user hovers the cursor over a phenotypes a pop-up pane shows how many users have
+liked the phenotype. The pane also includes a link to the phenotype's 
+details, the parents, genetic operators that created it, and genealogy
+information. This makes the assignment of fitness through the rating
+system a {\em social} activity, pursuing the objective of this work,
+which is to increase engagement of the users.
+
+\begin{figure*}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/framework.png}
+    \caption{IEC Human-centered framework.}
+    \label{fig:uc_framework}
+\end{figure*}
+
+
   \subsection{Interfaces}
   \subsection{Data Models}
     \subsubsection{EvoSpace}
