@@ -147,11 +147,40 @@ participation and also to minimize the amount of evaluations needed for the evol
 design. Before entering to details the main design decisions of the framework are explained next:  
 
 \begin{itemize}
-\item Context of use matters.
-\item Users are not alone.
-\item Interaction is a stream of actions.
-\item Users are volunteers.
-\item Solutions could be: real objects, processes, digital artifacts,   
+\item {\bf Users are Human} 
+  The user will have certain goals and has the intention to perform certain tasks.
+  The framework follows the approach of human centered computing \cite{sebe2010human},
+  in which the context, environment, interfaces, preferences, accessibility, human relations, cognitive
+  limitations, culture, creativity and other human aspects are an integral part of the system. 
+
+\item {\bf Users are not alone}
+  Relationship between users in an interactive evolutionary algorithm can also be modeled 
+  as a social network, with well established semantics, algorithms and metrics \cite{ahuja1993network}.
+  A graph model could enable researchers to find other ways of identifying leaders of 
+  opinion or measuring the similarity between user's preferences. 
+  These measures can then be used by recommender algorithms selecting 
+  phenotypes according users' preferences. 
+
+\item {\bf Context of use matters}
+ The product will  be used within a certain range of technical, physical and social or
+ organizational environments \cite{maguire2001context} that may affect its use.
+ We can refer to these environments as the \textit{context of use} (see
+ Figure \ref{fig:logicalmodel}), this concept has been formally defined
+ by ISO standard 9241-11 \cite{international1998iso} as \textit{``users,
+ tasks and equipment (hardware, software and materials), and the
+ physical and social environments in which a product is used"}. \\ 
+ In daily life we often find products that are difficult to use or
+ understand. This type of difficulties are \textit{usability problems}
+ that arise from  diverse issues that have not been addressed in the
+ design of the product's \textit{user-artifact interaction}.
+
+
+\item {\bf Interaction is a stream of actions}
+
+\item {\bf Users are volunteers}
+
+\item {\bf Solutions could be: real objects, processes, digital artifacts}  
+
 \end{itemize}
 
 
