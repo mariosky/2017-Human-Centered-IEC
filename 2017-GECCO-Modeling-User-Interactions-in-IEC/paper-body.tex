@@ -19,13 +19,15 @@
 
 
 % IEAs
-Interactive evolutionary computation (IEC) systems are, in general, methods
-of evolutionary computation whose fitness evaluations are performed by humans 
-within an interactive system \cite{eiben2015interactive}.  Human evaluation 
-is needed because the fitness function is not known and the result
-of optimization should fit certain human need. Usually human preference is
-needed to evaluate subjective characteristics like visual appeal or 
-attractiveness \cite{biomorphs}, but in other cases human behavior is 
+Interactive evolutionary computation (IEC) systems are, in general, evolutionary methods
+whose fitness evaluations are performed by humans through an
+interactive system \cite{eiben2015interactive}. They are usually
+applied in problems where the fitness function is not known  or simply
+does not exist, and the result
+of optimization should fit certain human and possibly aesthetic
+need. That is why their use case includes the evolution of objects
+with subjective characteristics such visual appeal or 
+attractiveness \cite{biomorphs} as well as others where human behavior is 
 considered, for instance to optimize teamwork \cite{kosorukoff2002evolutionary}
 or creativity cite[cook].
 % Human Based Computation
@@ -56,8 +58,7 @@ can lower the requirements of anyone participating in
 the experiment thus increasing the {\em performance}, in terms of {\em
 human brain cycles}, of the whole system.
 % Volunteers 
-Using a volunteer based system  
-brings other issues \cite{sarmenta2001volunteer,web:BOINC}, 
+Using a volunteer based system raises other issues \cite{sarmenta2001volunteer,web:BOINC}, 
 such as the volunteer\'s lack of accountability,
 and the need to build trust between participants and application providers. 
 For the provider there is also the difficulty of establishing 
@@ -72,15 +73,18 @@ explicit evaluation is essential, but also because the context of the
 interaction affects the system as a whole. In collaborative systems, users interact 
 with each other, and are aware of the actions ref[]. Users also consider their previous evaluations
 and past experiences ref[].
-%Please help with this paragraph, is evidence needed? 
-In evolutionary computation algorithms are data driven, as it is important to keep data about the 
+%Please help with this paragraph, is evidence needed?
+% It's the tuning of the algorithm which is data driven, not the
+% algorithm itself, right? - JJ
+In evolutionary computation algorithms are data driven since it is important to keep data about the 
 population of each generation, in order to generate the next or even change certain parameters
 or analyze the evolutionary process. 
 % Human Centered Importance
 The framework models the context of interaction along with the population and
 this knowledge is available to be an integral part of the evolutionary computation.
 %This could be generalized?
-For example, in a C-IEC application, fitness assignment depend on the actions of a social network of users. 
+For example, in a C-IEC application, fitness assignment depend on the
+actions of a social network of users. 
 A stream of actions is triggered when they tag, share, rate, store or even delete a phenotype. The selection of parents could
 also depend also on the previous actions, leveraging information such as the fact that they have the same tag, or are shared by
 similar users. That knowledge could also be applied in choosing which phenotypes present to a certain
@@ -105,7 +109,7 @@ and where employed in different contexts of interaction.
 Additional details of each case study application is presented elsewhere refs[][][]. 
 Giving this paper the objective of presenting the underlying conceptual framework.     
 
-The remainder of this paper is organized as follows.
+The rest of this paper is organized as follows.
 Section \ref{sec:interactive} presents related work on the topic 
 of Interactive Evolution.
 Then, Section \ref{sec:e} presents the Model of Human Interactions in Collaborative Interactive 
@@ -143,16 +147,16 @@ Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 \section{Conclusions}
 
 \begin{acks}
-  The authors would like to thank Dr. Yuhua Li for providing the
-  matlab code of  the \textit{BEPS} method. 
+  % The authors would like to thank Dr. Yuhua Li for providing the
+  % matlab code of  the \textit{BEPS} method. 
 
-  The authors would also like to thank the anonymous referees for
-  their valuable comments and helpful suggestions. The work is
-  supported by the \grantsponsor{GS501100001809}{National Natural
-    Science Foundation of
-    China}{http://dx.doi.org/10.13039/501100001809} under Grant
-  No.:~\grantnum{GS501100001809}{61273304}
-  and~\grantnum[http://www.nnsf.cn/youngscientsts]{GS501100001809}{Young
-    Scientsts' Support Program}.
+  % The authors would also like to thank the anonymous referees for
+  % their valuable comments and helpful suggestions. The work is
+  % supported by the \grantsponsor{GS501100001809}{National Natural
+  %   Science Foundation of
+  %   China}{http://dx.doi.org/10.13039/501100001809} under Grant
+  % No.:~\grantnum{GS501100001809}{61273304}
+  % and~\grantnum[http://www.nnsf.cn/youngscientsts]{GS501100001809}{Young
+  %   Scientsts' Support Program}.
 
 \end{acks}
