@@ -147,14 +147,21 @@ participation and also to minimize the amount of evaluations needed for the evol
 design. Before entering to details the main design decisions of the framework are explained next:  
 
 \begin{itemize}
-\item {\bf Users are Human} 
-  The user will have certain goals and has the intention to perform certain tasks.
+\item {\bf Users are human} 
   The framework follows the approach of human centered computing \cite{sebe2010human},
   in which the context, environment, interfaces, preferences, accessibility, human relations, cognitive
-  limitations, culture, creativity and other human aspects are an integral part of the system. 
+  limitations, culture, creativity and other human aspects are an integral part of the system.
+  Humans are the computing resorces of the system, having unique characteristics as those identified by 
+  Sun \& Dance \cite{Sun2013}  ``(1) humans can solve computer hard problems; (2) humans are very good at exception handling, (3) humans have creativity, (4) humans have cognitive load limitation, (5) humans are vulnerable to 
+  psychological manipulation, (6) humans are prone to errors, especially for reflective tasks.''
+
+
+\item {\bf Users are volunteers} Users donate their computing resources, so they are unaccountable, 
+  some times they try to game the system. Providers must actively promote and design the interactive
+  system to engage volunteers \cite{oh2015clicking}. 
 
 \item {\bf Users are not alone}
-  Relationship between users in an interactive evolutionary algorithm can also be modeled 
+  Relationship between users in an interactive evolutionary algorithm can be modeled
   as a social network, with well established semantics, algorithms and metrics \cite{ahuja1993network}.
   A graph model could enable researchers to find other ways of identifying leaders of 
   opinion or measuring the similarity between user's preferences. 
@@ -162,31 +169,72 @@ design. Before entering to details the main design decisions of the framework ar
   phenotypes according users' preferences. 
 
 \item {\bf Context of use matters}
- The product will  be used within a certain range of technical, physical and social or
- organizational environments \cite{maguire2001context} that may affect its use.
- We can refer to these environments as the \textit{context of use} (see
- Figure \ref{fig:logicalmodel}), this concept has been formally defined
- by ISO standard 9241-11 \cite{international1998iso} as \textit{``users,
- tasks and equipment (hardware, software and materials), and the
- physical and social environments in which a product is used"}. \\ 
- In daily life we often find products that are difficult to use or
- understand. This type of difficulties are \textit{usability problems}
- that arise from  diverse issues that have not been addressed in the
- design of the product's \textit{user-artifact interaction}.
-
+  \textit{Context} In computer science Fischer \cite{fischer2012context}
+  defines context as \textit{``the interaction between humans and
+  computers in socio-technical systems that takes place in a certain
+  context referring to the physical and social situation in which
+  computational devices and environments are embedded"}. 
+  Fischer also identifies the important aspects to consider when the context is used: how it is
+  the contextual data obtained, how the context is represented and what
+  goals and purposes the context has when is used in a particular
+  application.   An IEC system will  be used within a certain range of technical, physical and social or
+  organizational environments \cite{maguire2001context} that may affect its use.
+  The concept has been formally defined
+  by ISO standard 9241-11 \cite{international1998iso} as \textit{``users,
+  tasks and equipment (hardware, software and materials), and the
+  physical and social environments in which a product is used"}.  
 
 \item {\bf Interaction is a stream of actions}
-
-\item {\bf Users are volunteers}
-
-\item {\bf Solutions could be: real objects, processes, digital artifacts}  
-
+  Real time processing of users' actions could be needed for certain applications when data is 
+  captured by sensors, or directly captured as user input.
+  Graph based models are currently used in social networks to keep track  
+  of user interactions with media objects, places, and other users. Users of 
+  social networks (for instance the Facebook Graph) are accustomed to express these 
+  complex relationships in sentences such as: ``John and Ann eating breakfast at Tony's''. 
+  Other example is the W3C Activity Streams 2.0 specification used for representing activities 
+  common in social web applications \cite{json:streams}. An important component of the 
+  framework is the stream of user-activities.
 \end{itemize}
 
 
-  \subsection{Real World}
-  \subsection{Data Model}
+The human centered framework consists of three high level components depicted
+in figure \ref{fig:uc_framework}:
+
+\begin{itemize}
+  \item {\bf Interactive Evolutionary Computational system} 
+  This is the real world system that we are going to represent in the model, 
+  it consist of human users and their interactions with one or more phenotypes
+  from
+  the population. There are many ways in which humans could interact 
+  with phenotypes, this could be through a mobile device, a user interface 
+  or by interacting with real world objects generated as part of the algorithm 
+  \cite{de2014artists,de2013unplugging}. 
+  There is also the possibility that fitness or even part of the search 
+  to be done by devices lent by the human \cite{DBLP:conf/gecco/MereloCGCRV16}.
+  The information gathered through the interaction is the primary concern
+  as it will guide the search. 
+
+  \item {\bf IEC Data Model}
+  A data model is used to describe the IEC system prior to a physical 
+  implementation.  Depending on the domain several techniques can be used.
+  Parts of the system could be better described by an Entity relationship 
+  modeling to be used in a relational database or a class digram for a 
+  key-value store. 
+
+  A graph is proposed for modeling the social network of users 
+  and their interaction with the population. When implemented a graph database 
+  will be the back-end of the system. This  backend will then be
+  used by the EA and the user interface, in a Model-View-Controller architecture. 
+
+  \item {\bf Evolutionary Algorithm} 
+  The EA algorithm queries the graph model, and then updates those nodes that 
+  are part of the population. The EA could also be done with the help of
+  humans, for instance in the XY project \cite{de2013unplugging} artists physically created
+  the new population.  
+\end{itemize}
+
   \subsection{Evolutionary Algorithm}
+
 
 \section{EvoSpace-Interactive}
   \subsection{Interfaces}
