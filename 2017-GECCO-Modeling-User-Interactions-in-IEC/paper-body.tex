@@ -112,7 +112,7 @@ they reach a giving level.
 
 Three case studies are presented as a proof of concept, providing both
 conceptual and implementation details of the framework. 
-The experiments were implemented using the EvoSpace-Interactive framework \cite{garcia2013evospace}, 
+The experiments were implemented using the EvoSpace-Interactive (ES-I) framework \cite{garcia2013evospace}, 
 and where employed in different contexts of interaction. 
 Additional details of each case study application is presented elsewhere refs[][][]. 
 Giving this paper the objective of presenting the underlying conceptual framework.     
@@ -122,7 +122,7 @@ Section \ref{sec:related} presents related work on the topic
 of Interactive Evolution.
 Then, Section \ref{sec:framework} presents the framework of Human Interactions in Collaborative Interactive 
  Evolutionary Computation which 
-the main proposal of this work. An implementation using the EvoSpace-Interactive  framework is detailed in Section \ref{sec:implementation}.
+the main proposal of this work. An implementation using the ES-I framework is detailed in Section \ref{sec:implementation}.
 The case studies  and results are presented in Section \ref{sec:experiments}.
 Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
@@ -140,7 +140,7 @@ Given the fatigue fitness evaluations produce in human users when applying IEAs,
     \centering
         \includegraphics[width=4.5in]{img/framework.eps}
     \caption{IEC Human-centered framework.}
-    \label{fig:uc_framework}
+    \label{fig:hc_framework}
 \end{figure*}
 
 \section{Human-Centered IEC Framework}
@@ -151,14 +151,16 @@ The general goal of this line of research is to develop a human-centered \cite{g
 software framework for interactive evolutionary computation (IEC). 
 A framework is defined as a reusable architectural design together
 with an implementation \cite{campbell1991choices}, in this case 
-providing generalized components to developers of IEC systems. In the
-description below %below? If that's te chase, we _will_ - JJ
+providing generalized components to developers of IEC systems. 
+% Just by saying is Human Centered this is not needed, it was from the User-Centered days - Mario
+%In the
+%description below %below? If that's te chase, we _will_ - JJ
 % Not only in the description, more like a paradigm shitf. But ok for now - Mario
- we will deliberately use the more general 
-term Human instead of User, because humans are not always playing the role of users in software engineering sense, they
-could just be interacting naturally with their environment and
-unwittingly and at the same time they are implicitly
-evaluating a possible solution. 
+% we will deliberately use the more general 
+%term Human instead of User, because humans are not always playing the role of users in software engineering sense, they
+%could just be interacting naturally with their environment and
+%unwittingly and at the same time they are implicitly
+%evaluating a possible solution.  
 
 %Which framework? Are we talking about a particular framework or that
 %is the general rule for frameworks? - JJ
@@ -167,12 +169,13 @@ The proposed framework includes components that can be refined to increase
 participation and also to minimize the amount of evaluations needed for the evolutionary 
 process in a given IEC application. Software frameworks often have a vison or a way 
 of thinking \cite{carneiro2010introducing} guiding their
-design. Before diving into details the main design decisions of the
+design. Before diving into details the main design considerations of the
 framework are explained next:  % constraints? Rules? You don't decide
                                % that users are humans, they simply
                                % are - JJ 
                                % Ok, is more like we want to acknowledge that, 
-                               % To Do - Mario
+                               % considerations? - Mario
+
 
 \begin{itemize}
 \item {\bf Users are human} 
@@ -185,10 +188,11 @@ framework are explained next:  % constraints? Rules? You don't decide
 
 
 \item {\bf Users are volunteers} Users donate their computing resources, so they are unaccountable, 
-  some times they try to game the system. Providers must actively promote and design the interactive
+  some times they try to game the system. Project owners must actively promote and design the interactive
   system to engage volunteers \cite{oh2015clicking}. % Define
                                 % providers somewhere. Experiment
                                 % owners? - JJ
+                                % Using project, like BOINC  https://boinc.berkeley.edu/trac/wiki/VolunteerComputing - M
 
 \item {\bf Users are not alone}
   Relationship between users in an interactive evolutionary algorithm can be modeled
@@ -226,8 +230,11 @@ framework are explained next:  % constraints? Rules? You don't decide
 
 % Say something about how this is important for the framework and how
 % you incorporate it - JJ
-The human centered IEC architecture consists of three high level components depicted
-in figure \ref{fig:uc_framework}:
+% Done - Mario
+The above considerations have guided the design of the framework, and througout they have been
+treated as application constraints. In order to satisfy theses requirements the
+human centered IEC architecture consists of three high level components depicted
+in figure \ref{fig:hc_framework}:
 
 \begin{itemize}
   \item {\bf Interactive Evolutionary Computational system} 
@@ -319,27 +326,31 @@ Implementation details are presented in \cite{garcia2013evospace}.
 
 \subsection{EvoDraw}
 As a case study, a IEA was developed using the 
-EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}.
+ES-I platform \cite{garcia2013evospace}.
 A brief description of the application is presented next, focusing
 on the data elements that where ported to the graph model.
 
 \subsection{Fitness Assignment}
 \label{sec:assignment}
 The ES-I % You should use always the same acronym, not start using it
-         % here - JJ
+         % here - JJ 
+         % Done -Mario
  platform employs a collaborative methodology for performing fitness
  assignment. Several registered users assign a quality assessment to a single
 phenotype and then an aggregated fitness value is calculated,
-depending on the tastes of each particular user,  % how do you define
+depending on the rating (from 1 to 5 stars) of each particular user,  % how do you define
                                 % "taste"? - JJ
+                                % Using actions
 resulting in a many-to-many relationship between users and
-phenotypes. %scored by them? - JJ 
-Many systems % formerly published methods? Other researchers? - JJ
+phenotypes. 
+ %scored by them? - JJ 
+Other components or users of the systems can % formerly published methods? Other researchers? - JJ
+% Corrected -Mario
 query this user-phenotype relation to extract relevant
 knowledge about the process and the population, for instance showing the
 most popular phenotype, or the the user with more participation 
 \cite{picbreeder}.
-In order to do this, data about phenotypes % metadata better? - JJ
+In order to do this, metadata about phenotypes % metadata better? - JJ Yes -Mario
 must be permanently stored, even
 if they are no longer in the active population. 
 
@@ -351,7 +362,8 @@ either because they do not want to give that information or simply because
 they do not use that particular social network. Even as we might lose
 some users that way, the additional information we obtain for scoring
 phenotypes more than compensates for that. % Added this, check it
-                                % out. 
+                                % out.  
+                                % Ok! - Mario (and knowing how much more is future work)
 After entering the web application by using their Facebook account,
 users can collaborate with their Facebook friends, 
 sharing those phenotypes they like, or by taking phenotypes
@@ -363,10 +375,11 @@ to encourage users to interact with the system. In the central
 being evolved via the evolutionary algorithm 
 is shown to the user.
 Here, the user can interact with the system in two ways.
-First, he can assign a quality assessment % Why don't you use other
+First, he can assign a rating % Why don't you use other
                                 % thing instead of quality? We are not
                                 % talking about quality, but about
                                 % tastes or similar - JJ
+                                % is rating Ok? 
  to the phenotype using
 a five star rating system or,
 additionally, a user can choose to add an image to one of their \emph{Collections}.
