@@ -284,21 +284,33 @@ on the data elements that where ported to the graph model.
 
 \subsection{Fitness Assignment}
 \label{sec:assignment}
-The ES-I platform employs a collaborative technique,
-where several registered users assign a quality assessment to a single
-phenotypes and then an aggregated fitness value is calculated. The fitness
-assigned to each phenotypes depends on the taste of each particular user, 
-resulting in a many-to-many relationship between users and phenotypes. 
-Many systems query this user-phenotype relation to extract relevant
+The ES-I % You should use always the same acronym, not start using it
+         % here - JJ
+ platform employs a collaborative methodology for performing fitness
+ assignment. Several registered users assign a quality assessment to a single
+phenotype and then an aggregated fitness value is calculated,
+depending on the tastes of each particular user,  % how do you define
+                                % "taste"? - JJ
+resulting in a many-to-many relationship between users and
+phenotypes. %scored by them? - JJ 
+Many systems % formerly published methods? Other researchers? - JJ
+query this user-phenotype relation to extract relevant
 knowledge about the process and the population, for instance showing the
 most popular phenotype, or the the user with more participation 
 \cite{picbreeder}.
-In order to do this, data about phenotypes 
+In order to do this, data about phenotypes % metadata better? - JJ
 must be permanently stored, even
 if they are no longer in the active population. 
 
 \subsection{Collaboration}
 \label{sec:col}
+Users need to authenticate themselves to the system using their
+Facebook account. In that sense, some users might not be interested
+either because they do not want to give that that or simply because
+they do not use that particular social network. Even as we might lose
+some users that way, the additional information we obtain for scoring
+phenotypes more than compensates for that. % Added this, check it
+                                % out. 
 After entering the web application by using their Facebook account,
 users can collaborate with their Facebook friends, 
 sharing those phenotypes they like, or by taking phenotypes
@@ -310,13 +322,17 @@ to encourage users to interact with the system. In the central
 being evolved via the evolutionary algorithm 
 is shown to the user.
 Here, the user can interact with the system in two ways.
-First, he can assign a quality assessment to the phenotype using
+First, he can assign a quality assessment % Why don't you use other
+                                % thing instead of quality? We are not
+                                % talking about quality, but about
+                                % tastes or similar - JJ
+ to the phenotype using
 a five star rating system or,
 additionally, a user can choose to add an image to one of their \emph{Collections}.
 A collection is a special folder that stores those phenotypes a user likes and wishes
 to save. After the user finishes interacting with the phenotype
 on the Wall, he can choose to retrieve a new one from the population.
-At the left hand side, the web page shows the \emph{Collections} section.
+At the left hand side of \ref{fig:web}, the web page shows the \emph{Collections} section.
 The user can create several collections, to group and organize his favorite 
 artifacts. Moreover, users can browse the content of each collection and from
 there share images through their social network.
