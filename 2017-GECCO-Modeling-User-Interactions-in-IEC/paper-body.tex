@@ -250,25 +250,54 @@ in figure \ref{fig:uc_framework}:
 
 \section{Data Model Implementation}
 The core of the framework is the data model because both the IEC system and the EA will 
-depend on the application. In this section implementation details of the Data Model are presented. 
-  \subsection{EvoSpace}
-  \subsection{Graph}
-  \subsection{PostgreSQL}
+depend on the application. In this section implementation details of the Data Model are presented.
+Three database models are employed to store different elements of the system: 
 
-  \subsection{Interfaces}
+  \subsection{EvoSpace-Redis}
+EvoSpace is a population store \cite{Evospace}  for the development of 
+evolutionary algorithms that are intended to run on a cloud computing model. 
+The population is decoupled from any particular evolutionary algorithm. 
+Candidate solutions are stored as of objects in a population, and they can be withdrawn, 
+processed and replaced using a specified set of methods \cite{GValdez2015}. The population
+is stored in-memory, using the Redis key-value database. Redis was chosen over a relational 
+database management system, because it provides a hash based implementation of sets and 
+queues which are natural data structures for the EvoSpace model. Basicaly a sample of 
+candidate solutions are retieved from the server, evaluated, and then sent back. 
+The same operations are used to Evolve the population. In EvoSpace individuals replaced 
+in the population are stored indefinitly, to permit users to store permalinks to them.
+Implementation details are presented in \cite{garcia2013evospace}.
+
+\subsection{Graph}
+  In order to deal with large datasets of connected data found in these systems,
+  graph databases \cite{angles2012comparison} have been proposed as an alternative to relational databases 
+  which have performance limitations when dealing with highly connected data \cite{holzschuher2013performance}.
+  A graph is proposed for modeling the social network of users, their interaction with 
+  candidate solutions, and the relationships between them in the population.
+  The graph database system used in the implementation is Neo4J as it is
+  a scalable solution \cite{miller2013graph,holzschuher2013performance}, and well supported and documented
+  in PaaS infrastructures like Heroku. The Cypher query language it used to retrieve views from the graph.
+  An exaplmple query is shown in figure \ref{fig:cypher} where the relations between users and solutions 
+  are presented.
+  
+  \begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/gui-neo.png}
+    \caption{Example query in Cypher.}
+    \label{fig:cypher}
+  \end{figure}
+
+\subsection{PostgreSQL}
+  The PostgreSQL relational database system, is also employed because user sessions and authentication,
+  as well as dynamic web pages are handled directly by the Django web framework \cite{garcia2013evospace}.
+
+\subsection{Interfaces}
+%They are Sensor and Web, 
     
-  \subsection{Evolution}
-
-
-
-\section{Data Model Implementation}
-
-
-
-
+\subsection{Evolution}
 
 \section{Case Studies}
 \label{sec:evospace-i}
+
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/interface.png}
@@ -343,7 +372,33 @@ information. This makes the assignment of fitness through the rating
 system a {\em social} activity, pursuing the objective of this work,
 which is to increase engagement of the users.
 \subsubsection{Graph Model} 
-\subsubsection{Human Interaction Model}
+
+\subsubsection{Gammification}
+
+\subsubsection{Setup}
+\subsubsection{Results} 
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/weibull_1.png}
+    \caption{Experiment 1. Weibull Fit}
+    \label{fig:}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/weibull_2.png}
+    \caption{Experiment 2. Weibull Fit}
+    \label{fig:}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/weibull_3.png}
+    \caption{Experiment 3. Weibull Fit}
+    \label{fig:}
+\end{figure}
+
+
+
 
 \subsection{EvoDraw-Kinect}
 \subsection{XYZ-Unplugged}
