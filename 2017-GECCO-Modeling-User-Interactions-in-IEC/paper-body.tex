@@ -151,10 +151,18 @@ providing generalized components to developers of IEC systems. In the
 description %below? If that's te chase, we _will_ - JJ
  we deliberately use the more general 
 term Human instead of User, because humans are not always playing the role of users in software engineering sense, they
-could just be interacting naturally with their environment and with out knowing they are implicitly
-evaluating a possible solution. The framework includes components that can be refined to increase
+could just be interacting naturally with their environment and
+unwittingly and at the same time they are implicitly
+evaluating a possible solution. 
+
+%Which framework? Are we talking about a particular framework or that
+%is the general rule for frameworks? - JJ
+The framework includes components that can be refined to increase
 participation and also to minimize the amount of evaluations needed for the evolutionary process in a given IEC application. Software frameworks often have a vison or a way of thinking \cite{carneiro2010introducing} guiding their
-design. Before entering to details the main design decisions of the framework are explained next:  
+design. Before diving into details the main design decisions of the
+framework are explained next:  % constraints? Rules? You don't decide
+                               % that users are humans, they simply
+                               % are - JJ 
 
 \begin{itemize}
 \item {\bf Users are human} 
@@ -168,7 +176,9 @@ design. Before entering to details the main design decisions of the framework ar
 
 \item {\bf Users are volunteers} Users donate their computing resources, so they are unaccountable, 
   some times they try to game the system. Providers must actively promote and design the interactive
-  system to engage volunteers \cite{oh2015clicking}. 
+  system to engage volunteers \cite{oh2015clicking}. % Define
+                                % providers somewhere. Experiment
+                                % owners? - JJ
 
 \item {\bf Users are not alone}
   Relationship between users in an interactive evolutionary algorithm can be modeled
@@ -183,7 +193,7 @@ design. Before entering to details the main design decisions of the framework ar
   defines context as \textit{``the interaction between humans and
   computers in socio-technical systems that takes place in a certain
   context referring to the physical and social situation in which
-  computational devices and environments are embedded"}. 
+  computational devices and environments are embedded''}. 
   Fischer also identifies the important aspects to consider when the context is used: how it is
   the contextual data obtained, how the context is represented and what
   goals and purposes the context has when is used in a particular
@@ -204,6 +214,8 @@ design. Before entering to details the main design decisions of the framework ar
   common in social web applications \cite{json:streams}. 
 \end{itemize}
 
+% Say something about how this is important for the framework and how
+% you incorporate it - JJ
 The human centered IEC architecture consists of three high level components depicted
 in figure \ref{fig:uc_framework}:
 
