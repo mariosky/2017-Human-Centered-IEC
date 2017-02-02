@@ -317,8 +317,10 @@ Implementation details are presented in \cite{garcia2013evospace}.
   \end{figure}
 
 \subsection{PostgreSQL}
-  The PostgreSQL relational database system, is also employed because user sessions and authentication,
-  as well as dynamic web pages are handled directly by the Django web framework \cite{garcia2013evospace}.
+  The PostgreSQL relational database system is also employed because user sessions and authentication,
+  as well as dynamic web pages are handled directly by the Django web
+  framework \cite{garcia2013evospace}. % these implementations details
+                                % could go if needed. 
 
 \subsection{Interfaces}
 %They are Sensor and Web, 
@@ -343,25 +345,23 @@ on the data elements that where ported to the graph model.
 
 \subsection{Fitness Assignment}
 \label{sec:assignment}
-The ES-I % You should use always the same acronym, not start using it
-         % here - JJ 
-         % Done -Mario
- platform employs a collaborative methodology for performing fitness
+% changed to this, because I understand it does not always work that
+% way - JJ
+The ES-I platform has been programmed to employ a collaborative methodology for performing fitness
  assignment. Several registered users assign a quality assessment to a single
 phenotype and then an aggregated fitness value is calculated,
-depending on the rating (from 1 to 5 stars) of each particular user,  % how do you define
+depending on the rating (from 1 to 5 stars) by each particular user,  % how do you define
                                 % "taste"? - JJ
                                 % Using actions
 resulting in a many-to-many relationship between users and
 phenotypes. 
  %scored by them? - JJ 
-Other components or users of the systems can % formerly published methods? Other researchers? - JJ
-% Corrected -Mario
+Other components or users of the systems can 
 query this user-phenotype relation to extract relevant
 knowledge about the process and the population, for instance showing the
 most popular phenotype, or the the user with more participation 
 \cite{picbreeder}.
-In order to do this, metadata about phenotypes % metadata better? - JJ Yes -Mario
+In order to do this, metadata about phenotypes 
 must be permanently stored, even
 if they are no longer in the active population. 
 
@@ -390,7 +390,8 @@ First, he can assign a rating % Why don't you use other
                                 % thing instead of quality? We are not
                                 % talking about quality, but about
                                 % tastes or similar - JJ
-                                % is rating Ok? 
+                                % is rating Ok?
+% Rating is probably OK. 
  to the phenotype using
 a five star rating system or,
 additionally, a user can choose to add an image to one of their \emph{Collections}.
@@ -454,6 +455,10 @@ which is to increase engagement of the users.
   %   China}{http://dx.doi.org/10.13039/501100001809} under Grant
   % No.:~\grantnum{GS501100001809}{61273304}
   % and~\grantnum[http://www.nnsf.cn/youngscientsts]{GS501100001809}{Young
-  %   Scientsts' Support Program}.
+  % Scientsts' Support Program}.
+  Reserved\\
+  Space\\
+  for\\
+  Acks
 
 \end{acks}
