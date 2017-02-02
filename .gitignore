@@ -206,3 +206,5 @@ TSWLatexianTemp*
 .DS_Store
 
 auto/
+# Don't know why this is generated
+comment.cut
