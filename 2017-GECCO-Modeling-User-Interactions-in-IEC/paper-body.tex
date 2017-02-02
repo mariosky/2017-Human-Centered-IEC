@@ -80,7 +80,9 @@ and past experiences ref[].
 %Please help with this paragraph, is evidence needed?
 % It's the tuning of the algorithm which is data driven, not the
 % algorithm itself, right? - JJ
+%  Tuning yes - Mario
 % And evidence for what? - jj
+%  That most EAs use only population data - Mario
 In evolutionary computation algorithms are data driven since it is important to keep data about the 
 population of each generation, in order to generate the next or even change certain parameters
 or analyze the evolutionary process. 
@@ -90,8 +92,9 @@ this knowledge is available to be an integral part of the evolutionary computati
 %This could be generalized?
 For example, in a C-IEC application, fitness assignment depend on the
 actions of a social network of users. 
-A stream of actions is triggered when they tag, share, rate, store or even delete a phenotype. The selection of parents could
-also depend also on the previous actions, leveraging information such as the fact that they have the same tag, or are shared by
+A stream of actions is triggered when they tag, share, rate, store or even delete a phenotype. 
+The selection of parents could also depend also on the previous actions, leveraging information 
+such as the fact that they have the same tag, or are shared by
 similar users. That knowledge could also be applied in choosing which phenotypes present to a certain
 users, in order to give them those they will find more interesting or useful. 
 % IoT
@@ -115,41 +118,304 @@ Additional details of each case study application is presented elsewhere refs[][
 Giving this paper the objective of presenting the underlying conceptual framework.     
 
 The rest of this paper is organized as follows.
-Section \ref{sec:interactive} presents related work on the topic 
+Section \ref{sec:related} presents related work on the topic 
 of Interactive Evolution.
-Then, Section \ref{sec:e} presents the Model of Human Interactions in Collaborative Interactive 
+Then, Section \ref{sec:framework} presents the framework of Human Interactions in Collaborative Interactive 
  Evolutionary Computation which 
-the main proposal of this work. An implementation using the EvoSpace-Interactive  framework is detailed in Section \ref{sec:HCF}.
+the main proposal of this work. An implementation using the EvoSpace-Interactive  framework is detailed in Section \ref{sec:implementation}.
 The case studies  and results are presented in Section \ref{sec:experiments}.
 Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
 
 \section{Related Work}
+\label{sec:related}
 % C-IEAS
 % Volunteer Based
 % HBC
 % Engagement Techniques
 % Models
 
-\section{HC  IEC Framework}
-  \subsection{Real World}
-  \subsection{Data Model}
-  \subsection{Evolutionary Algorithm}
+\begin{figure*}[!t]
+    \centering
+        \includegraphics[width=4.5in]{img/framework.eps}
+    \caption{IEC Human-centered framework.}
+    \label{fig:uc_framework}
+\end{figure*}
 
-\section{EvoSpace-Interactive}
-  \subsection{Interfaces}
-  \subsection{Data Models}
-    \subsubsection{EvoSpace}
-    \subsubsection{Graph}
-    \subsubsection{PostgreSQL}
-  \subsection{Evolution}
+\section{Human-Centered IEC Framework}
+\label{sec:framework}
+% Comment: 
+% Maybe in this case we should use the term software framework or architecture. 
+The general goal of this line of research is to develop a human-centered \cite{gasson2003human} 
+software framework for interactive evolutionary computation (IEC). 
+A framework is defined as a reusable architectural design together
+with an implementation \cite{campbell1991choices}, in this case 
+providing generalized components to developers of IEC systems. In the
+description below %below? If that's te chase, we _will_ - JJ
+% Not only in the description, more like a paradigm shitf. But ok for now - Mario
+ we will deliberately use the more general 
+term Human instead of User, because humans are not always playing the role of users in software engineering sense, they
+could just be interacting naturally with their environment and
+unwittingly and at the same time they are implicitly
+evaluating a possible solution. 
+
+%Which framework? Are we talking about a particular framework or that
+%is the general rule for frameworks? - JJ
+%Is general bu I was talking about this one - Mario
+The proposed framework includes components that can be refined to increase
+participation and also to minimize the amount of evaluations needed for the evolutionary 
+process in a given IEC application. Software frameworks often have a vison or a way 
+of thinking \cite{carneiro2010introducing} guiding their
+design. Before diving into details the main design decisions of the
+framework are explained next:  % constraints? Rules? You don't decide
+                               % that users are humans, they simply
+                               % are - JJ 
+                               % Ok, is more like we want to acknowledge that, 
+                               % To Do - Mario
+
+\begin{itemize}
+\item {\bf Users are human} 
+  The framework follows the approach of human centered computing \cite{sebe2010human},
+  in which the context, environment, interfaces, preferences, accessibility, human relations, cognitive
+  limitations, culture, creativity and other human aspects are an integral part of the system.
+  Humans are the computing resorces of the system, having unique characteristics as those identified by 
+  Sun \& Dance \cite{Sun2013}  ``(1) humans can solve computer hard problems; (2) humans are very good at exception handling, (3) humans have creativity, (4) humans have cognitive load limitation, (5) humans are vulnerable to 
+  psychological manipulation, (6) humans are prone to errors, especially for reflective tasks.''
+
+
+\item {\bf Users are volunteers} Users donate their computing resources, so they are unaccountable, 
+  some times they try to game the system. Providers must actively promote and design the interactive
+  system to engage volunteers \cite{oh2015clicking}. % Define
+                                % providers somewhere. Experiment
+                                % owners? - JJ
+
+\item {\bf Users are not alone}
+  Relationship between users in an interactive evolutionary algorithm can be modeled
+  as a social network, with well established semantics, algorithms and metrics \cite{ahuja1993network}.
+  A graph model could enable researchers to find other ways of identifying leaders of 
+  opinion or measuring the similarity between user's preferences. 
+  These measures can then be used by recommender algorithms selecting 
+  phenotypes according users' preferences. 
+
+\item {\bf Context of use matters}
+  \textit{Context} In computer science Fischer \cite{fischer2012context}
+  defines context as \textit{``the interaction between humans and
+  computers in socio-technical systems that takes place in a certain
+  context referring to the physical and social situation in which
+  computational devices and environments are embedded''}. 
+  Fischer also identifies the important aspects to consider when the context is used: how it is
+  the contextual data obtained, how the context is represented and what
+  goals and purposes the context has when is used in a particular
+  application.   An IEC system will  be used within a certain range of technical, physical and social or
+  organizational environments \cite{maguire2001context} that may affect its use.
+  The concept has been formally defined
+  by ISO standard 9241-11 \cite{international1998iso} as \textit{``users,
+  tasks and equipment (hardware, software and materials), and the
+  physical and social environments in which a product is used"}.  
+
+\item {\bf Interaction is a stream of actions}
+  Real time processing of users' actions could be needed for certain applications when data is 
+  captured by sensors, or directly captured as user input. For example, social networks keep track of 
+  users' interactions with other users, media objects and places. Users of 
+  social networks (for instance the Facebook Graph) are accustomed to express these 
+  complex relationships in sentences such as: ``John and Ann eating breakfast at Tony's''. 
+  Other example is the W3C Activity Streams 2.0 specification used for representing activities 
+  common in social web applications \cite{json:streams}. 
+\end{itemize}
+
+% Say something about how this is important for the framework and how
+% you incorporate it - JJ
+The human centered IEC architecture consists of three high level components depicted
+in figure \ref{fig:uc_framework}:
+
+\begin{itemize}
+  \item {\bf Interactive Evolutionary Computational system} 
+  This is the real world system that we are going to represent in the data model, 
+  it consist of human users and their interactions with one or more phenotypes
+  from the population. There are many ways in which humans could interact 
+  with phenotypes. The interaction consists of a set of actions and 
+  takes place in a certain context. For example, through a mobile device  
+  or by interacting with real world objects 
+  \cite{de2014artists,de2013unplugging}. 
+  There is also the possibility that fitness or even part of the search 
+  is done by devices lent by humans \cite{DBLP:conf/gecco/MereloCGCRV16}.
+  The information gathered through the interaction is the primary concern
+  as it will guide the search. 
+
+  \item {\bf IEC Data Model}
+  A data model is used to describe the IEC system prior to a physical 
+  implementation.  Depending on the domain several techniques can be used.
+  Parts of the system could be better described by an Entity relationship 
+  modeling to be used in a relational database or a class digram for a 
+  key-value store. A graph is proposed for modeling the social network of users 
+  and their interaction with the population. When implemented a graph database 
+  will be the back-end of the system. 
+
+  \item {\bf Evolutionary Algorithm} 
+  The EA algorithm interacts with the data model. The EA could also be done with the help of
+  humans, for instance in the XY project \cite{de2013unplugging} artists actually painted
+  the solutions of the new population.  
+\end{itemize}
+
+\section{Data Model Implementation}
+\label{sec:implementation}
+
+The core of the framework is the data model because both the IEC system and the EA will 
+depend on the application. In this section implementation details of the Data Model are presented.
+Three database models are employed to store different elements of the system: 
+
+  \subsection{EvoSpace-Redis}
+EvoSpace is a population store \cite{Evospace}  for the development of 
+evolutionary algorithms that are intended to run on a cloud computing model. 
+The population is decoupled from any particular evolutionary algorithm. 
+Candidate solutions are stored as of objects in a population, and they can be withdrawn, 
+processed and replaced using a specified set of methods \cite{GValdez2015}. The population
+is stored in-memory, using the Redis key-value database. Redis was chosen over a relational 
+database management system, because it provides a hash based implementation of sets and 
+queues which are natural data structures for the EvoSpace model. Basicaly a sample of 
+candidate solutions are retieved from the server, evaluated, and then sent back. 
+The same operations are used to Evolve the population. In EvoSpace individuals replaced 
+in the population are stored indefinitly, to permit users to store permalinks to them.
+Implementation details are presented in \cite{garcia2013evospace}.
+
+\subsection{Graph}
+  In order to deal with large datasets of connected data found in these systems,
+  graph databases \cite{angles2012comparison} have been proposed as an alternative to relational databases 
+  which have performance limitations when dealing with highly connected data \cite{holzschuher2013performance}.
+  A graph is proposed for modeling the social network of users, their interaction with 
+  candidate solutions, and the relationships between them in the population.
+  The graph database system used in the implementation is Neo4J as it is
+  a scalable solution \cite{miller2013graph,holzschuher2013performance}, and well supported and documented
+  in PaaS infrastructures like Heroku. The Cypher query language it used to retrieve views from the graph.
+  An exaplmple query is shown in figure \ref{fig:cypher} where the relations between users and solutions 
+  are presented.
+  
+  \begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/gui-neo.png}
+    \caption{Example query in Cypher.}
+    \label{fig:cypher}
+  \end{figure}
+
+\subsection{PostgreSQL}
+  The PostgreSQL relational database system, is also employed because user sessions and authentication,
+  as well as dynamic web pages are handled directly by the Django web framework \cite{garcia2013evospace}.
+
+\subsection{Interfaces}
+%They are Sensor and Web, 
+    
+\subsection{Evolution}
 
 \section{Case Studies}
+\label{sec:experiments}
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/interface.png}
+    \caption{User interface of the EvoDrawings application.}
+    \label{fig:web}
+\end{figure}
+
 \subsection{EvoDraw}
+As a case study, a IEA was developed using the 
+EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}
+A brief description of the application is presented next, focusing
+on the data elements that where ported to the graph model.
+
+\subsection{Fitness Assignment}
+\label{sec:assignment}
+The ES-I % You should use always the same acronym, not start using it
+         % here - JJ
+ platform employs a collaborative methodology for performing fitness
+ assignment. Several registered users assign a quality assessment to a single
+phenotype and then an aggregated fitness value is calculated,
+depending on the tastes of each particular user,  % how do you define
+                                % "taste"? - JJ
+resulting in a many-to-many relationship between users and
+phenotypes. %scored by them? - JJ 
+Many systems % formerly published methods? Other researchers? - JJ
+query this user-phenotype relation to extract relevant
+knowledge about the process and the population, for instance showing the
+most popular phenotype, or the the user with more participation 
+\cite{picbreeder}.
+In order to do this, data about phenotypes % metadata better? - JJ
+must be permanently stored, even
+if they are no longer in the active population. 
+
+\subsection{Collaboration}
+\label{sec:col}
+Users need to authenticate themselves to the system using their
+Facebook account. In that sense, some users might not be interested
+either because they do not want to give that that or simply because
+they do not use that particular social network. Even as we might lose
+some users that way, the additional information we obtain for scoring
+phenotypes more than compensates for that. % Added this, check it
+                                % out. 
+After entering the web application by using their Facebook account,
+users can collaborate with their Facebook friends, 
+sharing those phenotypes they like, or by taking phenotypes
+from their friend's collections by using the web interface depicted 
+in Figure \ref{fig:web}.
+At the top left corner a list of Facebook friends is presented
+to encourage users to interact with the system. In the central 
+\emph{ Wall } area, a phenotype sampled from the population that is
+being evolved via the evolutionary algorithm 
+is shown to the user.
+Here, the user can interact with the system in two ways.
+First, he can assign a quality assessment % Why don't you use other
+                                % thing instead of quality? We are not
+                                % talking about quality, but about
+                                % tastes or similar - JJ
+ to the phenotype using
+a five star rating system or,
+additionally, a user can choose to add an image to one of their \emph{Collections}.
+A collection is a special folder that stores those phenotypes a user likes and wishes
+to save. After the user finishes interacting with the phenotype
+on the Wall, he can choose to retrieve a new one from the population.
+At the left hand side of \ref{fig:web}, the web page shows the \emph{Collections} section.
+The user can create several collections, to group and organize his favorite 
+artifacts. Moreover, users can browse the content of each collection and from
+there share images through their social network.
+When a user hovers the cursor over a phenotypes a pop-up pane shows how many users have
+liked the phenotype. The pane also includes a link to the phenotype's 
+details, the parents, genetic operators that created it, and genealogy
+information. This makes the assignment of fitness through the rating
+system a {\em social} activity, pursuing the objective of this work,
+which is to increase engagement of the users.
+\subsubsection{Graph Model} 
+
+\subsubsection{Gammification}
+
+\subsubsection{Setup}
+\subsubsection{Results} 
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/weibull_1.png}
+    \caption{Experiment 1. Weibull Fit}
+    \label{fig:w1}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/weibull_2.png}
+    \caption{Experiment 2. Weibull Fit}
+    \label{fig:w2}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/weibull_3.png}
+    \caption{Experiment 3. Weibull Fit}
+    \label{fig:w3}
+\end{figure}
+
+
+
+
 \subsection{EvoDraw-Kinect}
 \subsection{XYZ-Unplugged}
 
 
 \section{Conclusions}
+\label{sec:conclusions}
 
 \begin{acks}
   % The authors would like to thank Dr. Yuhua Li for providing the
