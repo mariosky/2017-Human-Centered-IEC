@@ -52,9 +52,8 @@ employ a collaborative technique, where several users participate in
 the evaluation, this method is called Collaborative-IEC (C-IEC)
 \cite{picbreeder,seyama2016development,wagy2014collective}.
 % Volunteers 
-Having a volunteer system can lower the requirements of anyone participating in
-the experiment thus increasing the {\em performance}, in terms of 
-{\em human brain cycles}, of the whole system. But using a volunteer based 
+Having a volunteer system can lower the requirements for anyone to participate in
+the experiment thus increasing the {\em performance} of the whole system. But using a volunteer based 
 system raises other issues \cite{sarmenta2001volunteer,web:BOINC}, such as the 
 volunteer\'s lack of accountability, and the need to build trust between participants and project
 owners. Other issues for project owners are also the difficulty of establishing 
@@ -68,11 +67,11 @@ giving extensive attention to volunteers, not only because their
 explicit evaluation is essential, but also because the context of the 
 interaction affects the system as a whole.
 
-For example, in a C-IEC application, fitness assignment depends on the
+For example, in a C-IEC application fitness assignment depends on the
 actions of a social network of users.  These actions are triggered when 
-they tag, share, rate, store or even delete a phenotype. 
-Then, the selection of parents could depend on the previous actions, leveraging information 
-such as the fact that they both have the same tag, or where shared by
+they tag, share, rate, store or delete a phenotype. 
+Then, the selection of parents could depend on the previous actions, leveraging information, 
+such as the fact that they both have the same tag, or were shared by
 similar users.
 
 Data available from the interaction is also used to increase the engegment of 
@@ -87,17 +86,27 @@ with score points, levels and leader boards. Points are awarded to users in resp
 the accomplishment of certain activities that need to be encouraged. Levels depend
 on the score and certain features of the game are only available to gamers when 
 they reach a giving level. % Say what we are doing in this case - JJ
-A case study consisting in a web application for evolving artistic drawings
-is presented, providing both conceptual and implementation details of the framework. 
-In order to test the framework three versions of the application are compared to
-measure the degree of relationship between users and their participation,
-when appling a gamification technique. 
+%%%
+%%% Change if case studies change
+%In this work, a case study consisting in a web application for evolving artistic drawings
+%is presented, providing both conceptual and implementation details of the framework. 
+%In order to test the framework three versions of the application are compared to
+%measure the degree of relationship between users and their participation,
+%when appling a gamification technique. 
+In this work, three case studies are presented. First, the development of a web based C-IEC application 
+for evolving artistic drawings is described, to give the reader details about 
+the utilization of the proposed framework. Then, a rewarding mechanism is 
+implemented in the same application, to study the changes in participation,
+when appling a gamification technique. Later two other case studies are briefly presented
+to show how the framework is applied in other domains.
 
 The rest of this paper is organized as follows.
 Section \ref{sec:related} presents related work on the topic 
-of Interactive Evolution. Then, Section \ref{sec:framework} presents the framework of Human
-Interactions in Collaborative Interactive Evolutionary Computation (C-IEC) which 
-the main proposal of this work. An implementation using the ES-I framework 
+of Interactive Evolution. Then, Section \ref{sec:framework} presents the human centered framework of
+for C-IEC appliactions which the main proposal of this work. Next three case studies are presented in
+sections 
+
+An implementation using the ES-I framework 
 is detailed in Section \ref{sec:implementation}.
 The case study and results are presented in Sections \ref{sec:experiments} and  
 \ref{sec:results}. Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
