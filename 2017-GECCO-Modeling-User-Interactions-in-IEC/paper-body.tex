@@ -267,7 +267,8 @@ The core of the framework is the data model because both the IEC system and the 
 depend on the application. In this section implementation details of the Data Model are presented.
 Three database models are employed to store different elements of the system: 
 
-  \subsection{EvoSpace-Redis}
+\begin{itemize}
+\item {\bf EvoSpace-Redis} 
 EvoSpace is a population store \cite{Evospace}  for the development of 
 evolutionary algorithms that are intended to run on a cloud computing model. 
 The population is decoupled from any particular evolutionary algorithm. 
@@ -281,7 +282,7 @@ The same operations are used to Evolve the population. In EvoSpace individuals r
 in the population are stored indefinitly, to permit users to store permalinks to them.
 Implementation details are presented in \cite{garcia2013evospace}.
 
-\subsection{Graph-Neo4J}
+\item {\bf Graph-Neo4J} 
  Collaborative IEC (C-IEC) systems need to store highly connected data, as it is common 
  in current applications like social networks. In order to deal with large datasets of connected 
  data found in these systems, graph databases \cite{angles2012comparison} have been proposed 
@@ -303,28 +304,28 @@ Implementation details are presented in \cite{garcia2013evospace}.
     \label{fig:cypher}
   \end{figure}
 
-\subsection{Relational Objects-PostgreSQL}
+\item {\bf Relational Objects-PostgreSQL}
   The PostgreSQL relational database system is also employed because user 
   sessions and authentication,
   as well as dynamic web pages are handled directly by the Django web
   framework \cite{garcia2013evospace}. % these implementations details
                                 % could go if needed. 
 
-\subsection{Interfaces}
+\item {\bf Interfaces}
 The appropiate human interface will depend on the application domain, 
 the current framework implemantation employs a web based application. Developers 
 can use different templates, to present one or more phenotypes 
 at a time, and the type of rating system: like or one to five stars. 
 Another implementations do not need a graphical interface at all, for example the
 EvoDraw instalation or the XYZ Project \cite{de2014artists}.   
-    
-\subsection{Evolution}
+
+\item {\bf Evolution}    
 The evolutionary algorithm is decoupled from the data model, the algorithm 
 could be implemented as an EvoWorker \cite{garcia2013evospace}, use an external library, 
 or even assigned to humans. An additional tool was implmented for a human based evolution, 
 where volunteers select the parents of the next generation and upload the 
 new individuals \cite{de2014artists}.  
-
+\end{itemize}
 
 \section{Case Study: EvoDraw}
 As a case study, a IEA was developed using the 
@@ -389,7 +390,6 @@ there share images through their social network. This makes the assignment
 of fitness through the rating system a {\em social} activity, 
 pursuing the objective of this work, which is to increase engagement of the users.
 
-
 \subsection{Graph Model} 
 The graph model for the EvoDraw applications has the following types of
 nodes: {\bf User}, {\bf Phenotype} and {\bf Collection} . The Collection node represents
@@ -447,7 +447,8 @@ Three versions of EvoDraw were compared:
 When gamification was employed, all score values known where presented to users
 and a ranking of users by weight was shown in a window.
 The three versions of the EvoDrawing web application were deployed to the
-Heroku cloud service with the same configuration: Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB and RedisTOGO plug-ins.
+Heroku cloud service with the same configuration: Heroku Free option with a 512 MB of RAM, 
+adding only the GrapheneDB and RedisTOGO plug-ins.
 
 Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. 
 
@@ -457,7 +458,7 @@ Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
   \label{tab:params} 
   \centering
   \small
-  \begin{tabular}{l  c   }
+  \begin{tabular}{l  c}
     \hline\noalign{\smallskip}
      Parameter & Value \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -544,16 +545,10 @@ are just a few that give many cycles.
 
 In orther to assess if C-IEC follow the same pattern, even when
 using gamification techniques, participation was fittted to a 
-Weibull distribution, results in figures \ref{fig:w1}--\ref{fig:w3}  show that 
-the same pattern appears in this case study. 
+Weibull distribution, results in figure \ref{fig:w2} and figure \ref{fig:w3}
+show that the same pattern appears in this case study. 
 
 
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=3in]{img/weibull_1.png}
-    \caption{Experiment 1. Weibull Fit}
-    \label{fig:w1}
-\end{figure}
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3in]{img/weibull_2.png}
@@ -628,6 +623,30 @@ the next generation, etc.
 \section{Conclusions}
 \label{sec:conclusions}
 
+Collaborative and volunteer based IEC systems involve the dynamic 
+interaction of many entities and artifacts. Employing human centered approach 
+can benefit researchers to understand and visualize this kind of systems better.
+In this paper a human-centered software framework was proposed, and was validated
+through the implementaion and refinement of three C-IEC applications.
+This framework enabled the implementation of a gamification technique 
+to improve engagement in a case study. Providing a common arena where users are aware of the
+activities of other users in the social vicinity. Following a hybrid data model approach
+gives developers and project owners options when innovating with other means
+of interaction or new applications.
+
+One of the interesting future lines of work would be to look a bit
+more closely at the behavior of users as they are rating artifacts 
+in the web system. These initial experiments hint at a possible power law, which might indicate that
+the IEC system could be self-organizing, a process that would allow it
+to reach a critical state, as has been found in software repositories,
+for instance \cite{Merelo2016:repomining}. 
+The dynamics of this kind of system are fundamentally different, and our future research will
+include exploring these aspects of the system. 
+
+Another line of work would be to study the negative effects of using 
+gamification techniques to improve engagement, like cheating or competition.
+Finally, the refinement of the proposed Human-Centered framework will need
+more case studies and further multi-disciplinary research. 
 
 
 
