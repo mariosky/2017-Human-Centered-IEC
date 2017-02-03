@@ -325,6 +325,7 @@ or even assigned to humans. An additional tool was implmented for a human based 
 where volunteers select the parents of the next generation and upload the 
 new individuals \cite{de2014artists}.  
 
+
 \section{Case Study: EvoDraw}
 As a case study, a IEA was developed using the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}
@@ -505,20 +506,18 @@ terms of participation are detailed next.
     \noalign{\smallskip}\hline\noalign{\smallskip}
     B   & 53 &  595   & 2220  & goo.gl/jLis4Q.info \\ \hline
     G   & 54 &  648   & 2596  & goo.gl/jqjNy5.info \\ \hline
-    GG  & 68 &        & 3594  & goo.gl/J8TCe1.info \\ \hline
+    GG  & 68 &  932   & 3594  & goo.gl/J8TCe1.info \\ \hline
     \end{tabular}
 \end{table}
 
-After a week of the announcement the total number of volunteers,nodes and edges 
-in the graph, for for each experiment is shown in table \ref{tab:urls}.
-Moreover, the total number of evaluated phenotypes for each volunteer is presented in figure 
-\ref{fig:top-ranked-participation} in blue. Users are ranked by the 
+Table \ref{tab:urls} shows the total number of volunteers, nodes and edges 
+in the graph after each experiment. Moreover, the total number of evaluated 
+phenotypes for each volunteer is presented in figure 
+\ref{fig:top-ranked-participation} where users are ranked by the 
 number of phenotypes they rated, in the \emph{x} axis is the rank, and in the \emph{y} axis 
-the number of phenotypes evaluated using a logarithmic scale. 
-Results  show that those users with higher level of participation in deployments B and G, had
-about the same behavior, but the difference came with users with medium level of participation,
-in this case participants where more engaged in deployment G. When comparing all the experiments
-the deployment GG had the higher number of participation in users of all levels.    
+the number of phenotypes evaluated using a logarithmic scale. Results show that when 
+considering deployments B and G, the difference came with users with a medium level of participation.
+When comparing all the experiments the deployment GG had the higher number of participation in users of all levels.    
 
 \begin{figure}[!t]
     \centering
@@ -527,51 +526,97 @@ the deployment GG had the higher number of participation in users of all levels.
     \label{fig:top-ranked-participation}
 \end{figure}
 
+Moreover, modeling the performance of an C-IEC system
+involves understanding its dynamics. Previous works on browser-based
+volunteer computing have used metrics basic such as: 
+the number of users or the time spent by every one in the
+computation \cite{DBLP:journals/gpem/LaredoBGVAGF14, 2016arXiv160101607M}. 
+While works on other platforms such as SETI@home
+\cite{javadi2009mining} have found that the Weibull, log-normal, and
+Gamma distributions where viable modeles of the  
+the availability of computing resources in several clusters.
+This is in concordance with the results obtained in \cite{agajaj}, and also
+browser-based volunteer evolutionary systems like NodIO \cite{DBLP:conf/gecco/MereloCGCRV16}.
+The shape of those distributions is a skewed bell
+with more resources in the {\em low} areas than in the high areas:
+there are many users that give a small amount of cycles, while there
+are just a few that give many cycles. 
+
+In orther to assess if C-IEC follow the same pattern, even when
+using gamification techniques, participation was fittted to a 
+Weibull distribution, results in figures \ref{fig:w1}--\ref{fig:w3}  show that 
+the same pattern appears in this case study. 
+
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3in]{img/weibull_1.png}
+    \caption{Experiment 1. Weibull Fit}
+    \label{fig:w1}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3in]{img/weibull_2.png}
+    \caption{Experiment 2. Weibull Fit}
+    \label{fig:w2}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3in]{img/weibull_3.png}
+    \caption{Experiment 3. Weibull Fit}
+    \label{fig:w3}
+\end{figure}
+
+
 \section{Case Study: EvoDraw-Kinect}
-The EvoDraw installation is an IEA in which viewers interact with animations by simply
-looking at them. Drawings emerge from animations scripted in the Processing 
-language, and each is configured by a list of parameters represented by their
-chromosome. To start the evolutionary cycle, first a population of animations is 
-randomly generated and stored in a container server called EvoSpace. 
-Once the population is active,  client computers remove animations from the evospace 
-server to be presented in a monitor one at a time. After a certain amount of time, 
-animations are put back to the server along with information generated from the interaction.
-To continue, another is again removed and presented to viewers. An important feature 
-is that once an animation is removed from the server, no other client can remove it, 
+
+A variation of the previous application is The EvoDraw installation , using the same
+framework but with a different form of interaction. Humans interact with the animations 
+by simply looking at them. Again the population is stored in the EvoSpace container and
+client computers remove animations from the EvoSpace to be presented in a display one at a time. 
+After a certain amount of time,  animations are put back to the server along with information 
+generated from the interaction. To continue, another is again removed and presented to viewers. 
+An important feature is that once an animation is removed from the server, no other client can remove it, 
 until the client that remove it puts the animation back, this means that any
 animation is been shown only on one client at a given time. This cycle continues until there
 is enough interactions to create a new generation of animations. 
 
-In the previous version of this system \citep{garcia2013evospace} 
-viewers directly assigned a rating to each animation via a web page; in this work, viewers
-only need to see the animations on different monitors, but this time they can look at them 
-or not, just like the paintings inside a gallery. In order to assign a fitness value to 
-each animation and thus  enabling the EA the selection of the more interesting animations, 
-a natural user interface device (Kinect sensor for Xbox One)
-is used for facial tracking. The sensor can track up to 6 persons at once and  
-it provides a basic set of information for every face: where the face is, where it is looking, 
-basic expressive information, and if the face has glasses, which are used to compute the
-attention received by each simulation. Each animation is 
+In order to assign a fitness value to each animation and thus enabling the EA the selection of the more interesting animations, a natural user interface device (Kinect sensor for Xbox One)
+is used for facial tracking. Each animation is 
 presented several times in a single generation and the best are always passed to the next, 
-with its fitness recomputed. To generate the new population GA operators
-are applied to the population. One or more client computers are needed in order to run the 
-installation, each needing a Kinect sensor to keep track of viewers. 
+with its fitness recomputed. To generate the new population the same operators as the previous case study
+are applied to the population. 
 
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/kinect.png}
-    \caption{EvoDraw Instalation on Alife XV.}
+    \caption{EvoDraw Instalation on Alife XV Cancun Mexico.}
     \label{fig:kinect}
 \end{figure}
 
+In this instalation the components of the framework used where the EvoSpace and the Evolutionary Algorithm.
+Information from users was limited to a stream of readings from the sensor.
 
 \section{Case Study: XYZ-Unplugged}
 
-XYZ is a collective artwork generated by means of the Unplugged version of the Evolutionary Algorithm.  While in the previous cases software tools are in charge of running the EA and users collaborate evaluating fitness quality, the software tool in XYZ is only in charge of storing digital versions of the works produced by the team of artists, who are really in charge of applying every step of the evolutionary algorithm.
+XYZ is a collective artwork generated by means of the Unplugged version of the Evolutionary Algorithm.
+While in the previous cases software tools are in charge of running the EA and users collaborate evaluating
+fitness quality, the sframework in XYZ is only in charge of storing digital versions of the works produced 
+by the team of artists, who are really in charge of applying every step of the evolutionary algorithm. In 
+this case only the relations are stored, and a basic user profile. 
 
-Thus, the main difference between the standard IEC and the Unplugged EA, is that in the latest, every genetic operation as well as the general evolutionary loop is in charge of human beings.  Thus the team of artists are in charge of:  (i) setting up the initial population by selecting well known works from the history of arts;  (ii) each of the artists selects every generation two works from the previous one, and produce a new painting by applying any kind of crossover and mutation he may consider (iii) the process repeats for the number of generations initially decided, so that at the end, a collective artwork has been produced including as many paintings per generation, as artists are participating in the experiment.  
+Thus, the main difference between the standard IEC and the Unplugged EA, is that in the latest,
+every genetic operation as well as the general evolutionary loop is in charge of human beings. 
+Thus the team of artists are in charge of:  (i) setting up the initial population by selecting
+well known works from the history of arts;  (ii) each of the artists selects every generation two works 
+from the previous one, and produce a new painting by applying any kind of crossover and mutation he may consider 
+(iii) the process repeats for the number of generations initially decided, so that at the end, a collective 
+artwork has been produced including as many paintings per generation, as artists are participating in the experiment.  
 
-Artists resort to i-EvoSpace as the tool allowing them to store the paintings, deciding their preferred ones from the previous generation, as well as describing the reasons for their selections, mutation and crossover operations applied.  The tool is also in charge of generating statistics, computing \textit{elitism}, thus adding the most selected work to the next generation, etc.
+Artists resort to framework as the tool allowing them to store the paintings, deciding their preferred ones from the
+previous generation, as well as describing the reasons for their selections, mutation and crossover operations applied.
+The tool is also in charge of generating statistics, computing \textit{elitism}, thus adding the most selected work to 
+the next generation, etc.
 
 \begin{figure}[!t]
     \centering
@@ -580,10 +625,8 @@ Artists resort to i-EvoSpace as the tool allowing them to store the paintings, d
     \label{fig:xyz}
 \end{figure}
 
-
 \section{Conclusions}
 \label{sec:conclusions}
-
 
 
 
