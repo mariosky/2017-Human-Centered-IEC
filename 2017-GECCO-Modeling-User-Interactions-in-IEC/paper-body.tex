@@ -94,7 +94,6 @@ In order to test the framework three versions of the application are compared to
 measure the degree of relationship between users and their participation,
 when appling a gamification technique. 
 
-
 The rest of this paper is organized as follows.
 Section \ref{sec:related} presents related work on the topic 
 of Interactive Evolution. Then, Section \ref{sec:framework} presents the framework of Human
@@ -154,7 +153,7 @@ representing the interactive process of C-IEC systems is proposed next
 
 \begin{figure*}[!t]
     \centering
-        \includegraphics[width=5in]{img/framework.eps}
+        \includegraphics[width=5.5in]{img/framework.eps}
     \caption{IEC Human-centered framework.}
     \label{fig:hc_framework}
 \end{figure*}
@@ -216,17 +215,11 @@ design the interactive system to engage volunteers \cite{oh2015clicking}. % Defi
   application.   An IEC system will  be used within a certain range 
   of technical, physical and social or
   organizational environments \cite{maguire2001context} that may affect its use.
-  The concept has been formally defined
-  by ISO standard 9241-11 \cite{international1998iso} as\begin{quote}
-  users,
-  tasks and equipment (hardware, software and materials), and the
-  physical and social environments in which a product is used.
-\end{quote}
-
+ 
 \item {\bf Interaction is a stream of actions}
   Real time processing of users' actions could be needed for certain applications when data is 
-  captured by sensors, or directly captured as user input. For example, social networks keep track of 
-  users' interactions with other users, media objects and places. Users of 
+  captured by sensors, or directly captured as user input. For example, social networks keep
+  track of users' interactions with other users, media objects and places. Users of 
   social networks (for instance the Facebook Graph) are accustomed to express these 
   complex relationships in sentences such as: ``John and Ann eating breakfast at Tony's''. 
   Other example is the W3C Activity Streams 2.0 specification used for representing activities 
@@ -343,14 +336,6 @@ on the data elements that where ported to the graph model.
         \includegraphics[width=3.5in]{img/interface.png}
     \caption{User interface of the EvoDrawings application.}
     \label{fig:web}
-\end{figure}
-
-\label{sec:experiments}
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=3.5in]{img/interfaceXYZ.png}
-    \caption{User interface of the XYZ application.}
-    \label{fig:xyz}
 \end{figure}
 
 \subsection{Fitness Assignment}
@@ -537,13 +522,56 @@ the deployment GG had the higher number of participation in users of all levels.
 
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=4.5in]{img/comparison.png}
+        \includegraphics[width=3.3in]{img/comparison.png}
     \caption{Users ranked by the number of phenotypes they rated vs. the number of phenotypes evaluated using a logarithmic scale. }
     \label{fig:top-ranked-participation}
 \end{figure}
 
 \section{Case Study: EvoDraw-Kinect}
+The EvoDraw installation is an IEA in which viewers interact with animations by simply
+looking at them. Drawings emerge from animations scripted in the Processing 
+language, and each is configured by a list of parameters represented by their
+chromosome. To start the evolutionary cycle, first a population of animations is 
+randomly generated and stored in a container server called EvoSpace. 
+Once the population is active,  client computers remove animations from the evospace 
+server to be presented in a monitor one at a time. After a certain amount of time, 
+animations are put back to the server along with information generated from the interaction.
+To continue, another is again removed and presented to viewers. An important feature 
+is that once an animation is removed from the server, no other client can remove it, 
+until the client that remove it puts the animation back, this means that any
+animation is been shown only on one client at a given time. This cycle continues until there
+is enough interactions to create a new generation of animations. 
+
+In the previous version of this system \citep{garcia2013evospace} 
+viewers directly assigned a rating to each animation via a web page; in this work, viewers
+only need to see the animations on different monitors, but this time they can look at them 
+or not, just like the paintings inside a gallery. In order to assign a fitness value to 
+each animation and thus  enabling the EA the selection of the more interesting animations, 
+a natural user interface device (Kinect sensor for Xbox One)
+is used for facial tracking. The sensor can track up to 6 persons at once and  
+it provides a basic set of information for every face: where the face is, where it is looking, 
+basic expressive information, and if the face has glasses, which are used to compute the
+attention received by each simulation. Each animation is 
+presented several times in a single generation and the best are always passed to the next, 
+with its fitness recomputed. To generate the new population GA operators
+are applied to the population. One or more client computers are needed in order to run the 
+installation, each needing a Kinect sensor to keep track of viewers. 
+
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/kinect.png}
+    \caption{EvoDraw Instalation on Alife XV.}
+    \label{fig:kinect}
+\end{figure}
+
+
 \section{Case Study: XYZ-Unplugged}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/interfaceXYZ.png}
+    \caption{User interface of the XYZ application.}
+    \label{fig:xyz}
+\end{figure}
 
 
 \section{Conclusions}
