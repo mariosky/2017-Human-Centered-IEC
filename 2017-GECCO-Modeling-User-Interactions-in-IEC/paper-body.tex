@@ -391,7 +391,7 @@ The user can create several collections, to group and organize his favorite
 artifacts. Moreover, users can browse the content of each collection and from
 there share images through their social network. This makes the assignment 
 of fitness through the rating system a {\em social} activity, 
-pursuing the objective of this work, which is to increase engagement of the users.
+pursuing the objective of this work, which is to increase user engagement.
 
 \subsection{Graph Model} 
 The graph model for the EvoDrawings application has the following types of
@@ -419,36 +419,31 @@ The rewarding mechanism as it is applied in EvoDrawings gives more importance
 to the preference of those users with higher reputation
 as given by their score points and experience levels.  
 Each time a user does on of these actions their score is incremented by one:
-\begin{itemize}
-\item Start a session.
-\item Rate a phenotype.
-\item Create a collection.
-\item Save a phenotype of the wall to a collection.
-\item Save a phenotypes from a friend's collection.
-\item Explore collections of other friends.
-\end{itemize}
+start a session, rate a phenotype, create a collection, save a phenotype of 
+the wall to a collection, save a phenotypes from a friend's collection, and
+explore collections of other friends.
 
 Two variables are used to determine the weight of a user's preference:
 \begin{itemize}
-\item {\em Experience}: This variable depends on the score and is a value 
+\item {\bf Experience.}: This variable depends on the score and is a value 
 between 0 and 100. It is assumed for this case, that once a user
 reaches a 100 actions, it has enough experience on using the application.   
 
-\item {\em Participation}: This variable is simply the degree of the user node 
-in the graph.    
+\item {\bf Participation.}: This variable is simply the degree of the user node 
+in the graph (number of edges).    
 \end{itemize}
 
 \subsection{Experimental Setup}
 
 Three versions of EvoDrawings were compared:
 \begin{itemize}
-\item Base (B). All users have the same weight.
-\item Non Graph Gamification (G). Only experience is considered
-\item Graph Gamification (GG) . Both experience and participation are considered.
+\item Base (B): All users have the same weight.
+\item Non Graph Gamification (G): Only experience is considered
+\item Graph Gamification (GG): Both experience and participation are considered.
 \end{itemize}
 When gamification was employed, all score values known where presented to users
-and a ranking of users by weight was shown in a window.
-Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. 
+and a ranking of users by weight was shown in a window. Table \ref{tab:params} shows 
+the parameters used for the evolutionary algorithm. 
 
 \begin{table}
   \small
@@ -473,13 +468,11 @@ Table \ref{tab:params} shows the parameters used for the evolutionary algorithm.
 At the start of every experiment, a call to participation was issued
 through social networks.  The link used in the call for participation
 was shortened Google URL, that provides metadata and analytics for the
-users that click on it.  In table \ref{tab:urls} the URL for each 
+users that click on it.  In Table \ref{tab:urls} the URL for each 
 deployment in the Heroku platform is shown,
 along with the short URL and the analytics link. In the same table a link to the GitHub 
-application repository used to deploy to Heroku is also listed.    
-
-Only data for the first week of deployment was considered 
-for the experiments, and they where conducted 
+application repository used to deploy to Heroku is also listed.Only data 
+for the first week of deployment was considered for the experiments, and they where conducted 
 between January and May of 2016. 
 
 \subsection{Results} 
@@ -489,8 +482,9 @@ problem was found in this stage. The problem was that some users were cheating b
 rating to an animation even before it was returned from the server, this was done by just
 constantly clicking the mouse button. This is a common problem found in systems using leader
 boards because by making the scores visible to other players they are encouraged 
-to compete \cite{hickman2010total}. The results of each of the three experiments in 
-terms of participation are detailed next.
+to compete \cite{hickman2010total}. The final version disabled the button until 
+the drawing animation was over. The results of each of the three experiments in 
+terms of participation are dtailed next.
 
 \begin{table}
   \small
@@ -513,7 +507,7 @@ Table \ref{tab:urls} shows the total number of volunteers, nodes and edges
 in the graph after each experiment. Moreover, the total number of evaluated 
 phenotypes for each volunteer is presented in figure 
 \ref{fig:top-ranked-participation} where users are ranked by the 
-number of phenotypes they rated, in the \emph{x} axis is the rank, and in the \emph{y} axis 
+number of phenotypes they rated. In the \emph{x} axis is the rank and in the \emph{y} axis 
 the number of phenotypes evaluated using a logarithmic scale. Results show that when 
 considering deployments B and G, the difference came with users with a medium level of participation.
 When comparing all the experiments the deployment GG had the higher number of participation in users of all levels.    
@@ -527,7 +521,7 @@ When comparing all the experiments the deployment GG had the higher number of pa
 
 Moreover, modeling the performance of an C-IEC system
 involves understanding its dynamics. Previous works on browser-based
-volunteer computing have used metrics basic such as: 
+volunteer computing have used basic metrics such as: 
 the number of users or the time spent by every one in the
 computation \cite{DBLP:journals/gpem/LaredoBGVAGF14, 2016arXiv160101607M}. 
 While works on other platforms such as SETI@home
@@ -537,93 +531,89 @@ the availability of computing resources in several clusters.
 This is in concordance with the results obtained in \cite{agajaj}, and also
 browser-based volunteer evolutionary systems like NodIO \cite{DBLP:conf/gecco/MereloCGCRV16}.
 The shape of those distributions is a skewed bell
-with more resources in the {\em low} areas than in the high areas:
+with more resources in the {\em low} areas than in the high areas; i.e., 
 there are many users that give a small amount of cycles, while there
 are just a few that give many cycles. 
 
-In orther to assess if C-IEC follow the same pattern, even when
+In order to assess if C-IEC follows the same pattern, even when
 using gamification techniques, participation was fittted to a 
-Weibull distribution, results in figure \ref{fig:w2} and figure \ref{fig:w3}
+Weibull distribution. Results in Figure \ref{fig:w2} and Figure \ref{fig:w3}
 show that the same pattern appears in this case study. 
 
 
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3in]{img/weibull_2.png}
-    \caption{Experiment 2. Weibull Fit}
+        \includegraphics[width=4in]{img/weibull_2.png}
+    \caption{Experiment G. Weibull Fit}
     \label{fig:w2}
 \end{figure}
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3in]{img/weibull_3.png}
-    \caption{Experiment 3. Weibull Fit}
+        \includegraphics[width=4in]{img/weibull_3.png}
+    \caption{Experiment GG. Weibull Fit}
     \label{fig:w3}
 \end{figure}
 
 
 \section{Case Study: EvoDraw-Kinect}
 \label{sec:kinect}
-A variation of the previous application is The EvoDraw installation , using the same
+A variation of the previous application is The EvoDraw installation, using the same
 framework but with a different form of interaction. Humans interact with the animations 
 by simply looking at them. Again the population is stored in the EvoSpace container and
 client computers remove animations from the EvoSpace to be presented in a display one at a time. 
 After a certain amount of time,  animations are put back to the server along with information 
 generated from the interaction. To continue, another is again removed and presented to viewers. 
-An important feature is that once an animation is removed from the server, no other client can remove it, 
-until the client that remove it puts the animation back, this means that any
-animation is been shown only on one client at a given time. This cycle continues until there
-is enough interactions to create a new generation of animations. 
+This cycle continues until there is enough interactions to create a new generation of animations. 
 
-In order to assign a fitness value to each animation and thus enabling the EA the selection of the more interesting animations, a natural user interface device (Kinect sensor for Xbox One)
-is used for facial tracking. Each animation is 
+In order to assign a fitness value to each animation and thus enabling 
+the EA the selection of the most interesting animations, a natural user interface 
+device (Kinect sensor for Xbox One) is used for facial tracking. Each animation is 
 presented several times in a single generation and the best are always passed to the next, 
 with its fitness recomputed. To generate the new population the same operators as the previous case study
 are applied to the population. 
 
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.5in]{img/kinect.png}
+        \includegraphics[width=4in]{img/kinect.png}
     \caption{EvoDraw Instalation on Alife XV Cancun Mexico.}
     \label{fig:kinect}
 \end{figure}
 
-In this instalation the components of the framework used where the EvoSpace and the Evolutionary Algorithm.
+In this instalation the components of the framework used where EvoSpace and the EA.
 Information from users was limited to a stream of readings from the sensor.
 
 \section{Case Study: XYZ-Unplugged}
 \label{sec:xyz}
 
-XYZ is a collective artwork generated by means of the Unplugged version of the Evolutionary Algorithm.
-While in the previous cases software tools are in charge of running the EA and users collaborate evaluating
-fitness quality, the sframework in XYZ is only in charge of storing digital versions of the works produced 
-by the team of artists, who are really in charge of applying every step of the evolutionary algorithm. In 
-this case only the relations are stored, and a basic user profile. 
+XYZ is a collective artwork generated by means of the Unplugged version of the EA \cite{de2014artists}.
+While in the previous cases interactive tools are in charge of running the EA and users collaborate evaluating
+fitness quality, the proposed framework in XYZ is mainly in charge of storing digital versions of the works produced 
+by the team of artists, who are really in charge of applying every step of the EA. Thus the team of artists 
+are in charge of:  (i) setting up the initial population by selecting in the web interface
+well known works from the history of arts;  (ii) each of the artists selects, every generation, two works 
+from the previous one (see Figure \ref{fig:xyz}), and produce a new painting by applying 
+any kind of crossover and mutation he or she may consider  (iii) the process repeats for the number 
+of generations initially decided, so that at the end, a collective  artwork has been produced 
+including as many paintings per generation, as artists are participating in the experiment. In this application
+the final product is the motivation.  
 
-Thus, the main difference between the standard IEC and the Unplugged EA, is that in the latest,
-every genetic operation as well as the general evolutionary loop is in charge of human beings. 
-Thus the team of artists are in charge of:  (i) setting up the initial population by selecting
-well known works from the history of arts;  (ii) each of the artists selects every generation two works 
-from the previous one, and produce a new painting by applying any kind of crossover and mutation he may consider 
-(iii) the process repeats for the number of generations initially decided, so that at the end, a collective 
-artwork has been produced including as many paintings per generation, as artists are participating in the experiment.  
-
-Artists resort to framework as the tool allowing them to store the paintings, deciding their preferred ones from the
+Artists resort to the framework as the tool allowing them to store the paintings, deciding their preferred ones from the
 previous generation, as well as describing the reasons for their selections, mutation and crossover operations applied.
 The tool is also in charge of generating statistics, computing \textit{elitism}, thus adding the most selected work to 
-the next generation, etc.
+the next generation, etc. 
 
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/interfaceXYZ.png}
-    \caption{User interface of the XYZ application.}
+    \caption{User interface of the XYZ application, used by artists to select the best pair of the current generation.}
     \label{fig:xyz}
 \end{figure}
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-Collaborative and volunteer based IEC systems involve the dynamic 
-interaction of many entities and artifacts. Employing human centered approach 
+Volunteer-based and C-IEC systems involve the dynamic 
+interaction of many entities and artifacts. Employing a human-centered approach 
 can benefit researchers to understand and visualize this kind of systems better.
 In this paper a human-centered software framework was proposed, and was validated
 through the implementaion and refinement of three C-IEC applications.
@@ -647,20 +637,7 @@ gamification techniques to improve engagement, like cheating or competition.
 Finally, the refinement of the proposed Human-Centered framework will need
 more case studies and further multi-disciplinary research. 
 
-
-
 \begin{acks}
-  % The authors would like to thank Dr. Yuhua Li for providing the
-  % matlab code of  the \textit{BEPS} method. 
-
-  % The authors would also like to thank the anonymous referees for
-  % their valuable comments and helpful suggestions. The work is
-  % supported by the \grantsponsor{GS501100001809}{National Natural
-  %   Science Foundation of
-  %   China}{http://dx.doi.org/10.13039/501100001809} under Grant
-  % No.:~\grantnum{GS501100001809}{61273304}
-  % and~\grantnum[http://www.nnsf.cn/youngscientsts]{GS501100001809}{Young
-  % Scientsts' Support Program}.
   Reserved\\
   Space\\
   for\\
