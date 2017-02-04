@@ -94,22 +94,20 @@ they reach a giving level. % Say what we are doing in this case - JJ
 %measure the degree of relationship between users and their participation,
 %when appling a gamification technique. 
 In this work, three case studies are presented. First, the development of a web based C-IEC application 
-for evolving artistic drawings is described, to give the reader details about 
+for evolving artistic drawings is described to give the reader details about 
 the utilization of the proposed framework. Then, a rewarding mechanism is 
-implemented in the same application, to study the changes in participation,
-when appling a gamification technique. Later two other case studies are briefly presented
-to show how the framework is applied in other domains.
+implemented in the same application to study the changes in participation
+when applying a gamification technique. Finally, two other case studies are briefly presented
+to show how the framework is applied to other domains.
 
 The rest of this paper is organized as follows.
 Section \ref{sec:related} presents related work on the topic 
-of Interactive Evolution. Then, Section \ref{sec:framework} presents the human centered framework of
-for C-IEC appliactions which the main proposal of this work. Next three case studies are presented in
-sections 
-
-An implementation using the ES-I framework 
-is detailed in Section \ref{sec:implementation}.
-The case study and results are presented in Sections \ref{sec:experiments} and  
-\ref{sec:results}. Finally, a concluding remarks are provided in Section \ref{sec:conclusions}.
+of interactive evolution. Then, Section \ref{sec:framework} presents the human centered framework of
+for C-IEC appliactions which the main proposal of this work. The implementation of the data model
+is detailed in Section \ref{sec:implementation}. Next three case studies are presented: EvoDrawings in
+Section \ref{sec:evodraw}, EvoDraw Installation in Section\ref{sec:evodraw}, 
+and XYZ in Section\ref{sec:evodraw}. Finally, a concluding remarks are provided 
+in Section \ref{sec:conclusions}.
 
 \section{Related Work}
 \label{sec:related}
@@ -325,7 +323,7 @@ the current framework implemantation employs a web based application. Developers
 can use different templates, to present one or more phenotypes 
 at a time, and the type of rating system: like or one to five stars. 
 Another implementations do not need a graphical interface at all, for example the
-EvoDraw instalation or the XYZ Project \cite{de2014artists}.   
+EvoDrawings instalation or the XYZ Project \cite{de2014artists}.   
 
 \item {\bf Evolution}    
 The evolutionary algorithm is decoupled from the data model, the algorithm 
@@ -335,7 +333,8 @@ where volunteers select the parents of the next generation and upload the
 new individuals \cite{de2014artists}.  
 \end{itemize}
 
-\section{Case Study: EvoDraw}
+\section{Case Study: EvoDrawings}
+\label{sec:evodraw}
 As a case study, a IEA was developed using the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}
 A brief description of the application is presented next, focusing
@@ -349,8 +348,6 @@ on the data elements that where ported to the graph model.
 \end{figure}
 
 \subsection{Fitness Assignment}
-\label{sec:assignment}
-
 The ES-I platform has been programmed to employ a 
 collaborative methodology for performing fitness assignment. 
 Several registered users assign a quality assessment to a single
@@ -399,7 +396,7 @@ of fitness through the rating system a {\em social} activity,
 pursuing the objective of this work, which is to increase engagement of the users.
 
 \subsection{Graph Model} 
-The graph model for the EvoDraw applications has the following types of
+The graph model for the EvoDrawings application has the following types of
 nodes: {\bf User}, {\bf Phenotype} and {\bf Collection} . The Collection node represents
 a collection of drawings belonging to users. One collection can contain many phenotypes 
 or be empty. A single phenotype could be shared by many collections. The interaction 
@@ -420,7 +417,7 @@ those collections they own.
 \end{itemize}
 
 \subsection{Gamification}
-The rewarding mechanism as it is applied in EvoDraw gives more importance 
+The rewarding mechanism as it is applied in EvoDrawings gives more importance 
 to the preference of those users with higher reputation
 as given by their score points and experience levels.  
 Each time a user does on of these actions their score is incremented by one:
@@ -444,9 +441,8 @@ in the graph.
 \end{itemize}
 
 \subsection{Experimental Setup}
-\label{sec:experiments}
- 
-Three versions of EvoDraw were compared:
+
+Three versions of EvoDrawings were compared:
 \begin{itemize}
 \item Base (B). All users have the same weight.
 \item Non Graph Gamification (G). Only experience is considered
@@ -454,10 +450,6 @@ Three versions of EvoDraw were compared:
 \end{itemize}
 When gamification was employed, all score values known where presented to users
 and a ranking of users by weight was shown in a window.
-The three versions of the EvoDrawing web application were deployed to the
-Heroku cloud service with the same configuration: Heroku Free option with a 512 MB of RAM, 
-adding only the GrapheneDB and RedisTOGO plug-ins.
-
 Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. 
 
 \begin{table}
@@ -572,7 +564,7 @@ show that the same pattern appears in this case study.
 
 
 \section{Case Study: EvoDraw-Kinect}
-
+\label{sec:kinect}
 A variation of the previous application is The EvoDraw installation , using the same
 framework but with a different form of interaction. Humans interact with the animations 
 by simply looking at them. Again the population is stored in the EvoSpace container and
@@ -601,6 +593,7 @@ In this instalation the components of the framework used where the EvoSpace and 
 Information from users was limited to a stream of readings from the sensor.
 
 \section{Case Study: XYZ-Unplugged}
+\label{sec:xyz}
 
 XYZ is a collective artwork generated by means of the Unplugged version of the Evolutionary Algorithm.
 While in the previous cases software tools are in charge of running the EA and users collaborate evaluating
