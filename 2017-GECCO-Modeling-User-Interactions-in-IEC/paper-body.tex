@@ -23,7 +23,8 @@ Interactive evolutionary computation (IEC) systems are, in general, evolutionary
 whose fitness evaluations are performed by humans through an interactive 
 system \cite{eiben2015interactive}.
 They are usually applied in problems where the fitness function is not known or simply
-does not exist, and the result of optimization should fit a certain human need or desire such as an aesthetic ideal.  
+does not exist, and the result of optimization should fit a certain human need or
+desire such as an aesthetic ideal.  
 That is why their use cases includes the evolution of objects with subjective characteristics
 such as visual appeal or attractiveness \cite{biomorphs} as well as others where human behavior is 
 considered, for instance the optimization of teamwork \cite{kosorukoff2002evolutionary}
@@ -75,7 +76,7 @@ Then, the selection of parents could depend on the previous actions, leveraging 
 such as the fact that they both have the same tag, or were shared by
 similar users.
 
-Data available from the interaction is also used to increase the engegment of 
+Data available from the interaction is also used to increase the engagement of 
 users in the system by applying  gamification techniques. Gamification
 is a technique defined by 
 Deterding et al. \cite{deterding2011game} as
@@ -106,7 +107,7 @@ to show how the framework can applied to other domains. %The
 The rest of this paper is organized as follows.
 Section \ref{sec:related} presents related work on the topic 
 of interactive evolution. Then, Section \ref{sec:framework} presents the human centered framework of
-for C-IEC appliactions which the main proposal of this work. The implementation of the data model
+for C-IEC applications which the main proposal of this work. The implementation of the data model
 is detailed in Section \ref{sec:implementation}. % Why not all case
                                 % studies in the same section? - JJ
 Next three case studies are presented: EvoDrawings in
@@ -129,8 +130,8 @@ use web-based IEAs to evolve artistic artifacts using a generative encoding.
 
 Some C-IEC systems promote user engagement by presenting interesting information to 
 users, for instance the genetic lineage of each phenotype or the most popular or 
-best rated solucion \cite{picbreeder,forms}. En example is the recent work by 
-Wagy \& Bongard \cite{wagy2014collective} user interaction 
+best rated solution \cite{picbreeder,forms}. An example is the recent work by 
+Wagy \& Bongard \cite{wagy2014collective} where user interaction 
 is needed for evaluating fitness and developing
 new designs of robot locomotion. Collaboration is encouraged by gamifying the system 
 using the maximum distance indicator to inspire the user to try and ``beat'' previous designs. 
@@ -148,8 +149,8 @@ have tried to mitigate the problem by allowing the algorithm to
 collaborate with the user, so that sometimes 
 users perform the evaluation,  but also specific measures are included 
 into the algorithm to perform the
-evaluation of some features automatically. For instance, 
-Reis et al. added some terrain measures (such as accessibility and edge length) 
+evaluation of some features automatically. For instance,Reis et al. added
+some terrain measures (such as accessibility and edge length) 
 to a standard  IEC in \cite{DBLP:journals/soco/FradeVC12}. 
 This way the algorithm was capable of providing terrains that would otherwise have needed the
 users' evaluation for these specific features. Seyama and Munetomo \cite{seyama2016development}
@@ -193,7 +194,7 @@ framework are explained next:
   The framework follows the approach of human centered computing \cite{sebe2010human},
   in which the context, environment, interfaces, preferences, accessibility, human relations,
   cognitive limitations, culture, creativity and other human aspects are an integral part 
-  of the system. Humans are the computing resorces of the system, having unique characteristics
+  of the system. Humans are the computing resources of the system, having unique characteristics
   as those identified by Sun \& Dance \cite{Sun2013}:
 \begin{quote}
   (1) humans can solve computer hard problems; (2) humans are very good at exception handling,
@@ -241,7 +242,7 @@ design the interactive system to engage volunteers \cite{oh2015clicking}. % Defi
   common in social web applications \cite{json:streams}. 
 \end{itemize}
 
-The above considerations have guided the design of the framework, and througout they have been
+The above considerations have guided the design of the framework, and throughout they have been
 treated as application constraints. In order to satisfy theses requirements the
 human centered IEC architecture consists of three high level components depicted
 in figure \ref{fig:hc_framework}:
@@ -291,10 +292,10 @@ Candidate solutions are stored as of objects in a population, and they can be wi
 processed and replaced using a specified set of methods \cite{GValdez2015}. The population
 is stored in-memory, using the Redis key-value database. Redis was chosen over a relational 
 database management system because it provides a hash based implementation of sets and 
-queues which are natural data structures for the EvoSpace model. Basicaly, a sample of 
+queues which are natural data structures for the EvoSpace model. Basically, a sample of 
 candidate solutions are retrieved from the server, evaluated and then sent back. 
 The same operations are used to evolve the population. In EvoSpace individuals replaced 
-in the population are stored indefinitly, to permit users to store permalinks to them.
+in the population are stored indefinitely, to permit users to store permalinks to them.
 Implementation details are presented in \cite{garcia2013evospace}.
 
 \item {\bf Graph-Neo4J.} 
@@ -327,12 +328,12 @@ Implementation details are presented in \cite{garcia2013evospace}.
                                 % could go if needed. 
 
 \item {\bf Interfaces.}
-The appropiate human interface will depend on the application domain, 
+The appropriate human interface will depend on the application domain, 
 the current framework implementation employs a web based application. Developers 
 can use different templates, to present one or more phenotypes 
 at a time, and the type of rating system:  based on ``likes'' or in a rating from one to five (stars). 
 Other implementations do not need a graphical interface at all, for example the
-EvoDrawings instalation or the XYZ Project \cite{de2014artists}.   
+EvoDrawings installation or the XYZ Project \cite{de2014artists}.   
 
 \item {\bf Evolution.}    
 The EA is decoupled from the data model, the algorithm 
@@ -368,7 +369,7 @@ query this user-phenotype relation to extract relevant
 knowledge about the process and the population. For instance, showing the
 most popular phenotype, or the user with more participation 
 \cite{picbreeder}.
-In order to do this, metadata about phenotypes 
+In order to do this, meta-data about phenotypes 
 must be permanently stored, even
 if they are no longer in the active population. 
 
@@ -478,7 +479,7 @@ the parameters used for the evolutionary algorithm.
 % Anuncements
 At the start of every experiment, a call to participation was issued
 through social networks.  The link used in the call for participation
-was a shortened Google URL, that provides metadata and analytics for the
+was a shortened Google URL, that provides meta-data and analytics for the
 users that click on it. %Will we comment on that? - JJ
   In Table \ref{tab:urls} the URL for each 
 deployment in the Heroku platform is shown,
@@ -529,7 +530,8 @@ bigger number of users.
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.3in]{img/comparison.png}
-    \caption{Users ranked by the number of phenotypes they rated vs. the number of phenotypes evaluated using a logarithmic scale. }
+    \caption{Users ranked by the number of phenotypes they 
+    rated vs. the number of phenotypes evaluated using a logarithmic scale. }
     \label{fig:top-ranked-participation}
 \end{figure}
 
@@ -540,16 +542,18 @@ the number of users or the time spent by every one in the
 computation \cite{DBLP:journals/gpem/LaredoBGVAGF14, 2016arXiv160101607M}. 
 While works on other platforms such as SETI@home
 \cite{javadi2009mining} have found that the Weibull, log-normal, and
-Gamma distributions where viable modeles of the  
-the availability of computing resources in several clusters, which  is in concordance with the results obtained in \cite{agajaj}, and also
+Gamma distributions where viable models of the  
+the availability of computing resources in several clusters, which  is 
+in concordance with the results obtained in \cite{agajaj}, and also
 browser-based volunteer evolutionary systems like NodIO \cite{DBLP:conf/gecco/MereloCGCRV16}.
 The shape of those distributions is a skewed bell
 with more resources in the {\em low} areas than in the high areas; i.e., 
 there are many users that give a small amount of cycles, while there
 are just a few that give many cycles. In order to assess gamification techniques alongside C-IEC follows the
-same pattern, participation was fittted to a 
+same pattern, participation was flitted to a 
 Weibull distribution,
- and shown in Figures \ref{fig:w2} and \ref{fig:w3}, confirming  this model for user interaction, although with different fitted
+and shown in Figures \ref{fig:w2} and \ref{fig:w3}, 
+confirming  this model for user interaction, although with different fitted
 values in each case. 
 %
 \begin{figure}[!t]
@@ -587,11 +591,11 @@ are applied to the population.
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.3in]{img/kinect.png}
-    \caption{EvoDraw Instalation on Alife XV Cancun Mexico.}
+    \caption{EvoDraw Installation on ------ -- --- ----.}
     \label{fig:kinect}
 \end{figure}
 
-In this instalation the components of the framework used where EvoSpace and the EA.
+In this installation the components of the framework used where EvoSpace and the EA.
 Information from users was limited to a stream of readings from the
 sensor.
 % This has nothing to do with the rest of the paper. You are not
@@ -614,9 +618,12 @@ of generations initially decided, so that at the end, a collective  artwork has 
 including as many paintings per generation, as artists are participating in the experiment. In this application
 the final product is the motivation.  
 
-Artists resort to the framework as the tool allowing them to store the paintings, deciding their preferred ones from the
-previous generation, as well as describing the reasons for their selections, mutation and crossover operations applied.
-The tool is also in charge of generating statistics, computing \textit{elitism}, thus adding the most selected work to 
+Artists resort to the framework as the tool allowing them 
+to store the paintings, deciding their preferred ones from the
+previous generation, as well as describing the reasons for their 
+selections, mutation and crossover operations applied.
+The tool is also in charge of generating statistics, 
+computing \textit{elitism}, thus adding the most selected work to 
 the next generation, etc. 
 
 \begin{figure}[!t]
@@ -639,7 +646,7 @@ Volunteer-based and C-IEC systems involve the dynamic
 interaction of many entities and artifacts. Employing a human-centered approach 
 can benefit researchers to understand and visualize this kind of systems better.
 In this paper a human-centered software framework was proposed, and was validated
-through the implementaion and refinement of three C-IEC applications.
+through the implementation and refinement of three C-IEC applications.
 This framework enabled the implementation of a gamification technique 
 to improve engagement in a case study which provides a common arena where users are aware of the
 activities of other users in the social vicinity. Following a hybrid data model approach
