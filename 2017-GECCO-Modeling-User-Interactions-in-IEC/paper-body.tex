@@ -522,7 +522,9 @@ phenotypes for each volunteer is presented in figure
 number of phenotypes they rated. In the \emph{x} axis is the rank and in the \emph{y} axis 
 the number of phenotypes evaluated using a logarithmic scale. Results show that when 
 considering deployments B and G, the difference came with users with a medium level of participation.
-When comparing all the experiments the deployment GG had the higher number of participation in users of all levels.    
+When comparing all the experiments the deployment GG had the higher
+number of participation in users of all levels, besides attracting a
+bigger number of users.    
 
 \begin{figure}[!t]
     \centering
@@ -533,32 +535,30 @@ When comparing all the experiments the deployment GG had the higher number of pa
 
 Moreover, modeling the performance of an C-IEC system
 involves understanding its dynamics. Previous works on browser-based
-volunteer computing have used basic metrics such as: 
+volunteer computing have used basic metrics such as
 the number of users or the time spent by every one in the
 computation \cite{DBLP:journals/gpem/LaredoBGVAGF14, 2016arXiv160101607M}. 
 While works on other platforms such as SETI@home
 \cite{javadi2009mining} have found that the Weibull, log-normal, and
 Gamma distributions where viable modeles of the  
-the availability of computing resources in several clusters.
-This is in concordance with the results obtained in \cite{agajaj}, and also
+the availability of computing resources in several clusters, which  is in concordance with the results obtained in \cite{agajaj}, and also
 browser-based volunteer evolutionary systems like NodIO \cite{DBLP:conf/gecco/MereloCGCRV16}.
 The shape of those distributions is a skewed bell
 with more resources in the {\em low} areas than in the high areas; i.e., 
 there are many users that give a small amount of cycles, while there
-are just a few that give many cycles. 
-
-In order to assess if C-IEC follows the same pattern, even when
-using gamification techniques, participation was fittted to a 
-Weibull distribution. Results in Figure \ref{fig:w2} and Figure \ref{fig:w3}
-show that the same pattern appears in this case study. 
-
-
+are just a few that give many cycles. In order to assess gamification techniques alongside C-IEC follows the
+same pattern, participation was fittted to a 
+Weibull distribution,
+ and shown in Figures \ref{fig:w2} and \ref{fig:w3}, confirming  this model for user interaction, although with different fitted
+values in each case. 
+%
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/weibull_2.png}
     \caption{Experiment G. Weibull Fit}
     \label{fig:w2}
 \end{figure}
+%
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/weibull_3.png}
@@ -592,7 +592,12 @@ are applied to the population.
 \end{figure}
 
 In this instalation the components of the framework used where EvoSpace and the EA.
-Information from users was limited to a stream of readings from the sensor.
+Information from users was limited to a stream of readings from the
+sensor.
+% This has nothing to do with the rest of the paper. You are not
+% modeling anything. It's just another application of the
+% framework. Could be mentioned in the state of the art, that's
+% all. We should devote more space to the study of user interactions. 
 
 \section{Case Study: XYZ-Unplugged}
 \label{sec:xyz}
@@ -620,6 +625,12 @@ the next generation, etc.
     \caption{User interface of the XYZ application, used by artists to select the best pair of the current generation.}
     \label{fig:xyz}
 \end{figure}
+% Once again, no model, no relation to the rest of the paper. Either
+% you talk about a model of interactions with humans and their
+% similarity with the first case study, or you eliminate it. How do
+% you tackle boredom? How do you increase engagement? Those are the
+% paper's topics, you can't just drop it here because it's interactive
+% - JJ
 
 \section{Conclusions}
 \label{sec:conclusions}
@@ -630,10 +641,13 @@ can benefit researchers to understand and visualize this kind of systems better.
 In this paper a human-centered software framework was proposed, and was validated
 through the implementaion and refinement of three C-IEC applications.
 This framework enabled the implementation of a gamification technique 
-to improve engagement in a case study. Providing a common arena where users are aware of the
+to improve engagement in a case study which provides a common arena where users are aware of the
 activities of other users in the social vicinity. Following a hybrid data model approach
 gives developers and project owners options when innovating with other means
 of interaction or new applications.
+
+% More conclusions and some way of relating the three case studies
+% would be something that is missing and should definitely go here - JJ
 
 One of the interesting future lines of work would be to look a bit
 more closely at the behavior of users as they are rating artifacts 
@@ -644,15 +658,18 @@ for instance \cite{Merelo2016:repomining}.
 The dynamics of this kind of system are fundamentally different, and our future research will
 include exploring these aspects of the system. 
 
-Another line of work would be to study the negative effects of using 
-gamification techniques to improve engagement, like cheating or competition.
+Another line of work would be to study the possible negative effects of using  
+gamification techniques to improve engagement, like cheating or
+literally {\em gaming} the system to defeat competition. We already
+found some hints of this behavior at the beginning of the release of
+this system, but more subtle effect could be taking place. 
 Finally, the refinement of the proposed Human-Centered framework will need
 more case studies and further multi-disciplinary research. 
 
 \begin{acks}
   Reserved\\
   Space\\
-  for\\
-  Acks
+  for acks\\
+
 
 \end{acks}
