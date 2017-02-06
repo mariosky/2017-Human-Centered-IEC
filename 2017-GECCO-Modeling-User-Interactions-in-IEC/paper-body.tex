@@ -330,7 +330,7 @@ Implementation details are presented in \cite{garcia2013evospace}.
 The appropiate human interface will depend on the application domain, 
 the current framework implementation employs a web based application. Developers 
 can use different templates, to present one or more phenotypes 
-at a time, and the type of rating system: like based or a rating from one to five (stars). 
+at a time, and the type of rating system:  based on ``likes'' or in a rating from one to five (stars). 
 Other implementations do not need a graphical interface at all, for example the
 EvoDrawings instalation or the XYZ Project \cite{de2014artists}.   
 
@@ -379,10 +379,10 @@ Facebook account. In that sense, some users might not be interested
 either because they do not want to give that information or simply because
 they do not use that social network. Even if we might lose
 some users that way, the additional information we obtain for scoring
-phenotypes more than compensates for that. 
-After entering the web application by using their Facebook account,
+phenotypes more than balances that. 
+After logging in,
 users can collaborate with their Facebook friends, 
-sharing those phenotypes they like, or by taking phenotypes
+sharing the phenotypes they like, or by taking phenotypes
 from their friend's collections by using the web interface depicted 
 in Figure \ref{fig:web}.
 At the top left corner a list of Facebook friends is presented
@@ -422,6 +422,7 @@ other in the Facebook social graph.
 \item {\bf Has} The relation describes an ownership relation between users and
 those collections they own. 
 \end{itemize}
+% Once again, these implementation details could go - JJ
 
 \subsection{Gamification}
 The rewarding mechanism as it is applied in EvoDrawings gives more importance 
@@ -434,11 +435,12 @@ explore collections of other friends.
 
 Two variables are used to determine the weight of a user's preference:
 \begin{itemize}
-\item {\bf Experience.}: This variable depends on the score and is a value 
+\item {\bf Experience}: This variable depends on the score and is a value 
 between 0 and 100. It is assumed for this case, that once a user
-reaches a 100 actions, it has enough experience on using the application.   
+reaches 100 actions, it has enough experience on using the
+application. % What happens before that? - JJ  
 
-\item {\bf Participation.}: This variable is simply the degree of the user node 
+\item {\bf Participation}: This variable is simply the degree of the user node 
 in the graph (number of edges).    
 \end{itemize}
 
@@ -476,28 +478,29 @@ the parameters used for the evolutionary algorithm.
 % Anuncements
 At the start of every experiment, a call to participation was issued
 through social networks.  The link used in the call for participation
-was shortened Google URL, that provides metadata and analytics for the
-users that click on it.  In Table \ref{tab:urls} the URL for each 
+was a shortened Google URL, that provides metadata and analytics for the
+users that click on it. %Will we comment on that? - JJ
+  In Table \ref{tab:urls} the URL for each 
 deployment in the Heroku platform is shown,
 along with the short URL and the analytics link. In the same table a link to the GitHub 
-application repository used to deploy to Heroku is also listed.Only data 
+application repository used to deploy to Heroku is also listed. Only data 
 for the first week of deployment was considered for the experiments, and they where conducted 
 between January and May of 2016. 
 
 \subsection{Results} 
-Before launch, each deployment was first tried with a few beta testers. 
+Before release, each deployment was first tried with a few beta testers. 
 When applying the leader board gamification technique for the first time a 
-problem was found in this stage. The problem was that some users were cheating by giving a
+problem was found: some users were cheating by giving a
 rating to an animation even before it was returned from the server, this was done by just
 constantly clicking the mouse button. This is a common problem found in systems using leader
 boards because by making the scores visible to other players they are encouraged 
 to compete \cite{hickman2010total}. The final version disabled the button until 
 the drawing animation was over. The results of each of the three experiments in 
-terms of participation are dtailed next.
+terms of participation are detailed next.
 
 \begin{table}
   \small
-  \caption{ After a week of the announcement the total number of volunteers, 
+  \caption{After a week of the announcement the total number of volunteers, 
   nodes and edges in the graph and analytics URLs}
   \label{tab:urls} 
   \centering
