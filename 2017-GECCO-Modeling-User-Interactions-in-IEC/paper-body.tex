@@ -117,30 +117,31 @@ in Section \ref{sec:conclusions}.
 \section{Related Work}
 \label{sec:related}
 
-An early example of web based collaboration is the work by 
-Langdon \cite{langdon:2004}, which evolved fractal representations of virtual creatures. 
-Similarly, Secretan et al. \cite{picbreeder} and Clune and Lipson \cite{forms} 
-use web-based IEAs to evolve artistic artifacts using a generative encoding.
-Another example is the Galapagos Project \cite{sims1997interactivity},
+An early example of IEC is the Galapagos Project \cite{sims1997interactivity},
 an exhibit in the Tokyo Multimedia Museum (1997--2000) 
 were visitors interacted with images presented in 
 twelve displays by selecting those they found most aesthetically interesting by standing on
-step sensors in front of them, presenting an example of a non web C-IEC system. 
+step sensors in front of them, presenting an example of a non web
+C-IEC system. Web based systems were introduced later, with  
+Langdon's system \cite{langdon:2004} which evolved fractal representations of virtual creatures. 
+Similarly, Secretan et al. \cite{picbreeder} and Clune and Lipson \cite{forms} 
+use web-based IEAs to evolve artistic artifacts using a generative encoding.
 
 Some C-IEC systems promote user engagement by presenting interesting information to 
 users, for instance the genetic lineage of each phenotype or the most popular or 
-best rated solucion \cite{picbreeder,forms}. In a recent work by 
+best rated solucion \cite{picbreeder,forms}. En example is the recent work by 
 Wagy \& Bongard \cite{wagy2014collective} user interaction 
 is needed for evaluating fitness and developing
 new designs of robot locomotion. Collaboration is encouraged by gamifying the system 
-using the maximum distance indicator to inspire the user to try and ``beat'' previous designs. 
-In any case, using gamification techniques imply that we must deal with IEC
+using the maximum distance indicator to inspire the user to try and ``beat'' previous designs. 
+In any case, using gamification techniques imply dealing with IEC
 systems as socio-technical constructs, where the social aspects are
 essential to understand its dynamics. In this sense, conclusions
 reached with other systems such as NodEO \cite{DBLP:conf/gecco/MereloCGCRV16}
 can also be applied to these systems; and applying social 
 network techniques such as graph analysis
 to their study will allow us to understand them more thoroughly. 
+
 % C-IEAS
 Given the human fatigue limitation when applying IEAs, some authors 
 have tried to mitigate the problem by allowing the algorithm to 
@@ -161,7 +162,7 @@ representing the interactive process of our C-IEC systems is proposed next.
 % HBC
 % Engagement Techniques
 % Models
-
+% Is that left for later? No space, I'm afraid - JJ
 \begin{figure*}[!t]
     \centering
         \includegraphics[width=6in]{img/framework.eps}
@@ -171,6 +172,9 @@ representing the interactive process of our C-IEC systems is proposed next.
 
 \section{Human-Centered IEC Framework}
 \label{sec:framework}
+% You have to clearly express the objectives of the paper from tine
+% introduction. If the objective is to reduce fatigue via social
+% engagement, you have to frame the results that way. 
 The general goal of this research is to develop a human-centered \cite{gasson2003human} 
 software framework for C-IEC. 
 A framework is defined as a reusable architectural design together
@@ -180,7 +184,7 @@ providing generalized components to developers of IEC systems.
 The proposed framework includes components that can be refined to increase
 participation and also to minimize the amount of evaluations needed for the evolutionary 
 process in a given IEC application. Software frameworks often have 
-a vison \cite{carneiro2010introducing} guiding their
+a vision \cite{carneiro2010introducing} guiding their
 design. Before diving into details the main design considerations of the
 framework are explained next: 
 
@@ -247,13 +251,13 @@ in figure \ref{fig:hc_framework}:
   This is the real world system that we are going to represent in the data model, 
   it consist of human users and their interactions with one or more phenotypes
   from the population. There are many ways in which humans could interact 
-  with phenotypes. The interaction consists of a set of actions and 
-  takes place in a certain context. For example, through a mobile device  
+  with these phenotypes. The interaction consists of a set of actions and 
+  takes place in a certain context; for example, through a mobile device  
   or by interacting with real world objects 
   \cite{de2014artists,de2013unplugging}. 
   There is also the possibility that fitness or even part of the search 
   is done by devices lent by humans \cite{DBLP:conf/gecco/MereloCGCRV16}.
-  The information gathered through the interaction is the primary concern
+  The information gathered through the interaction is the primary focus
   as it will guide the search. 
 
   \item {\bf IEC Data Model.}
@@ -301,8 +305,8 @@ Implementation details are presented in \cite{garcia2013evospace}.
  highly connected data \cite{holzschuher2013performance}.
  A graph is proposed for modeling the social network of users, their interaction with 
  candidate solutions, and the relationships between them in the population.
- The graph database system used in the implementation is Neo4J as it is
- a scalable solution \cite{miller2013graph,holzschuher2013performance}, and well 
+ The graph database system used in the implementation is Neo4J, which is
+ a scalable solution \cite{miller2013graph,holzschuher2013performance}, well 
  supported and documented in PaaS infrastructures like Heroku. The Cypher query 
  language it used to retrieve views from the graph.
  An example query is shown in Figure \ref{fig:cypher} where the relations 
@@ -324,7 +328,7 @@ Implementation details are presented in \cite{garcia2013evospace}.
 
 \item {\bf Interfaces.}
 The appropiate human interface will depend on the application domain, 
-the current framework implemantation employs a web based application. Developers 
+the current framework implementation employs a web based application. Developers 
 can use different templates, to present one or more phenotypes 
 at a time, and the type of rating system: like based or a rating from one to five (stars). 
 Other implementations do not need a graphical interface at all, for example the
