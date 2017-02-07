@@ -88,31 +88,23 @@ The gamification element employed in this case study has been a rewarding mechan
 with score points, levels and leader boards. Points are awarded to users in response of 
 the accomplishment of certain activities that need to be encouraged. Levels depend
 on the score and certain features of the game are only available to gamers when 
-they reach a giving level. % Say what we are doing in this case - JJ
-%%%
-%%% Change if case studies change
-%In this work, a case study consisting in a web application for evolving artistic drawings
-%is presented, providing both conceptual and implementation details of the framework. 
-%In order to test the framework three versions of the application are compared to
-%measure the degree of relationship between users and their participation,
-%when appling a gamification technique. 
-In this work, three case studies are presented. First, the development of a web based C-IEC application 
+they reach a giving level. 
+In this work, a case study is presented. The development of a web based C-IEC application 
 for evolving artistic drawings is described to give the reader details about 
 the utilization of the proposed framework. Then, a rewarding mechanism is 
 implemented in the same application to study the changes in participation
-when applying a gamification technique. Finally, two other case studies are briefly presented
-to show how the framework can applied to other domains. %The
-                                %objectives of these lasts are... - JJ
+when applying a gamification technique. Finally, an experiment is conducted
+comparing three versions of the application, with, and with out, gamification
+in order to compare the amount of user participation.
 
 The rest of this paper is organized as follows.
 Section \ref{sec:related} presents related work on the topic 
 of interactive evolution. Then, Section \ref{sec:framework} presents the human centered framework of
-for C-IEC applications which the main proposal of this work. The implementation of the data model
-is detailed in Section \ref{sec:implementation}. % Why not all case
-                                % studies in the same section? - JJ
-Next three case studies are presented: EvoDrawings in
-Section \ref{sec:evodraw}, EvoDraw Installation in Section\ref{sec:evodraw}, 
-and XYZ in Section\ref{sec:evodraw}. Finally, concluding remarks are provided 
+for C-IEC applications which the main proposal of this work. Implementation details of the data model
+are presented in Section \ref{sec:implementation}. 
+Next the EvoDrawings application case study is presented in
+Section \ref{sec:evodraw}. The experimental set-up is described in Section \ref{sec:experiment},
+an the results are discussed in Section \ref{sec:results}. Finally, concluding remarks are provided 
 in Section \ref{sec:conclusions}.
 
 \section{Related Work}
@@ -171,16 +163,16 @@ representing the interactive process of our C-IEC systems is proposed next.
     \label{fig:hc_framework}
 \end{figure*}
 
-\section{Human-Centered IEC Framework}
+\section{Human-Centered C-IEC Framework}
 \label{sec:framework}
 % You have to clearly express the objectives of the paper from tine
 % introduction. If the objective is to reduce fatigue via social
 % engagement, you have to frame the results that way. 
 The general goal of this research is to develop a human-centered \cite{gasson2003human} 
-software framework for C-IEC. 
-A framework is defined as a reusable architectural design together
+software framework that can be used to increase volunteer participation 
+in C-IEC systems. A framework is defined as a reusable architectural design together
 with an implementation \cite{campbell1991choices}, in this case 
-providing generalized components to developers of IEC systems. 
+providing generalized components to developers and researchers of C-IEC systems. 
 
 The proposed framework includes components that can be refined to increase
 participation and also to minimize the amount of evaluations needed for the evolutionary 
@@ -271,7 +263,8 @@ in figure \ref{fig:hc_framework}:
   will be the back-end of the system. 
 
   \item {\bf Evolutionary Algorithm.} 
-  The Evolutionary Algorithm (EA) algorithm interacts with the data model. The EA could also be run with the help of
+  The Evolutionary Algorithm (EA) algorithm interacts 
+  with the data model. The EA could also be run with the help of
   humans, for instance in the XY project \cite{de2013unplugging} artists actually painted
   the solutions of the new population and applied every genetic operator.
 \end{enumerate}
@@ -326,6 +319,7 @@ Implementation details are presented in \cite{garcia2013evospace}.
   as well as dynamic web pages are handled directly by the Django web
   framework \cite{garcia2013evospace}. % these implementations details
                                 % could go if needed. 
+
 
 \item {\bf Interfaces.}
 The appropriate human interface will depend on the application domain, 
@@ -437,15 +431,17 @@ explore collections of other friends.
 Two variables are used to determine the weight of a user's preference:
 \begin{itemize}
 \item {\bf Experience}: This variable depends on the score and is a value 
-between 0 and 100. It is assumed for this case, that once a user
-reaches 100 actions, it has enough experience on using the
+between 0 and 100. A new user starts at zero, and the experience increases until
+it reaches 100 actions. It is assumed for this case, that once a user
+reaches this value, it has enough experience on using the
 application. % What happens before that? - JJ  
-
+% explained - Mario
 \item {\bf Participation}: This variable is simply the degree of the user node 
 in the graph (number of edges).    
 \end{itemize}
 
 \subsection{Experimental Setup}
+\label{sec:experiment}
 
 Three versions of EvoDrawings were compared:
 \begin{itemize}
@@ -480,7 +476,9 @@ the parameters used for the evolutionary algorithm.
 At the start of every experiment, a call to participation was issued
 through social networks.  The link used in the call for participation
 was a shortened Google URL, that provides meta-data and analytics for the
-users that click on it. %Will we comment on that? - JJ
+users that click on it. 
+ %Will we comment on that? - JJ
+ % To do.
   In Table \ref{tab:urls} the URL for each 
 deployment in the Heroku platform is shown,
 along with the short URL and the analytics link. In the same table a link to the GitHub 
@@ -488,7 +486,8 @@ application repository used to deploy to Heroku is also listed. Only data
 for the first week of deployment was considered for the experiments, and they where conducted 
 between January and May of 2016. 
 
-\subsection{Results} 
+\section{Results}
+\label{sec:results} 
 Before release, each deployment was first tried with a few beta testers. 
 When applying the leader board gamification technique for the first time a 
 problem was found: some users were cheating by giving a
