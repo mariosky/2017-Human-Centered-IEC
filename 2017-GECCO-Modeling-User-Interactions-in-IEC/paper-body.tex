@@ -549,11 +549,13 @@ The shape of those distributions is a skewed bell
 with more resources in the {\em low} areas than in the high areas; i.e., 
 there are many users that give a small amount of cycles, while there
 are just a few that give many cycles. In order to assess gamification techniques alongside C-IEC follows the
-same pattern, participation was flitted to a 
+same pattern, participation was fitted to a 
 Weibull distribution,
 and shown in Figures \ref{fig:w1} and \ref{fig:w3}, 
 confirming  this model for user interaction, although with different fitted
-values in each case. 
+values in each case. A graph query was used to compare the number of volunteers in deployments
+B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively). 
+
 %
 \begin{figure}[!t]
     \centering
@@ -576,6 +578,10 @@ values in each case.
     \label{fig:w3}
 \end{figure}
 
+
+
+
+
 % This has nothing to do with the rest of the paper. You are not
 % modeling anything. It's just another application of the
 % framework. Could be mentioned in the state of the art, that's
@@ -589,13 +595,13 @@ values in each case.
 % - JJ
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.5in]{img/user_known_2.png}
+        \includegraphics[width=3.2in]{img/user_known_2.png}
     \caption{User network view of the Base deployment}
     \label{fig:B-network}
 \end{figure}
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.5in]{img/user_known_3.png}
+        \includegraphics[width=3.2in]{img/user_known_3.png}
     \caption{User network view of the Graph Gamification deployment}
     \label{fig:GG-network}
 \end{figure}
@@ -605,16 +611,25 @@ values in each case.
 Volunteer-based and C-IEC systems involve the dynamic 
 interaction of many entities and artifacts. Employing a human-centered approach 
 can benefit researchers to understand and visualize this kind of systems better.
+
 In this paper a human-centered software framework was proposed, and was validated
-through the implementation and refinement of three C-IEC applications.
+through the implementation and refinement of a C-IEC application.
 This framework enabled the implementation of a gamification technique 
 to improve engagement in a case study which provides a common arena where users are aware of the
-activities of other users in the social vicinity. Following a hybrid data model approach
-gives developers and project owners options when innovating with other means
-of interaction or new applications.
+activities of other users in the social vicinity. 
 
+In concordance with the results obtained in other 
+browser-based volunteer systems, after 
+applying the gamification techniques, user participation follows the
+same pattern and was fitted to a Weibull distribution. 
+
+It was shown how the estimation of fitness of candidate solutions
+can take advantage of a graph model representation. Also, the graph
+offers another view of the system that it would have been
+difficult to replicate with a relational database. 
 % More conclusions and some way of relating the three case studies
 % would be something that is missing and should definitely go here - JJ
+% No longer needed as they where removed - Mario
 
 One of the interesting future lines of work would be to look a bit
 more closely at the behavior of users as they are rating artifacts 
