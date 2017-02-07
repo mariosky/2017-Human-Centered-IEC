@@ -140,9 +140,9 @@ to their study will allow us to understand them more thoroughly.
 Given the human fatigue limitation when applying IEAs, some authors 
 have tried to mitigate the problem by allowing the algorithm to 
 collaborate with the user, so that sometimes 
-users perform the evaluation,  but also specific measures are included 
+users perform the evaluation, but also specific measures are included 
 into the algorithm to perform the
-evaluation of some features automatically. For instance,Reis et al. added
+evaluation of some features automatically. For instance, Reis et al. added
 some terrain measures (such as accessibility and edge length) 
 to a standard  IEC in \cite{DBLP:journals/soco/FradeVC12}. 
 This way the algorithm was capable of providing terrains that would otherwise have needed the
@@ -150,8 +150,9 @@ users' evaluation for these specific features. Seyama and Munetomo \cite{seyama2
 also propose the reduction of user fatigue by using 
 a collaborative filtering algorithm to show only the information utilized by similar users as 
 they collaborate with a large number of users for the interactive modeling of 3D glasses. 
-The framework and data model for 
-representing the interactive process of our C-IEC systems is proposed next.
+
+Promoting user engagement and reducing user fatigue requires the management of the complex 
+interactions found in these systems. Our approach is proposed next.
 % Volunteer Based
 % HBC
 % Engagement Techniques
@@ -159,7 +160,7 @@ representing the interactive process of our C-IEC systems is proposed next.
 % Is that left for later? No space, I'm afraid - JJ
 \begin{figure*}[!t]
     \centering
-        \includegraphics[width=6in]{img/framework.eps}
+        \includegraphics[width=7in]{img/framework.eps}
     \caption{IEC Human-centered framework.}
     \label{fig:hc_framework}
 \end{figure*}
@@ -197,16 +198,16 @@ framework are explained next:
 \end{quote}  
 
 \item {\bf Users are volunteers.} Users donate their computing resources, so they are 
-unaccountable, sometimes they try to game the system. Project owners must actively promote and
+unaccountable and sometimes they try to game the system. Project owners must actively promote and
 design the interactive system to engage volunteers \cite{oh2015clicking}. % Define
 \item {\bf Users are not alone}
-  Relationship between users in an interactive evolutionary algorithm can be modeled
+  Relationships between users in an interactive evolutionary algorithm can be modeled
   as a social network, with well established semantics, algorithms and metrics 
   \cite{ahuja1993network}.
   A graph model could enable researchers to find other ways of identifying leaders of 
   opinion or measuring the similarity between user's preferences. 
   These measures can then be used by recommender algorithms selecting 
-  phenotypes according users' preferences. 
+  phenotypes according to their preferences. 
 
 \item {\bf Context of use matters.}
   Fischer \cite{fischer2012context}
@@ -226,17 +227,18 @@ design the interactive system to engage volunteers \cite{oh2015clicking}. % Defi
  
 \item {\bf Interaction is a stream of actions.}
   Real time processing of users' actions could be needed for certain applications when data is 
-  captured by sensors, or directly captured as user input. For example, social networks keep
-  track of users' interactions with other users, media objects and places. Users of 
+  captured by sensors, or directly captured as user input. For example, social networks encourage
+  users to publish their interactions with other users, media objects and places. Users of 
   social networks (for instance the Facebook Graph) are accustomed to express these 
   complex relationships in sentences such as: ``John and Ann eating breakfast at Tony's''. 
-  Other example is the W3C Activity Streams 2.0 specification used for representing activities 
-  common in social web applications \cite{json:streams}. 
+  As this is gaining accptence, there are iniciatives like the W3C Activity Streams 2.0 
+  specification, used for representing common activities in social 
+  web applications \cite{json:streams}. 
 \end{itemize}
 
 The above considerations have guided the design of the framework, and throughout they have been
 treated as application constraints. In order to satisfy theses requirements the
-human centered IEC architecture consists of three high level components depicted
+human-centered C-IEC architecture consists of three high level components depicted
 in figure \ref{fig:hc_framework}:
 
 \begin{enumerate}
@@ -253,28 +255,37 @@ in figure \ref{fig:hc_framework}:
   The information gathered through the interaction is the primary focus
   as it will guide the search. 
 
-  \item {\bf IEC Data Model.}
+  \item {\bf Data Model.}
   A data model is used to describe the IEC system prior to a physical 
-  implementation.  Depending on the domain several techniques can be used.
-  Parts of the system could be better described by an entity-relationship 
-  modeling, to be used in a relational database or a class digram for a 
-  key-value store. A graph is proposed for modeling the social network of users 
-  and their interaction with the population. When implemented, a graph database 
-  will be the back-end of the system. 
+  implementation.  Depending on the domain several models can be used, these
+  options and their physical implememtations are explained in Section \ref{sec:implementation}.
 
-  \item {\bf Evolutionary Algorithm.} 
-  The Evolutionary Algorithm (EA) algorithm interacts 
-  with the data model. The EA could also be run with the help of
-  humans, for instance in the XY project \cite{de2013unplugging} artists actually painted
-  the solutions of the new population and applied every genetic operator.
+  \item {\bf Human Interface.}
+  The appropriate human interface will depend on the application domain, 
+  the current framework implementation employs a web based application. Developers 
+  can use different templates, to present one or more phenotypes 
+  at a time, and the type of rating system:  based on ``likes'' or in a rating from one to five (stars). 
+  Other implementations do not need a graphical interface at all, using sensors and actuators.   
+
+  \item {\bf Evolutionary Algorithm.}
+  The Evolutionary Algorithm (EA) algorithm interacts with the data model.     
+  The EA is decoupled from the data model, the algorithm could be implemented internally, 
+  use an external library, or even be human based evolution, 
+  where volunteers select the parents of the next generation and upload the 
+  new individuals as in the XYZ project \cite{de2014artists}.  
+
+  \item {\bf Analytics.} 
+  Researchers and deveopers will need to query the data model in order to analyzing the 
+  system's behaviour. 
+
 \end{enumerate}
 
 \section{Data Model Implementation}
 \label{sec:implementation}
 
-The core of the framework is the data model because both the IEC system and the EA will 
-depend on the application. In this section implementation details of the Data Model are presented.
-Three database models are employed to store different elements of the system: 
+In this section, the core component of the framework is presented.
+Three database models are employed to store different elements of the system, next 
+these are described including the technology selected for their physical implementation: 
 
 \begin{itemize}
 \item {\bf EvoSpace-Redis.} 
@@ -320,52 +331,21 @@ Implementation details are presented in \cite{garcia2013evospace}.
   framework \cite{garcia2013evospace}. % these implementations details
                                 % could go if needed. 
 
-
-\item {\bf Interfaces.}
-The appropriate human interface will depend on the application domain, 
-the current framework implementation employs a web based application. Developers 
-can use different templates, to present one or more phenotypes 
-at a time, and the type of rating system:  based on ``likes'' or in a rating from one to five (stars). 
-Other implementations do not need a graphical interface at all, for example the
-EvoDrawings installation or the XYZ Project \cite{de2014artists}.   
-
-\item {\bf Evolution.}    
-The EA is decoupled from the data model, the algorithm 
-could be implemented as an EvoWorker \cite{garcia2013evospace}, use an external library, 
-or even assigned to humans. An additional tool was implemented for a human based evolution, 
-where volunteers select the parents of the next generation and upload the 
-new individuals \cite{de2014artists}.  
 \end{itemize}
 
 \section{Case Study: EvoDrawings}
 \label{sec:evodraw}
-As a case study, a C-IEC application was developed using the 
+As a case study, a C-IEC application was developed by extending the 
 EvoSpace-Interactive (ES-I) platform \cite{garcia2013evospace}
-A brief description of the application is presented next, focusing
-on the data elements that where ported to the graph model.
+A brief description of the application is presented next.
 
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.5in]{img/interface.png}
-    \caption{User interface of the EvoDrawings application.}
+    \caption{User interface of the EvoDrawings application. (ANONIMIZED IN THIS VERSION)}
     \label{fig:web}
 \end{figure}
 
-\subsection{Fitness Assignment}
-The ES-I platform has been programmed to employ a 
-collaborative methodology for performing fitness assignment. 
-Several registered users assign a quality assessment to a single
-phenotype and then an aggregated fitness value is calculated,
-depending on the rating (from 1 to 5 stars) by each particular user,  
-resulting in a many-to-many relationship between users and
-phenotypes. Other components or users of the systems can 
-query this user-phenotype relation to extract relevant
-knowledge about the process and the population. For instance, showing the
-most popular phenotype, or the user with more participation 
-\cite{picbreeder}.
-In order to do this, meta-data about phenotypes 
-must be permanently stored, even
-if they are no longer in the active population. 
 
 \subsection{Collaboration}
 \label{sec:col}
@@ -399,8 +379,8 @@ pursuing the objective of this work, which is to increase user engagement.
 
 \subsection{Graph Model} 
 The graph model for the EvoDrawings application has the following types of
-nodes: {\bf User}, {\bf Phenotype} and {\bf Collection} . The Collection node represents
-a collection of drawings belonging to users. One collection can contain many phenotypes 
+nodes: {\bf User}, {\bf Phenotype} and {\bf Collection}. The Collection node represents
+a collection of drawings belonging to a user. One collection can contain many phenotypes 
 or be empty. A single phenotype could be shared by many collections. The interaction 
 between these entities are represented by the following edges:
 
@@ -482,7 +462,7 @@ users that click on it.
   In Table \ref{tab:urls} the URL for each 
 deployment in the Heroku platform is shown,
 along with the short URL and the analytics link. In the same table a link to the GitHub 
-application repository used to deploy to Heroku is also listed. Only data 
+application repository used to deploy to Heroku is also listed (ANONIMIZED IN THIS VERSION). Only data 
 for the first week of deployment was considered for the experiments, and they where conducted 
 between January and May of 2016. 
 
@@ -494,7 +474,7 @@ problem was found: some users were cheating by giving a
 rating to an animation even before it was returned from the server, this was done by just
 constantly clicking the mouse button. This is a common problem found in systems using leader
 boards because by making the scores visible to other players they are encouraged 
-to compete \cite{hickman2010total}. The final version disabled the button until 
+to compete \cite{hickman2010total}. The version used in experiments disabled the button until 
 the drawing animation was over. The results of each of the three experiments in 
 terms of participation are detailed next.
 
@@ -523,8 +503,7 @@ number of phenotypes they rated. In the \emph{x} axis is the rank and in the \em
 the number of phenotypes evaluated using a logarithmic scale. Results show that when 
 considering deployments B and G, the difference came with users with a medium level of participation.
 When comparing all the experiments the deployment GG had the higher
-number of participation in users of all levels, besides attracting a
-bigger number of users.    
+number of participation, besides attracting also the higher number of users.    
 
 \begin{figure}[!t]
     \centering
@@ -551,29 +530,30 @@ there are many users that give a small amount of cycles, while there
 are just a few that give many cycles. In order to assess gamification techniques alongside C-IEC follows the
 same pattern, participation was fitted to a 
 Weibull distribution,
-and shown in Figures \ref{fig:w1} and \ref{fig:w3}, 
-confirming  this model for user interaction, although with different fitted
+and shown in Figures \ref{fig:w1} to \ref{fig:w3}, 
+confirming this a model for user interaction, although with different fitted
 values in each case. A graph query was used to compare the number of volunteers in deployments
-B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively). 
+B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively) showing 
+additional patterns on both social networks. 
 
 %
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.2in]{img/weibull_1.png}
+        \includegraphics[width=3.4in]{img/weibull_1.png}
     \caption{Deployment B. Weibull Fit.}
     \label{fig:w1}
 \end{figure}
 %
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.2in]{img/weibull_2.png}
+        \includegraphics[width=3.4in]{img/weibull_2.png}
     \caption{Deployment G. Weibull Fit.}
     \label{fig:w2}
 \end{figure}
 
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=3.2in]{img/weibull_3.png}
+        \includegraphics[width=3.4in]{img/weibull_3.png}
     \caption{Deployment GG. Weibull Fit.}
     \label{fig:w3}
 \end{figure}
@@ -596,13 +576,13 @@ B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respecti
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.2in]{img/user_known_2.png}
-    \caption{User network view of the Base deployment}
+    \caption{User network view of the Base deployment (B). (ANONIMIZED IN THIS VERSION) }
     \label{fig:B-network}
 \end{figure}
 \begin{figure}[!t]
     \centering
         \includegraphics[width=3.2in]{img/user_known_3.png}
-    \caption{User network view of the Graph Gamification deployment}
+    \caption{User network view of the Graph Gamification deployment(GG) (ANONIMIZED IN THIS VERSION) .}
     \label{fig:GG-network}
   \end{figure}
   
@@ -620,10 +600,10 @@ This framework enabled the implementation of a gamification technique
 to improve engagement in a case study which provides a common arena where users are aware of the
 activities of other users in the social neighborhood. 
 
-After applying the gamification techniques user participation follows the
-same pattern and was fitted to a Weibull distribution, which matches
-results obtained in other browser-based volunteer systems.
-% We would have to check the actual coefficients. - JJ
+In concordance with the results obtained in other 
+browser-based volunteer systems, after 
+applying the gamification techniques, user participation follows the
+same pattern and it was fitted to a Weibull distribution. 
 
 It was shown how the estimation of fitness of candidate solutions
 can take advantage of a graph model representation. Also, the graph
