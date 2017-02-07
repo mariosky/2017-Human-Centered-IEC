@@ -25,7 +25,7 @@ system \cite{eiben2015interactive}.
 They are usually applied in problems where the fitness function is not known or simply
 does not exist, and the result of optimization should fit a certain human need or
 desire such as an aesthetic ideal.  
-That is why their use cases includes the evolution of objects with subjective characteristics
+That is why their use cases include the evolution of objects with subjective characteristics
 such as visual appeal or attractiveness \cite{biomorphs} as well as others where human behavior is 
 considered, for instance the optimization of teamwork \cite{kosorukoff2002evolutionary}
 or creativity \cite{yu2011cooks}. In the cases when 
@@ -83,23 +83,25 @@ Deterding et al. \cite{deterding2011game} as
 \begin{quote}
   the use of game design elements in non-game contexts.
 \end{quote}  
-The gamification element employed in this case study has been a rewarding mechanism  
+The gamification element employed in this work is a rewarding mechanism  
 \cite{dubois2013understanding}. In general rewards  consist of a reputation system 
 with score points, levels and leader boards. Points are awarded to users in response of 
 the accomplishment of certain activities that need to be encouraged. Levels depend
 on the score and certain features of the game are only available to gamers when 
 they reach a giving level. 
-In this work, a case study is presented. The development of a web based C-IEC application 
+
+The development of a web based C-IEC application 
 for evolving artistic drawings is described to give the reader details about 
 the utilization of the proposed framework. Then, a rewarding mechanism is 
 implemented in the same application to study the changes in participation
 when applying a gamification technique. Finally, an experiment is conducted
-comparing three versions of the application, with, and with out, gamification
-in order to compare the amount of user participation.
+comparing three versions of the application: with out gamification and
+two gamification techniques.
 
 The rest of this paper is organized as follows.
 Section \ref{sec:related} presents related work on the topic 
-of interactive evolution. Then, Section \ref{sec:framework} presents the human centered framework of
+of collaborative interactive evolution. Then, Section \ref{sec:framework} 
+presents the human centered framework
 for C-IEC applications which the main proposal of this work. Implementation details of the data model
 are presented in Section \ref{sec:implementation}. 
 Next the EvoDrawings application case study is presented in
@@ -110,12 +112,11 @@ in Section \ref{sec:conclusions}.
 \section{Related Work}
 \label{sec:related}
 
-An early example of IEC is the Galapagos Project \cite{sims1997interactivity},
+An early example of C-IEC is the Galapagos Project \cite{sims1997interactivity},
 an exhibit in the Tokyo Multimedia Museum (1997--2000) 
 were visitors interacted with images presented in 
 twelve displays by selecting those they found most aesthetically interesting by standing on
-step sensors in front of them, presenting an example of a non web
-C-IEC system. Web based systems were introduced later, with  
+step sensors in front of them. Web based systems were introduced later, with  
 Langdon's system \cite{langdon:2004} which evolved fractal representations of virtual creatures. 
 Similarly, Secretan et al. \cite{picbreeder} and Clune and Lipson \cite{forms} 
 use web-based IEAs to evolve artistic artifacts using a generative encoding.
@@ -167,13 +168,13 @@ representing the interactive process of our C-IEC systems is proposed next.
 \label{sec:framework}
 % You have to clearly express the objectives of the paper from tine
 % introduction. If the objective is to reduce fatigue via social
-% engagement, you have to frame the results that way. 
+% engagement, you have to frame the results that way.
+% Ok, added - Mario 
 The general goal of this research is to develop a human-centered \cite{gasson2003human} 
 software framework that can be used to increase volunteer participation 
 in C-IEC systems. A framework is defined as a reusable architectural design together
 with an implementation \cite{campbell1991choices}, in this case 
 providing generalized components to developers and researchers of C-IEC systems. 
-
 The proposed framework includes components that can be refined to increase
 participation and also to minimize the amount of evaluations needed for the evolutionary 
 process in a given IEC application. Software frameworks often have 
@@ -194,7 +195,6 @@ framework are explained next:
   vulnerable to psychological manipulation, (6) humans are prone to errors,
   especially for reflective tasks.
 \end{quote}  
-
 
 \item {\bf Users are volunteers.} Users donate their computing resources, so they are 
 unaccountable, sometimes they try to game the system. Project owners must actively promote and
@@ -446,7 +446,7 @@ in the graph (number of edges).
 Three versions of EvoDrawings were compared:
 \begin{itemize}
 \item Base (B): All users have the same weight.
-\item Non Graph Gamification (G): Only experience is considered
+\item Non Graph Gamification (G): Only experience is considered.
 \item Graph Gamification (GG): Both experience and participation are considered.
 \end{itemize}
 When gamification was employed, all score values known where presented to users
@@ -587,7 +587,18 @@ values in each case.
 % you tackle boredom? How do you increase engagement? Those are the
 % paper's topics, you can't just drop it here because it's interactive
 % - JJ
-
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/user_known_2.png}
+    \caption{User network view of the Base deployment}
+    \label{fig:B-network}
+\end{figure}
+\begin{figure}[!t]
+    \centering
+        \includegraphics[width=3.5in]{img/user_known_3.png}
+    \caption{User network view of the Graph Gamification deployment}
+    \label{fig:GG-network}
+\end{figure}
 \section{Conclusions}
 \label{sec:conclusions}
 
