@@ -1,10 +1,12 @@
 
 Volunteer computing is a distributed computing system, in which people
 provide their own computing resources or storage to contribute to a common effort.
-If they run a script in a web page, collaboration is straightforward, but also ephemeral.
-Resources depend on the amount of time a user participates, this means that 
+By runnning a script in a web page, collaboration is straightforward, but also ephemeral.
+Resources depend on the amount of time a user lends, whicn means that 
 the user has to be kept engaged to obtain as many computing cycles as
-possible. In this paper, we analyze a volunteer-based evolutionary computing system called
+possible.
+
+In this paper, we analyze a volunteer-based evolutionary computing system called
 NodIO with the objective of discovering rules that encourage volunteer
 participation, making it more or less efficient. We present the results of
 an experiment where a gammification technique is applied by adding a leaderboard 
@@ -12,7 +14,7 @@ showing the top registered contributors. In NodIO volunteers can
 participate without the need to create an account, so the question was
 if the need to register would hava a negative impact on user participation. 
 The experiment results show that even if only a small percentege of users created an account,
-those competing provided around 90% of the resources. 
+those participating in the competition provided around 90% of the resources. 
 
 
 
