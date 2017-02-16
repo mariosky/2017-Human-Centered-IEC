@@ -48,6 +48,57 @@ those participating in the competition provided around 90\%.
 \end{abstract}
 
 
+
+
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=5in]{img/login.png}
+    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
+    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
+    homogeneous configuration on the left side, and Heterogeneous configuration on the
+    right side of each.
+    }
+    \label{fig:comp-onemax}
+\end{figure*}
+
+\section{Related Work}
+\label{sec:experiments}
+In volunteer distributed computing the BOINC projects applies a gamification technique 
+by having a web page to present the ``Top 100 multi-project BOINC participants'' where
+the name of the volunteer, the number of projects, GFLOPS, country and team are presented 
+(\url{https://boinc.berkeley.edu/chart_list.php}). 
+
+
+\section{Gamification Technique}
+\label{sec:experiments}
+A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
+the process by which gaming concepts are brought to the real world tasks associated with
+real people''. Gamification uses game design elements out of the domain of games 
+with the objective of enhancing the user's experience, engagement, productivity, 
+learning, among others. Deterding et al. proposes the following definition:
+ ``Gamification” is the use of game design elements in non-game contexts'' 
+ \cite{deterding2011gamification}.
+
+Gamification techniques in a volunteer context seeks to persuade 
+users to use their natural desire to compete, learn and socialize in 
+given non-game context application \cite{deterding2011game, hamari2014does}.  
+Some works give a form of reward to users, these include 
+points \cite{sutter2010browse}, achievement badges or levels \cite{hamari2011framework}, 
+the filling of a progress bar \cite{o2010get}, or providing the user with virtual currency.
+By Making the rewards for  tasks achievements visible to other players or 
+providing leader boards are ways of encouraging players to compete \cite{hickman2010total}. 
+Competitio can also have problematic consequences, which can result in
+negative conduct, low cooperation and collaboration, or disadvantaging certain player demographics
+such as women \cite{kumar2013gamification}. Another techniques to gamification 
+is to make existing tasks feel more like games \cite{deterding2010just}. 
+Some techniques used in this approach include adding meaningful choice, 
+onboarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
+
+
+
+
+\section{Experiment}
+\label{sec:experiments}
 In the browser, each page visiting the experiment loads an HTML Worker
 that runs a local island of an evolutionary algorithm to solve a
 multimodal problem called {\em l-trap}, which has been used extensively 
@@ -78,59 +129,6 @@ with sizes between 128 and 256 individuals, the period to send individuals to th
 was set at 100 local generations, the parameters for the trap function are $l$ = 4 and $b$ = 2.
 
 
-\begin{figure*}[t]
-    \centering
-        \includegraphics[width=5in]{img/login.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
-    }
-    \label{fig:comp-onemax}
-\end{figure*}
-
-\section{Related Work}
-\label{sec:experiments}
-
-\section{Gamification.}
-\label{sec:experiments}
-A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
-the process by which gaming concepts are brought to the real world tasks associated with
-real people''. Gamification uses game design elements out of the domain of games 
-with the objective of enhancing the user's experience, engagement, productivity, 
-learning, among others. Deterding et al. proposes the following definition:
- ``Gamification” is the use of game design elements in non-game contexts'' 
- \cite{deterding2011gamification}.
-
-\subsection{Techniques.}
-Gamification techniques in a volunteer context seeks to persuade 
-users to use their natural desire to compete, learn and socialize in 
-given non-game context application \cite{deterding2011game, hamari2014does}.  
-Some works give a form of reward to users, these include 
-points \cite{sutter2010browse}, achievement badges or levels \cite{hamari2011framework}, 
-the filling of a progress bar \cite{o2010get}, or providing the user with virtual currency.
-By Making the rewards for  tasks achievements visible to other players or 
-providing leader boards are ways of encouraging players to compete \cite{hickman2010total}. 
-Competitio can also have problematic consequences, which can result in
-negative conduct, low cooperation and collaboration, or disadvantaging certain player demographics
-such as women \cite{kumar2013gamification}. Another techniques to gamification 
-is to make existing tasks feel more like games \cite{deterding2010just}. 
-Some techniques used in this approach include adding meaningful choice, 
-onboarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
-
-
-
-
-
-
-
-
-
-
-
-
-\section{Experiments}
-\label{sec:experiments}
 
 \subsection{Results}
 \label{sec:results}
