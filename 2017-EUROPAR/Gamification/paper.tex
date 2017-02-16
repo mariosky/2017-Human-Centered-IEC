@@ -50,16 +50,7 @@ those participating in the competition provided around 90\%.
 
 
 
-\begin{figure*}[t]
-    \centering
-        \includegraphics[width=5in]{img/login.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
-    }
-    \label{fig:comp-onemax}
-\end{figure*}
+
 
 \section{Related Work}
 \label{sec:experiments}
@@ -99,6 +90,21 @@ onboarding with a tutorial, increasing challenge, and adding narrative \cite{mcg
 
 \section{Experiment}
 \label{sec:experiments}
+
+In order to test the kind of impact using a gamification technique has on 
+user engagement in an ephemeral evolutionary system, a gamification 
+technique was applied to the {\sf NodIO} volunteer computing framework 
+described in \cite{DBLP:conf/gecco/MereloCGCRV16,2016arXiv160101607M}.
+In this experiment users have the option to register to then login to 
+the web application, using the graphical interface shown in Figure \ref{fig:login}.
+After login registered users are welcomed by their name, and have
+the oportunity to be listed in a leader-board.         
+
+
+
+\subsection{Setup}
+
+\subsection{Problem}
 In the browser, each page visiting the experiment loads an HTML Worker
 that runs a local island of an evolutionary algorithm to solve a
 multimodal problem called {\em l-trap}, which has been used extensively 
@@ -128,7 +134,18 @@ Each local GA had the following parameters, the initial population was randomly 
 with sizes between 128 and 256 individuals, the period to send individuals to the server
 was set at 100 local generations, the parameters for the trap function are $l$ = 4 and $b$ = 2.
 
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=5in]{img/login.png}
+    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
+    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
+    homogeneous configuration on the left side, and Heterogeneous configuration on the
+    right side of each.
+    }
+    \label{fig:login}
+\end{figure*}
 
+The Gamification techinique applied to the NodIO framework  
 
 \subsection{Results}
 \label{sec:results}
