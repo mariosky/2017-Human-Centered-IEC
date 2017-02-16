@@ -5,6 +5,8 @@
 \usepackage{url}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{subfigure}
+\usepackage{amsmath}
+
 \begin{document}
 \sloppy
 
@@ -45,6 +47,37 @@ those participating in the competition provided around 90\%.
 \keywords{Distributed Evolutionary Algorithms, Volunteer Computing}
 \end{abstract}
 
+
+In the browser, each page visiting the experiment loads an HTML Worker
+that runs a local island of an evolutionary algorithm to solve a
+multimodal problem called {\em l-trap}, which has been used extensively 
+as a benchmark for evolutionary algorithms \cite{fernandes2009using,nijssen2003analysis}. 
+This function counts the number of bits in a sequence $l$ and assigns
+the local maximum $a$ if it has got 0 bits and the global maximum $b$ if it has $l$
+bits. As seen in Figure \ref{fig:trap} the fitness falls into a {\em trap} 
+as the number of bits is increased, decreasing linearly until a change in slope 
+is reached at point $z$, adding deceptive component for evolutionary algorithms. 
+To increase the difficulty trap functions can be concatenated.
+In our case we have used $40$ concatenated traps. The trap function  defined as:   
+\[ f(u)= 
+    \begin{cases} 
+      \frac{a}{z}(z-u) & \text{if } u\leq z\\
+      \frac{b}{l-z} (u-z)& \text{otherwise} 
+   \end{cases}
+\]
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=3in]{img/trap.png}
+    \caption{Trap function.
+    }
+    \label{fig:trap}
+\end{figure*}
+
+Each local GA had the following parameters, the initial population was randomly generated 
+with sizes between 128 and 256 individuals, the period to send individuals to the server
+was set at 100 local generations, the parameters for the trap function are $l$ = 4 and $b$ = 2.
+
+
 \begin{figure*}[t]
     \centering
         \includegraphics[width=5in]{img/login.png}
@@ -84,6 +117,10 @@ such as women \cite{kumar2013gamification}. Another techniques to gamification
 is to make existing tasks feel more like games \cite{deterding2010just}. 
 Some techniques used in this approach include adding meaningful choice, 
 onboarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
+
+
+
+
 
 
 
