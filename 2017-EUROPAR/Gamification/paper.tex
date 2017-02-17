@@ -101,7 +101,7 @@ number of contributions.
 
 The rest of the paper is organized as follows: Next we will briefly
 present the state of the art in opportunistic distributed evolutionary
-computation (EC). Section \ref{sec:description} will describe the
+computation (EC). Section \ref{sec:gamification} will describe the
 framework and problem used in the experiments, which are publicly
 available under a free license. We will present the results of the
 different steps in the incremental design in Section
@@ -111,6 +111,111 @@ different steps in the incremental design in Section
 
 \section{Related Work}
 \label{sec:soa}
+
+Volunteer computing involves users deciding to run a program that acts
+as a client or as a peer in an experiment
+and, as such, has been deployed in many different ways from the
+beginning of the Internet, starting with the SETI@home framework for
+processing extraterrestrial signals \cite{david-seti:home}, or a 
+high-throughput queuing system such as HTCondor \cite{HTCondor}.
+However,
+the dual facts of the introduction of JavaScript as a universal language for the
+browser and the browser itself as both an ubiquitous web and Internet client has
+made this combination the most popular for volunteer computing
+frameworks such as the one we are using here, and whose first version
+was described in \cite{DBLP:conf/gecco/GuervosG15}. Systems based on the
+JavaScript/browser combination
+emphasize the ephemerality, ease of use, and universality, while
+systems such as HTCondor or BOINC might be more adequate for work that % citation for BOINC (?)
+require higher availability of volunteer resources, achieving this
+with downloadable clients which in some cases, like HTCondor, need
+administration access to the resources.
+
+Several authors have already described systems using JavaScript  either
+for unwitting
+\cite{unwitting-ec,boldrin2007distributed,apolonia2012enhancing} or volunteer 
+\cite{langdon:2005:metas,gecco07:workshop:dcor} distributed
+evolutionary computation and it has been used ever since by several
+authors, including more recent efforts
+\cite{duda2013distributed,DBLP:journals/corr/abs-0801-1210,EvoStar2014:jsEO,martinez2015capataz,pan2015gray}. In fact, this last paper \cite{pan2015gray} performs
+an analysis of what it calls {\em Gray computing} doing an analysis of
+feasibility, cost-effectiveness, change in the user experience and
+architectural optimization needed, concluding that the computing power
+available can be vast and it that it can be cost-effective to use it. 
+
+Using a peer to peer approach, the SPACE framework \cite{leclerc2016seamless} distributes fitness 
+evaluations across a heterogeneous pool of cloud compute nodes and volunteer
+peer computers running a browser. In SPACE peers establish a bi-directional 
+communication with the server using the \texttt{Socket.io} JavaScript library.  
+As an experiment they provide an \texttt{ASM.js} compiled version of the RoboGen 
+software platform, showing that JavaScript can be used in a broad 
+spectrum of applications.  
+
+Recent works have been using crowdsourcing in order to train robots 
+for human interaction, a representative work of this trend is that of  
+Anetsberger \& Bongard \cite{anetsbergerrobots} in which they propose 
+training simulated robots for the grounding of language symbols. They do this by using human 
+observers that issue arbitrary commands to these robots via the web, 
+providing positive or negative reinforcement in response to the
+robot\'s resulting actions. For interaction, they use the Twitch 
+video streaming platform where users can issue commands through the
+platform's integrated chat service. Subjects were incentivized to 
+interact with the system by GUI features that provided participants
+with a sense of involvement with the simulation. This kind of systems
+could add additional dynamics, because users can collaborate or 
+even compete with each other when issuing their commands.
+
+
+Most
+of these papers focused on testing the system by itself as proofs of
+concepts, more than on its performance or their actual influence on
+the result of an evolutionary algorithm. In fact, some of them do not
+even work in as a distributed computing system
+\cite{EvoStar2014:jsEO}, describing the expressive capabilities of
+JavaScript for evolutionary computation. 
+
+
+The proofs of concept described above do not go further than trying to
+find out  how many users join the effort and how many the system is
+able to support. In fact, systems described in
+\cite{gecco07:workshop:dcor} had serious scaling issues; some of them
+also tried to find out how much time was needed to find the solution
+or, alternatively, how many users would be needed to be competitive
+with single-user single-computer implementations of the same
+algorithm. However, the latest systems try to emphasize the seamless
+integration of peer and volunteer computing systems \cite{leclerc2016seamless}. 
+
+This latest system offloads evaluation to browsers so the actual
+algorithm runs in some other place; in general, most researchers do
+not try to assess the performance of the algorithm 
+itself in the precise conditions they find in a volunteer computing
+system, although papers such as the one by Laredo et
+al. \cite{churn08:ijhpsa}, using models, try to find out the resulting
+performance when the users are changing continuously according to a
+Weibull distribution. In the case of Klein and Spector \cite{unwitting-ec}, the algorithm
+is actually run on the server, using the browser mainly for fitness
+evaluation, and thus no actual contribution to the evaluation of the
+evolutionary algorithm itself is made.
+
+There is another factor that should be taken into account: since the
+user has control of the browser, there is a limited amount of
+interaction with it, namely, the fact that by reloading the webpage they
+can apply a kind of hypermutation, killing the current population and
+generating new individuals some of which will make their way to the
+common pool via migration. In that sense, volunteer computing is also
+a way of {\em human computation} \cite{quinn2011human}, a concept that
+has also been applied to evolutionary algorithms \cite{972056}, in
+this case extensively and with all operators. It is quite difficult to
+find out how many times this happens and what is their effect on the
+overall algorithm, but this only reaffirms the fact that there is a
+long list of issues with volunteer evolutionary computation, and that
+the volunteer him or herself is at the center of many of them.
+
+In this paper we will make contributions towards the design of
+efficient volunteer evolutionary algorithms by studying the effect of
+several design decisions on performance. In the next Section we will
+present the general framework and the initial setup.
+
 In volunteer distributed computing the BOINC projects applies a gamification technique 
 by having a web page to present the ``Top 100 multi-project BOINC participants'' where
 the name of the volunteer, the number of projects, GFLOPS, country and team are presented 
@@ -142,9 +247,7 @@ is to make existing tasks feel more like games \cite{deterding2010just}.
 Some techniques used in this approach include adding meaningful choice, 
 on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
 
->>>>>>> e0b4fdb1a1917df769b649897a4a91e53129b0a3
-
-\begin{figure*}[t]
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=5in]{img/login.png}
     \caption{ User interface: Landing page, and Login and registration dialogs.  
@@ -193,7 +296,7 @@ The function returns a normalized value that is multiplied by the maximum level
 in this case 100. The variables $a$=100 and $b$=7360 give the slope of the function as
 seen in Figure~\ref{fig:s}. The function was set to give users a rapid increase of 
 levels at the beginning.
-\begin{figure*}[t]
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=2.5in]{img/s.png}
     \caption{$S$ function used to assign the user's level.
@@ -228,14 +331,15 @@ In our case we have used $40$ concatenated traps. The trap function  defined as:
       \frac{b}{l-z} (u-z)& \text{otherwise} 
    \end{cases}
 \]
-\begin{figure*}[t]
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=2.5in]{img/trap.png}
     \caption{Trap function.
     }
     \label{fig:trap}
 \end{figure*}
-\begin{table}
+%
+\begin{table}[htbp]
   \small
   \caption{ Log file record structure}
   \label{tab:record} 
@@ -270,7 +374,8 @@ The experiment will run until November 27th, Thanks!''. In the message, the regi
 to the application is presented, and also a deadline of the experiment. When the
 experiment was over, users visiting the page were presented with a thank you message 
 and a static leader board. 
-\begin{figure*}[t]
+%
+\begin{figure*}[htbp]
     \centering
     \subfigure  [Registered users]
     {
@@ -287,8 +392,8 @@ and a static leader board.
         number or PUTs in a logarithmic scale.    }
     \label{fig:puts}
 \end{figure*}
-
-\begin{figure*}[t]
+%
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=4in]{img/puts_box.png}
     \caption{ Box-plot of the number of requests sent by registered users and anonymous IPs.
@@ -296,8 +401,8 @@ and a static leader board.
     }
     \label{fig:box}
 \end{figure*}
-
-\begin{figure*}[t]
+%
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=5in]{img/workers_put_ip.png}
     \caption{ Participation of registered users. Each circle represents a user relating  
@@ -307,16 +412,15 @@ and a static leader board.
     }
     \label{fig:worker-put-ips}
 \end{figure*}
-
-
-\begin{figure*}[t]
+%
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=5in]{img/puts_by_time.png}
     \caption{Number of PUTs by User or IP in 15 minute slots.
     }
     \label{fig:puts-time}
 \end{figure*}
-\begin{figure*}[t]
+\begin{figure*}[htbp]
     \centering
         \includegraphics[width=5in]{img/workers_best_user.png}
     \caption{ Number of workers used by the top ranked user in 15 minute slots.
