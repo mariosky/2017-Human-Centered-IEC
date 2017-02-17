@@ -5,6 +5,8 @@
 \usepackage{url}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{subfigure}
+\usepackage{amsmath}
+
 \begin{document}
 \sloppy
 
@@ -105,83 +107,280 @@ available under a free license. We will present the results of the
 different steps in the incremental design in Section
 \ref{sec:experiments}, to finally wrap up with the conclusions.
 
+
+
+\section{Related Work}
+\label{sec:soa}
+In volunteer distributed computing the BOINC projects applies a gamification technique 
+by having a web page to present the ``Top 100 multi-project BOINC participants'' where
+the name of the volunteer, the number of projects, GFLOPS, country and team are presented 
+(\url{https://boinc.berkeley.edu/chart_list.php}). 
+
+
+\section{Gamification Technique}
+\label{sec:gamification}
+A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
+the process by which gaming concepts are brought to the real world tasks associated with
+real people''. Gamification uses game design elements out of the domain of games 
+with the objective of enhancing the user's experience, engagement, productivity, 
+learning, among others. Deterding et al. proposes the following definition:
+ ``Gamification” is the use of game design elements in non-game contexts'' 
+ \cite{deterding2011gamification}.
+
+Gamification techniques in a volunteer context seeks to persuade 
+users to use their natural desire to compete, learn and socialize in 
+given non-game context application \cite{deterding2011game,hamari2014does}.  
+Some works give a form of reward to users, these include 
+points \cite{sutter2010browse}, achievement badges or levels \cite{hamari2011framework}, 
+the filling of a progress bar \cite{o2010get}, or providing the user with virtual currency.
+By Making the rewards for  tasks achievements visible to other players or 
+providing leader boards are ways of encouraging players to compete \cite{hickman2010total}. 
+Competition can also have problematic consequences, which can result in
+negative conduct, low cooperation and collaboration, or disadvantaging certain player demographics
+such as women \cite{kumar2013gamification}. Another techniques to gamification 
+is to make existing tasks feel more like games \cite{deterding2010just}. 
+Some techniques used in this approach include adding meaningful choice, 
+on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
+
+>>>>>>> e0b4fdb1a1917df769b649897a4a91e53129b0a3
+
 \begin{figure*}[t]
     \centering
         \includegraphics[width=5in]{img/login.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
+    \caption{ User interface: Landing page, and Login and registration dialogs.  
     }
-    \label{fig:comp-onemax}
+    \label{fig:login}
 \end{figure*}
 
-\section{Experiments}
+\section{Experiment}
 \label{sec:experiments}
 
-\subsection{Results}
-\label{sec:results}
+In this experiment a gamification technique is applied to 
+the {\sf NodIO} volunteer computing framework, using the 
+particular version described in \cite{DBLP:conf/gecco/MereloCGCRV16,2016arXiv160101607M}.
+The objective of the experiment is to test the kind of impact 
+applying a gamification technique has on user engagement in this
+particular application. In order to apply a rewarding system
+user authentication had to be developed first. In earlier designs
+this functionality was not desired because it was seen as a barrier 
+for participation. After all the advantage of a browser based volunteer system
+is precisely the minimum amount of user intervention needed to start.
+The last thing a user wants to see is yet another registration form.
+Then, the first design decision for this version is that registration is optional
+and not promoted by the interface. There is only a button with a ``Login/Register'' label,
+using the graphical interface shown in Figure \ref{fig:login}. 
+The registration form is very basic, having only the user-name and 
+password (with out confirmation) as the required fields. Email is optional
+and is not verified. The problem of users that forgot their password
+happened, and it was resolved by sending an email to the administrators
+or some users just created another account. 
 
+The gamification technique employed in this work is based on a rewarding mechanism  
+\cite{dubois2013understanding}. In general rewards  consist of a reputation system 
+with score points, levels and leader boards. Points are awarded to users in response of 
+the accomplishment of certain activities that need to be encouraged. In these case
+a point is awarded for each PUT sent to the server. Levels are a long
+term achievement, in this case the level depends on the score:
+\[ \text{level}(\text{score};a,b)= 
+    \begin{cases} 
+      0,                                    &  \text{score}\leq a\\    
+      2(\frac{\text{score}-a}{b-a})^{2},    &  a\leq \text{score}\leq \frac{a+b}{2}\\
+      1-2(\frac{\text{score}-b}{b-a})^{2},  & \frac{a+b}{2} \leq \text{score}\leq b\\
+      1,                                    & \text{score}\geq b 
+   \end{cases}
+\]
+The function returns a normalized value that is multiplied by the maximum level 
+in this case 100. The variables $a$=100 and $b$=7360 give the slope of the function as
+seen in Figure~\ref{fig:s}. The function was set to give users a rapid increase of 
+levels at the beginning.
 \begin{figure*}[t]
     \centering
-    \subfigure  [6 workers]
+        \includegraphics[width=2.5in]{img/s.png}
+    \caption{$S$ function used to assign the user's level.
+    }
+    \label{fig:s}
+\end{figure*}
+
+After login, registered users are welcomed by their name, and they can see
+their score and level. All users can see in a modal dialog the leader board.
+While the modal is opened, the scores are refreshed every second. All other 
+functionality is available to all users and is the same as the previous 
+{\sf NodIO} version, showing the state of the current algorithm. 
+In the front page a link to the open source code of the experiment was also 
+available \url{https://github.com/lucero21/login-master} 
+
+
+\subsection{Problem}
+In the browser, each page visiting the experiment loads an HTML Worker
+that runs a local island of an evolutionary algorithm to solve a
+multi-modal problem called {\em l-trap}, which has been used extensively 
+as a benchmark for evolutionary algorithms \cite{fernandes2009using,nijssen2003analysis}. 
+This function counts the number of bits in a sequence $l$ and assigns
+the local maximum $a$ if it has got 0 bits and the global maximum $b$ if it has $l$
+bits. As seen in Figure \ref{fig:trap} the fitness falls into a {\em trap} 
+as the number of bits is increased, decreasing linearly until a change in slope 
+is reached at point $z$, adding deceptive component for evolutionary algorithms. 
+To increase the difficulty trap functions can be concatenated. 
+In our case we have used $40$ concatenated traps. The trap function  defined as:   
+\[ f(u)= 
+    \begin{cases} 
+      \frac{a}{z}(z-u) & \text{if } u\leq z\\
+      \frac{b}{l-z} (u-z)& \text{otherwise} 
+   \end{cases}
+\]
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=2.5in]{img/trap.png}
+    \caption{Trap function.
+    }
+    \label{fig:trap}
+\end{figure*}
+\begin{table}
+  \small
+  \caption{ Log file record structure}
+  \label{tab:record} 
+  \centering
+  \small
+  \begin{tabular}{l  l}
+    \hline\noalign{\smallskip}
+    Attribute & Value \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    chromosome   & The individual sent to the server as a string of 160 bits.  \\ \hline
+    fitness & fitness as an integer.  \\ \hline
+    IP & IP address of the participant (later anonymized) .\\ \hline
+    user & user-name or the string `anonymous'.  \\ \hline
+    worker\_uuid & unique identifier of the HTTP Worker that sent the participation.   \\ \hline
+    level &  level of user or the string `info' \\ \hline
+    message & Only PUT messages were recorded in this experiment. \\ \hline
+    timestamp & A time-stamp based on the Unix epoch\\ \hline
+  \end{tabular}
+\end{table}
+
+Each local GA had the following parameters, the initial population was randomly generated 
+with sizes between 128 and 256 individuals, the period to send individuals to the server
+was set at 100 local generations, the parameters for the trap function are $l$ = 4,
+$a$=1, $b$ = 2, $z$=3 and a chromosome length of 160 bits.
+
+In order to begin the experiment a call to participation was issued on November 23th, 
+2016 through the authors social networks:
+``Asking again for your help, we are conducting a computational experiment
+that requires computer power. Can we borrow some of your CPU? just visit the web page (link)
+and leave the tab open. Be part of the TOP TEN, register so we can track your participation.
+The experiment will run until November 27th, Thanks!''. In the message, the registration
+to the application is presented, and also a deadline of the experiment. When the
+experiment was over, users visiting the page were presented with a thank you message 
+and a static leader board. 
+\begin{figure*}[t]
+    \centering
+    \subfigure  [Registered users]
     {
         \includegraphics[width=4in]{img/puts_user.png}
     }
-    \subfigure  [12 workers]
+    \subfigure  [Anonymous users]
     {
         \includegraphics[width=4in]{img/puts_ip.png}
     }
 
-    \caption{100 experiments with random parameters for the 128 Bit Griewank 
-    single-objective optimization test function. Experiments are ranked by 
-    the mean time to solution of 5 runs, with (a) 6 workers, and (b) 12 workers.}
-    \label{fig:griewank}
+    \caption{
+        Registered vs Anonymous users.  Users are ranked by
+        the number of requests sent, in the \emph{x} axis is the rank, and in the \emph{y} axis 
+        number or PUTs in a logarithmic scale.    }
+    \label{fig:puts}
 \end{figure*}
-
 
 \begin{figure*}[t]
     \centering
         \includegraphics[width=4in]{img/puts_box.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
+    \caption{ Box-plot of the number of requests sent by registered users and anonymous IPs.
+     In the \emph{y} axis are number or PUTs in a logarithmic scale.
     }
-    \label{fig:comp-onemax}
+    \label{fig:box}
 \end{figure*}
+
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=5in]{img/workers_put_ip.png}
+    \caption{ Participation of registered users. Each circle represents a user relating  
+        in the \emph{x} axis the number of workers used and in the \emph{y} axis 
+        number or PUTs in a logarithmic scale. The area of the circle is the number 
+        of unique IPs used by the user.
+    }
+    \label{fig:worker-put-ips}
+\end{figure*}
+
 
 \begin{figure*}[t]
     \centering
         \includegraphics[width=5in]{img/puts_by_time.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
+    \caption{Number of PUTs by User or IP in 15 minute slots.
     }
-    \label{fig:comp-onemax}
+    \label{fig:puts-time}
 \end{figure*}
 \begin{figure*}[t]
     \centering
         \includegraphics[width=5in]{img/workers_best_user.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
+    \caption{ Number of workers used by the top ranked user in 15 minute slots.
     }
-    \label{fig:comp-onemax}
-\end{figure*}
-\begin{figure*}[t]
-    \centering
-        \includegraphics[width=5in]{img/workers_put_ip.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
-    }
-    \label{fig:comp-onemax}
+    \label{fig:top-user}
 \end{figure*}
 
+\subsection{Results}
+\label{sec:results}
+At the end of the experiment the resulting log file contained 933,513 contributions both 
+registered users and anonymous volunteers. Registered users where responsible of around
+90\% of the contributions. The JSON data recorded for each contribution is  presented 
+in Table~\ref{tab:record}.  
+
+Contributions are expressed as the number of HTTP PUT requests sent to the server, 
+in Figure~\ref{fig:puts} a comparison between registered vs anonymous users is 
+presented. There where only 18 registered users, and the exact number of anonymous
+is not known as we only recorded the IP of the request, also a registered users 
+could sometimes be anonymous too, this could be because the first time they visit
+the application they automatically begin to work as anonymous. Nevertheless,
+there were 91 distinct IPs that had `anonymous' as the user. In the plot of
+anonymous users, some of the last in the rank could in fact be registered users, 
+momentarily participating as anonymous. Even if this is not considered, only 
+about 16\% of users attending the call decided to participate as named users. 
+There is a notable difference in the amount of participation between the two
+groups, and also in the slope of the plot.
+
+The box plot of the amount of participation between the two groups, highlights
+the difference and also the number of outliers in the groups. Two registered 
+outliers where very important participants maybe competing between them. But
+there where more outliers between anonymous IPs, and some of them could be related
+to the same users. The lower quartile in in the users box-plot has more
+spread, indicating a participation similar to the median of anonymous IPs.
+
+Figure~\ref{fig:worker-put-ips} gives an interesting view on the amount of
+resources shared by registered users. The area of the circle is proportional
+to the number of unique IPs used by each user, the user with more participation
+used a total of 66 different IPs, this number could be related with the number
+of devices used during the participation. There are some users that using less
+devices participated more, this could mean a more powerful device, faster 
+Internet connection or simply more time spent participating.
+
+User engagement is related to the amount of time a user spends in the 
+application. Figure~\ref{fig:puts-time} shows to important aspects of
+engagement, the overall time spent and the amount of resources shared
+in that time. Registered users where more engaged during the experiment.
+They contribute more resources during longer periods of time.
+
+The participation of the top ranked user is presented in 15 seconds time slots in
+Figure~\ref{fig:top-user}. In the beginning this user was using more than 30
+workers, this means that more than 30 tabs of the page where open at the
+same time, perhaps using several computing devices. Some users reported that 
+they wanted to test the limits of their own systems, checking the percentage of
+CPU they where using. 
+
+
+\section*{Acknowledgments}
+
+This work has been supported in part by: Ministerio espa\~{n}ol de
+Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P
+(UGR-EPHEMECH).
+
 \bibliographystyle{splncs03}
-\bibliography{volunteer,GA-general,geneura,javascript,ror-js}
+
+\bibliography{../../bib/biblio,../../bib/evospace-i,../../bib/volunteer,../../bib/geneura}
+
 \end{document}
