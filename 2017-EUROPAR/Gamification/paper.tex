@@ -156,7 +156,7 @@ the local maximum $a$ if it has got 0 bits and the global maximum $b$ if it has 
 bits. As seen in Figure \ref{fig:trap} the fitness falls into a {\em trap} 
 as the number of bits is increased, decreasing linearly until a change in slope 
 is reached at point $z$, adding deceptive component for evolutionary algorithms. 
-To increase the difficulty trap functions can be concatenated.
+To increase the difficulty trap functions can be concatenated. 
 In our case we have used $40$ concatenated traps. The trap function  defined as:   
 \[ f(u)= 
     \begin{cases} 
@@ -202,6 +202,32 @@ and a static leader board.
 
 \subsection{Results}
 \label{sec:results}
+At the end of the experiment the resulting log file contained 933,513 contributions both 
+registered users and anonymous volunteers. Registered users where responsible of around
+90\% of the contributions. The JSON data recorded for each contribution is  presented 
+in Table~\ref{tab:record}.  
+\begin{table}
+  \small
+  \caption{ Logfile record structure}
+  \label{tab:record} 
+  \centering
+  \small
+  \begin{tabular}{l  l}
+    \hline\noalign{\smallskip}
+     Attribute & Value \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    chromosome   & The individual sent to the server as a string of 160 bits.  \\ \hline
+    fitness & fitness as an integer.  \\ \hline
+    IP & IP address of the participant (later anonymized) .\\ \hline
+    user & user-name or the string `anonymous'.  \\ \hline
+    worker\_uuid & unique identifier of the HTTP Worker that sent the participation.   \\ \hline
+    level &  level of user or the string `info' \\ \hline
+    message & Only PUT messages were recorded in this experiment. \\ \hline
+    timestamp & A time-stamp based on the Unix epoch\\ \hline
+  \end{tabular}
+\end{table}
+
+
 
 \begin{figure*}[t]
     \centering
@@ -219,7 +245,6 @@ and a static leader board.
     the mean time to solution of 5 runs, with (a) 6 workers, and (b) 12 workers.}
     \label{fig:griewank}
 \end{figure*}
-
 
 \begin{figure*}[t]
     \centering
