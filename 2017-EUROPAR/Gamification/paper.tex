@@ -153,35 +153,25 @@ platform's integrated chat service. Subjects were incentivized to
 interact with the system by GUI features that provided participants
 with a sense of involvement with the simulation. This kind of systems
 could add additional dynamics, because users can collaborate or 
-even compete with each other when issuing their commands.
-
-
-Most
-of these papers focused on testing the system by itself as proofs of
-concepts, more than on its performance or their actual influence on
-the result of an evolutionary algorithm. In fact, some of them do not
-even work in as a distributed computing system
-\cite{EvoStar2014:jsEO}, describing the expressive capabilities of
-JavaScript for evolutionary computation. 
-
+even compete with each other when issuing their commands. This approach has been called {\em social cloud} \cite{6404452}, enphasizing the fact that user participation is gamified in order to obtain the most from it \cite{7027564}. 
 
 The proofs of concept described above do not go further than trying to
 find out  how many users join the effort and how many the system is
-able to support. In fact, systems described in
+able to support. In fact, systems such as the one described in
 \cite{gecco07:workshop:dcor} had serious scaling issues; some of them
 also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
 with single-user single-computer implementations of the same
-algorithm. However, the latest systems try to emphasize the seamless
-integration of peer and volunteer computing systems \cite{leclerc2016seamless}. 
+algorithm. Lately, researchers have tried to integrate volunteer as a part of a larger distributed computint effort \cite{leclerc2016seamless}. In fact, exclusive volunteer systems exhibit a certain amount of unpredictability and might be best used combined with available computing power.  
 
 As indicated in the introduction, the human is an integral part of the system, which can be considered {\em human computation} \cite{quinn2011human}. Giving the user not only some more control, by including registration, but also a measure to compare with other users might have positive effects. In fact, the BOINC projects applies a gamification technique 
 by having a web page to present the ``Top 100 multi-project BOINC participants'' where
 the name of the volunteer, the number of projects, GFLOPS, country and team are presented 
 (\url{https://boinc.berkeley.edu/chart_list.php}). 
 
+Next we will present the gamification technique used in this experiment. 
 
-\section{Gamification Technique}
+\section{Gamification}
 \label{sec:gamification}
 A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
 the process by which gaming concepts are brought to the real world tasks associated with
