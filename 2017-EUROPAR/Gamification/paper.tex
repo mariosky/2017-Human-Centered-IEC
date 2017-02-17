@@ -1,4 +1,3 @@
-
 \documentclass{llncs}
 \usepackage{graphicx}        % standard LaTeX graphics tool
                              % when including figure files
@@ -49,55 +48,46 @@ those participating in the competition provided around 90\%.
 
 \section{Introduction}
 
-The World Wide Web provides not only a platform for content
-distribution, but also, thanks to the maturity and reliability of the
-HTTP protocol, an increasingly reliable and high-performance
+The World Wide Web is an increasingly reliable and high-performance
 operating system for running distributed applications. Besides the
-protocol itself, there are two factors that contribute to this fact:
-the JavaScript virtual machine every browser runs \cite{paulson2005building}
-and the simplified standard interface for interacting with servers
-exemplified by the REST application interface convention \cite{masse2011rest}.
-Thus creating a distributed computing experiment is just a matter of
-making a JavaScript application interchange information with a server,
-by using REST. From the point of view of the programmer, this involves
-relatively common skills and no special libraries, since the
-interface is built in the browser, and a simple application that
-responds to those requests on the server side; both involve just a few
-dozens lines of code additionally to whatever business logic the
-application has. But, more importantly and from the point of view of
-the user, that application can be run by simply visiting a web page.
-
-Using this approach for creating distributed experiments is called {\em
+maturity of HTTP, the underlying protocol itself, there are other
+factors: the JavaScript virtual machine embedded in every browser
+and the REST interface, a {\em de facto} standard interface for
+communication. A distributed system based on the browser can be
+created easily using these mechanisms, which have lately been enhanced
+by WebSockets for lower latency; you can gather users by just
+announcing the URL. This approach for creating distributed experiments is called {\em
   volunteer}, {\em cycle-scavenging}, or {\em opportunistic} computing
 \cite{sarmenta2001volunteer} and it dates back, in different shapes
-and underlying mechanisms, to the origin of the web \cite{david-seti:home}. Our interest
-here, however, is to use it as a resource for evolutionary
-computation, as our group has done for a long time \cite{jj-ppsn98}.
+and underlying mechanisms, to the origin of the web
+\cite{david-seti:home}. 
+
+We are mainly interested in evolutionary algorithms \cite{jj-ppsn98},
+which are population-based search and optimization methods inspired by
+the theory of Evolution and its molecular basis. The fact that they
+are population-based makes easy its distribution in different clients
+and since their asynchronous nature has no impact on their performance
+and might even enhance it, makes them ideal candidates for volunteer
+computing setups such as the one presented in this paper. 
 
 In this line of research that uses volunteer computing for
-evolutionary algorithms, there are several pending issues. The first
-and maybe most important is approaching volunteer computing as a
+evolutionary algorithms, there are several pending issues, of which
+the most important is approaching volunteer computing as a 
 socio-technical system \cite{vespignani2009predicting} which integrates
 user decisions and behavioral patterns in the system model; this
 includes trying to optimize the number of users in a particular
-experiment. The second line of research, although related to the
-first, is more focused on the evolutionary algorithm itself and how
-different design decisions will affect its performance.
-% Is it ok that we say that the first line of research is the most important... but then we focus on the second?
-We have approached the first issue in our previous work \cite{jj-ppsn98},
-% I have justified to focus, in this case, on the second
-but in this paper our focus will be in the second aspect: we will try to
-design a decentralized system that, at the same time, is able to use
-all available resources for finding the solution of an evolutionary algorithm. This design will be done incrementally by
-changing client and the server and measuring its
-impact on the overall performance: time and evaluations needed to find
-the solution. Eventually, we want to find a system that, whatever the
+experiment. The challenge is to design a system that, whatever the
 number of users available to perform the experiment, is able to
-maximize their contribution to the evolutionary algorithm, at the same
-time that the evolutionary algorithm itself makes the most of those
-contributions and is able to find
-the solution to the problem in a minimum time, with the least
-number of contributions.
+maximize their contribution to the evolutionary algorithm. One obvious
+way of achieving that is trying to find as many users as possible. But
+another approach, and the one that we will be taking in this paper, is
+to delve into the socio-technical nature of the system, using
+gamification to improve the amount of time every user will lend to the
+system. Gamification has to include some way of identifying the user,
+which is a hurdle that might take users away; however, the open design
+of the system we use means that we can actually mix anonymous-non
+gamified and identified-gamified users, with only the small overhead
+of adding the mechanism for gamification. 
 
 The rest of the paper is organized as follows: Next we will briefly
 present the state of the art in opportunistic distributed evolutionary
