@@ -196,7 +196,7 @@ is to make existing tasks feel more like games \cite{deterding2010just}.
 Some techniques used in this approach include adding meaningful choice, 
 on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
 
-\begin{figure*}[htbp]
+\begin{figure*}[htb]
     \centering
         \includegraphics[width=5in]{img/login.png}
     \caption{ User interface: Landing page, and Login and registration dialogs.  
@@ -237,7 +237,7 @@ term achievement, in this case the level depends on the score:
 The function returns a normalized value that is multiplied by the maximum level 
 in this case 100. The variables $a$=100 and $b$=7360 are set to give users a rapid increase of 
 levels at the beginning.
-% \begin{figure*}[htbp]
+% \begin{figure*}[htb]
 %     \centering
 %         \includegraphics[width=2.5in]{img/s.png}
 %     \caption{$S$ function used to assign the user's level.
@@ -272,7 +272,7 @@ In our case we have used $40$ concatenated traps. The trap function  defined as:
       \frac{b}{l-z} (u-z)& \text{otherwise} 
    \end{cases}
 \]
-% \begin{figure*}[htbp]
+% \begin{figure*}[htb]
 %     \centering
 %         \includegraphics[width=2.5in]{img/trap.png}
 %     \caption{Trap function.
@@ -346,7 +346,7 @@ There is a notable difference in the amount of participation between the two
 groups, and also in the slope of the plot.
 
 %
-\begin{figure*}[htbp]
+\begin{figure*}[htb]
     \centering
         \includegraphics[width=4in]{img/puts_box.png}
     \caption{ Box-plot of the number of requests sent by registered users and anonymous IPs.
@@ -355,7 +355,7 @@ groups, and also in the slope of the plot.
     \label{fig:box}
 \end{figure*}
 %
-The box plot \ref{fig:box} of the amount of participation between the two groups, highlights
+The box plot featured in Figure \ref{fig:box} shows the amount of participation between the two groups, highlights
 the difference and also the number of outliers in the groups. Two registered 
 outliers where very important participants maybe competing between them. But
 there where more outliers between anonymous IPs, and some of them could be related
@@ -363,7 +363,7 @@ to the same users. The lower quartile in in the users box-plot has more
 spread, indicating a participation similar to the median of anonymous IPs.
 
 %
-\begin{figure*}[htbp]
+\begin{figure*}[htb]
     \centering
         \includegraphics[width=5in]{img/workers_put_ip.png}
     \caption{ Participation of registered users. Each circle represents a user relating  
@@ -382,14 +382,7 @@ of devices used during the participation. There are some users that using less
 devices participated more, this could mean a more powerful device, faster 
 Internet connection or simply more time spent participating.
 
-User engagement is related to the amount of time a user spends in the 
-application. Figure~\ref{fig:puts-time} shows to important aspects of
-engagement, the overall time spent and the amount of resources shared
-in that time. Registered users where more engaged during the experiment.
-They contribute more resources during longer periods of time.
-
-%
-\begin{figure*}[htbp]
+\begin{figure*}[htb]
     \centering
         \includegraphics[width=4in]{img/puts_by_time.png}
     \caption{Number of PUTs by User or IP in 15 minute slots.
@@ -397,7 +390,13 @@ They contribute more resources during longer periods of time.
     \label{fig:puts-time}
 \end{figure*}
 %
-\begin{figure*}[htbp]
+User engagement is related to the amount of time a user spends in the 
+application. Figure~\ref{fig:puts-time} shows to important aspects of
+engagement, the overall time spent and the amount of resources shared
+in that time. Registered users where more engaged during the experiment.
+They contribute more resources during longer periods of time.
+
+\begin{figure*}[htb]
     \centering
         \includegraphics[width=5in]{img/workers_best_user.png}
     \caption{ Number of workers used by the top ranked user in 15 minute slots.
@@ -423,7 +422,10 @@ than one fifth of users opt for registering would discard the
 exclusive use of this feature; however, it is an interesting addition
 to the volunteer system that in fact enhances its computing power.
 
+The fact that gamification actually work highlights the social nature of volunteer computing systems, piling on the fact that successful {\em social clouds} must embed games and other social mechanisms to enhance participation. That is why future lines of work will look for intermediate ways of including
+gamification without registration, as well as some ways of making the user increase control over the algorithm that would go beyond simply staying for longer or leaving the page. Since it is a sociotechnical system, including social features in it and studying emerging social networks might be an interesting line of work too. 
 
+Other factors, such as the language used, the way the experiment is announced, are also very important in this social context, which is why they will be included in future lines of work too. 
 
 \section*{Acknowledgments}
 
