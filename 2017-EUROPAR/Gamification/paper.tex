@@ -86,7 +86,13 @@ Some techniques used in this approach include adding meaningful choice,
 on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
 
 
-
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=5in]{img/login.png}
+    \caption{ User interface: Landing page, and Login and registration dialogs.  
+    }
+    \label{fig:login}
+\end{figure*}
 
 \section{Experiment}
 \label{sec:experiments}
@@ -188,16 +194,7 @@ experiment was over, users visiting the page were presented with a thank you mes
 and a static leader board. 
 
 
-\begin{figure*}[t]
-    \centering
-        \includegraphics[width=5in]{img/login.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
-    }
-    \label{fig:login}
-\end{figure*}
+
   
 
 \subsection{Results}
@@ -208,13 +205,13 @@ registered users and anonymous volunteers. Registered users where responsible of
 in Table~\ref{tab:record}.  
 \begin{table}
   \small
-  \caption{ Logfile record structure}
+  \caption{ Log file record structure}
   \label{tab:record} 
   \centering
   \small
   \begin{tabular}{l  l}
     \hline\noalign{\smallskip}
-     Attribute & Value \\
+    Attribute & Value \\
     \noalign{\smallskip}\hline\noalign{\smallskip}
     chromosome   & The individual sent to the server as a string of 160 bits.  \\ \hline
     fitness & fitness as an integer.  \\ \hline
@@ -226,24 +223,27 @@ in Table~\ref{tab:record}.
     timestamp & A time-stamp based on the Unix epoch\\ \hline
   \end{tabular}
 \end{table}
-
+Contributions are expressed as the number of HTTP PUT requests sent to the server, 
+in Figure~\ref{fig:puts} a comparison between registered vs anonymous users is 
+presented.
 
 
 \begin{figure*}[t]
     \centering
-    \subfigure  [6 workers]
+    \subfigure  [Registered Users]
     {
         \includegraphics[width=4in]{img/puts_user.png}
     }
-    \subfigure  [12 workers]
+    \subfigure  []
     {
         \includegraphics[width=4in]{img/puts_ip.png}
     }
 
-    \caption{100 experiments with random parameters for the 128 Bit Griewank 
-    single-objective optimization test function. Experiments are ranked by 
-    the mean time to solution of 5 runs, with (a) 6 workers, and (b) 12 workers.}
-    \label{fig:griewank}
+    \caption{
+        Registered vs Anonymous users.  Users are ranked by
+        the number of requests sent, in the \emph{x} axis is the rank, and in the \emph{y} axis 
+        number or PUTs in a logarithmic scale.    }
+    \label{fig:puts}
 \end{figure*}
 
 \begin{figure*}[t]
