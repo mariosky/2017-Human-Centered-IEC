@@ -175,38 +175,7 @@ with single-user single-computer implementations of the same
 algorithm. However, the latest systems try to emphasize the seamless
 integration of peer and volunteer computing systems \cite{leclerc2016seamless}. 
 
-This latest system offloads evaluation to browsers so the actual
-algorithm runs in some other place; in general, most researchers do
-not try to assess the performance of the algorithm 
-itself in the precise conditions they find in a volunteer computing
-system, although papers such as the one by Laredo et
-al. \cite{churn08:ijhpsa}, using models, try to find out the resulting
-performance when the users are changing continuously according to a
-Weibull distribution. In the case of Klein and Spector \cite{unwitting-ec}, the algorithm
-is actually run on the server, using the browser mainly for fitness
-evaluation, and thus no actual contribution to the evaluation of the
-evolutionary algorithm itself is made.
-
-There is another factor that should be taken into account: since the
-user has control of the browser, there is a limited amount of
-interaction with it, namely, the fact that by reloading the webpage they
-can apply a kind of hypermutation, killing the current population and
-generating new individuals some of which will make their way to the
-common pool via migration. In that sense, volunteer computing is also
-a way of {\em human computation} \cite{quinn2011human}, a concept that
-has also been applied to evolutionary algorithms \cite{972056}, in
-this case extensively and with all operators. It is quite difficult to
-find out how many times this happens and what is their effect on the
-overall algorithm, but this only reaffirms the fact that there is a
-long list of issues with volunteer evolutionary computation, and that
-the volunteer him or herself is at the center of many of them.
-
-In this paper we will make contributions towards the design of
-efficient volunteer evolutionary algorithms by studying the effect of
-several design decisions on performance. In the next Section we will
-present the general framework and the initial setup.
-
-In volunteer distributed computing the BOINC projects applies a gamification technique 
+As indicated in the introduction, the human is an integral part of the system, which can be considered {\em human computation} \cite{quinn2011human}. Giving the user not only some more control, by including registration, but also a measure to compare with other users might have positive effects. In fact, the BOINC projects applies a gamification technique 
 by having a web page to present the ``Top 100 multi-project BOINC participants'' where
 the name of the volunteer, the number of projects, GFLOPS, country and team are presented 
 (\url{https://boinc.berkeley.edu/chart_list.php}). 
@@ -259,14 +228,7 @@ this functionality was not desired because it was seen as a barrier
 for participation. After all the advantage of a browser based volunteer system
 is precisely the minimum amount of user intervention needed to start.
 The last thing a user wants to see is yet another registration form.
-Then, the first design decision for this version is that registration is optional
-and not promoted by the interface. There is only a button with a ``Login/Register'' label,
-using the graphical interface shown in Figure \ref{fig:login}. 
-The registration form is very basic, having only the user-name and 
-password (with out confirmation) as the required fields. Email is optional
-and is not verified. The problem of users that forgot their password
-happened, and it was resolved by sending an email to the administrators
-or some users just created another account. 
+Then, the first design decision for this version is that registration is optional and simple as shown in Figure \ref{fig:login}. 
 
 The gamification technique employed in this work is based on a rewarding mechanism  
 \cite{dubois2013understanding}. In general rewards  consist of a reputation system 
@@ -283,16 +245,15 @@ term achievement, in this case the level depends on the score:
    \end{cases}
 \]
 The function returns a normalized value that is multiplied by the maximum level 
-in this case 100. The variables $a$=100 and $b$=7360 give the slope of the function as
-seen in Figure~\ref{fig:s}. The function was set to give users a rapid increase of 
+in this case 100. The variables $a$=100 and $b$=7360 are set to give users a rapid increase of 
 levels at the beginning.
-\begin{figure*}[htbp]
-    \centering
-        \includegraphics[width=2.5in]{img/s.png}
-    \caption{$S$ function used to assign the user's level.
-    }
-    \label{fig:s}
-\end{figure*}
+% \begin{figure*}[htbp]
+%     \centering
+%         \includegraphics[width=2.5in]{img/s.png}
+%     \caption{$S$ function used to assign the user's level.
+%     }
+%     \label{fig:s}
+% \end{figure*}
 
 After login, registered users are welcomed by their name, and they can see
 their score and level. All users can see in a modal dialog the leader board.
@@ -304,13 +265,13 @@ available \url{https://github.com/lucero21/login-master}
 
 
 \subsection{Problem}
-In the browser, each page visiting the experiment loads an HTML Worker
+In the browser, each page visiting the experiment loads an WebWorker
 that runs a local island of an evolutionary algorithm to solve a
 multi-modal problem called {\em l-trap}, which has been used extensively 
 as a benchmark for evolutionary algorithms \cite{fernandes2009using,nijssen2003analysis}. 
 This function counts the number of bits in a sequence $l$ and assigns
 the local maximum $a$ if it has got 0 bits and the global maximum $b$ if it has $l$
-bits. As seen in Figure \ref{fig:trap} the fitness falls into a {\em trap} 
+bits, this makes the  the fitness fall into a {\em trap} 
 as the number of bits is increased, decreasing linearly until a change in slope 
 is reached at point $z$, adding deceptive component for evolutionary algorithms. 
 To increase the difficulty trap functions can be concatenated. 
@@ -321,15 +282,31 @@ In our case we have used $40$ concatenated traps. The trap function  defined as:
       \frac{b}{l-z} (u-z)& \text{otherwise} 
    \end{cases}
 \]
-\begin{figure*}[htbp]
-    \centering
-        \includegraphics[width=2.5in]{img/trap.png}
-    \caption{Trap function.
-    }
-    \label{fig:trap}
-\end{figure*}
+% \begin{figure*}[htbp]
+%     \centering
+%         \includegraphics[width=2.5in]{img/trap.png}
+%     \caption{Trap function.
+%     }
+%     \label{fig:trap}
+% \end{figure*}
 %
-\begin{table}[htbp]
+
+Each local GA had the following parameters, the initial population was randomly generated 
+with sizes between 128 and 256 individuals, the period to send individuals to the server
+was set at 100 local generations, the parameters for the trap function are $l$ = 4,
+$a$=1, $b$ = 2, $z$=3 and a chromosome length of 160 bits.
+
+We made a call to participation on November 23th, 
+2016 through the authors' social networks: ``Asking again for your help, we are conducting a computational experiment
+that requires computer power. Can we borrow some of your CPU? just visit the web page (link)
+and leave the tab open. Be part of the TOP TEN, register so we can track your participation.
+The experiment will run until November 27th, Thanks!.'' We also included links to register and a deadline. Users visiting the pageafter the dealine were presented with a thank you message and a static leader board. 
+%
+
+\subsection{Results}
+\label{sec:results}
+
+\begin{table}[h!tbp]
   \small
   \caption{ Log file record structure}
   \label{tab:record} 
@@ -349,82 +326,22 @@ In our case we have used $40$ concatenated traps. The trap function  defined as:
     timestamp & A time-stamp based on the Unix epoch\\ \hline
   \end{tabular}
 \end{table}
-
-Each local GA had the following parameters, the initial population was randomly generated 
-with sizes between 128 and 256 individuals, the period to send individuals to the server
-was set at 100 local generations, the parameters for the trap function are $l$ = 4,
-$a$=1, $b$ = 2, $z$=3 and a chromosome length of 160 bits.
-
-In order to begin the experiment a call to participation was issued on November 23th, 
-2016 through the authors social networks:
-``Asking again for your help, we are conducting a computational experiment
-that requires computer power. Can we borrow some of your CPU? just visit the web page (link)
-and leave the tab open. Be part of the TOP TEN, register so we can track your participation.
-The experiment will run until November 27th, Thanks!''. In the message, the registration
-to the application is presented, and also a deadline of the experiment. When the
-experiment was over, users visiting the page were presented with a thank you message 
-and a static leader board. 
 %
-\begin{figure*}[htbp]
-    \centering
-    \subfigure  [Registered users]
-    {
-        \includegraphics[width=4in]{img/puts_user.png}
-    }
-    \subfigure  [Anonymous users]
-    {
-        \includegraphics[width=4in]{img/puts_ip.png}
-    }
-
-    \caption{
-        Registered vs Anonymous users.  Users are ranked by
-        the number of requests sent, in the \emph{x} axis is the rank, and in the \emph{y} axis 
-        number or PUTs in a logarithmic scale.    }
-    \label{fig:puts}
-\end{figure*}
-%
-\begin{figure*}[htbp]
-    \centering
-        \includegraphics[width=4in]{img/puts_box.png}
-    \caption{ Box-plot of the number of requests sent by registered users and anonymous IPs.
-     In the \emph{y} axis are number or PUTs in a logarithmic scale.
-    }
-    \label{fig:box}
-\end{figure*}
-%
-\begin{figure*}[htbp]
-    \centering
-        \includegraphics[width=5in]{img/workers_put_ip.png}
-    \caption{ Participation of registered users. Each circle represents a user relating  
-        in the \emph{x} axis the number of workers used and in the \emph{y} axis 
-        number or PUTs in a logarithmic scale. The area of the circle is the number 
-        of unique IPs used by the user.
-    }
-    \label{fig:worker-put-ips}
-\end{figure*}
-%
-\begin{figure*}[htbp]
-    \centering
-        \includegraphics[width=5in]{img/puts_by_time.png}
-    \caption{Number of PUTs by User or IP in 15 minute slots.
-    }
-    \label{fig:puts-time}
-\end{figure*}
-\begin{figure*}[htbp]
-    \centering
-        \includegraphics[width=5in]{img/workers_best_user.png}
-    \caption{ Number of workers used by the top ranked user in 15 minute slots.
-    }
-    \label{fig:top-user}
-\end{figure*}
-
-\subsection{Results}
-\label{sec:results}
-At the end of the experiment the resulting log file contained 933,513 contributions both 
+At the end of the experiment the resulting log file (whose fields are shown in Table \ref{tab:record}) contained 933,513 contributions both 
 registered users and anonymous volunteers. Registered users where responsible of around
 90\% of the contributions. The JSON data recorded for each contribution is  presented 
 in Table~\ref{tab:record}.  
 
+\begin{figure}[h!tbp]
+    \centering
+        \includegraphics[width=2.3in]{img/puts_user.png}
+        \includegraphics[width=2.3in]{img/puts_ip.png}
+    \caption{Usage by registered (left) and anonymous (right) users.  Users are ranked by
+        the number of requests sent, in the \emph{x} axis is the rank, and in the \emph{y} axis 
+        number or PUTs in a logarithmic scale.}
+    \label{fig:puts}
+\end{figure}
+%
 Contributions are expressed as the number of HTTP PUT requests sent to the server, 
 in Figure~\ref{fig:puts} a comparison between registered vs anonymous users is 
 presented. There where only 18 registered users, and the exact number of anonymous
@@ -438,13 +355,35 @@ about 16\% of users attending the call decided to participate as named users.
 There is a notable difference in the amount of participation between the two
 groups, and also in the slope of the plot.
 
-The box plot of the amount of participation between the two groups, highlights
+%
+\begin{figure*}[htbp]
+    \centering
+        \includegraphics[width=4in]{img/puts_box.png}
+    \caption{ Box-plot of the number of requests sent by registered users and anonymous IPs.
+     In the \emph{y} axis are number or PUTs in a logarithmic scale.
+    }
+    \label{fig:box}
+\end{figure*}
+%
+The box plot \ref{fig:box} of the amount of participation between the two groups, highlights
 the difference and also the number of outliers in the groups. Two registered 
 outliers where very important participants maybe competing between them. But
 there where more outliers between anonymous IPs, and some of them could be related
 to the same users. The lower quartile in in the users box-plot has more
 spread, indicating a participation similar to the median of anonymous IPs.
 
+%
+\begin{figure*}[htbp]
+    \centering
+        \includegraphics[width=5in]{img/workers_put_ip.png}
+    \caption{ Participation of registered users. Each circle represents a user relating  
+        in the \emph{x} axis the number of workers used and in the \emph{y} axis 
+        number or PUTs in a logarithmic scale. The area of the circle is the number 
+        of unique IPs used by the user.
+    }
+    \label{fig:worker-put-ips}
+\end{figure*}
+%
 Figure~\ref{fig:worker-put-ips} gives an interesting view on the amount of
 resources shared by registered users. The area of the circle is proportional
 to the number of unique IPs used by each user, the user with more participation
@@ -459,6 +398,23 @@ engagement, the overall time spent and the amount of resources shared
 in that time. Registered users where more engaged during the experiment.
 They contribute more resources during longer periods of time.
 
+%
+\begin{figure*}[htbp]
+    \centering
+        \includegraphics[width=4in]{img/puts_by_time.png}
+    \caption{Number of PUTs by User or IP in 15 minute slots.
+    }
+    \label{fig:puts-time}
+\end{figure*}
+%
+\begin{figure*}[htbp]
+    \centering
+        \includegraphics[width=5in]{img/workers_best_user.png}
+    \caption{ Number of workers used by the top ranked user in 15 minute slots.
+    }
+    \label{fig:top-user}
+\end{figure*}
+%
 The participation of the top ranked user is presented in 15 seconds time slots in
 Figure~\ref{fig:top-user}. In the beginning this user was using more than 30
 workers, this means that more than 30 tabs of the page where open at the
