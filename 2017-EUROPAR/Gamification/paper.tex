@@ -61,7 +61,7 @@ the name of the volunteer, the number of projects, GFLOPS, country and team are 
 
 
 \section{Gamification Technique}
-\label{sec:experiments}
+\label{sec:gamification}
 A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
 the process by which gaming concepts are brought to the real world tasks associated with
 real people''. Gamification uses game design elements out of the domain of games 
@@ -212,27 +212,6 @@ The experiment will run until November 27th, Thanks!''. In the message, the regi
 to the application is presented, and also a deadline of the experiment. When the
 experiment was over, users visiting the page were presented with a thank you message 
 and a static leader board. 
-
-\subsection{Results}
-\label{sec:results}
-At the end of the experiment the resulting log file contained 933,513 contributions both 
-registered users and anonymous volunteers. Registered users where responsible of around
-90\% of the contributions. The JSON data recorded for each contribution is  presented 
-in Table~\ref{tab:record}.  
-
-Contributions are expressed as the number of HTTP PUT requests sent to the server, 
-in Figure~\ref{fig:puts} a comparison between registered vs anonymous users is 
-presented. There where only 18 registered users, and the exact number of anonymous
-is not known as we only recorded the IP of the request, also a registered users 
-could sometimes be anonymous too, this could be because the first time they visit
-the application they automatically begin to work as anonymous. Nevertheless,
-there were 91 distinct IPs that had `anonymous' as the user. In the plot of
-anonymous users, some of the last in the rank could in fact be registered users, 
-momentarily participating as anonymous. Even if this is not considered, only 
-about 16\% of users attending the call decided to participate as named users. 
-There is a notable difference in the amount of participation between the two
-groups, and also in the slope of the plot.  
-
 \begin{figure*}[t]
     \centering
     \subfigure  [Registered users]
@@ -262,35 +241,79 @@ groups, and also in the slope of the plot.
 
 \begin{figure*}[t]
     \centering
-        \includegraphics[width=5in]{img/puts_by_time.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
+        \includegraphics[width=5in]{img/workers_put_ip.png}
+    \caption{ Participation of registered users. Each circle represents a user relating  
+        in the \emph{x} axis the number of workers used and in the \emph{y} axis 
+        number or PUTs in a logarithmic scale. The area of the circle is the number 
+        of unique IPs used by the user.
     }
-    \label{fig:om:puts}
-  \end{figure*}
-  %
+    \label{fig:worker-put-ips}
+\end{figure*}
+
+
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=5in]{img/puts_by_time.png}
+    \caption{Number of PUTs by User or IP in 15 minute slots.
+    }
+    \label{fig:puts-time}
+\end{figure*}
 \begin{figure*}[t]
     \centering
         \includegraphics[width=5in]{img/workers_best_user.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
+    \caption{ Number of workers used by the top ranked user in 15 minute slots.
     }
-    \label{fig:om:workers}
+    \label{fig:top-user}
 \end{figure*}
-\begin{figure*}[t]
-    \centering
-        \includegraphics[width=5in]{img/workers_put_ip.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem. 
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration on the left side, and Heterogeneous configuration on the
-    right side of each.
-    }
-    \label{fig:om:wp}
-\end{figure*}
+
+\subsection{Results}
+\label{sec:results}
+At the end of the experiment the resulting log file contained 933,513 contributions both 
+registered users and anonymous volunteers. Registered users where responsible of around
+90\% of the contributions. The JSON data recorded for each contribution is  presented 
+in Table~\ref{tab:record}.  
+
+Contributions are expressed as the number of HTTP PUT requests sent to the server, 
+in Figure~\ref{fig:puts} a comparison between registered vs anonymous users is 
+presented. There where only 18 registered users, and the exact number of anonymous
+is not known as we only recorded the IP of the request, also a registered users 
+could sometimes be anonymous too, this could be because the first time they visit
+the application they automatically begin to work as anonymous. Nevertheless,
+there were 91 distinct IPs that had `anonymous' as the user. In the plot of
+anonymous users, some of the last in the rank could in fact be registered users, 
+momentarily participating as anonymous. Even if this is not considered, only 
+about 16\% of users attending the call decided to participate as named users. 
+There is a notable difference in the amount of participation between the two
+groups, and also in the slope of the plot.
+
+The box plot of the amount of participation between the two groups, highlights
+the difference and also the number of outliers in the groups. Two registered 
+outliers where very important participants maybe competing between them. But
+there where more outliers between anonymous IPs, and some of them could be related
+to the same users. The lower quartile in in the users box-plot has more
+spread, indicating a participation similar to the median of anonymous IPs.
+
+Figure~\ref{fig:worker-put-ips} gives an interesting view on the amount of
+resources shared by registered users. The area of the circle is proportional
+to the number of unique IPs used by each user, the user with more participation
+used a total of 66 different IPs, this number could be related with the number
+of devices used during the participation. There are some users that using less
+devices participated more, this could mean a more powerful device, faster 
+Internet connection or simply more time spent participating.
+
+User engagement is related to the amount of time a user spends in the 
+application. Figure~\ref{fig:puts-time} shows to important aspects of
+engagement, the overall time spent and the amount of resources shared
+in that time. Registered users where more engaged during the experiment.
+They contribute more resources during longer periods of time.
+
+The participation of the top ranked user is presented in 15 seconds time slots in
+Figure~\ref{fig:top-user}. In the beginning this user was using more than 30
+workers, this means that more than 30 tabs of the page where open at the
+same time, perhaps using several computing devices. Some users reported that 
+they wanted to test the limits of their own systems, checking the percentage of
+CPU they where using. 
+
 
 \section*{Acknowledgment}
 
@@ -299,5 +322,6 @@ Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P
 (UGR-EPHEMECH).
 
 \bibliographystyle{splncs03}
+
 \bibliography{../../bib/biblio,../../bib/evospace-i,../../bib/volunteer,../../bib/geneura}
 \end{document}
