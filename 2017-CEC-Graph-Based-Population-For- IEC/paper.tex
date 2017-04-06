@@ -56,17 +56,17 @@
 \begin{document}
 % Title ideas here:
 
-\title{Exploiting the Social Graph: Increasing Engagement via
-  Collaborative Interactive Evolution}
+\title{Exploiting the Social Graph: Increasing Engagement in a
+  Collaborative Interactive Evolution Application}
 % Changed again to "via" - JJ
 % I dont get it, we exploit the graph in order to increase user engagement in CIE
 % By via, I understand that we use a CIE in order to encrease the engagment of users
 % But I will leave it as you proposed I´m shure missing something
 
-\author{\IEEEauthorblockN{Mario Garc\'ia-Valdez, Amaury Hern\'andez-\'Aguila, Alejandra Mancilla}
+\author{\IEEEauthorblockN{Mario Garc\'ia-Valdez, Jos\'e Christian Romero, Alejandra Mancilla}
 \IEEEauthorblockA{Instituto Tecnol\'ogico de Tijuana\\
 Tijuana, Mexico\\
-Email: (mario,amherag)@tectijuana.edu.mx,alejandra.mancilla@gmail.com}
+Email: mario@tectijuana.edu.mx}
 \and
 \IEEEauthorblockN{Juan Juli\'an Merelo Guerv\'os}
 \IEEEauthorblockA{Universidad de Granada, CITIC\\
@@ -78,24 +78,24 @@ Email: jmerelo@geneura.ugr.es}
 
 \begin{abstract}
 Interactive evolution, where users' preferences guide the search, is
-one of the leading techniques employed by Evolutionary Art
-researchers. It is normally implemented as a web application to lower
+one of the techniques employed by Evolutionary Art
+researchers. It can be implemented as a web application to lower
 the access threshold since it often depends on volunteers who visit
-the system for fitness assignment. However,  several drawbacks limit
+the system for fitness assignment. However, several drawbacks limit
 user participation: human fatigue and boredom result from evaluating 
 a large number of phenotypes. To tackle these issues, in this paper we
 propose an IEC system designed using a human-centered approach, with a
 framework consisting of a social network of  
-volunteers interacting with a population consisting also of a network 
-of phenotypes, which also uses a graph model as a practical 
+volunteers interacting with a population also consisting of a network 
+of phenotypes. The use of a graph model is proposed as a practical 
 and efficient tool for mapping the relationships between actors and
 objects in the system. A case study is presented as proof-of-concept, 
-providing both conceptual and implementation details of a graph based model 
+providing both conceptual and implementation details of the graph model 
 as it is  applied in the implementation of an IEC system. Our
-experiments show that the data model can be successfully applied in a
-gamification technique developed to increase user engagement, which
-implies that this technique can successfully be used to 
-decrease user fatigue and thus increase {\em performance} of the
+experiments show that the data model can be successfully used to implement 
+a gamification technique developed to increase users' engagement, which
+implies that this technique can be successfully used to 
+decrease user fatigue and thus increase the {\em performance} of the
 interactive system.
 \end{abstract}
 
@@ -659,24 +659,8 @@ Three versions were compared:
 \item Graph Gamification (GG) . Both experience and participation are considered.
 \end{itemize}
 When gamification was employed, all score values known where presented to users
-and a ranking of users by weight was shown in a window. A screen capture of
-this interface is shown in figure \ref{fig:top-users}. 
+and a ranking of users by weight was shown in a window.
 
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=3.5in]{img/users_known_1.png}
-    \caption{Comparison of two users showing the {\tt knows} relationship.}
-    \label{fig:users-graph}
-\end{figure}
-
-
-
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=3.5in]{img/leaderBoard.png}
-    \caption{User interface showing top users.}
-    \label{fig:top-users}
-\end{figure}
 
 
 
@@ -685,7 +669,8 @@ this interface is shown in figure \ref{fig:top-users}.
 
 The three versions of the EvoDrawing web application were deployed to the
 Heroku cloud service with the same configuration: using the
-Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB and RedisTOGO plug-ins.
+Heroku Free option with a 512 MB of RAM, adding only the GrapheneDB and RedisTOGO plug-ins
+(the source code is available in GitHub at \url{jcromerohdz/evoDrawing_gaming}).
 Table \ref{tab:params} shows the parameters used for the evolutionary algorithm. The graph database 
 system used in the implementation was Neo4J as it was already available as a plug-in in Heroku, is well documented
 and a scalable solution \cite{miller2013graph,holzschuher2013performance}.  
@@ -797,22 +782,16 @@ came with users with medium level of participation, in this case participants wh
 G. When comparing all the experiments the deployment GG had the higher number of participation in users
 of all levels.    
 
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=3.5in]{img/user_known_2.png}
-    \caption{User network view of the Base deployment}
-    \label{fig:B-network}
-\end{figure}
-\begin{figure}[!t]
-    \centering
-        \includegraphics[width=3.5in]{img/user_known_3.png}
-    \caption{User network view of the Graph Gamification deployment}
-    \label{fig:GG-network}
-\end{figure}
 \begin{figure*}[!t]
     \centering
-        \includegraphics[width=5.3in]{img/comparison.png}
-    \caption{Users ranked by the number of phenotypes they rated vs. the number of phenotypes evaluated using a logarithmic scale. } % Explain a little more and label axes. The
+        \includegraphics[width=5.5in]{img/graphKnows.png}
+    \caption{User graph showing the KNOWS relationship (B deployment).}
+    \label{fig:B-network}
+\end{figure*}
+\begin{figure*}[!t]
+    \centering
+        \includegraphics[width=5.5in]{img/comparison.png}
+    \caption{Users ranked by the number of phenotypes they rated (X axis) vs. the number of phenotypes evaluated using a logarithmic scale (Y axis). } % Explain a little more and label axes. The
                          % three lines have the same label,
                          % "participation". Not too clear - JJ
                          % Done - Mario
@@ -821,10 +800,8 @@ of all levels.
 
 When monitoring the experiments by querying the graph database,  the Cypher query language 
 provided interesting views on the data that it would have been
-difficult to replicate with a relational database. 
-For instance, to compare the number of volunteers in deployments
-B and GG (shown in figures \ref{fig:B-network} and \ref{fig:GG-network} respectively)  a simple query
-provided a view of the social network of volunteers. 
+difficult to replicate with a relational database, for instance, to show the social network of volunteers 
+as shown in figure \ref{fig:B-network}. 
 
 The same can be applied to 
 the population, or the interaction as a whole. The graph could be used also by the evolutionary
