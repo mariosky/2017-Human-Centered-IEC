@@ -1,6 +1,6 @@
 \section{Introduction}
 
-Interactive evolutionary computation (IEC) systems include persons in
+Interactive Evolutionary Computation (IEC) systems include persons in
 a computational system performing different kind of tasks, which brings particular challenges
 to their designers: human {\em computational cycles} are scarce, slow
 and expensive to acquire, there is human 
@@ -15,14 +15,14 @@ gamification techniques, which are used to {\em human computational
 Gamification is the use of game design elements in non-game contexts \cite{deterding2011game}. 
 The gamification element employed in this work is a rewarding mechanism
 \cite{dubois2013understanding}. An example of the use of this technique is a recent
-work by Wagy \& Bongard \cite{wagy2014collective} where user interaction is
+work by Wagy \& Bongard \cite{wagy2014collective} in which interaction is
 needed for developing new designs of robot locomotion.
 Collaboration is encouraged by gamifying the system using the maximum distance
-indicator to inspire the user to try and ``beat'' previous designs. Also Seyama and
-Munetomo \cite{seyama2016development} propose the reduction of user
+indicator to inspire the user to try and ``beat'' previous designs. Also 
+Seyama \& Munetomo \cite{seyama2016development} propose the reduction of user
 fatigue by using a collaborative filtering algorithm to show only the
 information utilized by similar users. In Section \ref{sec:framework}
-we present our proposed framework. Next the EvoDrawings application case study 
+we present our proposed framework. Next, the EvoDrawings application case study 
 is presented in Section \ref{sec:evodraw} and the
 results are discussed in Section \ref{sec:results}. Finally, some concluding
 remarks are provided in Section \ref{sec:conclusions}.
@@ -47,7 +47,7 @@ design the interactive system to engage volunteers \cite{oh2015clicking}. % Defi
 \end{itemize}
 
 A graph is proposed for modeling the social network of users and their interactions 
-with candidate solutions, and the relationships between them in the population.
+with candidate solutions and the relationships between them in the population.
 The graph database system used in the implementation is Neo4J, which is a scalable solution 
 \cite{miller2013graph,holzschuher2013performance}. 
 This graph is also used to increase engagement through gamification, as explained in the next section.
@@ -85,12 +85,12 @@ Both experience and participation are considered.
 \section{Results}
 \label{sec:results} 
 Before release, the deployment was first tried with a few beta testers. 
-When applying the leader board gamification technique for the first time a 
+When applying the leader board gamification technique for the first time, a 
 problem was found: some users were cheating by giving a
 rating to an animation even before it was returned from the server, this was done by just
-constantly clicking the mouse button. This is a common problem found in systems using leader
+constantly clicking the mouse button. Cheating is a common problem found in systems using leader
 boards because by making the scores visible to other players they are encouraged 
-to compete \cite{hickman2010total}. The version used in experiments disabled the button until 
+to compete against each other \cite{hickman2010total}. The version used in experiments disabled the button until 
 the drawing animation was over. The results of each of the three experiments in 
 terms of participation are detailed next.
 
