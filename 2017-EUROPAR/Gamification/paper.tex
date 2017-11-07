@@ -225,14 +225,15 @@ term achievement, in this case the level depends on the score:
 \]
 The function returns a normalized value that is multiplied by the maximum level
 in this case 100. The variables $a$=100 and $b$=7360 are set to give users a rapid increase of
-levels at the beginning.
-% \begin{figure*}[htb]
-%     \centering
-%         \includegraphics[width=2.5in]{img/s.png}
-%     \caption{$S$ function used to assign the user's level.
-%     }
-%     \label{fig:s}
-% \end{figure*}
+levels at the beginning; this function is represented in Figure \ref{fig:s}.
+%
+\begin{figure*}[htb]
+    \centering
+        \includegraphics[width=2.5in]{img/s.png}
+    \caption{$S$ function used to assign the user's level.
+    }
+    \label{fig:s}
+\end{figure*}
 
 After login, registered users are welcomed by their name, and they can see
 their score and level. All users can see in a modal dialog the leader board.
@@ -240,13 +241,14 @@ While the modal is opened, the scores are refreshed every second. All other
 functionality is available to all users and is the same as the previous
 {\sf NodIO} version, showing the state of the current algorithm.
 In the front page a link to the open source code of the experiment was also
-available \url{https://github.com/lucero21/login-master}
+available \url{https://undisclos.ed}
+% \url{https://github.com/lucero21/login-master}
 
 
 \subsection{Problem}
 In the browser, each page visiting the experiment loads an WebWorker
 that runs a local island of an evolutionary algorithm to solve a
-multi-modal problem called {\em l-trap}, which has been used extensively
+multi-modal problem called {\em l-trap}, represented in figure \ref{fig:trap}, which has been used extensively
 as a benchmark for evolutionary algorithms \cite{fernandes2009using,nijssen2003analysis}.
 This function counts the number of bits in a sequence $l$ and assigns
 the local maximum $a$ if it has got 0 bits and the global maximum $b$ if it has $l$
@@ -260,15 +262,16 @@ In our case we have used $40$ concatenated traps. The trap function  defined as:
       \frac{a}{z}(z-u) & \text{if } u\leq z\\
       \frac{b}{l-z} (u-z)& \text{otherwise}
    \end{cases}
-\]
-% \begin{figure*}[htb]
-%     \centering
-%         \includegraphics[width=2.5in]{img/trap.png}
-%     \caption{Trap function.
-%     }
-%     \label{fig:trap}
-% \end{figure*}
-%
+ \]
+ %
+\begin{figure*}[htb]
+    \centering
+        \includegraphics[width=2.5in]{img/trap.png}
+    \caption{Trap function.
+    }
+    \label{fig:trap}
+\end{figure*}
+
 
 Each local GA had the following parameters, the initial population was randomly generated
 with sizes between 128 and 256 individuals, the period to send individuals to the server
@@ -412,7 +415,7 @@ exclusive use of this feature; however, it is an interesting addition
 to the volunteer system that in fact enhances its computing power.
 
 The fact that gamification actually work highlights the social nature of volunteer computing systems, piling on the fact that successful {\em social clouds} must embed games and other social mechanisms to enhance participation. That is why future lines of work will look for intermediate ways of including
-gamification without registration, as well as some ways of making the user increase control over the algorithm that would go beyond simply staying for longer or leaving the page. Since it is a sociotechnical system, including social features in it and studying emerging social networks might be an interesting line of work too.
+gamification without registration, as well as some ways of making the user increase control over the algorithm that would go beyond simply staying for longer or leaving the page. Since it is a sociotechnical system, including social features in it and studying emerging social networks might be an interesting line of work too. 
 
 Other factors, such as the language used, the way the experiment is announced, are also very important in this social context, which is why they will be included in future lines of work too.
 
