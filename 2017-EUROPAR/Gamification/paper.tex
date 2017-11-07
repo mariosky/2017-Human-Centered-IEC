@@ -71,10 +71,9 @@ and underlying mechanisms, to the origin of the web
 \cite{david-seti:home}.
 
 We are mainly interested in evolutionary algorithms \cite{jj-ppsn98},, population-based search and optimization methods inspired by
-the theory of Evolution and its molecular basis. The fact that they are population-based makes them suitable for a straightforward distribution of work to different clients, and since they have an asynchronous nature, there is no impact on their performance. All these properties make them ideal candidates for volunteer computing setups such as the one presented in this paper.
+the theory of Evolution and its molecular basis. The fact that they are population-based makes them suitable for a straightforward distribution of work to different clients, and since they have an asynchronous nature, there is not a considerable impact on their performance. All these properties make them ideal candidates for volunteer computing setups such as the one presented in this paper.
 
-
-There are several open issues in the research regarding the application of volunteer computing techniques to the development of  distributed evolutionary algorithms of which the most important is approaching volunteer computing as a socio-technical system \cite{vespignani2009predicting} which integrates user decisions and behavioral patterns in the system model; this
+There are several open issues in the research regarding the application of volunteer computing techniques to the development of distributed evolutionary algorithms of which the most important is approaching the problem as a socio-technical system \cite{vespignani2009predicting}. which integrates user decisions and behavioral patterns in the model; this
 includes trying to optimize the number of users in a particular
 experiment. The challenge is to design a system that, whatever the
 number of users available to perform the experiment, is able to
@@ -87,6 +86,8 @@ which is a hurdle that might take users away; however, the open design
 of the system we use means that we can actually mix anonymous-non
 gamified and authentified-gamified users, with only the small overhead
 of adding the gamification mechanism.
+
+There is a trade-off between ease of use, where users just need to visit a web page, versus personlaization, where users need to register and subsecuently authenticate in order to participate. Registration could be seen as a barrier to volunteers trying to participate in an ephemeral experiment, so the question is what is the impact on user participation.
 
 The rest of the paper is organized as follows: Next we will briefly
 present the state of the art in opportunistic distributed evolutionary
@@ -146,7 +147,7 @@ with a sense of involvement with the simulation. This kind of system
 could add additional dynamics, because users can collaborate or
 even compete with each other when issuing their commands. This approach has been called {\em social cloud} \cite{6404452}, emphasizing the fact that user participation is gamified in order to obtain the most from it \cite{7027564}.
 
-The proof-of-concept efforts described above, do not go any further than to trying to find out how many users join the effort, and how many of them the system is able to support. In fact, systems such as the one described in
+The proof-of-concept efforts described above, do not go any further than  trying to find out how many users join the effort, and how many of them the system is able to support. In fact, systems such as the one described in
 \cite{gecco07:workshop:dcor} had serious scaling issues; some of them
 also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
@@ -415,7 +416,7 @@ exclusive use of this feature; however, it is an interesting addition
 to the volunteer system that in fact enhances its computing power.
 
 The fact that gamification actually work highlights the social nature of volunteer computing systems, piling on the fact that successful {\em social clouds} must embed games and other social mechanisms to enhance participation. That is why future lines of work will look for intermediate ways of including
-gamification without registration, as well as some ways of making the user increase control over the algorithm that would go beyond simply staying for longer or leaving the page. Since it is a sociotechnical system, including social features in it and studying emerging social networks might be an interesting line of work too. 
+gamification without registration, as well as some ways of making the user increase control over the algorithm that would go beyond simply staying for longer or leaving the page. Since it is a sociotechnical system, including social features in it and studying emerging social networks might be an interesting line of work too.
 
 Other factors, such as the language used, the way the experiment is announced, are also very important in this social context, which is why they will be included in future lines of work too.
 
