@@ -73,10 +73,10 @@ and underlying mechanisms, to the origin of the web
 We are mainly interested in evolutionary algorithms \cite{jj-ppsn98},, population-based search and optimization methods inspired by
 the theory of Evolution and its molecular basis. The fact that they are population-based makes them suitable for a straightforward distribution of work to different clients, and since they have an asynchronous nature, there is not a considerable impact on their performance. All these properties make them ideal candidates for volunteer computing setups such as the one presented in this paper.
 
-There are several open issues in the research regarding the application of volunteer computing techniques to the development of distributed evolutionary algorithms of which the most important is approaching the problem as a socio-technical system \cite{vespignani2009predicting}. which integrates user decisions and behavioral patterns in the model; this
+There are several open issues in the research regarding the application of volunteer computing techniques to the development of distributed evolutionary algorithms of which the most important is approaching the problem as a socio-technical system \cite{vespignani2009predicting} which integrates user decisions and behavioral patterns in the model; this
 includes trying to optimize the number of users in a particular
 experiment. The challenge is to design a system that, whatever the
-number of users available to perform the experiment, is able to
+number of available users to perform the experiment, it is able to
 maximize their contribution to the evolutionary algorithm. One obvious
 way of achieving that is trying to find as many users as possible. But
 another approach, and the one that we will be following in this paper, is
@@ -87,14 +87,13 @@ of the system we use means that we can actually mix anonymous-non
 gamified and authentified-gamified users, with only the small overhead
 of adding the gamification mechanism.
 
-There is a trade-off between ease of use, where users just need to visit a web page, versus personlaization, where users need to register and subsecuently authenticate in order to participate. Registration could be seen as a barrier to volunteers trying to participate in an ephemeral experiment, so the question is what is the impact on user participation.
+There is a trade-off between ease of use, where users just need to visit a web page, versus personalization, where users need to register and subsequently authenticate to participate. Registration can be seen as a barrier to volunteers trying to join an ephemeral experiment, so the question is: what is the impact on user participation.
 
 The rest of the paper is organized as follows: Next we will briefly
 present the state of the art in opportunistic distributed evolutionary
 computation (EC). Section \ref{sec:gamification} will describe the
-framework and problem used in the experiments, which are publicly
-available under a free license. We will present the results of the
-different steps in the incremental design in Section
+framework and the problem used in the experiments, which are publicly
+available under a free license. The results of each of the steps in the incremental design are presented in Section
 \ref{sec:experiments}, to finally wrap up with the conclusions.
 
 
@@ -102,7 +101,7 @@ different steps in the incremental design in Section
 \section{Related Work}
 \label{sec:soa}
 
-Volunteer computing involves users deciding to run a program that acts
+Volunteer computing involves users who decide to run a program that acts
 as a client or as a peer in a distributed computing experiment
 and, as such, has been deployed in many different ways from the
 beginning of the Internet, starting with the SETI@home framework for
@@ -117,46 +116,41 @@ was described in \cite{DBLP:conf/gecco/GuervosG15}. Systems based on the
 JavaScript/browser combination
 emphasize the ephemerality, ease of use, and universality, while
 systems such as HTCondor or BOINC might be more adequate for work that % citation for BOINC (?)
-require higher availability of volunteer resources, achieving this
-with downloadable clients which in some cases, like HTCondor, need
-administration access to the resources.
+requires higher availability of volunteer resources. In order to increase availability, systems rely on downloadable clients, and in some cases like HTCondor, they also require administrative access to certain resources.
 
 Several authors have already described systems using JavaScript either
 for unwitting
 \cite{unwitting-ec,boldrin2007distributed,apolonia2012enhancing} or volunteer
 \cite{langdon:2005:metas,gecco07:workshop:dcor} distributed
-evolutionary computation and it has been used ever since by several
-authors, including more recent efforts
+evolutionary computation and it has been used by several
+authors ever since. More recent efforts include
 \cite{duda2013distributed,DBLP:journals/corr/abs-0801-1210,EvoStar2014:jsEO,martinez2015capataz,pan2015gray}. In fact, this last paper \cite{pan2015gray} performs an analysis of what is called {\em Gray computing} covering aspects of
-feasibility, cost-effectiveness, change in the user experience and the
+feasibility, cost-effectiveness, change in the user\'s experience and the
 architectural optimization needed, concluding that the computing power
 available is vast and it can be cost-effective to use it.
 
-Using a peer to peer approach, the SPACE framework \cite{leclerc2016seamless} distributes fitness evaluations across a heterogeneous pool of cloud compute nodes and volunteer peer computers running a browser. In SPACE, peers establish a bi-directional communication with the server using the \texttt{Socket.io} JavaScript library.
+The SPACE framework \cite{leclerc2016seamless}, using a peer to peer approach, distributes fitness evaluations across a heterogeneous pool of cloud compute nodes and volunteer computers running a browser. In SPACE, peers establish a bi-directional communication with the server using the \texttt{Socket.io} JavaScript library.
 As an experiment they provide an \texttt{ASM.js} compiled version of the RoboGen software platform, showing that JavaScript can be used in a broad
 spectrum of applications.
 
 Recent works have been using crowdsourcing in order to train robots
 for human interaction, a representative work of this trend is that of
 Anetsberger \& Bongard \cite{anetsbergerrobots} in which they propose
-training simulated robots for the grounding of language symbols. They do this by using human observers that issue arbitrary commands to these robots via the web, providing positive or negative reinforcement in response to the
-robot resulting actions. For interaction, they use the Twitch streaming platform where users can issue commands through the
-platform's integrated chat service. Subjects were incentivized to
+training simulated robots for the grounding of language symbols. They do this by using human observers that issue arbitrary commands to these robots via the web, providing positive or negative reinforcement to the resulting actions of the robot. For interaction, they use the Twitch streaming platform where users can issue commands through the
+platform\'s integrated chat service. Subjects were incentivized to
 interact with the system by GUI features that provided participants
 with a sense of involvement with the simulation. This kind of system
 could add additional dynamics, because users can collaborate or
 even compete with each other when issuing their commands. This approach has been called {\em social cloud} \cite{6404452}, emphasizing the fact that user participation is gamified in order to obtain the most from it \cite{7027564}.
 
-The proof-of-concept efforts described above, do not go any further than  trying to find out how many users join the effort, and how many of them the system is able to support. In fact, systems such as the one described in
-\cite{gecco07:workshop:dcor} had serious scaling issues; some of them
+The proof-of-concept efforts described above, do not go any further than trying to find out how many users join the effort, and how many of them the system can support. In fact, systems such as the one described in
+\cite{gecco07:workshop:dcor} had severe scaling issues; some of them
 also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
 against single-user single-computer implementations of the same
-algorithm. Lately, researchers have tried to integrate volunteer computing techinques as a part of a larger distributed computing effort \cite{leclerc2016seamless}. In fact, exclusive volunteer-based systems exhibit a certain amount of unpredictability and might be best used in combination with ready-available computing power.
+algorithm. Lately, researchers have tried to integrate volunteer computing techinques as a part of a larger distributed computing effort \cite{leclerc2016seamless}.  In fact, systems using volunteers exclusively, exhibit a certain amount of unpredictability, and they might be better used in combination with ready-available computing power.
 
-As indicated in the introduction, the human is an integral part of the system, which can be considered as {\em human computation} \cite{quinn2011human}. Giving the user not only more control, by including registration, but also a measure to compare with other users might have positive effects. In fact, the BOINC projects applies a gamification technique
-by having a web page to present the ``Top 100 multi-project BOINC participants'' where
-the name of the volunteer, the number of projects, GFLOPS, country and team are presented
+As indicated in the introduction, the human is an integral part of the system, which we can consider a human computation {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' where the name of the volunteer, the number of projects, GFLOPS, country and team are displayed
 (\url{https://boinc.berkeley.edu/chart_list.php}).
 
 Next we will present the gamification technique used in this experiment.
@@ -164,9 +158,9 @@ Next we will present the gamification technique used in this experiment.
 \section{Gamification}
 \label{sec:gamification}
 A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
-the process by which gaming concepts are brought to the real world tasks associated with
+the process by which gaming concepts are brought to real world tasks associated with
 real people''. Gamification uses game design elements out of the domain of games
-with the objective of enhancing the user's experience, engagement, productivity,
+with the objective of enhancing the user\'s experience, engagement, productivity,
 learning, among others. Deterding et al. proposes the following definition:
  ``Gamification” is the use of game design elements in non-game contexts''
  \cite{deterding2011gamification}.
@@ -180,7 +174,7 @@ the filling of a progress bar \cite{o2010get}, or providing the user with virtua
 By Making the rewards for  tasks achievements visible to other players or
 providing leader boards are ways of encouraging players to compete \cite{hickman2010total}. In this work, a leader board was implemented in order to promote competition, presenting only the all-time top five participating users. Competition can also have problematic consequences, which can result in
 negative conduct, low cooperation and collaboration, or disadvantaging certain player demographics
-such as women \cite{kumar2013gamification}. Another techniques to gamification
+such as women \cite{kumar2013gamification}. Another gamification techinque
 is to make existing tasks feel more like games \cite{deterding2010just}.
 Some techniques used in this approach include adding meaningful choice,
 on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
@@ -250,15 +244,13 @@ available \url{https://undisclos.ed}
 \subsection{Problem}
 In the browser, each page visiting the experiment loads an HTTP Web Worker
 that runs a local island of an evolutionary algorithm to solve a
-multi-modal problem called {\em l-trap}, represented in figure \ref{fig:trap}, which has been used extensively
-as a benchmark for evolutionary algorithms \cite{fernandes2009using,nijssen2003analysis}.
+multi-modal problem called {\em l-trap} which has been used extensively
+as a benchmark for evolutionary algorithms and is represented in figure \ref{fig:trap},  \cite{fernandes2009using,nijssen2003analysis}.
 This function counts the number of bits in a sequence $l$ and assigns
 the local maximum $a$ if it has got 0 bits and the global maximum $b$ if it has $l$
-bits, this makes the  the fitness fall into a {\em trap}
+bits, this makes the fitness fall into a {\em trap}
 as the number of bits is increased, decreasing linearly until a change in slope
-is reached at point $z$, adding deceptive component for evolutionary algorithms.
-To increase the difficulty trap functions can be concatenated.
-In our case we have used $40$ concatenated traps. The trap function  defined as:
+is reached at point $z$, adding a deceptive component for evolutionary algorithms. Trap functions can be concatenated in order to increase the difficulty . In our case we have used $40$ concatenated traps. The trap function is defined as:
 \[ f(u)=
     \begin{cases}
       \frac{a}{z}(z-u) & \text{if } u\leq z\\
@@ -279,6 +271,10 @@ Each local GA had the following parameters, the initial population was randomly 
 with sizes between 128 and 256 individuals, the period to send individuals to the server
 was set at 100 local generations, the parameters for the trap function are $l$ = 4,
 $a$=1, $b$ = 2, $z$=3 and a chromosome length of 160 bits.
+
+The experiment was planed as a usibility test, employing a relativly small sample of users.
+
+A/B testing or split testing is an experimental approach to web desig
 
 We made a call to participation on November 23th,
 2016 through the authors' social networks: ``Asking again for your help, we are conducting a computational experiment
