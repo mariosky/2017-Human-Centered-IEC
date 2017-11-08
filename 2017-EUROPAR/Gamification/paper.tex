@@ -38,20 +38,24 @@ anonymous institution, some city, country\\
 
 \begin{abstract}
 
-Distributed computing systems can be created using volunteers who
-provide their own computing resources or storage to contribute to a common effort. They can, for instance,  run a script embedded in a web page, collaboration is straightforward, but also ephemeral, with resources depending on the amount of time a user lends; this  implies that
+Distributed computing systems can be created using volunteers who decide to
+provide their own  resources or storage to contribute to a common effort. They can, for instance, run a script embedded in a web page, collaboration is straightforward, but also ephemeral, with resources depending on the amount of time a user lends; this  implies that
 the user has to be kept engaged so as to obtain as many computing cycles as
 possible. In this paper, we analyze a volunteer-based evolutionary computing system called
-NodIO with the objective of discovering rules that encourage volunteer
+% NodIO
+Anonymous with the objective of discovering rules that encourage volunteer
 participation thus increasing the overall computing power. We present the results of
 an experiment where a gamification technique is applied by adding a leader-board
-showing the top scores achieved by registered contributors. In the NodIO system volunteers can
+showing the top scores achieved by registered contributors. In the
+% NodIO
+Anonymous system volunteers can
 participate without the need to create an account, so the question was
 if the need to register would have a negative impact on user participation.
 The experiment results show that even if only a small percentage of users created an account,
 those participating in the competition provided around 90\% of the work.
 
-\keywords{Distributed Evolutionary Algorithms, Volunteer Computing}
+\keywords{Distributed Evolutionary Algorithms, Volunteer Computing,
+  Socio-Technical Systems}
 \end{abstract}
 
 \section{Introduction}
@@ -73,7 +77,12 @@ and underlying mechanisms, to the origin of the web
 We are mainly interested in evolutionary algorithms \cite{jj-ppsn98},, population-based search and optimization methods inspired by
 the theory of Evolution and its molecular basis. The fact that they are population-based makes them suitable for a straightforward distribution of work to different clients, and since they have an asynchronous nature, there is not a considerable impact on their performance. All these properties make them ideal candidates for volunteer computing setups such as the one presented in this paper.
 
-There are several open issues in the research regarding the application of volunteer computing techniques to the development of distributed evolutionary algorithms of which the most important is approaching the problem as a socio-technical system \cite{vespignani2009predicting} which integrates user decisions and behavioral patterns in the model; this
+There are several open issues in the research regarding the
+application of volunteer computing techniques to the development of
+distributed evolutionary algorithms of which the most important is
+approaching the problem as a socio-technical system
+\cite{vespignani2009predicting,merelo2015designing}. which integrates
+user decisions and behavioral patterns in the model; this
 includes trying to optimize the number of users in a particular
 experiment. The challenge is to design a system that, whatever the
 number of available users to perform the experiment, it is able to
@@ -81,13 +90,22 @@ maximize their contribution to the evolutionary algorithm. One obvious
 way of achieving that is trying to find as many users as possible. But
 another approach, and the one that we will be following in this paper, is
 to delve into the socio-technical nature of the system, using
-gamification techniques to improve the amount of time every user will lend to the system. Gamification has to include some way of user authentification,
+gamification techniques to improve the amount of time every user will
+lend to the system. Gamification has to include some way of user authentification,
 which is a hurdle that might take users away; however, the open design
 of the system we use means that we can actually mix anonymous-non
 gamified and authentified-gamified users, with only the small overhead
 of adding the gamification mechanism.
 
-There is a trade-off between ease of use, where users just need to visit a web page, versus personalization, where users need to register and subsequently authenticate to participate. Registration can be seen as a barrier to volunteers trying to join an ephemeral experiment, so the question is: what is the impact on user participation.
+There is a trade-off between ease of use, allowing users to
+participate by just visiting a web page, and personalization, making
+registration compulsory and subsequently authenticate in order to
+participate. In a sociotechnical system such as this one, every
+decision the user has to take has an influence on the overall
+performance, and registration could be seen as a hurdle to volunteers
+trying to participate in an ephemeral experiment, so it is a challenge
+to analyze what actually happens in this case; this is one of the main
+questions addressed in this paper.
 
 The rest of the paper is organized as follows: Next we will briefly
 present the state of the art in opportunistic distributed evolutionary
@@ -193,7 +211,9 @@ on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mc
 \label{sec:experiments}
 
 In this experiment a gamification technique is applied to
-the {\sf NodIO} volunteer computing framework, using the
+the Anonymous
+% {\sf NodIO}
+volunteer computing framework, using the
 particular version described in \cite{DBLP:conf/gecco/MereloCGCRV16,2016arXiv160101607M}.
 The objective of the experiment is to test the kind of impact
 applying a gamification technique has on user engagement in this
@@ -235,7 +255,8 @@ After login, registered users are welcomed by their name, and they can see
 their score and level. All users can see in a modal dialog the leader board.
 While the modal is opened, the scores are refreshed every second. All other
 functionality is available to all users and is the same as the previous
-{\sf NodIO} version, showing the state of the current algorithm.
+%{\sf NodIO}
+Anonymous version, showing the state of the current algorithm.
 In the front page a link to the open source code of the experiment was also
 available \url{https://undisclos.ed}
 % \url{https://github.com/lucero21/login-master}
@@ -402,6 +423,16 @@ CPU they where using.
 
 \section{Conclusions, discussion and future work}
 
+The objective of this work was to test the kind of impact
+applying a gamification technique has on user engagement in
+the Anonymous
+% {\sf NodIO}
+volunteer computing framework; In concordance with
+the results obtained in other
+browser-based volunteer systems, after
+applying the gamification techniques, user participation was increased.
+
+
 In this paper we have added gamification to a volunteer computing
 system via a leaderboard of contributions of registered users. In
 fact, we have proved that, although only a minority of the users opt
@@ -412,19 +443,13 @@ exclusive use of this feature; however, it is an interesting addition
 to the volunteer system that in fact enhances its computing power.
 
 The fact that gamification actually work highlights the social nature of volunteer computing systems, piling on the fact that successful {\em social clouds} must embed games and other social mechanisms to enhance participation. That is why future lines of work will look for intermediate ways of including
-gamification without registration, as well as some ways of making the user increase control over the algorithm that would go beyond simply staying for longer or leaving the page. Since it is a sociotechnical system, including social features in it and studying emerging social networks might be an interesting line of work too.
+gamification without registration, as well as some ways of making the
+user increase control over the algorithm that would go beyond simply
+staying for longer or leaving the page. Since it is a sociotechnical
+system, including social features in it and studying emerging social
+networks is an interesting line of work too.
 
 Other factors, such as the language used, the way the experiment is announced, are also very important in this social context, which is why they will be included in future lines of work too.
-
-\section{Conclusions}
-\label{sec:conclusions}
-
-The objective of this work was to test the kind of impact
-applying a gamification technique has on user engagement in
-the {\sf NodIO} volunteer computing framework; In concordance with
-the results obtained in other
-browser-based volunteer systems, after
-applying the gamification techniques, user participation was increased.
 
 One of the interesting future lines of work would be to look a bit
 more closely at the behavior of users as they are participating
