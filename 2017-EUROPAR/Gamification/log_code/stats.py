@@ -1,5 +1,8 @@
-
 import  sqlite3
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from scipy.stats import ttest_ind
 
 conn = sqlite3.connect('log.db')
 c = conn.cursor()
@@ -13,7 +16,7 @@ c.execute(
         ORDER BY 2 DESC
 """)
 
-users = [r[1] for r in c]
+users =  [ (_id, _count,'user') for (_id, _count) in c]
 
 
 c.execute(
@@ -24,33 +27,21 @@ c.execute(
             ORDER BY 2 DESC
     """)
 
-IPs = [r[1] for r in c]
+IPs = [(_id, _count,'IP') for (_id, _count) in c]
 
 
+
+df_users = pd.DataFrame(users, columns= ['id','count','category'])
+df_IPs = pd.DataFrame(IPs, columns= ['id','count','category'])
+
+df_all = pd.concat([df_users, df_IPs])
+
+print df_all.groupby('category').describe()
+
+print ttest_ind(df_users['count'], df_IPs['count'])
 # Save (commit) the changes
 #conn.commit()
 
 # We can also close the connection if we are done with it.
 # Just be sure any changes have been committed or they will be lost.
 conn.close()
-
-print len(IPs)
-print len(users)
-
-import matplotlib.pyplot as plt
-from matplotlib.ticker import ScalarFormatter, MaxNLocator
-
-
-
-x_users = range(len(users))
-# automatically update ylim of ax2 when ylim of ax1 changes.
-fig , ax =plt.subplots()
-ax.boxplot([users,IPs], vert=True,patch_artist=True)
-ax.set_yscale('log')
-# add x-tick labels
-plt.setp([ax], xticklabels=['Users', 'IPs'])
-ax.set_ylabel('PUTs')
-ax.grid(True)
-plt.show()
-
-
