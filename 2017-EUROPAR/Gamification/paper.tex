@@ -381,9 +381,22 @@ users and thus enter the game dynamics.
 The second observation is apparent in the $y$ axis of Figure
 \ref{fig:puts}. There is a notable difference in the amount of
 participation between the two groups, and also in the slope of the
-plot. %Maybe a statistical comparison? Median, for instance - JJ
+plot.  An independent-samples t-test was conducted to compare participation, and there was a significant difference in the scores for anonymous users  (M=1057.97, SD= 3669.86) and non-anonymous users (M=46513.55, SD=93537.20); t-test= 4.70, p = 7.5e-06. 
 
+%Maybe a statistical comparison? Median, for instance - JJ
+%count          mean           std  min      25%      50%      75%   
+%category                                                                     
+%IP        91.0   1057.978022   3669.862398  1.0     1.50     18.0    173.0   
+%user      18.0  46513.555556  93537.207948  7.0  3962.75  13034.5  46993.5   
+
+           
+%      max  
+%category            
+%IP         26593.0  
+%user      396081.0  
+%Ttest_indResult(statistic=4.7070787365897289, pvalue=7.565505602664807e-06)
 %
+
 \begin{figure*}[htb]
     \centering
         \includegraphics[width=5in]{img/puts_box.png}
