@@ -347,28 +347,42 @@ registered users and anonymous volunteers. Registered users were responsible for
 The JSON data recorded for each contribution is  presented
 in Table~\ref{tab:record}.
 
-\begin{figure}[h!tbp]
+\begin{figure}[h!tb]
     \centering
         \includegraphics[width=0.9\linewidth]{img/puts_user.png}
         \includegraphics[width=0.9\linewidth]{img/puts_ip.png}
-    \caption{Usage by registered (left) and anonymous (right) users.  Users are ranked by
+    \caption{Usage by registered (top) and anonymous (bottom) users.  Users are ranked by
         the number of requests sent, in the \emph{x} axis is the rank, and in the \emph{y} axis
         number or PUTs in a logarithmic scale.}
-    \label{fig:puts}
+      \label{fig:puts}
+% Maybe we should scale dividing by number of users and put them
+% together. - JJ
 \end{figure}
 %
-Contributions are expressed as the number of HTTP PUT requests sent to the server. In Figure~\ref{fig:puts} a comparison between the contribution of registered vs anonymous users is
-presented. There were only 18 registered users, and the exact number of anonymous
-is not known as we only recorded the IP of the request, also a registered users
-could sometimes be anonymous too, this could be because the first time they visit
-the application they automatically begin to work as anonymous. Nevertheless,
-there were 91 distinct IPs that had `anonymous' as the user. In the plot of
+Contributions are expressed as the number of HTTP {\tt PUT} requests
+sent to the server. In Figure~\ref{fig:puts} a comparison between the
+contribution of registered vs anonymous users is 
+presented.
+
+The first observation arises from the length of the $x$ axis. There
+were only 18 registered users vs 91 distinct IPs; the 
+exact number of anonymous users is upper-bounded by that amount but is
+not known precisely as we only recorded the IP of the request, we did
+not use cookies or other means of identification since it was not
+actually needed for the experiment. Besides, a registered user
+could sometimes be anonymous too, which could be caused by the fact that the first time they visited
+the application they automatically begin to work as anonymous, so the
+number of non-anonymous users, 91, is actually the amount of unique
+IPs that had `anonymous' as the user. In the plot of 
 anonymous users, some of the last in the rank could in fact be registered users,
 momentarily participating as anonymous. Even if this is not considered, only
-about 16\% of users attending the call decided to participate as named users.
+about 16\% of users attending the call decided to participate as named
+users and thus enter the game dynamics. 
 
-There is a notable difference in the amount of participation between the two
-groups, and also in the slope of the plot.
+The second observation is apparent in the $y$ axis of Figure
+\ref{fig:puts}. There is a notable difference in the amount of
+participation between the two groups, and also in the slope of the
+plot. %Maybe a statistical comparison? Median, for instance - JJ
 
 %
 \begin{figure*}[htb]
