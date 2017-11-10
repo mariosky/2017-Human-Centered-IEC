@@ -80,41 +80,59 @@ by WebSockets for lower latency; you can gather users by just
 announcing the URL. This approach for creating distributed experiments is called {\em
   volunteer}, {\em cycle-scavenging}, or {\em opportunistic} computing
 \cite{sarmenta2001volunteer} and it dates back, in different shapes
-and underlying mechanisms, to the origin of the web
+and underlying mechanisms, to the origin of the Internet
 \cite{david-seti:home}.
 
-We are mainly interested in evolutionary algorithms \cite{jj-ppsn98},, population-based search and optimization methods inspired by
-the theory of Evolution and its molecular basis. The fact that they are population-based makes them suitable for a straightforward distribution of work to different clients, and since they have an asynchronous nature, there is not a considerable impact on their performance. All these properties make them ideal candidates for volunteer computing setups such as the one presented in this paper.
+In this context, we are mainly interested in evolutionary algorithms
+\cite{milani2004online,sherry2012flex,jj-ppsn98}%,
+% population-based search and optimization methods inspired by
+% the theory of Evolution and its molecular basis.
+. The fact that they are population-based makes them suitable for a
+straightforward distribution of work to different clients, and since
+they have an asynchronous nature, there is no considerable impact on
+their performance, and might even be beneficial for a number of
+reasons, including increased diversity
+\cite{cantu-paz:migration-policies}. All these properties make them
+ideal candidates for volunteer computing setups such as the one
+presented in this paper, at least if some minimal changes are made to
+the usual sequential or parallel algorithms that rely on a static
+setup. 
 
-There are several open issues in the research regarding the
+But even if adaptation is straightforward, there are several open issues in the research regarding the
 application of volunteer computing techniques to the development of
 distributed evolutionary algorithms of which the most important is
 approaching the problem as a socio-technical system
-\cite{vespignani2009predicting,merelo2015designing}. which integrates
+\cite{vespignani2009predicting,merelo2015designing}, which integrates
 user decisions and behavioral patterns in the model; this
-includes trying to optimize the number of users in a particular
+includes trying to optimize the number of users or the overall time
+they contribute in a particular
 experiment. The challenge is to design a system that, whatever the
-number of available users to perform the experiment, it is able to
+number of users available and willing to perform the experiment, it is able to
 maximize their contribution to the evolutionary algorithm. One obvious
 way of achieving that is trying to find as many users as possible. But
 another approach, and the one that we will be following in this paper, is
 to delve into the socio-technical nature of the system, using
-gamification techniques to improve the amount of time every user will
-lend to the system. Gamification has to include some way of user authentication,
+gamification techniques to try and improve the amount of time every user will
+lend to the system. However, there is a tradeoff with gamification,
+since users have to be identified in some way to participate, and thus
+it has to include some way of user authentication,
 which is a hurdle that might take users away; however, the open design
 of the system we use means that we can actually mix anonymous-non
 gamified and authenticated-gamified users, with only the small overhead
 of adding the gamification mechanism.
 
-There is a trade-off between ease of use, allowing users to
+This trade-off between ease of use, allowing users to
 participate by just visiting a web page, and personalization, making
 registration compulsory and subsequently authenticate in order to
-participate. In a sociotechnical system such as this one, every
+participate, is what we will analyze in this paper. In a sociotechnical system such as this one, every
 decision the user has to take has an influence on the overall
 performance, and registration could be seen as a hurdle to volunteers
 trying to participate in an ephemeral experiment, so it is a challenge
-to analyze what actually happens in this case; this is one of the main
-questions addressed in this paper.
+to analyze what actually happens in this case; quite clearly, the
+inclusion of gamification techniques has an impact on page loading and
+complexity of server-side programming; if eigher the number of users
+or the amount of time they contribute to the experiment is not enough,
+it would be better to revert to the purely anonymous system.
 
 The rest of the paper is organized as follows: Next we will briefly
 present the state of the art in opportunistic distributed evolutionary
