@@ -462,18 +462,26 @@ spread, indicating a participation similar to the median of anonymous IPs.
     \caption{ Participation of registered users. Each circle represents a user relating
         in the \emph{x} axis the number of workers used and in the \emph{y} axis
         number or PUTs in a logarithmic scale. The area of the circle is the number
-        of unique IPs used by the user.
+        of unique IPs associated to every user. 
     }
     \label{fig:worker-put-ips}
 \end{figure*}
 %
 Figure~\ref{fig:worker-put-ips} gives an interesting view on the amount of
 resources shared by registered users. The area of the circle is proportional
-to the number of unique IPs used by each user, the user with more participation
-used a total of 66 different IPs, this number could be related with the number
-of devices used during the participation. There are some users that using less
+to the number of unique IPs used by each user; the user with the most participation
+used a total of 66 different IPs. this number could be related with the number
+of different devices used during the participation. There are some users that using less
 devices participated more, this could mean a more powerful device, faster
-Internet connection or simply more time spent participating.
+Internet connection or simply more time spent participating. At any
+rate, the chart seems to indicate that the main mechanism registered
+users employ to increase their rank seems to be using all devices
+available, and maxing out their CPUs by increasing the number of
+workers. This indicates that, in fact, registered users who have
+incurred in additional time expenses by performing registration and
+login are ready to work even more by manually deploying more workers
+and using more computers, which is another proof of the
+socio-technical nature of volunteer computing systems. 
 
 \begin{figure*}[htb]
     \centering
@@ -506,22 +514,20 @@ CPU they were using.
 
 \section{Conclusions, discussion and future work}
 
-The objective of this work was to test the kind of impact
+In this paper we have added gamification to a volunteer computing
+system via a leaderboard of contributions of registered users. The objective of this work was to test the kind of impact
 applying a gamification technique has on user engagement in
 the Anonymous
 % {\sf NodIO}
-volunteer computing framework; In concordance with
+volunteer computing framework; in concordance with
 the results obtained in other
 browser-based volunteer systems, after
-applying the gamification techniques, user participation was increased.
+applying the gamification techniques, registered users participated much more intensely than anonymous ones. 
 
-
-In this paper we have added gamification to a volunteer computing
-system via a leaderboard of contributions of registered users. In
-fact, we have proved that, although only a minority of the users opt
-for registration, their individual contribution is on average much
+In fact, we have proved that, although only a minority of the users opt
+for registration, their individual contributions are on average much
 higher than for non-authenticated/non-gamified users. The fact that less
-than one fifth of users opt for registering would discard the
+than one fifth of users actually registering would discard the
 exclusive use of this feature; however, it is an interesting addition
 to the volunteer system that in fact enhances its computing power.
 
