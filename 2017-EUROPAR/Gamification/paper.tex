@@ -43,25 +43,23 @@ Distributed computing systems can be created using volunteers; these
 are users who spontaneously, after receiving an invitation, decide to
 provide their own resources or storage to contribute to a common
 effort. They can, for instance, run a script embedded in a web page;
-thus, 
-collaboration is straightforward, but also ephemeral, with resources
-depending on the amount of time the user decides to lend. This  implies that 
-the user has to be kept engaged so as to obtain as many computing cycles as
-possible. In this paper, we analyze a volunteer-based evolutionary computing system called
-% NodIO
-Anonymous with the objective of discovering design decisions that encourage volunteer
-participation, thus increasing the overall computing power. We present the results of
-an experiment in which a gamification technique is applied by adding a leader-board
-showing the top scores achieved by registered contributors. In the
-% NodIO
-Anonymous system volunteers can
-participate without the need to create an account, so one of the
-questions we wanted to address was
-if the need to register would have a negative impact on user participation.
-The experiment results show that even if only a small percentage of users created an account,
-those participating in the competition provided around 90\% of the
-work, thus effectively increasing the performance of the overall
-system. 
+thus, collaboration is straightforward, but also ephemeral, with
+resources depending on the amount of time the user decides to
+lend. This implies that the user has to be kept engaged so as to
+obtain as many computing cycles as possible. In this paper, we analyze
+a volunteer-based evolutionary computing system called % NodIO
+Anonymous with the objective of discovering design decisions that
+encourage volunteer participation, thus increasing the overall
+computing power. We present the results of an experiment in which a
+gamification technique is applied by adding a leader-board showing the
+top scores achieved by registered contributors. In the % NodIO
+Anonymous system volunteers can participate without the need to create
+an account, so one of the questions we wanted to address was if the
+need to register would have a negative impact on user participation.
+The experiment results show that even if only a small percentage of
+users created an account, those participating in the competition
+provided around 90\% of the work, thus effectively increasing the
+performance of the overall system.
 
 \keywords{Distributed Evolutionary Algorithms, Volunteer Computing,
   Socio-Technical Systems}
@@ -113,7 +111,7 @@ way of achieving that is trying to find as many users as possible. But
 another approach, and the one that we will be following in this paper, is
 to delve into the socio-technical nature of the system, using
 gamification techniques to try and improve the amount of time every user will
-lend to the system. However, there is a tradeoff with gamification,
+lend to the system. However, there is a trade-off with gamification,
 since users have to be identified in some way to participate, and thus
 it has to include some way of user authentication,
 which is a hurdle that might take users away; however, the open design
@@ -207,7 +205,7 @@ The proof-of-concept efforts described above, do not go any further than trying 
 also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
 against single-user single-computer implementations of the same
-algorithm. Lately, researchers have tried to integrate volunteer computing techinques as a part of a larger distributed computing effort \cite{leclerc2016seamless}.  In fact, systems using volunteers exclusively, exhibit a certain amount of unpredictability, and they might be better used in combination with ready-available computing power.
+algorithm. Lately, researchers have tried to integrate volunteer computing techniques as a part of a larger distributed computing effort \cite{leclerc2016seamless}.  In fact, systems using volunteers exclusively, exhibit a certain amount of unpredictability, and they might be better used in combination with ready-available computing power.
 
 As indicated in the introduction, the human is an integral part of the system, which we can consider a human computation {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' in which the name of the volunteer, the number of projects, GFLOPS, country and team are displayed
 (\url{https://boinc.berkeley.edu/chart_list.php}).
@@ -386,7 +384,7 @@ seem to be able to muster for this kind of experiments.
 At the end of the experiment the resulting log file (whose fields are shown in Table \ref{tab:record}) contained 933,513 contributions both
 registered users and anonymous volunteers. Registered users were responsible for about
 90\% of the contributions, while being only 16\% of the total number of unique users (assuming each IP is from a single user).
-The JSON data recorded for each contribution is  presented
+The data recorded in JSON format for every contribution is  presented
 in Table~\ref{tab:record}.
 
 \begin{figure}[h!tb]
@@ -401,10 +399,9 @@ in Table~\ref{tab:record}.
 % together. - JJ
 \end{figure}
 %
-Contributions are expressed as the number of HTTP {\tt PUT} requests
-sent to the server. In Figure~\ref{fig:puts} a comparison between the
-contribution of registered vs anonymous users is 
-presented.
+Contributions are counted by the number of HTTP {\tt PUT} requests
+sent to the server. In Figure~\ref{fig:puts} a comparison between the 
+contribution of registered vs anonymous users is presented.
 
 The first observation arises from the length of the $x$ axis. There
 were only 18 registered users vs 91 distinct IPs; the 
@@ -424,36 +421,51 @@ users and thus enter the game dynamics.
 The second observation is apparent in the $y$ axis of Figure
 \ref{fig:puts}. There is a notable difference in the amount of
 participation between the two groups, and also in the slope of the
-plot.  An independent-samples t-test was conducted to compare participation, and there was a significant difference in the scores for anonymous users  (M=1057.97, SD= 3669.86) and non-anonymous users (M=46513.55, SD=93537.20); t-test= 4.70, p = 7.5e-06. 
-
+plot.  An independent-samples t-test was conducted to compare
+participation, and there was a significant difference in the scores
+for anonymous users  (M=1057.97, SD= 3669.86) and non-anonymous users
+(M=46513.55, SD=93537.20); t-test= 4.70, p = 7.5e-06; that is, the
+contribution of registered users was two orders of magnitude bigger
+than for anonymous users. This difference is highlighted in 
+%
 %Maybe a statistical comparison? Median, for instance - JJ
 %count          mean           std  min      25%      50%      75%   
 %category                                                                     
 %IP        91.0   1057.978022   3669.862398  1.0     1.50     18.0    173.0   
 %user      18.0  46513.555556  93537.207948  7.0  3962.75  13034.5  46993.5   
-
-           
+%
+%           
 %      max  
 %category            
 %IP         26593.0  
 %user      396081.0  
 %Ttest_indResult(statistic=4.7070787365897289, pvalue=7.565505602664807e-06)
 %
-
+%
 \begin{figure*}[htb]
     \centering
         \includegraphics[width=5in]{img/puts_box.png}
-    \caption{ Box-plot of the number of requests sent by registered users and anonymous IPs.
+    \caption{Box-plot of the number of requests sent by registered users and anonymous IPs.
      In the \emph{y} axis are number or PUTs in a logarithmic scale.
     }
     \label{fig:box}
 \end{figure*}
 %
-The box plot featured in Figure \ref{fig:box} shows the amount of participation between the two groups, it highlights
-the difference and also the number of outliers in the groups. Two registered
-outliers were very important participants, maybe competing between them. But
-there were more outliers between anonymous IPs, and some of them could be related to the same users. The lower quartile in the users box-plot has more
-spread, indicating a participation similar to the median of anonymous IPs.
+ Figure \ref{fig:box}, which is a boxplot of the  participation by two
+ groups, showing the big difference between registered users (shown as
+ ``users'') and anonymous ones (shown as ``IPs''. This chart also
+ shows the number of outliers in the groups, which is an obvious
+ consequence of the ephemeral and spontaneous nature of the
+ collaboration; in fact, two registered
+outliers were very important participants, maybe competing between
+them, an expected consequence of the gamification, in fact, although
+not in this precise form and quantity. But
+there were more outliers between anonymous IPs, and some of them could
+be related to the same users. The lower quartile in the users box-plot
+has more 
+spread, indicating a participation similar to the median of anonymous
+IPs, indicating that the difference in distribution is mainly due to a
+few highly engaged and registered users. 
 
 %
 \begin{figure*}[htb]
