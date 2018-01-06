@@ -127,8 +127,6 @@ framework and the problem used in the experiments, which are publicly
 available under a free license. The results of each of the steps in the incremental design are presented in Section
 \ref{sec:experiments}, to finally wrap up with the conclusions.
 
-
-
 \section{Related Work}
 \label{sec:soa}
 
@@ -146,28 +144,26 @@ made this combination the most popular for volunteer computing
 frameworks in what is generally described as BBVC or Browser-Based
 Volunteer Computing \cite{fabisiak2017browser}.
 
-Systems based on the
-JavaScript/browser combination
-emphasize the ephemerality, ease of use, and universality, while
-systems such as HTCondor or BOINC \cite{boinc_grid04} might be more adequate for work that 
-requires higher availability of volunteer resources.
+% ystems based on the
+% JavaScript/browser combination
+% emphasize the ephemerality, ease of use, and universality, while
+% systems such as HTCondor or BOINC \cite{boinc_grid04} might be more adequate for work that 
+% requires higher availability of volunteer resources.
+
 In order to attract volunteers, systems rely on downloadable clients, and in
 some cases like HTCondor, they also require administrative access to
 certain resources. In fact, Fabisiak \cite{fabisiak2017browser}
 analyzes the different capabilities of Internet and browser-based
 systems, including their ability to handle large sets of input data
 and time-consuming problems, concluding that BBVC is mostly apt for
-short, data-light tasks. This recent survey does not analyze the
-impact of gamification as we do in this paper, which might help in
-this area.
+short, data-light tasks.
 
 Several authors have already described systems using JavaScript either
 for unwitting
 \cite{unwitting-ec,boldrin2007distributed,apolonia2012enhancing} or volunteer
 \cite{langdon:2005:metas,gecco07:workshop:dcor} distributed
 evolutionary computation and it has been used by several
-authors ever since. More recent efforts include
-\cite{duda2013distributed,DBLP:journals/corr/abs-0801-1210,EvoStar2014:jsEO,martinez2015capataz,pan2015gray,desell2017large,rivas2017time,leclerc2016seamless,merelo2017performance}. In
+authors ever since. In
 fact, \cite{pan2015gray} performs an analysis of what
 is called {\em Gray computing} covering aspects of 
 feasibility, cost-effectiveness, change in the user\'s experience and the
@@ -212,27 +208,23 @@ the filling of a progress bar \cite{o2010get}, or providing the user with virtua
 By Making the rewards for  tasks achievements visible to other players or
 providing leader boards are ways of encouraging players to compete \cite{hickman2010total}. In this work, a leader board was implemented in order to promote competition, presenting only the all-time top five participating users. Competition can also have problematic consequences, which can result in
 negative conduct, low cooperation and collaboration, or disadvantaging certain player demographics
-such as women \cite{kumar2013gamification}. Another gamification technique
-is to make existing tasks feel more like games \cite{deterding2010just}.
-Some techniques used in this approach include adding meaningful choice,
-on-boarding with a tutorial, increasing challenge, and adding narrative \cite{mcgonigal2011reality}.
+such as women \cite{kumar2013gamification}. 
 
 
 
-\begin{figure*}[htb]
-    \centering
-        \includegraphics[width=5in]{img/login.png}
-    \caption{ User interface: Landing page, and Log-in and registration dialogs.
-    }
-    \label{fig:login}
-\end{figure*}
+% \begin{figure*}[htb]
+%     \centering
+%         \includegraphics[width=5in]{img/login.png}
+%     \caption{ User interface: Landing page, and Log-in and registration dialogs.
+%     }
+%     \label{fig:login}
+% \end{figure*}
 
 \section{Experiment}
 \label{sec:experiments}
 
 In this experiment a gamification technique is applied to
-the Anonymous
-% {\sf NodIO}
+the {\sf NodIO}
 volunteer computing framework, using the
 particular version described in \cite{DBLP:conf/gecco/MereloCGCRV16,2016arXiv160101607M}.
 The objective of the experiment is to test the kind of impact
@@ -243,7 +235,9 @@ this functionality was not desired because it was seen as a barrier
 for participation. After all, the advantage of a browser based volunteer system
 is precisely the minimum amount of user intervention needed to start.
 The last thing a user wants to see is yet another registration form.
-Then, the first design decision for this version is that registration is optional and simple as shown in Figure \ref{fig:login}.
+Then, the first design decision for this version is that registration
+is optional and simple.
+%as shown in Figure \ref{fig:login}.
 
 The gamification technique employed in this work is based on a rewarding mechanism
 \cite{dubois2013understanding}. In general rewards  consist of a reputation system
@@ -261,32 +255,32 @@ term achievement, in this case the level depends on the score:
 \]
 The function returns a normalized value that is multiplied by the maximum level
 in this case 100. The variables $a$=100 and $b$=7360 are set to give users a rapid increase of
-levels at the beginning; this function is represented in Figure \ref{fig:s}.
+levels at the beginning.%; this function is represented in Figure \ref{fig:s}.
 %
-\begin{figure*}[htb]
-    \centering
-        \includegraphics[width=3in]{img/s.png}
-    \caption{$S$ function used to assign the user's level.
-    }
-    \label{fig:s}
-\end{figure*}
+% \begin{figure*}[htb]
+%     \centering
+%         \includegraphics[width=3in]{img/s.png}
+%     \caption{$S$ function used to assign the user's level.
+%     }
+%     \label{fig:s}
+% \end{figure*}
 
 After login, registered users are welcomed by their name, and they can see
 their current score and level. All users can see in a modal dialog the leader board.
 While the modal is opened, the scores are refreshed every second. All other
-functionality is available to all users and is the same as the previous
-%{\sf NodIO}
-Anonymous version, showing the state of the current algorithm.
+functionality is available to all users and is the same as the
+previous {\sf NodIO} version, showing the state of the current algorithm.
 In the front page a link to the open source code of the experiment was also
-available \url{https://undisclos.ed}
-% \url{https://github.com/lucero21/login-master}
+available \url{https://github.com/lucero21/login-master}.
 
 
 \subsection{Problem}
 In the browser, each page visiting the experiment loads an HTTP Web Worker
 that runs a local island of an evolutionary algorithm to solve a
 multi-modal problem called {\em l-trap} which has been used extensively
-as a benchmark for evolutionary algorithms and is represented in figure \ref{fig:trap},  \cite{fernandes2009using,nijssen2003analysis}.
+as a benchmark for evolutionary algorithms % and is represented in
+% figure \ref{fig:trap}
+,  \cite{nijssen2003analysis}.
 This function counts the number of bits in a sequence $l$ and assigns
 the local maximum $a$ if it has 0 bits and the global maximum $b$ if it has $l$
 bits, this makes the fitness fall into a {\em trap}
@@ -299,13 +293,13 @@ is reached at point $z$, adding a deceptive component for evolutionary algorithm
    \end{cases}
  \]
  %
-\begin{figure*}[htb]
-    \centering
-        \includegraphics[width=3in]{img/trap.png}
-    \caption{Trap function.
-    }
-    \label{fig:trap}
-\end{figure*}
+% \begin{figure*}[htb]
+%     \centering
+%         \includegraphics[width=3in]{img/trap.png}
+%     \caption{Trap function.
+%     }
+%     \label{fig:trap}
+% \end{figure*}
 
 
 Each local GA had the following parameters, the initial population was randomly generated
@@ -339,28 +333,30 @@ seem to be able to muster for this kind of experiments.
 \subsection{Results}
 \label{sec:results}
 
-\begin{table}[h!tbp]
-  \small
-  \caption{ Log file record structure}
-  \label{tab:record}
-  \centering
-  \small
-  \begin{tabular}{l  l}
-    \hline\noalign{\smallskip}
-    Attribute & Value \\
-    \noalign{\smallskip}\hline\noalign{\smallskip}
-    chromosome   & The individual sent to the server as a string of 160 bits.  \\ \hline
-    fitness & fitness as an integer.  \\ \hline
-    IP & IP address of the participant (later anonymized) .\\ \hline
-    user & user-name or the string `anonymous'.  \\ \hline
-    worker\_uuid & unique identifier of the HTTP Worker that sent the participation.   \\ \hline
-    level &  level of user or the string `info' \\ \hline
-    message & Only PUT messages were recorded in this experiment. \\ \hline
-    timestamp & A time-stamp based on the Unix epoch\\ \hline
-  \end{tabular}
-\end{table}
+% \begin{table}[h!tbp]
+%   \small
+%   \caption{ Log file record structure}
+%   \label{tab:record}
+%   \centering
+%   \small
+%   \begin{tabular}{l  l}
+%     \hline\noalign{\smallskip}
+%     Attribute & Value \\
+%     \noalign{\smallskip}\hline\noalign{\smallskip}
+%     chromosome   & The individual sent to the server as a string of 160 bits.  \\ \hline
+%     fitness & fitness as an integer.  \\ \hline
+%     IP & IP address of the participant (later anonymized) .\\ \hline
+%     user & user-name or the string `anonymous'.  \\ \hline
+%     worker\_uuid & unique identifier of the HTTP Worker that sent the participation.   \\ \hline
+%     level &  level of user or the string `info' \\ \hline
+%     message & Only PUT messages were recorded in this experiment. \\ \hline
+%     timestamp & A time-stamp based on the Unix epoch\\ \hline
+%   \end{tabular}
+% \end{table}
 %
-At the end of the experiment the resulting log file (whose fields are shown in Table \ref{tab:record}) contained 933,513 contributions both
+At the end of the experiment the resulting log file
+%(whose fields are shown in Table \ref{tab:record})
+contained 933,513 contributions both
 registered users and anonymous volunteers. Registered users were responsible for about
 90\% of the contributions, while being only 16\% of the total number of unique users (assuming each IP is from a single user).
 The data recorded in JSON format for every contribution is  presented
