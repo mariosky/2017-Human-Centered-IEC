@@ -135,8 +135,8 @@ as a client or as a peer in a distributed computing experiment
 and, as such, has been deployed in many different ways since the
 beginning of the Internet, starting with the SETI@home framework for
 processing extraterrestrial signals \cite{david-seti:home}, which used
-a client that acted as an screensaver, or a
-high-throughput queuing system such as HTCondor \cite{HTCondor}.
+a client that acted as an screensaver%, or a
+%high-throughput queuing system such as HTCondor \cite{HTCondor}.
 However,
 the dual facts of the introduction of JavaScript as a universal language for the
 browser and the browser itself as both an ubiquitous web and Internet client has
@@ -150,9 +150,11 @@ Volunteer Computing \cite{fabisiak2017browser}.
 % systems such as HTCondor or BOINC \cite{boinc_grid04} might be more adequate for work that 
 % requires higher availability of volunteer resources.
 
-In order to attract volunteers, systems rely on downloadable clients, and in
-some cases like HTCondor, they also require administrative access to
-certain resources. In fact, Fabisiak \cite{fabisiak2017browser}
+In order to attract volunteers, many systems rely on downloadable clients;
+% , and in
+% some cases like HTCondor, they also require administrative access to
+% certain resources
+Fabisiak \cite{fabisiak2017browser}
 analyzes the different capabilities of Internet and browser-based
 systems, including their ability to handle large sets of input data
 and time-consuming problems, concluding that BBVC is mostly apt for
@@ -170,22 +172,27 @@ feasibility, cost-effectiveness, change in the user\'s experience and the
 architectural optimization needed, concluding that the computing power
 available is vast and it can be cost-effective to use it.
 
-Recent works have been using crowdsourcing in order to train robots
-for human interaction, a representative work of this trend is that of
-Anetsberger \& Bongard \cite{anetsbergerrobots} in which they propose
-training simulated robots for the grounding of language symbols. They do this by using human observers that issue arbitrary commands to these robots via the web, providing positive or negative reinforcement to the resulting actions of the robot. For interaction, they use the Twitch streaming platform at which users can issue commands through the
-platform\'s integrated chat service. Subjects were incentivized to
-interact with the system by GUI features that provided participants
-with a sense of involvement with the simulation. This kind of system
-could add additional dynamics, because users can collaborate or
-even compete with each other when issuing their commands. This approach has been called {\em social cloud} \cite{6404452}, emphasizing the fact that user participation is gamified in order to obtain the most from it \cite{7027564}.
+% Recent works have been using crowdsourcing in order to train robots
+% for human interaction, a representative work of this trend is that of
+% Anetsberger \& Bongard \cite{anetsbergerrobots} in which they propose
+% training simulated robots for the grounding of language symbols. They do this by using human observers that issue arbitrary commands to these robots via the web, providing positive or negative reinforcement to the resulting actions of the robot. For interaction, they use the Twitch streaming platform at which users can issue commands through the
+% platform\'s integrated chat service. Subjects were incentivized to
+% interact with the system by GUI features that provided participants
+% with a sense of involvement with the simulation. This kind of system
+% could add additional dynamics, because users can collaborate or
+% even compete with each other when issuing their commands. This approach has been called {\em social cloud} \cite{6404452}, emphasizing the fact that user participation is gamified in order to obtain the most from it \cite{7027564}.
 
-The proof-of-concept efforts described above, do not go any further than trying to find out how many users join the effort, and how many of them the system can support. In fact, systems such as the one described in
+Many systems described above do not go any further than trying to find out how many users join the effort, and how many of them the system can support. In fact, systems such as the one described in
 \cite{gecco07:workshop:dcor} had severe scaling issues; some of them
 also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
 against single-user single-computer implementations of the same
-algorithm. Lately, researchers have tried to integrate volunteer computing techniques as a part of a larger distributed computing effort \cite{leclerc2016seamless}.  In fact, systems using volunteers exclusively, exhibit a certain amount of unpredictability, and they might be better used in combination with ready-available computing power.
+algorithm. Lately, researchers have tried to integrate volunteer
+computing techniques as a part of a larger distributed computing
+effort \cite{leclerc2016seamless}.  In fact, systems using volunteers
+exclusively, exhibit a certain amount of unpredictability, and they
+might be better used in combination with ready-available computing
+power. 
 
 As indicated in the introduction, the human is an integral part of the system, which we can consider a {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' in which the name of the volunteer, the number of projects, GFLOPS, country and team are displayed.
 
@@ -359,8 +366,8 @@ At the end of the experiment the resulting log file
 contained 933,513 contributions both
 registered users and anonymous volunteers. Registered users were responsible for about
 90\% of the contributions, while being only 16\% of the total number of unique users (assuming each IP is from a single user).
-The data recorded in JSON format for every contribution is  presented
-in Table~\ref{tab:record}.
+% The data recorded in JSON format for every contribution is  presented
+% in Table~\ref{tab:record}.
 
 \begin{figure}[h!tb]
     \centering
