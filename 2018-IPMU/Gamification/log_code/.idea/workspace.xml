@@ -16,6 +16,8 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/log$log2sqlite.coverage" NAME="log2sqlite Coverage Results" MODIFIED="1487198306381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/log$workers_per_user_time_slot.coverage" NAME="workers_per_user_time_slot Coverage Results" MODIFIED="1487218317300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/log_code$log2sqlite.coverage" NAME="log2sqlite Coverage Results" MODIFIED="1515476477761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/log_code$user_puts.coverage" NAME="user_puts Coverage Results" MODIFIED="1515477560343" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/log$user_puts_box.coverage" NAME="user_puts_box Coverage Results" MODIFIED="1487208666755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/log$user_puts.coverage" NAME="user_puts Coverage Results" MODIFIED="1487308682223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/log$workers_per_user.coverage" NAME="workers_per_user Coverage Results" MODIFIED="1487308342008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -33,11 +35,11 @@
       <file leaf-file-name="log2sqlite.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/log2sqlite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="20" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <marker date="1487204360000" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
-                <marker date="1487204360000" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
+                <marker date="1515265078674" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
+                <marker date="1515265078674" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
               </folding>
             </state>
           </provider>
@@ -46,66 +48,11 @@
       <file leaf-file-name="user_puts.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user_puts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
+            <state relative-caret-position="689">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
-                <marker date="1487308682000" expanded="true" signature="140:175" placeholder="SELECT times... " />
-                <marker date="1487308682000" expanded="true" signature="140:180" placeholder="SELECT times... " />
-                <marker date="1487308682000" expanded="true" signature="140:258" placeholder="SELECT user logs" />
-                <marker date="1487308682000" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_puts_box.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_puts_box.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="34" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="34" />
-              <folding>
-                <marker date="1487208587000" expanded="true" signature="141:259" placeholder="SELECT user logs" />
-                <marker date="1487208587000" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="by_time_slot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/by_time_slot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1487219095000" expanded="true" signature="151:341" placeholder="SELECT datet... logs" />
-                <marker date="1487219095000" expanded="true" signature="452:641" placeholder="SELECT datet... logs" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="workers_per_user_time_slot_best.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/workers_per_user_time_slot_best.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1487219095000" expanded="true" signature="151:385" placeholder="SELECT datet... logs" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="workers_per_user.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/workers_per_user.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1487220403000" expanded="true" signature="151:318" placeholder="SELECT user,... logs" />
+                <marker date="1515477524030" expanded="true" signature="140:258" placeholder="SELECT user logs" />
+                <marker date="1515477524030" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
               </folding>
             </state>
           </provider>
@@ -141,7 +88,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="251" />
+    <option name="x" value="383" />
     <option name="y" value="23" />
     <option name="width" value="1530" />
     <option name="height" value="1037" />
@@ -175,28 +122,28 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="log" />
+              <option name="myItemId" value="log_code" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="log" />
+              <option name="myItemId" value="log_code" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="log" />
+              <option name="myItemId" value="log_code" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/anaconda/bin/python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -221,24 +168,6 @@
       <module name="log" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/user_puts.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="user_puts_box" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="log" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/user_puts_box.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -293,6 +222,24 @@
       <module name="log" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/workers_per_user.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="log2sqlite" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="log" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/log2sqlite.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -507,18 +454,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.user_puts" />
-      <item index="1" class="java.lang.String" itemvalue="Python.user_puts_box" />
-      <item index="2" class="java.lang.String" itemvalue="Python.by_time" />
-      <item index="3" class="java.lang.String" itemvalue="Python.workers_per_user_time_slot" />
-      <item index="4" class="java.lang.String" itemvalue="Python.workers_per_user" />
+      <item index="1" class="java.lang.String" itemvalue="Python.by_time" />
+      <item index="2" class="java.lang.String" itemvalue="Python.workers_per_user_time_slot" />
+      <item index="3" class="java.lang.String" itemvalue="Python.workers_per_user" />
+      <item index="4" class="java.lang.String" itemvalue="Python.log2sqlite" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.user_puts" />
-        <item index="1" class="java.lang.String" itemvalue="Python.workers_per_user" />
-        <item index="2" class="java.lang.String" itemvalue="Python.workers_per_user_time_slot" />
-        <item index="3" class="java.lang.String" itemvalue="Python.by_time" />
-        <item index="4" class="java.lang.String" itemvalue="Python.user_puts_box" />
+        <item index="1" class="java.lang.String" itemvalue="Python.log2sqlite" />
+        <item index="2" class="java.lang.String" itemvalue="Python.workers_per_user" />
+        <item index="3" class="java.lang.String" itemvalue="Python.workers_per_user_time_slot" />
+        <item index="4" class="java.lang.String" itemvalue="Python.by_time" />
       </list>
     </recent_temporary>
   </component>
@@ -536,16 +483,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="251" y="23" width="1530" height="1037" extended-state="0" />
-    <editor active="false" />
+    <frame x="383" y="23" width="1530" height="1037" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31115592" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31518817" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36916396" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10881393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -572,21 +519,19 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="20" />
           <folding>
-            <marker date="1487204360000" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
-            <marker date="1487204360000" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
+            <marker date="1515265078674" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
+            <marker date="1515265078674" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_puts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1487308682000" expanded="true" signature="140:175" placeholder="SELECT times... " />
-            <marker date="1487308682000" expanded="true" signature="140:180" placeholder="SELECT times... " />
-            <marker date="1487308682000" expanded="true" signature="140:258" placeholder="SELECT user logs" />
-            <marker date="1487308682000" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
+            <marker date="1515477524030" expanded="true" signature="140:258" placeholder="SELECT user logs" />
+            <marker date="1515477524030" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
           </folding>
         </state>
       </provider>
@@ -595,10 +540,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="34" />
-          <folding>
-            <marker date="1487208587000" expanded="true" signature="141:259" placeholder="SELECT user logs" />
-            <marker date="1487208587000" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -608,8 +550,6 @@
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1487219095000" expanded="true" signature="151:341" placeholder="SELECT datet... logs" />
-            <marker date="1487219095000" expanded="true" signature="452:641" placeholder="SELECT datet... logs" />
           </folding>
         </state>
       </provider>
@@ -620,7 +560,66 @@
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1487219095000" expanded="true" signature="151:385" placeholder="SELECT datet... logs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workers_per_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log2sqlite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="20" />
+          <folding>
+            <marker date="1515265078674" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
+            <marker date="1515265078674" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_puts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="13" />
+          <folding>
+            <marker date="1515477524030" expanded="true" signature="140:258" placeholder="SELECT user logs" />
+            <marker date="1515477524030" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_puts_box.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/by_time_slot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workers_per_user_time_slot_best.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,7 +630,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1487220403000" expanded="true" signature="151:318" placeholder="SELECT user,... logs" />
           </folding>
         </state>
       </provider>
@@ -641,8 +639,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1487204360000" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
-            <marker date="1487204360000" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
+            <marker date="1515265078674" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
+            <marker date="1515265078674" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
           </folding>
         </state>
       </provider>
@@ -660,8 +658,6 @@
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1487219095000" expanded="true" signature="151:341" placeholder="SELECT datet... logs" />
-            <marker date="1487219095000" expanded="true" signature="452:641" placeholder="SELECT datet... logs" />
           </folding>
         </state>
       </provider>
@@ -672,7 +668,16 @@
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1487219095000" expanded="true" signature="151:385" placeholder="SELECT datet... logs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workers_per_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -681,44 +686,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="34" />
-          <folding>
-            <marker date="1487208587000" expanded="true" signature="141:259" placeholder="SELECT user logs" />
-            <marker date="1487208587000" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log2sqlite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="20" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <marker date="1487204360000" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
-            <marker date="1487204360000" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
+            <marker date="1515265078674" expanded="true" signature="114:206" placeholder="CREATE TABLE... logs" />
+            <marker date="1515265078674" expanded="true" signature="479:514" placeholder="INSERT INTO logs... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/workers_per_user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1487220403000" expanded="true" signature="151:318" placeholder="SELECT user,... logs" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/figure_1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_puts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
+        <state relative-caret-position="689">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
-            <marker date="1487308682000" expanded="true" signature="140:175" placeholder="SELECT times... " />
-            <marker date="1487308682000" expanded="true" signature="140:180" placeholder="SELECT times... " />
-            <marker date="1487308682000" expanded="true" signature="140:258" placeholder="SELECT user logs" />
-            <marker date="1487308682000" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
+            <marker date="1515477524030" expanded="true" signature="140:258" placeholder="SELECT user logs" />
+            <marker date="1515477524030" expanded="true" signature="317:447" placeholder="SELECT IP , logs" />
           </folding>
         </state>
       </provider>
