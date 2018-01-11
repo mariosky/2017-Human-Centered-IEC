@@ -13,15 +13,17 @@
 \titlerunning{Increasing Performance via Gamification in a Volunteer
   EC System}
 
-\author{Mario Garc\'ia-Valdez\inst{1} \and Juan J. Merelo Guerv\'os\inst{2} \and  Lucero Lara \inst{1}}
+\author{Mario Garc\'ia-Valdez\inst{1} \and Juan J. Merelo Guerv\'os\inst{2} \and  Lucero Lara \inst{1} \and Pablo Garc\'ia-S\'anchez \inst{3}}
 
 \institute{Instituto Tecnol\'ogico de Tijuana, Tijuana BC, Mexico
 \and
 Universidad de Granada, Granada, Spain
+\and
+Universidad de C\'adiz, C\'adiz, Spain
 \email{mario@tectijuana.edu.mx}\\
 \email{jmerelo@geneura.ugr.es}}
 
-\authorrunning{Garc\'ia-Valdez, Merelo, \& Lara }
+\authorrunning{Garc\'ia-Valdez, Merelo, Lara \& Garc\'ia-S\'anchez}
 
 \maketitle
 
@@ -46,7 +48,7 @@ need to register would have a negative impact on user participation.
 The experiment results show that even if only a small percentage of
 users created an account, those participating in the competition
 provided around 90\% of the work, thus effectively increasing the
-performance of the overall system.
+performance of the overall system. %Pablo: how the performance is compared with respect to the previous version? Less time?
 
 \keywords{Distributed Evolutionary Algorithms, Volunteer Computing,
   Socio-Technical Systems}
@@ -59,7 +61,7 @@ maturity of HTTP, the underlying protocol itself, there are other
 factors: the JavaScript virtual machine embedded in every browser
 and the REST interface, providing a {\em de facto} standard interface for
 communication. A distributed system based on the browser can be
-created easily using these mechanisms, which lately have been enhanced
+easily created using these mechanisms, which lately have been enhanced
 by WebSockets for lower latency; you can start to gather users just by
 announcing the URL. This approach for creating distributed 
 experiments is called {\em volunteer}, {\em cycle-scavenging}, 
@@ -102,7 +104,7 @@ gamification techniques to try and improve the amount of time every user will
 lend to the system. However, there is a trade-off with gamification,
 since users have to be identified in some way to participate, and thus
 it has to include some way of user authentication,
-which is a hurdle that might take users away; however, the open design
+which is a hurdle that might take users away; however, the open design %Pablo: use colon instead semicolon?
 of the system we use means that we can actually mix anonymous (with no
 gamification) and authenticated (gamified) users, with only the small overhead
 of adding the gamification mechanism.
@@ -124,7 +126,7 @@ The rest of the paper is organized as follows: The state of the art in opportuni
 computation (EC) is presented next. Section \ref{sec:gamification} will describe the
 framework and the problem used in the experiments, which are publicly
 available under a free license. The results of each of the steps in the incremental design are presented in Section
-\ref{sec:experiments}, to finally wrap up with the conclusions.
+\ref{sec:experiments}, to finally wrap up with the conclusions. %Pablo: check out this paragraph! Section 3 is not describing the problem and framework, it is only discussing on related work on gamification! I suggest combine section Gamification into Section 2, and separate Section 4.2 (Results) as a new Section before Conclusions.
 
 \section{Related Work}
 \label{sec:soa}
@@ -192,7 +194,7 @@ exclusively, exhibit a certain amount of unpredictability, and they
 might be better used in combination with ready-available computing
 power. 
 
-As indicated in the introduction, the human is an integral part of the system, which we can consider a {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' in which the name of the volunteer, the number of projects, GFLOPS, country and team are displayed.
+As indicated in the introduction, the human is an integral part of the system, which we can consider a {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' in which the name of the volunteer, the number of projects, GFLOPS, country and team are displayed. %Pablo: I suggest to move this paragraph above the previous one, as it works as a better introduction to this kind of systems and can be linked to the next paragraph.
 
 \section{Gamification}
 \label{sec:gamification}
@@ -229,7 +231,7 @@ participating users.
 %     \label{fig:login}
 % \end{figure*}
 
-\section{Experiment}
+\section{Experiment} %Pablo: change this to Experimental Setup, as it also describes the system
 \label{sec:experiments}
 
 In this experiment a gamification technique is applied to
@@ -252,7 +254,7 @@ The gamification technique employed in this work is based on a rewarding mechani
 \cite{dubois2013understanding}. In general rewards  consist of a reputation system
 with score points, levels and leader boards. Points are awarded to users in response of
 the accomplishment of certain activities that need to be encouraged. In these case
-a point is awarded for each PUT sent to the server. Levels are a long
+a point is awarded for each HTTP {\tt PUT} Request sent to the server. Levels are a long
 term achievement, in this case the level depends on the score:
 \[ \text{level}(\text{score};a,b)=
     \begin{cases}
@@ -274,14 +276,15 @@ levels at the beginning.%; this function is represented in Figure \ref{fig:s}.
 %     \label{fig:s}
 % \end{figure*}
 
-After login, registered users are welcomed by their name, and they can see
+After login, %Pablo: after login where? Add a link to the page or explain that the system was run in our servers
+registered users are welcomed by their name, and they can see
 their current score and level. All users can see the 
 leader board in a modal dialog.
 While the modal is opened, the scores are refreshed every second. All other
 functionality is available to all users and is the same as the
 previous {\sf NodIO} version, showing the state of the current algorithm.
 In the front page a link to the open source code of the experiment was also
-available \url{https://github.com/lucero21/login-master}.
+available \url{https://github.com/lucero21/login-master}. %Pablo: I suggest to move the link to the introduction, just after the first time it is mentioned as free software
 
 
 \subsection{Problem}
@@ -319,7 +322,7 @@ Each local GA had the following parameters, the initial population was randomly
 generated with a size between 128 and 256 individuals, the period to send individuals to the server was set at 100 local generations, the parameters for the trap function are fixed at $l$ = 4,
 $a$=1, $b$ = 2, $z$=3 with a chromosome length of 160 bits.
 
-
+%Pablo: this should be a new subsection, as we are not describing the problem from here
 We made a call to participation on November 23th,
 2016 through the authors' social networks: ``Asking again for your help, we are conducting a computational experiment
 that requires computer power. Can we borrow some of your CPU? just visit the web page (link)
@@ -387,8 +390,9 @@ registered and anonymous volunteers. Registered users were responsible for about
 \end{figure}
 %
 Contributions are counted by the number of HTTP {\tt PUT} requests
-sent to the server. In Figure~\ref{fig:puts} a comparison between the 
-contribution of registered vs anonymous users is presented.
+sent to the server. %Pablo: the PUT request concept was mentioned before the level scores description. This explanation should be moved there. 
+In Figure~\ref{fig:puts} a comparison between the 
+contribution of registered vs anonymous users is presented. 
 
 The first observation arises from the length of the $x$ axis. There
 were only 18 registered users vs 91 distinct IPs; the 
