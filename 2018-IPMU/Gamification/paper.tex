@@ -40,9 +40,8 @@ a volunteer-based evolutionary computing system called  NodIO
 encourage volunteer participation, thus increasing the overall
 computing power. We present the results of an experiment in which a
 gamification technique is applied by adding a leader-board showing the
-top scores achieved by registered contributors. In the  NodIO
-system volunteers can participate without the need to create
-an account, so one of the questions we wanted to address was if the
+top scores achieved by registered contributors. In NodIO,
+volunteers can participate without creating an account, so one of the questions we wanted to address was if the
 need to register would have a negative impact on user participation.
 The experiment results show that even if only a small percentage of
 users created an account, those participating in the competition
@@ -54,15 +53,14 @@ performance of the overall system.
 \end{abstract}
 
 \section{Introduction}
-
 The world wide web is an increasingly reliable and high-performance
 operating system for running distributed applications. Besides the
 maturity of HTTP, the underlying protocol itself, there are other
 factors: the JavaScript virtual machine embedded in every browser
 and the REST interface, providing a {\em de facto} standard interface for
 communication. A distributed system based on the browser can be
-created easily using these mechanisms, which have lately been enhanced
-by WebSockets for lower latency; you can gather users by just
+created easily using these mechanisms, which lately have been enhanced
+by WebSockets for lower latency; you can start to gather users just by
 announcing the URL. This approach for creating distributed experiments is called {\em
   volunteer}, {\em cycle-scavenging}, or {\em opportunistic} computing
 \cite{sarmenta2001volunteer} and it dates back, in different shapes
@@ -77,16 +75,16 @@ In this context, we are mainly interested in evolutionary algorithms
 straightforward distribution of work to different clients, and since
 they have an asynchronous nature, there is no considerable impact on
 their performance, and might even be beneficial for a number of
-reasons, including increased diversity
+reasons, including an increased diversity
 \cite{cantu-paz:migration-policies}. All these properties make them
 ideal candidates for volunteer computing setups such as the one
-presented in this paper, at least if some minimal changes are made to
-the usual sequential or parallel algorithms that rely on a static
-setup. 
+presented in this paper.
+%, at least if some minimal changes are made to
+%the usual sequential or parallel algorithms that rely on a static
+%setup.  -- Not needed, Mario
 
-But even if adaptation is straightforward, there are several open issues in the research regarding the
-application of volunteer computing techniques to the development of
-distributed evolutionary algorithms of which the most important is
+But even if adaptation is straightforward, the application of volunteer computing techniques to the development of distributed evolutionary algorithms 
+still has several open issues. An important research aspect is 
 approaching the problem as a socio-technical system
 \cite{vespignani2009predicting,merelo2015designing}, which integrates
 user decisions and behavioral patterns in the model; this
@@ -103,14 +101,14 @@ lend to the system. However, there is a trade-off with gamification,
 since users have to be identified in some way to participate, and thus
 it has to include some way of user authentication,
 which is a hurdle that might take users away; however, the open design
-of the system we use means that we can actually mix anonymous-non
-gamified and authenticated-gamified users, with only the small overhead
+of the system we use means that we can actually mix anonymous (with no
+gamification) and authenticated (gamified) users, with only the small overhead
 of adding the gamification mechanism.
 
 This trade-off between ease of use, allowing users to
 participate by just visiting a web page, and personalization, making
-registration compulsory and subsequently authenticate in order to
-participate, is what we will analyze in this paper. In a sociotechnical system such as this one, every
+registration a requirement in order to % I just simplified the sentence -Mario
+participate, is what we will analyze in this paper. In a socio-technical system such as this one, every
 decision the user has to take has an influence on the overall
 performance, and registration could be seen as a hurdle to volunteers
 trying to participate in an ephemeral experiment, so it is a challenge
@@ -118,11 +116,10 @@ to analyze what actually happens in this case; quite clearly, the
 inclusion of gamification techniques has an impact on page loading and
 complexity of server-side programming; if the number of users
 or the amount of time they contribute to the experiment is not enough,
-it would be better to revert to the purely anonymous system.
+it would be better to revert NodIO to a purely anonymous system.
 
-The rest of the paper is organized as follows: Next we will briefly
-present the state of the art in opportunistic/volunteer distributed evolutionary
-computation (EC). Section \ref{sec:gamification} will describe the
+The rest of the paper is organized as follows: The state of the art in opportunistic/volunteer distributed evolutionary
+computation (EC) is presented next. Section \ref{sec:gamification} will describe the
 framework and the problem used in the experiments, which are publicly
 available under a free license. The results of each of the steps in the incremental design are presented in Section
 \ref{sec:experiments}, to finally wrap up with the conclusions.
