@@ -38,7 +38,7 @@ resources depending on the amount of time the user decides to
 lend. This implies that the user has to be kept engaged so as to
 obtain as many computing cycles as possible. In this paper, we analyze
 a volunteer-based evolutionary computing system called  NodIO
- with the objective of discovering design decisions that
+with the objective of discovering design decisions that
 encourage volunteer participation, thus increasing the overall
 computing power. We present the results of an experiment in which a
 gamification technique is applied by adding a leader-board showing the
@@ -49,6 +49,9 @@ The experiment results show that even if only a small percentage of
 users created an account, those participating in the competition
 provided around 90\% of the work, thus effectively increasing the
 performance of the overall system. %Pablo: how the performance is compared with respect to the previous version? Less time?
+% In this case is more work, more indivudals put in to the
+% pool or more generations - Mario
+
 
 \keywords{Distributed Evolutionary Algorithms, Volunteer Computing,
   Socio-Technical Systems}
@@ -63,8 +66,8 @@ and the REST interface, providing a {\em de facto} standard interface for
 communication. A distributed system based on the browser can be
 easily created using these mechanisms, which lately have been enhanced
 by WebSockets for lower latency; you can start to gather users just by
-announcing the URL. This approach for creating distributed 
-experiments is called {\em volunteer}, {\em cycle-scavenging}, 
+announcing the URL. This approach for creating distributed
+experiments is called {\em volunteer}, {\em cycle-scavenging},
 or {\em opportunistic} computing
 \cite{sarmenta2001volunteer} and it dates back, in different shapes
 and underlying mechanisms, to the origin of the Internet
@@ -87,8 +90,8 @@ presented in this paper.
 %setup.  -- Not needed, Mario
 
 But even if adaptation is straightforward, the application of volunteer
-computing techniques to the development of distributed evolutionary algorithms 
-still has several open issues. An important research aspect is 
+computing techniques to the development of distributed evolutionary algorithms
+still has several open issues. An important research aspect is
 approaching the problem as a socio-technical system
 \cite{vespignani2009predicting,merelo2015designing}, which integrates
 user decisions and behavioral patterns in the model; this
@@ -123,10 +126,12 @@ or the amount of time they contribute to the experiment is not enough,
 it would be better to revert NodIO to a purely anonymous system.
 
 The rest of the paper is organized as follows: The state of the art in opportunistic/volunteer distributed evolutionary
-computation (EC) is presented next. Section \ref{sec:gamification} will describe the
+computation (EC) and Gamification Techinques as presented next. Section \ref{sec:experiments} will describe the
 framework and the problem used in the experiments, which are publicly
 available under a free license. The results of each of the steps in the incremental design are presented in Section
-\ref{sec:experiments}, to finally wrap up with the conclusions. %Pablo: check out this paragraph! Section 3 is not describing the problem and framework, it is only discussing on related work on gamification! I suggest combine section Gamification into Section 2, and separate Section 4.2 (Results) as a new Section before Conclusions.
+\label{sec:results}, to finally wrap up with the conclusions. %Pablo: check out this paragraph! Section 3 is not describing the problem and framework, it is only discussing on related work on gamification! I suggest combine section Gamification into Section 2, and separate Section 4.2 (Results) as a new Section before Conclusions.
+% Done - Mario
+
 
 \section{Related Work}
 \label{sec:soa}
@@ -148,7 +153,7 @@ Volunteer Computing \cite{fabisiak2017browser}.
 % ystems based on the
 % JavaScript/browser combination
 % emphasize the ephemerality, ease of use, and universality, while
-% systems such as HTCondor or BOINC \cite{boinc_grid04} might be more adequate for work that 
+% systems such as HTCondor or BOINC \cite{boinc_grid04} might be more adequate for work that
 % requires higher availability of volunteer resources.
 
 In order to attract volunteers, many systems rely on downloadable clients;
@@ -161,13 +166,16 @@ systems, including their ability to handle large sets of input data
 and time-consuming problems, concluding that BBVC is mostly apt for
 short, data-light tasks.
 
+As indicated in the introduction, the human is an integral part of the system, which we can consider a {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' in which the name of the volunteer, the number of projects, GFLOPS, country and team are displayed. %Pablo: I suggest to move this paragraph above the previous one, as it works as a better introduction to this kind of systems and can be linked to the next paragraph.
+% Moved - Mario
+
 Several authors have already described systems using JavaScript either
 for unwitting
 \cite{unwitting-ec,boldrin2007distributed,apolonia2012enhancing} or volunteer
 \cite{langdon:2005:metas,gecco07:workshop:dcor} distributed EC and it has been used by several
 authors ever since. In
 fact, \cite{pan2015gray} performs an analysis of what
-is called {\em Gray computing} covering aspects of 
+is called {\em Gray computing} covering aspects of
 feasibility, cost-effectiveness, change in the user\'s experience and the
 architectural optimization needed, concluding that the computing power
 available is vast and it can be cost-effective to use it.
@@ -188,17 +196,15 @@ also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
 against single-user single-computer implementations of the same
 algorithm. Lately, researchers have tried to integrate volunteer
-computing techniques as a part of a larger distributed evolutionary computing 
+computing techniques as a part of a larger distributed evolutionary computing
 effort \cite{leclerc2016seamless}.  In fact, systems using volunteers
 exclusively, exhibit a certain amount of unpredictability, and they
 might be better used in combination with ready-available computing
-power. 
-
-As indicated in the introduction, the human is an integral part of the system, which we can consider a {\em human computation} \cite{quinn2011human}. Giving the user more control, and adding visibility to their participation might have positive effects. In fact, the BOINC project applies this technique by having a web page presenting the ``Top 100 multi-project BOINC participants'' in which the name of the volunteer, the number of projects, GFLOPS, country and team are displayed. %Pablo: I suggest to move this paragraph above the previous one, as it works as a better introduction to this kind of systems and can be linked to the next paragraph.
+power.
 
 \section{Gamification}
 \label{sec:gamification}
-A definition given by Huotari  \cite{huotari2012defining} is ``Gamification is
+A definition given by Huotari \cite{huotari2012defining} is ``Gamification is
 the process by which gaming concepts are brought to real world tasks associated with
 real people''. Gamification uses game design elements out of the domain of games
 with the objective of enhancing the user\'s experience, engagement, productivity,
@@ -219,7 +225,7 @@ in order to promote competition, presenting only the all-time top five
 participating users.
 % Competition can also have problematic consequences, which can result in
 % negative conduct, low cooperation and collaboration, or disadvantaging certain player demographics
-% such as women \cite{kumar2013gamification}. 
+% such as women \cite{kumar2013gamification}.
 
 
 
@@ -231,7 +237,8 @@ participating users.
 %     \label{fig:login}
 % \end{figure*}
 
-\section{Experiment} %Pablo: change this to Experimental Setup, as it also describes the system
+\section{Experimental Setup and Execution} %Pablo: change this to Experimental Setup, as it also describes the system
+% OK - Mario
 \label{sec:experiments}
 
 In this experiment a gamification technique is applied to
@@ -276,9 +283,9 @@ levels at the beginning.%; this function is represented in Figure \ref{fig:s}.
 %     \label{fig:s}
 % \end{figure*}
 
-After login, %Pablo: after login where? Add a link to the page or explain that the system was run in our servers
+After login to the NodIO web application, %Pablo: after login where? Add a link to the page or explain that the system was run in our servers
 registered users are welcomed by their name, and they can see
-their current score and level. All users can see the 
+their current score and level. All users can see the
 leader board in a modal dialog.
 While the modal is opened, the scores are refreshed every second. All other
 functionality is available to all users and is the same as the
@@ -291,8 +298,8 @@ available \url{https://github.com/lucero21/login-master}. %Pablo: I suggest to m
 In the browser, each page visiting the experiment loads an HTTP Web Worker
 that runs a local island of an evolutionary algorithm to solve a
 multi-modal problem called {\em l-trap} which has been used extensively
-as a benchmark for evolutionary algorithms 
-% and is represented in figure \ref{fig:trap},  
+as a benchmark for evolutionary algorithms
+% and is represented in figure \ref{fig:trap},
 \cite{nijssen2003analysis}.
 This function counts the number of bits in a sequence $l$ and assigns
 the local maximum $a$ if it has 0 bits and the global maximum $b$ if it has $l$
@@ -318,11 +325,13 @@ function is defined as:
 % \end{figure*}
 
 
-Each local GA had the following parameters, the initial population was randomly 
+Each local GA had the following parameters, the initial population was randomly
 generated with a size between 128 and 256 individuals, the period to send individuals to the server was set at 100 local generations, the parameters for the trap function are fixed at $l$ = 4,
 $a$=1, $b$ = 2, $z$=3 with a chromosome length of 160 bits.
 
 %Pablo: this should be a new subsection, as we are not describing the problem from here
+% Ok -Mario
+\subsection{Experiment Execution}
 We made a call to participation on November 23th,
 2016 through the authors' social networks: ``Asking again for your help, we are conducting a computational experiment
 that requires computer power. Can we borrow some of your CPU? just visit the web page (link)
@@ -342,7 +351,7 @@ good enough, as seems to be the case in this particular
 experiment, where we were also interested in computing the number of
 users who actually registered, proving that, in fact, for most users
 the fact that they have to register represents a bigger effort they
-seem to be able to muster for this kind of experiments. 
+seem to be able to muster for this kind of experiments.
 
 
 \subsection{Results}
@@ -380,7 +389,7 @@ registered and anonymous volunteers. Registered users were responsible for about
 \begin{figure}[h!tb]
     \centering
         \includegraphics[width=0.9\linewidth]{img/puts.png}
-        
+
     \caption{Usage by registered (green triangles) and anonymous (red dots) users.  Users are ranked by
         the number of requests sent, in the \emph{x} axis is the rank, and in the \emph{y} axis
         number of PUTs in a logarithmic scale.}
@@ -390,12 +399,12 @@ registered and anonymous volunteers. Registered users were responsible for about
 \end{figure}
 %
 Contributions are counted by the number of HTTP {\tt PUT} requests
-sent to the server. %Pablo: the PUT request concept was mentioned before the level scores description. This explanation should be moved there. 
-In Figure~\ref{fig:puts} a comparison between the 
-contribution of registered vs anonymous users is presented. 
+sent to the server. %Pablo: the PUT request concept was mentioned before the level scores description. This explanation should be moved there.
+In Figure~\ref{fig:puts} a comparison between the
+contribution of registered vs anonymous users is presented.
 
 The first observation arises from the length of the $x$ axis. There
-were only 18 registered users vs 91 distinct IPs; the 
+were only 18 registered users vs 91 distinct IPs; the
 exact number of anonymous users is upper-bounded by that amount but is
 not known precisely as we only recorded the IP of the request, we did
 not use cookies or other means of identification since it was not
@@ -403,11 +412,11 @@ actually needed for the experiment. Besides, a registered user
 could sometimes be anonymous too, which could be caused by the fact that the first time they visited
 the application they automatically begin to work as anonymous, so the
 number of non-anonymous users, 91, is actually the amount of unique
-IPs that had `anonymous' as the user. In the plot of 
+IPs that had `anonymous' as the user. In the plot of
 anonymous users, some of the lasts in the rank could in fact be registered users,
 momentarily participating as anonymous. Even if this is not considered, only
 about 16\% of users attending the call decided to participate as named
-users and thus enter the game dynamics. 
+users and thus enter the game dynamics.
 
 The second observation is apparent in the $y$ axis of Figure
 \ref{fig:puts}. There is a notable difference in the amount of
@@ -417,19 +426,19 @@ participation, and there was a significant difference in the scores
 for anonymous users  (M=1057.97, SD= 3669.86) and non-anonymous users
 (M=46513.55, SD=93537.20); t-test= 4.70, p = 7.5e-06; that is, the
 contribution of registered users was two orders of magnitude bigger
-than for anonymous users. This difference is highlighted in 
+than for anonymous users. This difference is highlighted in
 %
 %Maybe a statistical comparison? Median, for instance - JJ
-%count          mean           std  min      25%      50%      75%   
-%category                                                                     
-%IP        91.0   1057.978022   3669.862398  1.0     1.50     18.0    173.0   
-%user      18.0  46513.555556  93537.207948  7.0  3962.75  13034.5  46993.5   
+%count          mean           std  min      25%      50%      75%
+%category
+%IP        91.0   1057.978022   3669.862398  1.0     1.50     18.0    173.0
+%user      18.0  46513.555556  93537.207948  7.0  3962.75  13034.5  46993.5
 %
-%           
-%      max  
-%category            
-%IP         26593.0  
-%user      396081.0  
+%
+%      max
+%category
+%IP         26593.0
+%user      396081.0
 %Ttest_indResult(statistic=4.7070787365897289, pvalue=7.565505602664807e-06)
 %
 %
@@ -453,10 +462,10 @@ them, an expected consequence of the gamification, in fact, although
 not in this precise form and quantity. But
 there were more outliers between anonymous IPs, and some of them could
 be related to the same users. The lower quartile in the users box-plot
-has more 
+has more
 spread, indicating a participation similar to the median of anonymous
 IPs, indicating that the difference in distribution is mainly due to a
-few highly engaged and registered users. 
+few highly engaged and registered users.
 
 %
 \begin{figure*}[htb]
@@ -465,7 +474,7 @@ few highly engaged and registered users.
     \caption{ Participation of registered users. Each circle represents a user relating
         in the \emph{x} axis the number of workers used and in the \emph{y} axis
         number or PUTs in a logarithmic scale. The area of the circle is the number
-        of unique IPs associated to every user. 
+        of unique IPs associated to every user.
     }
     \label{fig:worker-put-ips}
 \end{figure*}
@@ -484,7 +493,7 @@ workers. This indicates that, in fact, registered users who have
 incurred in additional time expenses by performing registration and
 login are ready to work even more by manually deploying more workers
 and using more computers, which is another proof of the
-socio-technical nature of volunteer computing systems. 
+socio-technical nature of volunteer computing systems.
 
 \begin{figure*}[htb]
     \centering
@@ -521,10 +530,10 @@ In this paper we have added gamification to a volunteer computing
 system via a leaderboard of contributions of registered users. The objective of this work was to test the kind of impact
 applying a gamification technique has on user engagement in
 the {\sf NodIO}
-volunteer computing framework; in concordance with
+volunteer evolutionary computing framework; in concordance with
 the results obtained in other
 browser-based volunteer systems, after
-applying the gamification techniques, registered users participated much more intensely than anonymous ones. 
+applying the gamification techniques, registered users participated much more intensely than anonymous ones.
 
 In fact, we have proved that, although only a minority of the users opt
 for registration, their individual contributions are on average much
@@ -533,7 +542,7 @@ than one fifth of users actually registering would discard the
 exclusive use of this feature; however, it is an interesting addition
 to the volunteer system that in fact enhances its computing power.
 
-The fact that gamification actually work highlights the social nature of volunteer computing systems, piling on the fact that successful {\em social clouds} must embed games and other social mechanisms to enhance participation. That is why future lines of work will look for intermediate ways of including
+The fact that applying a gamification techinque improved user participation highlights the social nature of volunteer computing systems, piling on the fact that successful {\em social clouds} must embed games and other social mechanisms to enhance participation. That is why future lines of work will look for intermediate ways of including
 gamification without registration, as well as some ways of making the
 user increase control over the algorithm that would go beyond simply
 staying for longer or leaving the page. Since it is a sociotechnical
