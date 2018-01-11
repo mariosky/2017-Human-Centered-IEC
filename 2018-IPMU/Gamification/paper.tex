@@ -61,8 +61,9 @@ and the REST interface, providing a {\em de facto} standard interface for
 communication. A distributed system based on the browser can be
 created easily using these mechanisms, which lately have been enhanced
 by WebSockets for lower latency; you can start to gather users just by
-announcing the URL. This approach for creating distributed experiments is called {\em
-  volunteer}, {\em cycle-scavenging}, or {\em opportunistic} computing
+announcing the URL. This approach for creating distributed 
+experiments is called {\em volunteer}, {\em cycle-scavenging}, 
+or {\em opportunistic} computing
 \cite{sarmenta2001volunteer} and it dates back, in different shapes
 and underlying mechanisms, to the origin of the Internet
 \cite{david-seti:home}.
@@ -83,7 +84,8 @@ presented in this paper.
 %the usual sequential or parallel algorithms that rely on a static
 %setup.  -- Not needed, Mario
 
-But even if adaptation is straightforward, the application of volunteer computing techniques to the development of distributed evolutionary algorithms 
+But even if adaptation is straightforward, the application of volunteer
+computing techniques to the development of distributed evolutionary algorithms 
 still has several open issues. An important research aspect is 
 approaching the problem as a socio-technical system
 \cite{vespignani2009predicting,merelo2015designing}, which integrates
@@ -132,7 +134,7 @@ as a client or as a peer in a distributed computing experiment
 and, as such, has been deployed in many different ways since the
 beginning of the Internet, starting with the SETI@home framework for
 processing extraterrestrial signals \cite{david-seti:home}, which used
-a client that acted as an screensaver%, or a
+a client that acted as an screensaver.%, or a
 %high-throughput queuing system such as HTCondor \cite{HTCondor}.
 However,
 the dual facts of the introduction of JavaScript as a universal language for the
@@ -160,8 +162,7 @@ short, data-light tasks.
 Several authors have already described systems using JavaScript either
 for unwitting
 \cite{unwitting-ec,boldrin2007distributed,apolonia2012enhancing} or volunteer
-\cite{langdon:2005:metas,gecco07:workshop:dcor} distributed
-evolutionary computation and it has been used by several
+\cite{langdon:2005:metas,gecco07:workshop:dcor} distributed EC and it has been used by several
 authors ever since. In
 fact, \cite{pan2015gray} performs an analysis of what
 is called {\em Gray computing} covering aspects of 
@@ -185,7 +186,7 @@ also tried to find out how much time was needed to find the solution
 or, alternatively, how many users would be needed to be competitive
 against single-user single-computer implementations of the same
 algorithm. Lately, researchers have tried to integrate volunteer
-computing techniques as a part of a larger distributed computing
+computing techniques as a part of a larger distributed evolutionary computing 
 effort \cite{leclerc2016seamless}.  In fact, systems using volunteers
 exclusively, exhibit a certain amount of unpredictability, and they
 might be better used in combination with ready-available computing
@@ -274,7 +275,8 @@ levels at the beginning.%; this function is represented in Figure \ref{fig:s}.
 % \end{figure*}
 
 After login, registered users are welcomed by their name, and they can see
-their current score and level. All users can see in a modal dialog the leader board.
+their current score and level. All users can see the 
+leader board in a modal dialog.
 While the modal is opened, the scores are refreshed every second. All other
 functionality is available to all users and is the same as the
 previous {\sf NodIO} version, showing the state of the current algorithm.
@@ -286,14 +288,17 @@ available \url{https://github.com/lucero21/login-master}.
 In the browser, each page visiting the experiment loads an HTTP Web Worker
 that runs a local island of an evolutionary algorithm to solve a
 multi-modal problem called {\em l-trap} which has been used extensively
-as a benchmark for evolutionary algorithms % and is represented in
-% figure \ref{fig:trap}
-,  \cite{nijssen2003analysis}.
+as a benchmark for evolutionary algorithms 
+% and is represented in figure \ref{fig:trap},  
+\cite{nijssen2003analysis}.
 This function counts the number of bits in a sequence $l$ and assigns
 the local maximum $a$ if it has 0 bits and the global maximum $b$ if it has $l$
 bits, this makes the fitness fall into a {\em trap}
 as the number of bits increases, and decreasing linearly until a change in slope
-is reached at point $z$, adding a deceptive component for evolutionary algorithms. In order to increase difficulty, trap functions can be concatenated, in our case we have used $40$ concatenated traps. The trap function is defined as:
+is reached at point $z$, adding a deceptive component for evolutionary
+algorithms. In order to increase difficulty, trap functions can be
+concatenated, in our case we have used $40$ concatenated traps. The trap
+function is defined as:
 \[ f(u)=
     \begin{cases}
       \frac{a}{z}(z-u) & \text{if } u\leq z\\
@@ -310,9 +315,8 @@ is reached at point $z$, adding a deceptive component for evolutionary algorithm
 % \end{figure*}
 
 
-Each local GA had the following parameters, the initial population was randomly generated
-with a random size between 128 and 256 individuals, the period to send individuals to the server
-was set at 100 local generations, the parameters for the trap function are $l$ = 4,
+Each local GA had the following parameters, the initial population was randomly 
+generated with a size between 128 and 256 individuals, the period to send individuals to the server was set at 100 local generations, the parameters for the trap function are fixed at $l$ = 4,
 $a$=1, $b$ = 2, $z$=3 with a chromosome length of 160 bits.
 
 
